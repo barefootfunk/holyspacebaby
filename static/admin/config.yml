@@ -1,0 +1,23 @@
+backend:
+  name: holyspacebaby
+  branch: master
+  commit_messages:
+    create: 'Create {{collection}} “{{slug}}”'
+    update: 'Update {{collection}} “{{slug}}”'
+    delete: 'Delete {{collection}} “{{slug}}”'
+    uploadMedia: '[skip ci] Upload “{{path}}”'
+    deleteMedia: '[skip ci] Delete “{{path}}”'
+
+media_folder: static/img
+public_folder: /img
+
+collections:
+  - name: "vision"
+    label: "Vision"
+    folder: "src/visions"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Name", name: "title", widget: "string"}
+      - {label: "Image", name: "featuredimage", widget: image}
+      - {label: "The baby sees...", name: "body", widget: "markdown"}
