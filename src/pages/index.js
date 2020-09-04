@@ -1,5 +1,19 @@
-import React from "react"
+import React from 'react';
+import Stage from '../components/Stage';
 
-export default function Home() {
-  return <div>Hello world!</div>
+// Styles
+import '../styles/App.scss';
+
+class App extends React.Component {
+
+  render () {
+
+    return (
+      <div id="app">
+        <Stage />
+      </div>
+    );
+  }
 }
+
+export default App;

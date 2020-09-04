@@ -1,0 +1,16 @@
+.bg-video {
+  top: 50%;
+  left: 50%;
+  width: auto;
+  z-index: -1;
+  height: auto;
+  position: fixed;
+  overflow: hidden;
+  min-width: 100vw;
+  min-height: 100vh;
+  transform: translate(-50%,-50%);
+
+  &.-overlay {
+    opacity: 0.5;
+  }
+}

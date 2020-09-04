@@ -1,0 +1,32 @@
+@mixin ha {
+  backface-visibility: hidden;
+}
+
+@mixin glow($color: $green) {
+  text-shadow: 0 0 15px $color;
+}
+
+@mixin mask($color) {
+  &::after {
+    top: -30%;
+    left: -30%;
+    right: -30%;
+    bottom: -30%;
+    content: '';
+    position: absolute;
+    // mix-blend-mode: multiply;
+    background: radial-gradient($color 0%, transparent 70%);
+    z-index: -1;
+    @include ha;
+  }
+}
+
+@mixin colorize-fills-and-lines($color) {
+  #fills {
+    fill: $color;
+    opacity: 0.2;
+  }
+  #lines {
+    fill: $color;
+  }
+}

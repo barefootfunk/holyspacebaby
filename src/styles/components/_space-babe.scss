@@ -1,0 +1,21 @@
+
+#space-babe {
+  --babe-size: 15vw;
+  @include colorize-fills-and-lines(lime);
+
+  top: 0;
+  left: 0;
+  width: var(--babe-size);
+  height: var(--babe-size);
+  position: fixed;
+  pointer-events: none;
+  // transition: top 0.4s, left 0.4s;
+  
+  .center-wrap {
+    @include mask(black);
+    // transform: translate(-50%,-50%);
+    svg {
+      animation: spin 4s linear infinite;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+@keyframes livestream-hover {
+  from {
+    transform: translateY(3%); 
+  }
+  to {
+    transform: translateY(-3%);
+  }
+}
+
+#livestream {
+  top: 50%;
+  left: 50%;
+  position: fixed;
+  transition: opacity 1s;
+  transform: translate(-50%,-50%);
+  
+  // --livestream-width: 70vw;
+
+  // @include media(md)  {
+  //   --livestream-width: 50vw;
+  // }
+  // @include media(lg)  {
+  //   --livestream-width: 30vw;
+  // }
+
+  &.hidden {
+    opacity: 0;
+  }
+
+  &.big {
+    .sizing-wrap{
+      transform: scale(2);
+    }
+  }
+
+  .animation-wrap {
+    animation: livestream-hover 8s infinite alternate;
+  }
+
+  .sizing-wrap{
+    transform: scale(0.8);
+    transition: transform 0.5s;
+  }
+
+  iframe {
+    width: 40vw;
+    height: calc(40vw * .56);
+
+    opacity: 0.7;
+    overflow: hidden;
+    position: relative;
+    border-radius: 20px;
+    // box-shadow: 0 0 50px white, 0 0 5px white;
+  }
+}

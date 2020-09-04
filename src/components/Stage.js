@@ -1,0 +1,170 @@
+import React from 'react';
+import { BrowserRouter, Route } from "react-router-dom";
+
+// Socket 
+import SockJS from 'sockjs-client';
+
+// Show
+import Show from "./Show"
+
+// Twitch
+import ReactTwitchEmbedVideo from "react-twitch-embed-video"
+
+class Stage extends React.Component {
+
+  constructor (props) {
+    super(props);
+
+    this.state = {
+      scene: 0,
+      connected: false,
+    };
+
+    this.SOCKET_URL = "https://socket.theonetruefaith.org/director";
+    this.sock = null;
+  }
+
+  componentDidMount () {
+    this.initSocket()
+  }
+
+  initSocket = () => {
+    console.log('Connecting to The Director...');
+
+    // Create connection
+    this.sock = new SockJS(this.SOCKET_URL);
+
+    // Handle things
+    this.sock.onopen = this.handleSocketOpen.bind(this);
+    this.sock.onmessage = this.handleSocketMessage.bind(this);
+    this.sock.onclose = this.handleSocketClose.bind(this);
+  }
+
+  handleSocketOpen () {
+    console.log('Successfully connected.');
+    this.setState({
+      connected: true,
+    });
+  }
+
+  handleSocketClose () {
+    // On close, try to reopen!
+    this.setState({
+      connected: false,
+    });
+    setTimeout(this.initSocket, 400);
+  }
+
+  handleSocketMessage (e) {
+    // Get the content
+    const message = JSON.parse(e.data);
+    // console.log('A message from The Director:');
+    // console.log(message);
+    const {type,data} = message;
+
+    if (type ==="updateParticipantState") this.updateParticipantState(data);
+  }
+
+  updateParticipantState (newState) {
+    // merge in new state
+    newState = {
+      ...this.state,
+      ...newState,
+    }
+
+    // Update the state
+    this.setState(newState);
+  }
+
+  updateDirectorState (newState) {
+    this.sendMessage('updateDirectorState',newState)
+  }
+
+  decrementSceneGlobal () {
+    const newScene = this.state.scene-1; //Math.max(this.state.scene-1,0);
+    // console.log(`Decrementing scene ${this.state.scene} to ${newScene}.`);
+    this.updateDirectorState({ scene: newScene });
+  }
+
+  incrementSceneGlobal () {
+    const newScene = this.state.scene+1; //Math.min(this.state.scene+1,this.scenes.length-1);
+    // console.log(`Incrementing scene ${this.state.scene} to ${newScene}.`);
+    this.updateDirectorState({ scene: newScene });
+  }
+
+  get password () {
+    // We'll send a password in our message to the query string
+    const search = window.location.search;
+    const params = new URLSearchParams(search);
+    return params.get('password');
+  }
+
+  sendMessage(type,data) {
+    // The message to send
+    const message = {
+      type: type,
+      password: this.password,
+      data: data,
+    };
+
+    console.log('Sending a message to The Director...');
+    console.log(message);
+
+    // Send it
+    this.sock.send(JSON.stringify(message));
+  }
+
+  getSceneComponent (scene) {
+    // Handle min/max
+    scene = Math.min(scene,this.scenes.length);
+
+    return this.scenes[scene];
+  }
+
+  render () {
+    const {scene, connected} = this.state;
+
+    return (
+      <div id="stage">
+
+        <video id="bg-video" className="bg-video" playsInline autoPlay muted loop>
+          <source type="video/mp4" />
+        </video>
+        <video id="bg-video-overlay" className="bg-video -overlay" playsInline autoPlay muted loop>
+          <source type="video/mp4" />
+        </video>
+
+        <Show scene={scene} />
+
+        <div id="livestream">
+          <div className="animation-wrap">
+            <div className="sizing-wrap">
+              <ReactTwitchEmbedVideo 
+                channel="barefootfunk"
+                allowfullscreen={false}
+                autoplay={true}
+                layout={'video'}
+                allow="autoplay"
+                muted={false}
+              />
+            </div>
+          </div>
+        </div>
+
+        <BrowserRouter>
+          <Route path="/performer">
+            <div id="scene-controls">
+              <button id="prev-scene" onClick={this.decrementSceneGlobal.bind(this)}>Prev</button>
+              <div id="scene-number">{scene}</div>
+              <button id="next-scene" onClick={this.incrementSceneGlobal.bind(this)}>Next</button>
+            </div>
+          </Route>
+        </BrowserRouter>
+
+        {!connected && <div className="connecting-alert">Connecting...</div>}
+      </div>
+    );
+  }
+}
+
+export default Stage;

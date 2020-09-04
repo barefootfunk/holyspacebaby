@@ -1,0 +1,107 @@
+// Our breakpoints
+$breakpoints: (
+  sm: 0px,
+  md: 600px,
+  lg: 1200px
+);
+
+@function breakpoint($name) {
+  @return map-get($breakpoints,$name);
+}
+
+// On-the fly media-queries
+@mixin screen($res-min, $res-max) {
+  @media screen and (min-width: $res-min) and (max-width: $res-max) {
+    @content;
+  }
+}
+@mixin max-screen($res) {
+  @media screen and (max-width: $res) {
+    @content;
+  }
+}
+@mixin min-screen($res) {
+  @media screen and (min-width: $res) {
+    @content;
+  }
+}
+@mixin max-height($res) {
+  @media screen and (max-height: $res) {
+    @content;
+  }
+}
+
+@mixin media($breakpoint-name, $type: up) {
+  // If $breakpoint is a key that exists in
+  // $breakpoints, get and use the value
+  $breakpoint-size: false;
+  @if map-has-key($breakpoints, $breakpoint-name) {
+    $breakpoint-size: map-get($breakpoints, $breakpoint-name);
+  } @else {
+    @warn 'Called @mixin media with bad breakpoint name';
+  }
+  
+  // A normal min-screen media query
+  @if $type == up {
+    // If the smallest breakpoint, no media-query needed.
+    @if $breakpoint-name == sm {
+      @content;
+    } @else {
+      @include min-screen($breakpoint-size) {
+        @content;
+      }
+    }
+  }
+
+  // What is the next size up?
+  $next-breakpoint-size: map-get-next($breakpoints, $breakpoint-name);
+
+  // A media query exclusive to this breakpoint
+  @if $type == below {
+    
+    // Check if there IS a next size up. If not, this is logically ALL sizes
+    @if($next-breakpoint-size) {
+      @include max-screen($next-breakpoint-size - 1px) {
+        @content;
+      }
+    } @else {
+      @content;
+    }
+  }
+    
+  // A media query exclusive to this breakpoint
+  @if $type == only {
+    
+    // Check if there IS a next size up, if not, default to 'up'
+    @if($next-breakpoint-size) {
+      @include screen($breakpoint-size, $next-breakpoint-size - 1px) {
+        @content;
+      }
+    } @else {
+      @include min-screen($breakpoint-size) {
+        @content;
+      }
+    }
+  }
+}
+
+#breakpoint-indicator { // We can use this to tell JS which breakpoint we are on! Nifty!
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+
+  &::before {
+    content: 'sm';
+    @include media(md) {
+      content: 'md';
+    }
+    @include media(lg) {
+      content: 'lg';
+    }
+  }
+
+  &::after {
+    content: '';
+  }
+}

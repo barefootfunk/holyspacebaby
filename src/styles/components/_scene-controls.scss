@@ -1,0 +1,58 @@
+$control-border: 2px solid white;
+$control-padding: 30px;
+
+#scene-controls {
+  left: 50%;
+  bottom: 0;
+  display: flex;
+  z-index: 1000;
+  color: white;
+  position: fixed;
+  align-items: center;
+  border: $control-border;
+  padding: $control-padding;
+  transform: translate(-50%,0);
+  background: rgba(white,0.6);
+
+  button {
+    color: black;
+    font-size: 4em;
+    cursor: pointer;
+    border: $control-border;
+    background: rgba(white,0.9);
+    padding: $control-padding $control-padding*2;
+
+    &:hover {
+      background: white;
+    } 
+
+    &:first-of-type {
+      margin-right: $control-padding;
+    }
+  }
+
+  #scene-number {
+    color: black;
+    font-size: 4em;
+    text-align: center;
+    border: 1px dotted white;
+    width: $control-padding*4;
+    margin-right: $control-padding;
+  }
+}
+
+.teleprompter {
+  top: 0;
+  left: 50%;
+  width: 90%;
+  color: black;
+  font-size: 2em;
+  z-index: 1000;
+  max-height: 60%;
+  position: fixed;
+  overflow: scroll;
+  border: $control-border;
+  padding: $control-padding;
+  background: rgba(white,0.8);
+  transform: translate(-50%,0);
+}
