@@ -7,11 +7,9 @@ import '../styles/App.scss';
 class App extends React.Component {
 
   render () {
-    const {location} = this.props;
-
     return (
       <div id="app">
-        <Stage location={location} />
+        <Stage mode="performer" />
       </div>
     );
   }

@@ -41,7 +41,7 @@ $control-padding: 30px;
   }
 }
 
-.teleprompter {
+#teleprompter {
   top: 0;
   left: 50%;
   width: 90%;
@@ -51,6 +51,7 @@ $control-padding: 30px;
   max-height: 60%;
   position: fixed;
   overflow: scroll;
+  white-space: pre-line; // Gives us line breaks for the ES6 literals!
   border: $control-border;
   padding: $control-padding;
   background: rgba(white,0.8);

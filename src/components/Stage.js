@@ -4,10 +4,7 @@ import React from 'react';
 import SockJS from 'sockjs-client';
 
 // Show
-import Show from "./Show"
-
-// Twitch
-const ReactTwitchEmbedVideo = typeof window !== `undefined` ? require("react-twitch-embed-video") : null
+import Show from "./Scenes"
 
 class Stage extends React.Component {
 
@@ -17,7 +14,6 @@ class Stage extends React.Component {
     this.state = {
       scene: 0,
       connected: false,
-      teleprompter
     };
 
     this.SOCKET_URL = "https://socket.theonetruefaith.org/director";
@@ -116,13 +112,19 @@ class Stage extends React.Component {
 
   render () {
     const {scene, connected} = this.state;
-    const performer = this.props.location.pathname==='/performer';
-    console.log(location);
+    const {mode} = this.props;
 
     return (
       <div id="stage">
 
-        <Show scene={scene} performer={performer}/>
+        <Show scene={scene} mode={mode}/>
+
+        {mode==="performer" && (<div id="scene-controls">
+          <button id="prev-scene" onClick={this.decrementSceneGlobal.bind(this)}>Prev</button>
+          <div id="scene-number">{scene}</div>
+          <button id="next-scene" onClick={this.incrementSceneGlobal.bind(this)}>Next</button>
+        </div>)}
+
 
         {!connected && <div className="connecting-alert">Connecting... {/* https://www.davidhu.io/react-spinners/ */}</div>}
       </div>
