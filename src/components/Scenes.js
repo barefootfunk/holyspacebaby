@@ -1,10 +1,13 @@
 import React from 'react';
 
+// Utils
+
 // Props
 import Visions from "./props/Visions.js"
 import HolySpaceBaby from "./props/HolySpaceBaby.js"
 import SoundButton from "./props/SoundButton.js"
 import KeyPressSound from "./props/KeyPressSound.js"
+import NextShow from "./props/NextShow.js"
 
 // Sounds
 import cheer1Sound from '../sounds/cheer1.mp3';
@@ -17,6 +20,8 @@ const ReactTwitchEmbedVideo = typeof window !== `undefined` ? require("react-twi
 
 class Show extends React.Component {
 
+  
+
   render () {
 
     const scenes = [
@@ -24,6 +29,11 @@ class Show extends React.Component {
         name: "Stay tuned",
         bgVideo: "campfire-far",
         livestream: "hidden",
+        children: (
+          <React.Fragment>
+            <h1><NextShow /></h1>
+          </React.Fragment>
+        ),
       },
       {
         name: "Mic check",
@@ -179,6 +189,7 @@ class Show extends React.Component {
         {typeof currentScene.bgVideo !== 'undefined' && <video id="bg-video" className="bg-video" playsInline autoPlay muted loop key={currentScene.bgVideo}>
           <source src={`/videos/${currentScene.bgVideo}.mp4`} type="video/mp4" />
         </video>}
+        {typeof currentScene.name !== 'undefined' && <div id="scene-name">{currentScene.name}</div>}
 
         {typeof currentScene.children !== 'undefined' && currentScene.children}
 
@@ -198,7 +209,7 @@ class Show extends React.Component {
         </div>
 
         {(typeof currentScene.teleprompter !== 'undefined' && mode==="performer") && <div id="teleprompter">{currentScene.teleprompter}</div>}
-        {typeof currentScene.name !== 'undefined' && <div id="scene-name">{currentScene.name}</div>}
+        
       </div>
     );
   }
