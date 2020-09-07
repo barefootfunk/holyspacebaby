@@ -7,6 +7,8 @@ import cry1Sound from '../../sounds/cry1.wav';
 
 
 // TODO: Mobile fallback (animate transition between taps)
+// ANIMATE WITH: https://github.com/chenglou/react-motion
+// COPY THIS PATTERN: http://chenglou.github.io/react-motion/demos/demo1-chat-heads/
 
 export default class HolySpaceBaby extends React.Component {
   constructor(props) {

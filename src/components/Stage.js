@@ -1,5 +1,4 @@
 import React from 'react';
-import { BrowserRouter, Route } from "react-router-dom";
 
 // Socket 
 import SockJS from 'sockjs-client';
@@ -8,7 +7,7 @@ import SockJS from 'sockjs-client';
 import Show from "./Show"
 
 // Twitch
-import ReactTwitchEmbedVideo from "react-twitch-embed-video"
+const ReactTwitchEmbedVideo = typeof window !== `undefined` ? require("react-twitch-embed-video") : null
 
 class Stage extends React.Component {
 
@@ -18,6 +17,7 @@ class Stage extends React.Component {
     this.state = {
       scene: 0,
       connected: false,
+      teleprompter
     };
 
     this.SOCKET_URL = "https://socket.theonetruefaith.org/director";
@@ -114,54 +114,17 @@ class Stage extends React.Component {
     this.sock.send(JSON.stringify(message));
   }
 
-  getSceneComponent (scene) {
-    // Handle min/max
-    scene = Math.min(scene,this.scenes.length);
-
-    return this.scenes[scene];
-  }
-
   render () {
     const {scene, connected} = this.state;
+    const performer = this.props.location.pathname==='/performer';
+    console.log(location);
 
     return (
       <div id="stage">
 
-        <video id="bg-video" className="bg-video" playsInline autoPlay muted loop>
-          <source type="video/mp4" />
-        </video>
-        <video id="bg-video-overlay" className="bg-video -overlay" playsInline autoPlay muted loop>
-          <source type="video/mp4" />
-        </video>
+        <Show scene={scene} performer={performer}/>
 
-        <Show scene={scene} />
-
-        <div id="livestream">
-          <div className="animation-wrap">
-            <div className="sizing-wrap">
-              <ReactTwitchEmbedVideo 
-                channel="barefootfunk"
-                allowfullscreen={false}
-                autoplay={true}
-                layout={'video'}
-                allow="autoplay"
-                muted={false}
-              />
-            </div>
-          </div>
-        </div>
-
-        <BrowserRouter>
-          <Route path="/performer">
-            <div id="scene-controls">
-              <button id="prev-scene" onClick={this.decrementSceneGlobal.bind(this)}>Prev</button>
-              <div id="scene-number">{scene}</div>
-              <button id="next-scene" onClick={this.incrementSceneGlobal.bind(this)}>Next</button>
-            </div>
-          </Route>
-        </BrowserRouter>
-
-        {!connected && <div className="connecting-alert">Connecting...</div>}
+        {!connected && <div className="connecting-alert">Connecting... {/* https://www.davidhu.io/react-spinners/ */}</div>}
       </div>
     );
   }

@@ -43,18 +43,12 @@ export class Scene extends React.Component {
   }
 
   render () {
-    const {name,teleprompter,children} = this.props;
+    const {name,children} = this.props;
 
     // TODO: style scene name
     return (
       <div id={`scene-${name}`} className="scene">
         <div className="scene-name">{name}</div>
-
-        {teleprompter && (
-          <Teleprompter>
-            {teleprompter}
-          </Teleprompter>
-        )}
 
         {children}
 

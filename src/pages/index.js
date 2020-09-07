@@ -8,9 +8,11 @@ class App extends React.Component {
 
   render () {
 
+    const {location} = this.props;
+
     return (
       <div id="app">
-        <Stage />
+        <Stage location={location} />
       </div>
     );
   }
