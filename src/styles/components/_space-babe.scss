@@ -2,6 +2,7 @@
 #space-babe {
   --babe-size: 15vw;
   --spin-time: 4s;
+  --custom-color: lime;
 
   top: 0;
   left: 0;
@@ -9,7 +10,6 @@
   height: var(--babe-size);
   position: fixed;
   pointer-events: none;
-  // transition: top 0.4s, left 0.4s;
 
   &.hidden {
     @include colorize-fills-and-lines(gray);
@@ -17,9 +17,8 @@
     --spin-time: 10s;
   }
 
-  // &.born {
-    @include colorize-fills-and-lines(lime);
-  // }
+  // Default 
+  @include colorize-fills-and-lines(var(--custom-color));
   
   .center-wrap {
     @include mask(black);

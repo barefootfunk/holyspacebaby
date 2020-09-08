@@ -7,14 +7,15 @@ import slugify from 'slugify';
 import Visions from "./props/Visions.js"
 import HolySpaceBaby from "./props/HolySpaceBaby.js"
 import ClickSound from "./props/ClickSound.js"
-import KeyPressSound from "./props/KeyPressSound.js"
+// import KeyPressSound from "./props/KeyPressSound.js"
 import NextShow from "./props/NextShow.js"
 import BabyColorPicker from "./props/BabyColorPicker.js"
+import FunkBottle from "./props/FunkBottle.js"
 
 // Sounds
-import cheer1Sound from '../sounds/cheer1.mp3';
-import cry1Sound from '../sounds/cry1.wav'; // https://freesound.org/people/Stevious42/sounds/259608/
-import gulpSound from '../sounds/gulp1.wav'; // https://freesound.org/people/CGEffex/sounds/102581/
+// import cheer1Sound from '../sounds/cheer1.mp3';
+// import cry1Sound from '../sounds/cry1.wav'; // https://freesound.org/people/Stevious42/sounds/259608/
+// import gulpSound from '../sounds/gulp1.wav'; // https://freesound.org/people/CGEffex/sounds/102581/
 import heartbeatSound from '../sounds/heartbeat.mp3'; // https://freesound.org/people/InspectorJ/sounds/485076/
 
 // Twitch
@@ -24,7 +25,21 @@ const ReactTwitchEmbedVideo = typeof window !== `undefined` ? require("react-twi
 
 class Show extends React.Component {
 
-  
+  constructor (props) {
+    super(props);
+    this.state = {
+      babyColor: 'cyan',
+    }
+
+    this.setBabyColor = this.setBabyColor.bind(this);
+  }
+
+    // TODO: I think reducer pattern is the right way to generalize this.
+  setBabyColor(newBabyColor) {
+    this.setState({
+      babyColor: newBabyColor,
+    })
+  }
 
   render () {
 
@@ -36,7 +51,7 @@ class Show extends React.Component {
         babyClass: "hidden",
         children: (
           <div id="props">
-            <h1 class="window-center"><NextShow /></h1>
+            <h1 class="layout-center"><NextShow /></h1>
           </div>
         ),
       },
@@ -70,13 +85,14 @@ class Show extends React.Component {
           
           [SOLO]
 
-          (First things, first, for this ceremony to commence, you'll have to er em... this is awkward. You'll have to die.  In fact I'm killing you right now. My sincere apologies.)[NEXT]
+          (First things, first, you'll have to... die.  Don't worry I'll make real quick work of it with my magic trombone.)[NEXT]
           `,
       },
       {
         name: "Goodbye cruel world",
         babyClass: "hidden",
         bgVideo: "heart-monitor",
+        bgVideoOverlay: "flames",
         teleprompter: `
           [SOLO]
           
@@ -84,8 +100,17 @@ class Show extends React.Component {
           `,        
           children: (
             <div id="props">
+              <div class="layout-top">
+                <p>Resist! Keep your heart beating!</p>
+              </div>
               <div class="layout-bottom">
-                <ClickSound sound={heartbeatSound} keyString="f"><button>❤ Struggle to Beat ❤</button></ClickSound>
+                <ClickSound sound={heartbeatSound} keyString="f">
+                  <button style={{
+                    margin: '10px auto',
+                    display: 'block',
+                    fontSize: 100,
+                  }}>❤</button>
+                </ClickSound>
               </div>
             </div>
           )
@@ -93,18 +118,23 @@ class Show extends React.Component {
       {
         name: "You have died",
         bgVideo: "graveyard",
+        bgVideoOverlay: "flames",
         babyClass: "hidden",
         teleprompter: `
           [SOLO]
           
-          Hmmm. that wasn't so bad.  Wonder what all the philosophers were fussing about.  By the way, did you remember to tell everyone you loved them?  I always forget to do that.  Anyway, don't fret none. For you will now be reborn in your true form!
+          Hmmm. that wasn't so bad.  Wonder what all the philosophers were fussing about.  Anyway, don't fret none. For you will now be reborn in your true form!
           
           ([SOLO])[NEXT]
           `,
         children: (
           <div id="props">
-            <h1>Press F.</h1>
-            <KeyPressSound sound={cry1Sound} keyString="f" />
+            <div class="layout-top">
+              <p>There was no resiting.</p>
+            </div>
+            <div class="layout-bottom">
+              <p>Press F.</p>
+            </div>
           </div>
         ),
       },
@@ -119,10 +149,10 @@ class Show extends React.Component {
           `,
         children: (
           <div id="props">
-            <BabyColorPicker/>
-              <div class="layout-bottom -no-pointer">
-                <p>Choose a color.</p>
-              </div>
+            <BabyColorPicker setBabyColor={this.setBabyColor}/>
+            <div class="layout-bottom -no-pointer">
+              <p>Hover/tap to choose your vibe.</p>
+            </div>
           </div>
         ),
       },
@@ -138,11 +168,15 @@ class Show extends React.Component {
         
         ([START SONG] You find yourself launched into the multiverse at light speed! What was in that bottle?!!!)[NEXT]
         `,
+
         children: (
           <div id="props">
-            {/* TODO: <FunkBottle /> // What sound does this make?  Does it increase your glow or spin speed? or shake?  Reward for drinking! */}
+            <FunkBottle />
+              <div class="layout-bottom -no-pointer">
+                <p>Click/tap to drink.</p>
+              </div>
           </div>
-        )
+        ),
       },
       {
         name: "Visions",
@@ -199,7 +233,7 @@ class Show extends React.Component {
     scene = Math.max(0,scene); // Render 0, if below
     scene = Math.min(scenes.length-1,scene); // Render last scene, if above
 
-    console.log(mode);
+    const {babyColor} = this.state;
 
     const currentScene = scenes[scene];
 
@@ -209,11 +243,15 @@ class Show extends React.Component {
           <source src={`/videos/${currentScene.bgVideo}.mp4`} type="video/mp4" />
         </video>}
 
-        <div id="scene-name">{currentScene.name}...</div>
+        {typeof currentScene.bgVideoOverlay !== 'undefined' && <video id="bg-video-overlay" className="bg-video -overlay" playsInline autoPlay muted loop key={currentScene.bgVideoOverlay}>
+          <source src={`/videos/${currentScene.bgVideoOverlay}.mp4`} type="video/mp4" />
+        </video>}
+
+        <div id="scene-name" className="-pointer-none">{currentScene.name}...</div>
 
         {typeof currentScene.children !== 'undefined' && currentScene.children}
 
-        <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' &&  currentScene.babyClass}/>
+        <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' &&  currentScene.babyClass} babyColor={babyColor}/>
 
         <div id="livestream" className={typeof currentScene.livestream !== 'undefined' &&  currentScene.livestream}>
           <div className="animation-wrap">

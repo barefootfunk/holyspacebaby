@@ -10,16 +10,22 @@
   button {
     --color: white;
     width: 33.33vw;
-    opacity: 0.5;
     border: 0;
     outline: 0;
     transition: opacity 0.2s;
+    opacity: 0.5;
 
     
     background: radial-gradient(var(--color) 0%, transparent 70%);
 
-    &:hover, &:focus {
+ 
+
+    &:hover {
       opacity: 1;
     }
   }
+}
+
+#baby-color-picker {
+  background-color: rgba(black,0.5);
 }

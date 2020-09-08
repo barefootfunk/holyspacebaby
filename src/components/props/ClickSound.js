@@ -18,7 +18,7 @@ export class ClickSound extends React.Component {
     const { children } = this.props;
 
     return (
-      <div className="click-sound" onClick={this.playSound}>
+      <div className="click-sound" onClick={this.playSound} style={{cursor:'pointer'}}>
         {children}
       </div>
     );

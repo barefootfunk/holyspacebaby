@@ -7,7 +7,6 @@ export default class Visions extends React.Component {
   render() {
     return (
       <div>
-        <h1>Here are the visions:</h1>
         <StaticQuery
           query={graphql`
             query VisionsQuery {

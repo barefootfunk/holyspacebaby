@@ -9,7 +9,15 @@ export default class BabyColorPicker extends React.Component {
       <div id="baby-color-picker" className="button-matrix">
         {colors.map(
           color => {
-            return (<button className={color} style={{'--color':color}}></button>);
+            return (
+              <button 
+                className={color} 
+                style={{'--color':color}} 
+                onClick={() => {this.props.setBabyColor(color)}}
+                onMouseEnter={() => {this.props.setBabyColor(color)}}
+              >
+              </button>
+            );
           }
         )}
       </div>

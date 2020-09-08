@@ -1,56 +1,73 @@
+@keyframes background-scroll {
+  from { background-position: 0vw; }
+    to { background-position: -100vw; }
+}
 .vision {
 
-  &:hover {
-    .portal {
-      width: 300px;
-      height: 300px;
-    }
-    .description {
-      transform: translate(-50%,0%);
-    }
-  }
-
-  .image {
-    background: black; // Will be overwritten
-    top: 50%;
-    left: 50%;
-    z-index: 1;
-    width: 300px;
-    height: 300px;
-    position: absolute;
-    background-size: cover;
-    transform: translate(-50%,-50%);
-  }
-
   .portal {
-    top: 30vh;
-    left: 20vw;
-    width: 40px;
-    height: 40px;
+    top: 50vh;
+    left: 50vw;
+    width: 60px;
+    height: 60px;
     opacity: 0.8;
     position: fixed;
+    cursor: pointer;
     overflow: hidden;
     border-radius: 50%;
     border: 3px solid white;
     transform: translate(-50%,-50%);
     transition: width 0.2s, height 0.2s;
+
+    // &:hover {
+    //   width: 200px;
+    //   height: 200px;
+    // }
+
+    .preview-image {
+      background: black; // Will be overwritten
+      top: 50%;
+      left: 50%;
+      z-index: 1;
+      width: 200px;
+      height: 200px;
+      position: absolute;
+      background-size: cover;
+      transform: translate(-50%,-50%);
+    }
   }
 
-  .description {
-    bottom: 0;
-    left: 50%;
-    width: 90%;
-    color: white;
-    padding: 20px;
-    position: fixed;
-    max-width: 400px;
-    pointer-events: none;
-    transition: transform 0.2s;
-    background: rgba(black,0.9);
-    transform: translate(-50%,100%);
 
-    p {
-      margin: 0;
+  .universe {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    left: 0;
+    height: 100%;
+    background-size: contain;
+    z-index: 1000000;
+
+    animation: background-scroll 30s infinite linear;
+
+    .description {
+      bottom: 0;
+      left: 50%;
+      width: 90%;
+      color: white;
+      padding: 20px;
+      position: fixed;
+      max-width: 600px;  
+      pointer-events: none;
+      font-size: 1em;
+      z-index: 1000;
+      background: rgba(black,0.9);
+      transform: translate(-50%,0);
+  
+      p {
+        font-family: Arial !important;
+        margin: 0;
+        text-align: left;
+        font-size: 16px;
+      }
     }
   }
 }
