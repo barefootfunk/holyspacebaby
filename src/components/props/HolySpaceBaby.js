@@ -46,6 +46,7 @@ export default class HolySpaceBaby extends React.Component {
 
   render () {
     const { x, y } = this.state;
+    const { babyClass } = this.props;
     return (
       <div 
         id="space-babe" 
@@ -53,6 +54,7 @@ export default class HolySpaceBaby extends React.Component {
           top: y,
           left: x,
         }}
+        className={babyClass}
       >
         <div className="center-wrap">
           <KeyPressSound sound={cry1Sound} keyString="f" />

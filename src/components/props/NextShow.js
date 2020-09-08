@@ -8,7 +8,7 @@ export default class NextShow extends React.Component {
       return <span>The next ceremony begins any moment...</span>;
     } else {
       // Render a countdown
-      return <span>The next ceremony begins in {days}:{hours}:{minutes}:{seconds}</span>;
+      return <span>The next ceremony begins in {days} days, {hours}:{minutes}:{seconds}</span>;
     }
   };
   render() {

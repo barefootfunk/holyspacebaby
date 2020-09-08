@@ -3,11 +3,14 @@
 @import 'util/media-queries';
 @import 'util/visual';
 @import 'util/animations';
+@import 'util/layout';
 
+@import 'components/typography';
 @import 'components/global';
 @import 'components/stage';
 @import 'components/scene-controls';
 @import 'components/bg-video';
 @import 'components/livestream';
 @import 'components/space-babe';
+@import 'components/baby-color-picker';
 @import 'components/vision';

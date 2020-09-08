@@ -1,0 +1,32 @@
+@mixin layout-center {
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%,-50%)
+}
+
+@mixin layout-top {
+  top: 25%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%,-50%)
+}
+
+@mixin layout-bottom {
+  top: 80%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%,-50%)
+}
+  
+.layout-center {
+  @include layout-center;
+}
+  
+.layout-top {
+  @include layout-top;
+}
+  
+.layout-bottom {
+  @include layout-bottom;
+}

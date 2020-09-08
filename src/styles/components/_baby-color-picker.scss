@@ -1,0 +1,25 @@
+.button-matrix {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  flex-wrap: wrap;
+
+  button {
+    --color: white;
+    width: 33.33vw;
+    opacity: 0.5;
+    border: 0;
+    outline: 0;
+    transition: opacity 0.2s;
+
+    
+    background: radial-gradient(var(--color) 0%, transparent 70%);
+
+    &:hover, &:focus {
+      opacity: 1;
+    }
+  }
+}

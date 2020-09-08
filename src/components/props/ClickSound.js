@@ -1,7 +1,7 @@
 import React from 'react';
-import {Howl, Howler} from 'howler';
+import {Howl} from 'howler';
 
-export class SoundButton extends React.Component {
+export class ClickSound extends React.Component {
   constructor(props) {
     super(props);
 
@@ -15,14 +15,14 @@ export class SoundButton extends React.Component {
   }
 
   render () {
-    const { text } = this.props;
+    const { children } = this.props;
 
     return (
-      <div className="sound-button">
-        <button onClick={this.playSound}>{text}</button>
+      <div className="click-sound" onClick={this.playSound}>
+        {children}
       </div>
     );
   }
 }
 
-export default SoundButton;
+export default ClickSound;

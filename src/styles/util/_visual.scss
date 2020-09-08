@@ -30,3 +30,7 @@
     fill: $color;
   }
 }
+
+.-no-pointer {
+  pointer-events: none !important;
+}

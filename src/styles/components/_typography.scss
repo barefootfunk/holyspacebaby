@@ -1,0 +1,64 @@
+
+@font-face {
+    font-family: 'BryantSmall1';
+    src: url('../fonts/bryant1-webfont.woff2') format('woff2'),
+         url('../fonts/bryant1-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BryantSmall2';
+    src: url('../fonts/bryant2-webfont.woff2') format('woff2'),
+         url('../fonts/bryant2-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'BryantBig';
+    src: url('../fonts/bryantbold1-webfont.woff2') format('woff2'),
+         url('../fonts/bryantbold1-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@mixin font-display {
+    font-family: 'BryantBig', serif;
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @mixin font-copy {
+    font-family: 'BryantSmall1', serif;
+    font-weight: normal;
+    font-style: normal;
+    letter-spacing: 0.05em;
+  }
+
+  @mixin text-box {
+      @include glow(white);
+      padding: 0.2em 0.4em;
+    //   border: 2px solid white;
+      background: rgba(black,0.7);
+  }
+
+html {
+    @include font-copy;
+    color: white;
+    font-size: 36px;
+    @include glow(white);
+}
+
+#props {
+    h1,h2,h3,h4,h5,h6, p {
+        @include font-display;
+        @include text-box;
+        display: inline-block;
+        max-width: 90vw;
+        margin: auto;
+        display: block;
+        // max-width: 700px;
+        text-align: center;
+    }
+}

@@ -2,6 +2,7 @@ $control-border: 2px solid white;
 $control-padding: 30px;
 
 #scene-controls {
+  font-family: arial;
   left: 50%;
   bottom: 0;
   display: flex;
@@ -42,11 +43,12 @@ $control-padding: 30px;
 }
 
 #teleprompter {
+  font-family: arial;
   top: 0;
   left: 50%;
   width: 90%;
   color: black;
-  font-size: 2em;
+  font-size: 1em;
   z-index: 1000;
   max-height: 60%;
   position: fixed;
