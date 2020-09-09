@@ -34,6 +34,47 @@ class Show extends React.Component {
     this.setBabyColor = this.setBabyColor.bind(this);
   }
 
+  // // Preload all videos in the background...
+  // function _preloadVideos() {
+
+  //   // Get a list of all video names
+  //   var names = Object.keys(videoUrls);
+
+  //   // Empty object for the XMLHttpRequests
+  //   var requests = {};
+
+  //   // Loop through each video
+  //   for(var i=0; i<names.length; i++ ) {
+
+  //     // New request object
+  //     requests[names[i]] = new XMLHttpRequest();
+
+  //     // On load subsititue our blob URL for file URL currently in use..
+  //     // Must create a closure around this so we can reference the correct
+  //     // name in the onload callback -- we can't use i, because by the time
+  //     // it loads, this loop will be long done
+  //     (function (name) {
+
+  //       // *Panting* NOW we can do our onload callback with 'name'
+  //       requests[name].onload = function() {
+
+  //         // The URL that contains the preloaded vidya
+  //         var blobUrl = URL.createObjectURL(requests[name].response);
+  //         console.log('loaded '+name+'.mp4 to: '+blobUrl);
+
+  //         // Subsitute it
+  //         videoUrls[name] = blobUrl;
+  //       };
+
+  //     })(names[i]);
+
+  //     // Now make with the loading already!
+  //     requests[names[i]].open("GET", videoUrls[names[i]]);
+  //     requests[names[i]].responseType = "blob";
+  //     requests[names[i]].send();
+  //   }
+  // }
+
     // TODO: I think reducer pattern is the right way to generalize this.
   setBabyColor(newBabyColor) {
     this.setState({
@@ -130,7 +171,7 @@ class Show extends React.Component {
         children: (
           <div id="props">
             <div class="layout-top">
-              <p>There was no resiting.</p>
+              <p>There was no resisting.</p>
             </div>
             <div class="layout-bottom">
               <p>Press F.</p>
