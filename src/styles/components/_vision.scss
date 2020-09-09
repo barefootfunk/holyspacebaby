@@ -68,12 +68,13 @@
       }
 
       .buttons {
-        display: flex;
-        margin-top: 20px;
-        justify-content: center;
+        // display: flex;
+        // margin-top: 20px;
+        // justify-content: center;
 
-        button:first-child {
-          margin-right: 20px;
+        button {
+          margin-top: 20px;
+          display: block;
         }
       }
     }

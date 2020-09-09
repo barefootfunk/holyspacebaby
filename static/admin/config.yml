@@ -20,4 +20,7 @@ collections:
     fields:
       - {label: "Name", name: "title", widget: "string"}
       - {label: "Image", name: "featuredimage", widget: image}
-      - {label: "The baby sees...", name: "body", widget: "markdown"}
+      - {label: "Description", name: "body", widget: "markdown"}
+      - {label: "Heart Choice", name: "heartChoice", widget: "string"}
+      - {label: "Mind Choice", name: "mindChoice", widget: "string"}
+      - {label: "Chaos Choice", name: "chaosChoice", widget: "string"}
