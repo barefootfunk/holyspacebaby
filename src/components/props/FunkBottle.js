@@ -8,14 +8,9 @@ export default class FunkBottle extends React.Component {
 
 
     return (
-      <div id="funk-bottle" style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        zIndex: -1, 
-      }}>
+      <div id="funk-bottle">
         <ClickSound sound={gulp1Sound} keyString="f">
-          <img src={funkBottleImage} className="-no-pointer" />
+          <button style={{backgroundImage: `url(${funkBottleImage})`}} />
         </ClickSound>
       </div>
     )

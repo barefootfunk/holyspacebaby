@@ -13,10 +13,10 @@ import BabyColorPicker from "./props/BabyColorPicker.js"
 import FunkBottle from "./props/FunkBottle.js"
 
 // Sounds
-// import cheer1Sound from '../sounds/cheer1.mp3';
+import cheer1Sound from '../sounds/cheer1.mp3';
 // import cry1Sound from '../sounds/cry1.wav'; // https://freesound.org/people/Stevious42/sounds/259608/
 // import gulpSound from '../sounds/gulp1.wav'; // https://freesound.org/people/CGEffex/sounds/102581/
-import heartbeatSound from '../sounds/heartbeat.mp3'; // https://freesound.org/people/InspectorJ/sounds/485076/
+// import heartbeatSound from '../sounds/heartbeat.mp3'; // https://freesound.org/people/InspectorJ/sounds/485076/
 
 // Twitch
 // This has to be shut off for gatsby build because of breaking reference to window
@@ -89,10 +89,10 @@ class Show extends React.Component {
         name: "Stay tuned",
         bgVideo: "campfire-far",
         livestream: "hidden",
-        babyClass: "hidden",
+        babyClass: "ghost",
         children: (
           <div id="props">
-            <h1 class="layout-center"><NextShow /></h1>
+            <h1 className="layout-center"><NextShow /></h1>
           </div>
         ),
       },
@@ -105,7 +105,7 @@ class Show extends React.Component {
           
           Oh! I didn't see you there.
           
-          (Welcome brothers sisters and siblings.  The name is Cowboy Elijah–your local prophet. Our religious cermony begins now.)[NEXT],
+          (Welcome brothers sisters and siblings.  The name is Cowboy Elijah–your local prophet. Our ceremony begins now.)[NEXT],
         `,
         children: (
           <div id="props">
@@ -122,18 +122,17 @@ class Show extends React.Component {
         teleprompter: `
           [SOLO]
           
-          [TRIGGER DRUMS] I have summoned ye to this here magical campfire for a little ritual.  We will reenact the story of THE HOLY SPACE BABY. A story central to our faith.
+          [TRIGGER DRUMS] I have summoned ye to this here magical campfire to take you on a spiritual journey. 
           
           [SOLO]
 
-          (First things, first, you'll have to... die.  Don't worry I'll make real quick work of it with my magic trombone.)[NEXT]
+          (First things, first, you'll have to... die.  Don't worry I'll take care of the hard part. I'm killing you right now with my magical trombone.)[NEXT]
           `,
       },
       {
         name: "Goodbye cruel world",
         babyClass: "hidden",
-        bgVideo: "heart-monitor",
-        bgVideoOverlay: "flames",
+        bgVideo: "flames",
         teleprompter: `
           [SOLO]
           
@@ -141,16 +140,12 @@ class Show extends React.Component {
           `,        
           children: (
             <div id="props">
-              <div class="layout-top">
-                <p>Resist! Keep your heart beating!</p>
-              </div>
-              <div class="layout-bottom">
-                <ClickSound sound={heartbeatSound} keyString="f">
-                  <button style={{
-                    margin: '10px auto',
-                    display: 'block',
-                    fontSize: 100,
-                  }}>❤</button>
+            <div className="layout-top">
+              <p>You are currently dying.</p>
+            </div>
+              <div className="layout-bottom">
+                <ClickSound sound={cheer1Sound} keyString="f">
+                  <button className="button">Click to REJOICE!</button>
                 </ClickSound>
               </div>
             </div>
@@ -170,10 +165,10 @@ class Show extends React.Component {
           `,
         children: (
           <div id="props">
-            <div class="layout-top">
-              <p>There was no resisting.</p>
+            <div className="layout-top">
+              <p>R.I.P.</p>
             </div>
-            <div class="layout-bottom">
+            <div className="layout-bottom">
               <p>Press F.</p>
             </div>
           </div>
@@ -191,7 +186,7 @@ class Show extends React.Component {
         children: (
           <div id="props">
             <BabyColorPicker setBabyColor={this.setBabyColor}/>
-            <div class="layout-bottom -no-pointer">
+            <div className="layout-bottom -no-pointer">
               <p>Hover/tap to choose your vibe.</p>
             </div>
           </div>
@@ -213,7 +208,7 @@ class Show extends React.Component {
         children: (
           <div id="props">
             <FunkBottle />
-              <div class="layout-bottom -no-pointer">
+              <div className="layout-bottom -no-pointer">
                 <p>Click/tap to drink.</p>
               </div>
           </div>
@@ -264,7 +259,7 @@ class Show extends React.Component {
       `,
         children: (
           <div id="props">
-            {/* TODO: <MailingList /> */}
+            <h1 className="layout-center">[(INSERT MAILING LIST SIGNUP)]</h1>
           </div>
         ),
       },
@@ -292,9 +287,9 @@ class Show extends React.Component {
 
         {typeof currentScene.children !== 'undefined' && currentScene.children}
 
-        <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' &&  currentScene.babyClass} babyColor={babyColor}/>
+        <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' ?  currentScene.babyClass : ''} babyColor={babyColor}/>
 
-        <div id="livestream" className={typeof currentScene.livestream !== 'undefined' &&  currentScene.livestream}>
+        <div id="livestream" className={typeof currentScene.livestream !== 'undefined' ? currentScene.livestream : ''}>
           <div className="animation-wrap">
             <div className="sizing-wrap">
               {typeof window !== `undefined` && <ReactTwitchEmbedVideo // This has to be shut off for gatsby build because of breaking reference to window

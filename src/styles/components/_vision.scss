@@ -5,6 +5,7 @@
 .vision {
 
   .portal {
+    // @include glow(white);
     top: 50vh;
     left: 50vw;
     width: 60px;
@@ -16,12 +17,12 @@
     border-radius: 50%;
     border: 3px solid white;
     transform: translate(-50%,-50%);
-    transition: width 0.2s, height 0.2s;
+    transition: width 0.2s, height 0.2s, top 10s linear, left 10s linear;
 
-    // &:hover {
-    //   width: 200px;
-    //   height: 200px;
-    // }
+    &:hover {
+      width: 100px;
+      height: 100px;
+    }
 
     .preview-image {
       background: black; // Will be overwritten
@@ -56,17 +57,24 @@
       padding: 20px;
       position: fixed;
       max-width: 600px;  
-      pointer-events: none;
       font-size: 1em;
       z-index: 1000;
       background: rgba(black,0.9);
       transform: translate(-50%,0);
   
       p {
-        font-family: Arial !important;
         margin: 0;
         text-align: left;
-        font-size: 16px;
+      }
+
+      .buttons {
+        display: flex;
+        margin-top: 20px;
+        justify-content: center;
+
+        button:first-child {
+          margin-right: 20px;
+        }
       }
     }
   }

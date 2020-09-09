@@ -1,4 +1,6 @@
 import React from 'react';
+import { setTimeout } from 'window-or-global';
+
 
 class Vision extends React.Component {
   constructor(props) {
@@ -6,9 +8,24 @@ class Vision extends React.Component {
 
     this.state = {
       open: false,
-      x: Math.random()*80+10,
-      y: Math.random()*80+10,
+      x: 0,
+      y: 0,
     }
+    
+  }
+  componentDidMount() {
+    console.log('mount')
+    this.launchTimeout = setTimeout(this.launch,500);
+  }
+  launch = () => {
+    console.log('launch!')
+    this.setState({
+      x: (60 + Math.random() *30) * (Math.random()>0.5 ? 1 : -1),
+      y: (60 + Math.random() *30) * (Math.random()>0.5 ? 1 : -1),
+    })
+  }
+  componentWillUnmount() {
+    clearTimeout(this.launchTimeout);
   }
   render() {
     const {x,y, open} = this.state;
@@ -24,16 +41,23 @@ class Vision extends React.Component {
                 backgroundImage: `url('${imageUrl}')`,
               }}
               key="universe"
-              onClick={() => {this.setState({open: false})}}
             >
               <div className="description">
-                <p>The babe sees... <br/>...{description}</p>
+                <p>The babe sees... <br/>...this is placeholder text.  I need to rewrite these visions.  You will have a choice for each vision. {/*description*/}</p>
+                <div className="buttons">
+                  <button className="button" 
+                    onClick={() => {this.setState({open: false})}
+                  }>Choice 1</button>
+                  <button className="button"
+                    onClick={() => {this.setState({open: false})}
+                  }>Choice 2</button>
+                </div>
               </div>
             </div>
           ) : (
             <div className="portal" key="portal" style={{
-                top: `${x}vh`,
-                left: `${y}vw`
+                top: `${x+50}vh`,
+                left: `${y+50}vw`
               }}
               onClick={() => {this.setState({open: true})}}
             >

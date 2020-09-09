@@ -11,10 +11,13 @@
   position: fixed;
   pointer-events: none;
 
-  &.hidden {
+  &.ghost {
     @include colorize-fills-and-lines(gray);
     opacity: 0.1;
     --spin-time: 10s;
+  }
+  &.hidden {
+    display: none;
   }
 
   // Default 
