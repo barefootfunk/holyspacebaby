@@ -29,7 +29,7 @@ class Vision extends React.Component {
   }
   render() {
     const {x,y, open} = this.state;
-    const {imageUrl,description} = this.props;
+    const {imageUrl,description, heartChoice, mindChoice, chaosChoice} = this.props;
 
     return (
       <div className={`vision ${open ? '-open' : ''}`}>
@@ -43,14 +43,17 @@ class Vision extends React.Component {
               key="universe"
             >
               <div className="description">
-                <p>The babe sees... <br/>...this is placeholder text.  I need to rewrite these visions.  You will have a choice for each vision. {/*description*/}</p>
+                <p>{description}</p>
                 <div className="buttons">
                   <button className="button" 
                     onClick={() => {this.setState({open: false})}
-                  }>Choice 1</button>
+            }>{heartChoice}</button>
+                  <button className="button" 
+                    onClick={() => {this.setState({open: false})}
+                  }>{mindChoice}</button>
                   <button className="button"
                     onClick={() => {this.setState({open: false})}
-                  }>Choice 2</button>
+                  }>{chaosChoice}</button>
                 </div>
               </div>
             </div>
