@@ -1,5 +1,8 @@
 ---
 title: Lab Rabbit
 featuredimage: /img/rabbit.webp
+heartChoice: Lie down and take comfort, little one.
+mindChoice: We can engineer a cure!
+chaosChoice: Inject more.
 ---
-a lab rabbit that has just been injected with a newly developed experimental love serum.  She is moments from death as the malformed serum begins to elevate her adrenaline and oxytocin to fatal levels.  In her final seconds, she gazes at the grad student who injected her with an adoration more profound than that of any dreamt by even the most imaginative poet.
+A lab rabbit has just been injected with a newly developed experimental love serum.  The experimental batch is too powerful and she will soon die from oxytocin overdose.  She is so happy, though.
