@@ -5,4 +5,4 @@ heartChoice: Comfort
 mindChoice: ""
 chaosChoice: Inject more
 ---
-A lab rabbit has just been injected with a newly developed experimental love serum.  The experimental batch is too powerful and she will soon die from oxytocin overdose.  No love has ever been truer.
+A lab rabbit has been injected with an experimental love serum.  The batch is too powerful and she will die in seconds from oxytocin overdose.  She looks into your eyes. No love has ever been so deep.
