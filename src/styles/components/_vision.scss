@@ -37,7 +37,6 @@
     }
   }
 
-
   .universe {
     position: fixed;
     top: 0;
@@ -56,13 +55,13 @@
       color: white;
       padding: 20px;
       position: fixed;
-      max-width: 800px;  
+      max-width: 600px;  
       font-size: 1em;
       z-index: 1000;
       background: rgba(black,0.9);
       transform: translate(-50%,0);
 
-      font-size: 25px;
+      font-size: 35px;
   
       p {
         margin: 0;
@@ -70,15 +69,13 @@
       }
 
       .buttons {
-        // display: flex;
-        // margin-top: 20px;
-        // justify-content: center;
+        display: flex;
+        margin-top: 20px;
+        justify-content: center;
 
         button {
-          margin-top: 20px;
-          font-size: 25px;
-          display: block;
-          margin: 20px auto;
+          font-size: 50px;
+          margin: 10px auto;
           @include font-display;
         }
       }

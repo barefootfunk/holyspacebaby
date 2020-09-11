@@ -1,5 +1,5 @@
-import React from 'react';
-import { StaticQuery, graphql } from 'gatsby';
+import React, {useState, useEffect} from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 import Vision from "./Vision.js"
 
 const visionsQuery = graphql`
@@ -23,75 +23,80 @@ const visionsQuery = graphql`
   }
 `
 
+/**
+ * Shuffles array in place. ES6 version
+ * @param {Array} a items An array containing the items.
+ * https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
+ */
+function shuffle(a) {
+  for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
 
-export default class Visions extends React.Component {
-  constructor(props) {
-    super(props);
+const Visions = () => {
 
-    this.state = {
-      currentVisionRandom1: Math.random(),
-      currentVisionRandom2: Math.random(),
+  const data = useStaticQuery(visionsQuery);
+  let visionsData = data.allMarkdownRemark.edges;
+  // visionsData = shuffle(visionsData);
+
+  const [activeVisionPairs,setActiveVisionPairs] = useState(0);
+
+  const renderVision = (id,dir) => {
+    // Get vision data
+    const visionData = visionsData[id].node;
+    const content = { 
+      imageUrl: visionData.frontmatter.featuredimage,
+      description: visionData.internal.content,
+      heartChoice: visionData.frontmatter.heartChoice,
+      mindChoice: visionData.frontmatter.mindChoice,
+      chaosChoice: visionData.frontmatter.chaosChoice,
     }
 
-    this.spawn = this.spawn.bind(this);
-  } 
-
-  componentDidMount() {
-    this.spawnInterval = setInterval(this.spawn, 20000); 
+    // Return vision
+    return <Vision 
+      content={content}
+      dir={dir} 
+      key={`vision-${id}`} 
+    />;
   }
 
-  componentWillUnmount() {
-    clearInterval(this.spawnInterval); 
-  }
+  // Activate a new pair of visions every few seconds until we run out
+  useEffect(() => {
+    let i=0;
+    const interval = setInterval(() => {
+      if(i*2<=visionsData.length) {
+        setActiveVisionPairs(i);
+        i++;
+      } else {
+        clearInterval(interval);
+      }
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
 
-  spawn () {
-    this.setState({
-      currentVisionRandom1: Math.random(),
-      currentVisionRandom2: Math.random(),
-    })
-  }
+  const visionIdsToRender = Array.from(Array(activeVisionPairs*2).keys()); // Generates sequential array [1,2,...,n]
+  
+  const dirs = [
+    [1,1],
+    [-1,-1],
 
-  render() {
-    return (
-      <StaticQuery
-        query={visionsQuery}
-        render = {
-          data => {
-            
+    [-1,1],
+    [1,-1],
+  ]
+  return (
+    <React.Fragment>
+      {
+        visionIdsToRender.map((id,index) => {
+          const dir = dirs[(index % dirs.length)];
+          return renderVision(id,dir);
+        })
+      }
 
-            const visions = data.allMarkdownRemark.edges;
-
-            // Select current visions
-            const currentVisionNum1 = Math.floor(visions.length * this.state.currentVisionRandom1);
-            const currentVisionNum2 = Math.floor(visions.length * this.state.currentVisionRandom2);
-
-            const vision1 = visions[currentVisionNum1].node;
-            const vision2 = visions[currentVisionNum2].node;
-
-            // Get vision data
-            const imageUrl1 = vision1.frontmatter.featuredimage;
-            const imageUrl2 = vision2.frontmatter.featuredimage;
-
-            const heartChoice1 = vision1.frontmatter.heartChoice;
-            const mindChoice1 = vision1.frontmatter.mindChoice;
-            const chaosChoice1 = vision1.frontmatter.chaosChoice;
-
-            const heartChoice2 = vision2.frontmatter.heartChoice;
-            const mindChoice2 = vision2.frontmatter.mindChoice;
-            const chaosChoice2 = vision2.frontmatter.chaosChoice;
-
-            const description1 = vision1.internal.content;
-            const description2 = vision2.internal.content;
-      
-            return  (
-              <React.Fragment>
-                <Vision imageUrl={imageUrl1} description={description1} heartChoice={heartChoice1} mindChoice={mindChoice1} chaosChoice={chaosChoice1} key={`vision-${currentVisionNum1}`} />
-                <Vision imageUrl={imageUrl2} description={description2} heartChoice={heartChoice2} mindChoice={mindChoice2} chaosChoice={chaosChoice2} key={`vision-${currentVisionNum2}`} />
-              </React.Fragment>
-            )
-          }
-        }
-      />
-    );
-  }
+    </React.Fragment>
+  );
 }
+
+export default Visions;
