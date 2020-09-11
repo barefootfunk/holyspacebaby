@@ -1,5 +1,5 @@
 ---
-title: Thomas the upset puppy
+title: Thomas discovers cure
 featuredimage: /img/upset-puppy.gif
 heartChoice: ""
 mindChoice: Dissect his brain
