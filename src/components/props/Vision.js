@@ -6,7 +6,7 @@ class Vision extends React.Component {
     super(props);
 
     this.state = {
-      open: false,
+      lifeCycleStage: 'portal',
       x: 0,
       y: 0,
     }
@@ -14,59 +14,66 @@ class Vision extends React.Component {
   }
   componentDidMount() {
     this.launchTimeout = setTimeout(this.launch,200);
+    this.dieTimeout = setTimeout(this.die,15000);
   }
   launch = () => {
     this.setState({
-      x: 60*this.props.dir[0],
-      y: 30*this.props.dir[1],
+      x: 100*this.props.dir[0],
+      y: 100*this.props.dir[1],
     })
+  }
+  die = () => {
+    if(this.state.lifeCycleStage==='portal') {
+      this.setState({
+        lifeCycleStage: 'dead'
+      })
+    }
   }
   componentWillUnmount() {
     clearTimeout(this.launchTimeout);
+    clearTimeout(this.dieTimeout);
   }
   render() {
-    const {x,y, open} = this.state;
+    const {x,y, lifeCycleStage} = this.state;
     const {imageUrl,description, heartChoice, mindChoice, chaosChoice} = this.props.content;
 
     return (
-      <div className={`vision ${open ? '-open' : ''}`}>
-        {(open ?
-          ( 
-            <div 
-              className="universe"  
-              style={{
-                backgroundImage: `url('${imageUrl}')`,
-              }}
-              key="universe"
-            >
-              <div className="description">
-                <p>{description}</p>
-                <div className="buttons">
-                  {heartChoice && <button className="button" 
-                    onClick={() => {this.setState({open: false})}}
-                  >{heartChoice}</button>}
-                  {mindChoice && <button className="button" 
-                    onClick={() => {this.setState({open: false})}}
-                  >{mindChoice}</button>}
-                  {chaosChoice && <button className="button"
-                    onClick={() => {this.setState({open: false})}}
-                  >{chaosChoice}</button>}
-                </div>
+      <div className={`vision`}>
+        {(lifeCycleStage === 'open' && ( 
+          <div 
+            className="universe"  
+            style={{
+              backgroundImage: `url('${imageUrl}')`,
+            }}
+            key="universe"
+          >
+            <div className="description">
+              <p>{description}</p>
+              <div className="buttons">
+                {heartChoice && <button className="button" 
+                  onClick={() => {this.setState({lifeCycleStage: 'dead'})}}
+                >{heartChoice}</button>}
+                {mindChoice && <button className="button" 
+                  onClick={() => {this.setState({lifeCycleStage: 'dead'})}}
+                >{mindChoice}</button>}
+                {chaosChoice && <button className="button"
+                  onClick={() => {this.setState({lifeCycleStage: 'dead'})}}
+                >{chaosChoice}</button>}
               </div>
             </div>
-          ) : (
-            <div className="portal" key="portal" style={{
-                top: `${x+50}vh`,
-                left: `${y+50}vw`
-              }}
-              onClick={() => {this.setState({open: true})}}
-            >
-              <div className="preview-image" style={{
-                backgroundImage: `url('${imageUrl}')`,
-              }}></div>
-            </div>
-          )
-        )}
+          </div>
+        ))}
+        {(lifeCycleStage === 'portal' && (
+          <div className="portal" key="portal" style={{
+              transform: `translate( calc(${x}vw - 50%) , calc(${y}vh - 50%) )`,
+            }}
+            onClick={() => {this.setState({lifeCycleStage: 'open'})}}
+          >
+            <div className="preview-image" style={{
+              backgroundImage: `url('${imageUrl}')`,
+            }}></div>
+          </div>
+        ))}
       </div>
     );
   }
