@@ -11,7 +11,7 @@ import ClickSound from "./props/ClickSound.js"
 import NextShow from "./props/NextShow.js"
 import BabyColorPicker from "./props/BabyColorPicker.js"
 import FunkBottle from "./props/FunkBottle.js"
-import BassMatrix from "./props/BassMatrix.js"
+// import BassMatrix from "./props/BassMatrix.js"
 
 // Sounds
 import cheer1Sound from '../sounds/cheer1.mp3';
