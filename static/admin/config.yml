@@ -19,8 +19,8 @@ collections:
     slug: "{{slug}}"
     fields:
       - {label: "Name", name: "title", widget: "string"}
-      - {label: "Image", name: "featuredimage", widget: image}
-      - {label: "Description", name: "body", widget: "markdown"}
+      - {label: "Image", name: "featuredimage", widget: image, hint: 'Find gifs with: https://codepen.io/barefootfunk/pen/mdPxgaG'}
+      - {label: "Description", name: "body", widget: "markdown", pattern: ['^.{1,140}$', "Must have 1-140characters"]}
       - {label: "Heart Choice", name: "heartChoice", widget: "string"}
       - {label: "Mind Choice", name: "mindChoice", widget: "string"}
       - {label: "Chaos Choice", name: "chaosChoice", widget: "string"}
