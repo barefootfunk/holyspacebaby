@@ -11,6 +11,7 @@ import ClickSound from "./props/ClickSound.js"
 import NextShow from "./props/NextShow.js"
 import BabyColorPicker from "./props/BabyColorPicker.js"
 import FunkBottle from "./props/FunkBottle.js"
+import BassMatrix from "./props/BassMatrix.js"
 
 // Sounds
 import cheer1Sound from '../sounds/cheer1.mp3';
@@ -122,7 +123,7 @@ class Show extends React.Component {
         teleprompter: `
           [SOLO]
           
-          [TRIGGER DRUMS] I have summoned ye to this here magical campfire to take you on a spiritual journey. 
+          [TRIGGER DRUMS] I have summoned ye to this here magical campfire to take you on a spiritual journey. In fact this is my first ever ceremony, so forgive me.
           
           [SOLO]
 
@@ -166,10 +167,12 @@ class Show extends React.Component {
         children: (
           <div id="props">
             <div className="layout-top">
-              <p>R.I.P.</p>
+              <p>You are dead!</p>
             </div>
             <div className="layout-bottom">
-              <p>Press F.</p>
+              <ClickSound sound={cheer1Sound} keyString="f">
+                <button className="button">Click to REJOICE!</button>
+              </ClickSound>
             </div>
           </div>
         ),
@@ -178,7 +181,7 @@ class Show extends React.Component {
         name: "Rebirth",
         bgVideo: "void",
         teleprompter: `
-          You find yourself in an infant body with no memory of your previous life.  Everything is new and confusing.  And you seem to be able to choose your color.
+          Wow! It actullay worked!  You came back!  So, as you can see, you find yourself in an infant body with no memory of your previous life.  Everything is new and confusing.  And you seem to be able to choose your color.
           [SOLO LONG]
           
           (You are so thirsty from your journey. What's this? Something to drink? That sounds good right now. Have a sip.)[NEXT]
@@ -187,7 +190,7 @@ class Show extends React.Component {
           <div id="props">
             <BabyColorPicker setBabyColor={this.setBabyColor}/>
             <div className="layout-bottom -no-pointer">
-              <p>Hover/tap to choose your vibe.</p>
+              <p>Hover to choose your color.</p>
             </div>
           </div>
         ),
@@ -209,7 +212,7 @@ class Show extends React.Component {
           <div id="props">
             <FunkBottle />
               <div className="layout-bottom -no-pointer">
-                <p>Click/tap to drink.</p>
+                <p>Click/tap bottle to drink.</p>
               </div>
           </div>
         ),
@@ -227,6 +230,9 @@ class Show extends React.Component {
         children: (
           <div id="props">
             <Visions/>
+            <div className="layout-bottom -no-pointer">
+              <p>Click a portal to enter.</p>
+            </div>
           </div>
         ),
       },
@@ -244,7 +250,9 @@ class Show extends React.Component {
         `,
         children: (
           <div id="props">
-            {/* TODO: <BassNotes/> */}
+            <div className="layout-bottom -no-pointer">
+              <p>Unfinished/todo: baby can play bass notes by hovering over glowing spots.</p>
+            </div>
           </div>
         ),
       },
@@ -259,7 +267,7 @@ class Show extends React.Component {
       `,
         children: (
           <div id="props">
-            <h1 className="layout-center">[(INSERT MAILING LIST SIGNUP)]</h1>
+            <h1 className="layout-center">[(MAILING LIST SIGNUP GOES HERE)]</h1>
           </div>
         ),
       },
