@@ -10,7 +10,7 @@ class App extends React.Component {
 
     return (
       <div id="app">
-        <Stage mode="audience" />
+        <Stage mode="participant" />
       </div>
     );
   }

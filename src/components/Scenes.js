@@ -11,7 +11,7 @@ import ClickSound from "./props/ClickSound.js"
 import NextShow from "./props/NextShow.js"
 import BabyColorPicker from "./props/BabyColorPicker.js"
 import FunkBottle from "./props/FunkBottle.js"
-// import BassMatrix from "./props/BassMatrix.js"
+import BassMatrix from "./props/BassMatrix.js"
 
 // Sounds
 import cheer1Sound from '../sounds/cheer1.mp3';
@@ -142,7 +142,7 @@ class Show extends React.Component {
           children: (
             <div id="props">
             <div className="layout-top">
-              <p>You are currently dying.</p>
+              <p>Hooray! You are currently dying!</p>
             </div>
               <div className="layout-bottom">
                 <ClickSound sound={cheer1Sound} keyString="f">
@@ -167,7 +167,7 @@ class Show extends React.Component {
         children: (
           <div id="props">
             <div className="layout-top">
-              <p>You are dead!</p>
+              <p>Hooray! You are dead!</p>
             </div>
             <div className="layout-bottom">
               <ClickSound sound={cheer1Sound} keyString="f">
@@ -250,8 +250,9 @@ class Show extends React.Component {
         `,
         children: (
           <div id="props">
+            <BassMatrix />
             <div className="layout-bottom -no-pointer">
-              <p>Unfinished/todo: baby can play bass notes by hovering over glowing spots.</p>
+              <p>Click/tap lights to play bass.</p>
             </div>
           </div>
         ),

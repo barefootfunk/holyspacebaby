@@ -1,12 +1,15 @@
 import React from 'react';
 
 // Socket 
-import SockJS from 'sockjs-client';
+import io from "socket.io-client";
 
 // Show
 import Show from "./Scenes"
 
-class Stage extends React.Component {
+const SOCKET_URL = 'https://holyspacebaby-server.herokuapp.com/'; 
+// const SOCKET_URL = 'http://localhost:3000';
+
+export default class Stage extends React.Component {
 
   constructor (props) {
     super(props);
@@ -14,104 +17,73 @@ class Stage extends React.Component {
     this.state = {
       scene: 0,
       connected: false,
+      participantCount: 0,
     };
 
-    this.SOCKET_URL = "https://socket.theonetruefaith.org/director";
-    this.sock = null;
   }
 
   componentDidMount () {
-    this.initSocket()
-  }
+    this.socket = io(SOCKET_URL, {
+      'reconnection': true,
+      'reconnectionDelay': 500,
+      'reconnectionDelayMax' : 1000,
+    });
 
-  initSocket = () => {
-    console.log('Connecting to The Director...');
+    // Socket lifecycle reporting
+    this.socket.on('connect', () => { 
+      console.log('SOCKET: connected');
+      this.setState({connected: this.socket.connected}) 
+    });
+    this.socket.on('reconnect', () => { 
+      console.log('SOCKET: reconnect');
+      this.setState({connected: this.socket.connected}) 
+    });
+    this.socket.on('connecting', () => { 
+      console.log('SOCKET: connecting');
+      this.setState({connected: this.socket.connected}) 
+    });
+    this.socket.on('reconnecting', () => { 
+      console.log('SOCKET: reconnecting');
+      this.setState({connected: this.socket.connected}) 
+    });
+    this.socket.on('connect_failed', () => { 
+      console.log('SOCKET: connect failed');
+      this.setState({connected: this.socket.connected}) 
+    });
+    this.socket.on('reconnect_failed', () => { 
+      console.log('SOCKET: reconnect failed');
+      this.setState({connected: this.socket.connected}) 
+    });
+    this.socket.on('close', () => { 
+      console.log('SOCKET: close');
+      this.setState({connected: this.socket.connected}) 
+    });
+    this.socket.on('disconnect', () => { 
+      console.log('SOCKET: disconnect');
+      this.setState({connected: this.socket.connected}) 
+    });
 
-    // Create connection
-    this.sock = new SockJS(this.SOCKET_URL);
-
-    // Handle things
-    this.sock.onopen = this.handleSocketOpen.bind(this);
-    this.sock.onmessage = this.handleSocketMessage.bind(this);
-    this.sock.onclose = this.handleSocketClose.bind(this);
-  }
-
-  handleSocketOpen () {
-    console.log('Successfully connected.');
-    this.setState({
-      connected: true,
+    // HolySpaceBaby specific events
+    this.socket.on('updateParticipantState', (newState) => {
+      console.log('SOCKET: updateParticipantState',newState);
+      this.setState(newState);
     });
   }
 
-  handleSocketClose () {
-    // On close, try to reopen!
-    this.setState({
-      connected: false,
-    });
-    setTimeout(this.initSocket, 400);
+  updateDirectorState = (newState) => {
+    console.log('Attempting updateDirectorState', newState)
+    this.socket.emit('updateDirectorState', newState);
   }
 
-  handleSocketMessage (e) {
-    // Get the content
-    const message = JSON.parse(e.data);
-    // console.log('A message from The Director:');
-    // console.log(message);
-    const {type,data} = message;
-
-    if (type ==="updateParticipantState") this.updateParticipantState(data);
-  }
-
-  updateParticipantState (newState) {
-    // merge in new state
-    newState = {
-      ...this.state,
-      ...newState,
-    }
-
-    // Update the state
-    this.setState(newState);
-  }
-
-  updateDirectorState (newState) {
-    this.sendMessage('updateDirectorState',newState)
-  }
-
-  decrementSceneGlobal () {
-    const newScene = this.state.scene-1; //Math.max(this.state.scene-1,0);
-    // console.log(`Decrementing scene ${this.state.scene} to ${newScene}.`);
-    this.updateDirectorState({ scene: newScene });
-  }
-
-  incrementSceneGlobal () {
-    const newScene = this.state.scene+1; //Math.min(this.state.scene+1,this.scenes.length-1);
-    // console.log(`Incrementing scene ${this.state.scene} to ${newScene}.`);
-    this.updateDirectorState({ scene: newScene });
-  }
-
-  get password () {
-    // We'll send a password in our message to the query string
-    const search = window.location.search;
-    const params = new URLSearchParams(search);
-    return params.get('password');
-  }
-
-  sendMessage(type,data) {
-    // The message to send
-    const message = {
-      type: type,
-      password: this.password,
-      data: data,
-    };
-
-    console.log('Sending a message to The Director...');
-    console.log(message);
-
-    // Send it
-    this.sock.send(JSON.stringify(message));
-  }
+  // get password () {
+  //   // We'll send a password in our message to the query string
+  //   const search = window.location.search;
+  //   const params = new URLSearchParams(search);
+  //   return params.get('password');
+  // }
 
   render () {
-    const {scene, connected} = this.state;
+    const {scene, connected, participantCount} = this.state;
     const {mode} = this.props;
 
     return (
@@ -119,11 +91,16 @@ class Stage extends React.Component {
 
         <Show scene={scene} mode={mode}/>
 
-        {mode==="performer" && (<div id="scene-controls">
-          <button id="prev-scene" onClick={this.decrementSceneGlobal.bind(this)}>Prev</button>
-          <div id="scene-number">{scene}</div>
-          <button id="next-scene" onClick={this.incrementSceneGlobal.bind(this)}>Next</button>
-        </div>)}
+        {mode==="performer" && (
+          <React.Fragment>
+            <div id="scene-controls">
+              <button id="prev-scene" onClick={() => {this.updateDirectorState({scene: scene-1})}}>Prev</button>
+              <div id="scene-number">{scene}</div>
+              <button id="next-scene" onClick={() => {this.updateDirectorState({scene: scene+1})}}>Next</button>
+            </div>
+            <div id="participant-stats">{participantCount}</div>
+          </React.Fragment>
+        )}
 
 
         {!connected && <div className="connecting-alert">Connecting... {/* https://www.davidhu.io/react-spinners/ */}</div>}
@@ -131,5 +108,3 @@ class Stage extends React.Component {
     );
   }
 }
-
-export default Stage;

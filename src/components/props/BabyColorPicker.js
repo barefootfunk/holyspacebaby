@@ -12,7 +12,7 @@ export default class BabyColorPicker extends React.Component {
             return (
               <button 
                 className={color} 
-                style={{'--color':color}} 
+                style={{'--color':color, width: '33.33vw' }} 
                 key={color}
                 onClick={() => {this.props.setBabyColor(color)}}
                 onMouseEnter={() => {this.props.setBabyColor(color)}}

@@ -12,6 +12,8 @@
   pointer-events: none;
   z-index: 100000;
 
+
+
   &.ghost {
     @include colorize-fills-and-lines(gray);
     opacity: 0.1;

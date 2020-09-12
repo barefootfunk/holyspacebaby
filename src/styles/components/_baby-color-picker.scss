@@ -9,16 +9,14 @@
 
   button {
     --color: white;
-    width: 33.33vw;
     border: 0;
     outline: 0;
+    cursor: pointer;
     transition: opacity 0.2s;
     opacity: 0.5;
+    width: 100%;
+    background: radial-gradient(circle at 50%, var(--color) 0%, transparent 50%);
 
-    
-    background: radial-gradient(var(--color) 0%, transparent 70%);
-
- 
 
     &:hover {
       opacity: 1;
@@ -28,4 +26,29 @@
 
 #baby-color-picker {
   background-color: rgba(black,0.5);
+}
+
+@keyframes bass-matrix-spin {
+  0% {
+    transform: scale(1.5) rotate(0turn);
+  }
+  50% {
+    transform: scale(1.2) rotate(-0.5turn);
+  }
+  100% {
+    transform: scale(1.5) rotate(-1turn);
+  }
+}
+
+#bass-matrix {
+  width: 100vh;
+  height: 100vh;
+  left: calc((100vw - 100vh)/2);
+  // max-width: 100vh;
+  animation: bass-matrix-spin 60s linear infinite;
+
+  button{
+    // opacity: 0.8;
+    position: relative;
+  }
 }
