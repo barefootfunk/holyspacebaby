@@ -50,5 +50,9 @@
   button{
     // opacity: 0.8;
     position: relative;
+    transition: background 0.2s;
+    &:active {
+      background: radial-gradient(circle at 50%, var(--custom-color) 0%, transparent 50%);
+    }
   }
 }

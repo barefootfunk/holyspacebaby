@@ -146,7 +146,7 @@ class Show extends React.Component {
             </div>
               <div className="layout-bottom">
                 <ClickSound sound={cheer1Sound} keyString="f">
-                  <button className="button">Click to REJOICE!</button>
+                  <button className="button">REJOICE BUTTON</button>
                 </ClickSound>
               </div>
             </div>
@@ -171,7 +171,7 @@ class Show extends React.Component {
             </div>
             <div className="layout-bottom">
               <ClickSound sound={cheer1Sound} keyString="f">
-                <button className="button">Click to REJOICE!</button>
+                <button className="button">REJOICE BUTTON</button>
               </ClickSound>
             </div>
           </div>
@@ -190,7 +190,7 @@ class Show extends React.Component {
           <div id="props">
             <BabyColorPicker setBabyColor={this.setBabyColor}/>
             <div className="layout-bottom -no-pointer">
-              <p>Hover to choose your color.</p>
+              <p>Click/tap a color.</p>
             </div>
           </div>
         ),
@@ -250,9 +250,9 @@ class Show extends React.Component {
         `,
         children: (
           <div id="props">
-            <BassMatrix />
+            <BassMatrix babyColor={this.state.babyColor} />
             <div className="layout-bottom -no-pointer">
-              <p>Click/tap lights to play bass.</p>
+              <p>Click/tap (and hold) lights to play bass.</p>
             </div>
           </div>
         ),
@@ -296,8 +296,7 @@ class Show extends React.Component {
 
         {typeof currentScene.children !== 'undefined' && currentScene.children}
 
-        <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' ?  currentScene.babyClass : ''} babyColor={babyColor}/>
-
+       
         <div id="livestream" className={typeof currentScene.livestream !== 'undefined' ? currentScene.livestream : ''}>
           <div className="animation-wrap">
             <div className="sizing-wrap">
@@ -312,6 +311,9 @@ class Show extends React.Component {
             </div>
           </div>
         </div>
+
+        <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' ?  currentScene.babyClass : ''} babyColor={babyColor}/>
+
 
         {(typeof currentScene.teleprompter !== 'undefined' && mode==="performer") && <div id="teleprompter">{currentScene.teleprompter}</div>}
 
