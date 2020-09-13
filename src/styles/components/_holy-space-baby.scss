@@ -1,0 +1,62 @@
+#funk-overlay {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  pointer-events: none;
+  opacity: calc(var(--funk-level-normalized)*0.3);
+  background:  radial-gradient(transparent 0%, transparent 60%, var(--baby-color) 90%);
+}
+
+#holy-space-baby {
+  --baby-size: 8vw;
+  --spin-time: 10s;
+  
+  @include ha;
+  @include colorize-fills-and-lines(var(--baby-color,lime));
+  
+  top: 0;
+  left: 0;
+  z-index: 1;
+  position: fixed;
+  pointer-events: none;
+  transition: width 0.2s, height 0.2s;
+  width: calc(var(--baby-size) + 10vw * var(--funk-level-normalized));
+  height: calc(var(--baby-size) + 10vw * var(--funk-level-normalized));
+  
+  // Glow
+  &::after {
+    @include ha;
+    top: -45%;
+    left: -45%;
+    content: '';
+    right: -60%;
+    bottom: -60%;
+    position: absolute;
+    opacity: var(--funk-level-normalized);
+    background: radial-gradient(var(--baby-color) 0%, transparent 70%);
+  }
+
+  &.ghost {
+    @include colorize-fills-and-lines(gray);
+    opacity: 0.1;
+    --spin-time: 10s;
+  }
+
+  &.flight {
+    --spin-time: 1s;
+  }
+
+  &.hidden {
+    display: none;
+  }
+
+  .center-wrap {
+    @include mask(black);
+
+    svg {
+      animation: spin var(--spin-time) linear infinite;
+    }
+  }
+}

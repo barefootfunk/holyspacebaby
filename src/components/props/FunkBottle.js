@@ -10,7 +10,10 @@ export default class FunkBottle extends React.Component {
     return (
       <div id="funk-bottle">
         <ClickSound sound={gulp1Sound} keyString="f">
-          <button style={{backgroundImage: `url(${funkBottleImage})`}} />
+          <button 
+            style={{backgroundImage: `url(${funkBottleImage})`}}
+            onClick={() => {this.props.incrementFunkLevel()}} 
+          />
         </ClickSound>
       </div>
     )

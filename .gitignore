@@ -68,5 +68,5 @@ yarn-error.log
 # Yarn Integrity file
 .yarn-integrity
 
-# Asset creation files (preproductin for audio, image, video)
+# Asset creation files (preproduction for audio, image, video)
 _bryant-build/

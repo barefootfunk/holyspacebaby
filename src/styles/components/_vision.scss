@@ -6,7 +6,6 @@
 
   .portal {
     @include ha;
-    // @include glow(white);
     top: 50vh;
     left: 50vw;
     width: 150px;
@@ -43,31 +42,29 @@
   }
 
   .universe {
-    position: fixed;
+    @include ha;
     top: 0;
-    width: 100%;
     left: 0;
-    height: 100%;
-    background-size: contain;
     z-index: 1;
-
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-size: contain;
     animation: background-scroll 30s infinite linear;
 
     .description {
       bottom: 0;
       left: 50%;
       width: 90%;
-      color: white;
       padding: 20px;
+      font-size: 1em;
+      color: white;
+      font-size: 35px;
       position: fixed;
       max-width: 600px;  
-      font-size: 1em;
-      z-index: 1000;
-      background: rgba(black,0.9);
       transform: translate(-50%,0);
+      background: rgba(black,0.9);
 
-      font-size: 35px;
-  
       p {
         margin: 0;
         text-align: left;
@@ -81,7 +78,7 @@
         button {
           font-size: 50px;
           margin-left: 10px;
-          padding: 0.1em;
+          padding: 0.1em 0.2em;
           @include font-display;
 
           &:first-child {

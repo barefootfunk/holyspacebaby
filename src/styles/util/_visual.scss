@@ -1,5 +1,6 @@
 @mixin ha {
   backface-visibility: hidden;
+  transform: translate3d(0,0,0);
 }
 
 @mixin glow($color: $green) {
@@ -7,17 +8,16 @@
 }
 
 @mixin mask($color) {
-  &::after {
+  &::before {
     top: -30%;
     left: -30%;
+    z-index: -1;
+    content: '';
     right: -30%;
     bottom: -30%;
-    content: '';
     position: absolute;
     // mix-blend-mode: multiply;
     background: radial-gradient($color 0%, transparent 70%);
-    z-index: -1;
-    @include ha;
   }
 }
 

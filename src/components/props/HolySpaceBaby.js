@@ -46,14 +46,12 @@ export default class HolySpaceBaby extends React.Component {
 
   render () {
     const { x, y } = this.state;
-    const { babyClass, babyColor } = this.props;
+    const { babyClass } = this.props;
     return (
       <div 
-        id="space-babe" 
+        id="holy-space-baby" 
         style={{
-          top: y,
-          left: x,
-          '--custom-color': babyColor,
+          transform: `translate(${x}px,${y}px)`
         }}
         className={babyClass}
       >

@@ -61,12 +61,7 @@ export default class BassMatrix extends React.Component {
     const notes = ['E2','B1','A1','D2'];
 
     return (
-      <div id="bass-matrix" className="button-matrix"
-      
-      style={{
-        '--custom-color': this.props.babyColor,
-      }}
-      >
+      <div id="bass-matrix" className="button-matrix">
         {notes.map( note => {
 
           return (

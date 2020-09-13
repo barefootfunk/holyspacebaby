@@ -7,29 +7,28 @@ import slugify from 'slugify';
 import Visions from "./props/Visions.js"
 import HolySpaceBaby from "./props/HolySpaceBaby.js"
 import ClickSound from "./props/ClickSound.js"
-// import KeyPressSound from "./props/KeyPressSound.js"
 import NextShow from "./props/NextShow.js"
 import BabyColorPicker from "./props/BabyColorPicker.js"
 import FunkBottle from "./props/FunkBottle.js"
 import BassMatrix from "./props/BassMatrix.js"
+import MailchimpSubscribe from "react-mailchimp-subscribe"
 
 // Sounds
 import cheer1Sound from '../sounds/cheer1.mp3';
-// import cry1Sound from '../sounds/cry1.wav'; // https://freesound.org/people/Stevious42/sounds/259608/
-// import gulpSound from '../sounds/gulp1.wav'; // https://freesound.org/people/CGEffex/sounds/102581/
-// import heartbeatSound from '../sounds/heartbeat.mp3'; // https://freesound.org/people/InspectorJ/sounds/485076/
 
 // Twitch
 // This has to be shut off for gatsby build because of breaking reference to window
 const ReactTwitchEmbedVideo = typeof window !== `undefined` ? require("react-twitch-embed-video") : null
 
+const MAILCHIMP_URL='https://barefootfunk.us18.list-manage.com/subscribe/post?u=47e36bf28611ddfce598ffc89&id=8fa2164a2f';
 
 class Show extends React.Component {
 
   constructor (props) {
     super(props);
     this.state = {
-      babyColor: 'cyan',
+      babyColor: 'lime',
+      funkLevel: 0,
     }
 
     this.setBabyColor = this.setBabyColor.bind(this);
@@ -82,6 +81,11 @@ class Show extends React.Component {
       babyColor: newBabyColor,
     })
   }
+  incrementFunkLevel = () => {
+    this.setState({
+      funkLevel: this.state.funkLevel + 1,
+    })
+  }
 
   render () {
 
@@ -91,7 +95,7 @@ class Show extends React.Component {
         bgVideo: "campfire-far",
         livestream: "hidden",
         babyClass: "ghost",
-        children: (
+        backgroundChildren: (
           <div id="props">
             <h1 className="layout-center"><NextShow /></h1>
           </div>
@@ -108,7 +112,7 @@ class Show extends React.Component {
           
           (Welcome brothers sisters and siblings.  The name is Cowboy Elijah–your local prophet. Our ceremony begins now.)[NEXT],
         `,
-        children: (
+        backgroundChildren: (
           <div id="props">
             <h1>Stare into the flames!</h1>
             <p>Please unmute the Twitch player and make sure it is playing.</p>
@@ -139,9 +143,9 @@ class Show extends React.Component {
           
           (Brothers, sisters and siblings. My condolences, you are now dead.)[NEXT]
           `,        
-          children: (
+          backgroundChildren: (
             <div id="props">
-            <div className="layout-top">
+            <div className="layout-top -no-pointer">
               <p>Hooray! You are currently dying!</p>
             </div>
               <div className="layout-bottom">
@@ -164,9 +168,9 @@ class Show extends React.Component {
           
           ([SOLO])[NEXT]
           `,
-        children: (
+        backgroundChildren: (
           <div id="props">
-            <div className="layout-top">
+            <div className="layout-top -no-pointer">
               <p>Hooray! You are dead!</p>
             </div>
             <div className="layout-bottom">
@@ -186,9 +190,12 @@ class Show extends React.Component {
           
           (You are so thirsty from your journey. What's this? Something to drink? That sounds good right now. Have a sip.)[NEXT]
           `,
-        children: (
+        backgroundChildren: (
           <div id="props">
             <BabyColorPicker setBabyColor={this.setBabyColor}/>
+            <div className="layout-top -no-pointer">
+              <p>You are reborn!</p>
+            </div>
             <div className="layout-bottom -no-pointer">
               <p>Click/tap a color.</p>
             </div>
@@ -208,11 +215,14 @@ class Show extends React.Component {
         ([START SONG] You find yourself launched into the multiverse at light speed! What was in that bottle?!!!)[NEXT]
         `,
 
-        children: (
+        backgroundChildren: (
           <div id="props">
-            <FunkBottle />
+            <FunkBottle incrementFunkLevel={this.incrementFunkLevel} />           
+              <div className="layout-top -no-pointer">
+                <p>You are thirsty.</p>
+              </div>
               <div className="layout-bottom -no-pointer">
-                <p>Click/tap bottle to drink.</p>
+                <p>Click/tap bottle.</p>
               </div>
           </div>
         ),
@@ -220,6 +230,7 @@ class Show extends React.Component {
       {
         name: "Visions",
         bgVideo: "vortex",
+        babyClass: "flight",
         teleprompter: `
           Rips in spacetime fly by revealing all possible universes.  You try to peek inside some of them.  What do you see?
           
@@ -227,11 +238,14 @@ class Show extends React.Component {
           
           (And you're left to float there.  Tryng to make sense of it all...)[NEXT]
         `,
-        children: (
+        backgroundChildren: (
           <div id="props">
-            <Visions/>
+            <Visions/>           
+            <div className="layout-top -no-pointer">
+              <p>You fly at light speed!</p>
+            </div>
             <div className="layout-bottom -no-pointer">
-              <p>Click a portal to enter.</p>
+              <p>Click/tap portals.</p>
             </div>
           </div>
         ),
@@ -248,27 +262,38 @@ class Show extends React.Component {
 
           [NEXT]
         `,
-        children: (
+        backgroundChildren: (
           <div id="props">
-            <BassMatrix babyColor={this.state.babyColor} />
+            <BassMatrix />        
+            <div className="layout-top -no-pointer">
+              <p>You float and ponder!</p>
+            </div>
             <div className="layout-bottom -no-pointer">
-              <p>Click/tap (and hold) lights to play bass.</p>
+              <p>Click/tap (and hold) on lights.</p>
             </div>
           </div>
         ),
+        onStart: () => {
+          this.state.funkLevel = 0;
+        }
       },
       {
-      name: "Go in peace",
-      bgVideo: "campfire-far",
-      livestream: "hidden",
-      teleprompter: `
-        [WAIT]
+        name: "Go in peace",
+        bgVideo: "campfire-far",
+        livestream: "hidden",
+        teleprompter: `
+          [WAIT]
 
-        [Spooky] Don't forget to sign the mailing list ooooooooo.... Sign the mailing list.... Find out about what happens next.  Maniacly laughter 
-      `,
-        children: (
+          [Spooky] Don't forget to sign the mailing list ooooooooo.... Sign the mailing list.... Find out about what happens next.  Maniacly laughter 
+        `,
+        foregroundChildren: (
           <div id="props">
-            <h1 className="layout-center">[(MAILING LIST SIGNUP GOES HERE)]</h1>
+            <div className="layout-center">
+              <h1>Join the faith</h1>
+              <div className="mailchimp">
+                <MailchimpSubscribe url={MAILCHIMP_URL} />
+              </div>
+            </div>
           </div>
         ),
       },
@@ -278,12 +303,24 @@ class Show extends React.Component {
     scene = Math.max(0,scene); // Render 0, if below
     scene = Math.min(scenes.length-1,scene); // Render last scene, if above
 
-    const {babyColor} = this.state;
-
     const currentScene = scenes[scene];
 
+    // Run onStart function
+    if(typeof currentScene.onStart !== 'undefined') { currentScene.onStart() }
+
+    const {babyColor, funkLevel} = this.state;
+
     return (
-      <div id={`scene-${slugify(currentScene.name, {lower: true})}`} className="scene">
+      <div 
+        id={`scene-${slugify(currentScene.name, {lower: true})}`} 
+        className="scene"
+        style={{
+          '--baby-color': babyColor,
+          '--funk-level-normalized': 1-(1/Math.pow(((funkLevel)/50+1),2)),
+          '--funk-level': funkLevel,
+        }}
+      >
+  
         {typeof currentScene.bgVideo !== 'undefined' && <video id="bg-video" className="bg-video" playsInline autoPlay muted loop key={currentScene.bgVideo}>
           <source src={`/videos/${currentScene.bgVideo}.mp4`} type="video/mp4" />
         </video>}
@@ -294,9 +331,8 @@ class Show extends React.Component {
 
         <div id="scene-name" className="-pointer-none">{currentScene.name}...</div>
 
-        {typeof currentScene.children !== 'undefined' && currentScene.children}
+        {typeof currentScene.backgroundChildren !== 'undefined' && currentScene.backgroundChildren}
 
-       
         <div id="livestream" className={typeof currentScene.livestream !== 'undefined' ? currentScene.livestream : ''}>
           <div className="animation-wrap">
             <div className="sizing-wrap">
@@ -312,8 +348,11 @@ class Show extends React.Component {
           </div>
         </div>
 
-        <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' ?  currentScene.babyClass : ''} babyColor={babyColor}/>
+        {typeof currentScene.foregroundChildren !== 'undefined' && currentScene.foregroundChildren}
+       
+        <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' ?  currentScene.babyClass : ''} />
 
+        <div id="funk-overlay" />
 
         {(typeof currentScene.teleprompter !== 'undefined' && mode==="performer") && <div id="teleprompter">{currentScene.teleprompter}</div>}
 

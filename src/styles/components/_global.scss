@@ -16,7 +16,7 @@ body {
         background: rgba(black,0.8);
     }
     &:active {
-        background: rgba(white,0.5);
+        background: rgba(var(--baby-color,white),0.5);
         transform: scale(1.2);
     }
 }

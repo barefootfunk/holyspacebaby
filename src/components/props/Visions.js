@@ -41,9 +41,9 @@ const Visions = () => {
   const data = useStaticQuery(visionsQuery);
   let visionsData = data.allMarkdownRemark.edges;
 
-  const [activeVisionPairs,setActiveVisionPairs] = useState(0);
+  const [activeVisionPairs,setActiveVisionPairs] = useState({pairs: 0, round: 0});
 
-  const renderVision = (id,dir) => {
+  const renderVision = (id,dir,round) => {
     // Get vision data
     const visionData = visionsData[id].node;
     const content = { 
@@ -58,26 +58,30 @@ const Visions = () => {
     return <Vision 
       content={content}
       dir={dir} 
-      key={`vision-${id}`} 
+      key={`vision-${id}-${round}`} 
     />;
   }
 
   // Activate a new pair of visions every few seconds until we run out
   useEffect(() => {
-    let i=0;
+    let pairs=1;
+    let round=0;
+    setActiveVisionPairs({pairs: pairs, round: round});
     const interval = setInterval(() => {
-      i++;
+      pairs++;
 
-      if(i*2<=visionsData.length) {
-        setActiveVisionPairs(i);
+      if(pairs*2<=visionsData.length){
+        setActiveVisionPairs({pairs: pairs, round: round});
       } else {
-        clearInterval(interval);
+        pairs=1;
+        round++;
+        setActiveVisionPairs({pairs: pairs, round: round});
       }
     }, 15000);
     return () => clearInterval(interval);
   }, []);
 
-  const visionIdsToRender = Array.from(Array(activeVisionPairs*2).keys()); // Generates sequential array [1,2,...,n]
+  const visionIdsToRender = Array.from(Array(activeVisionPairs.pairs*2).keys()); // Generates sequential array [1,2,...,n]
   
   // Pairs will launch in opposite diagonals
   const dirs = [
@@ -92,7 +96,7 @@ const Visions = () => {
       {
         visionIdsToRender.map((id,index) => {
           const dir = dirs[(index % dirs.length)];
-          return renderVision(id,dir);
+          return renderVision(id,dir,activeVisionPairs.round);
         })
       }
 
