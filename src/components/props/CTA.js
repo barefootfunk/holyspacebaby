@@ -75,9 +75,9 @@ const CTA = () => {
         </div>
       </div>
       
-      <div id="weekly-promise">
+      {/* <div id="weekly-promise">
         New visions, music and more weekly.
-      </div>
+      </div> */}
 
     </div>
   )
