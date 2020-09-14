@@ -1,0 +1,81 @@
+#cta {
+
+  .mailing-list {
+    @include text-box;
+    margin-top: 40px;
+    text-align: center;
+    p {
+      font-size: 0.5rem;
+      max-width: 250px;
+    }
+
+    input[type="email"] {
+      width: 200px;
+      // font-family: courier;
+      // font-size: 0.8rem;
+      // height: 45px;
+      &:invalid {
+        background: red;
+      }
+    }
+    input, button {
+      color: white;
+      border: 2px solid white;
+      background: black;
+      border-radius: 3px;
+      padding: 0em 0.3em;
+    }
+    button {
+      @include button-hover;
+      margin-left: 10px;
+    }
+  }
+
+  .mailing-list-alert {
+    @include font-display;
+    &, a {color: white;}
+    font-size: 0.7rem;
+    padding: 0.2rem 0.3rem;
+    margin: 10px 0;
+
+    &.-sending {
+      background: black;
+    }
+    &.-error {
+      background: red;
+    }
+    &.-success {
+      background: green;
+    }
+  }
+}
+
+#decorative-baby {
+  position: fixed;
+  opacity: 0.2;
+  bottom: -5vh;
+  right: -20vh;
+  width: 80vh;
+  height: 80vh;
+  transform: rotate(-35deg);
+  #lines {
+    fill: white;
+  }
+  #fills {
+    fill: transparent;
+  }
+}
+
+
+#weekly-promise {
+  @include text-box;
+  font-size: 0.5rem;
+  text-transform: uppercase;
+  display: inline-block;
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 0;
+  margin: 0;
+}

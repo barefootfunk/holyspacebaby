@@ -4,14 +4,14 @@ import React from 'react';
 import slugify from 'slugify';
 
 // Props
-import Visions from "./props/Visions.js"
-import HolySpaceBaby from "./props/HolySpaceBaby.js"
-import ClickSound from "./props/ClickSound.js"
-import NextShow from "./props/NextShow.js"
-import BabyColorPicker from "./props/BabyColorPicker.js"
-import FunkBottle from "./props/FunkBottle.js"
-import BassMatrix from "./props/BassMatrix.js"
-import MailchimpSubscribe from "react-mailchimp-subscribe"
+import Visions from "./props/Visions"
+import CTA from "./props/CTA"
+import HolySpaceBaby from "./props/HolySpaceBaby"
+import ClickSound from "./props/ClickSound"
+import NextShow from "./props/NextShow"
+import BabyColorPicker from "./props/BabyColorPicker"
+import FunkBottle from "./props/FunkBottle"
+import BassMatrix from "./props/BassMatrix"
 
 // Sounds
 import cheer1Sound from '../sounds/cheer1.mp3';
@@ -20,7 +20,6 @@ import cheer1Sound from '../sounds/cheer1.mp3';
 // This has to be shut off for gatsby build because of breaking reference to window
 const ReactTwitchEmbedVideo = typeof window !== `undefined` ? require("react-twitch-embed-video") : null
 
-const MAILCHIMP_URL='https://barefootfunk.us18.list-manage.com/subscribe/post?u=47e36bf28611ddfce598ffc89&id=8fa2164a2f';
 
 class Show extends React.Component {
 
@@ -94,10 +93,28 @@ class Show extends React.Component {
         name: "Stay tuned",
         bgVideo: "campfire-far",
         livestream: "hidden",
-        babyClass: "ghost",
+        babyClass: "hidden",
+        foregroundChildren: (
+          <div id="props">
+            <CTA />
+          </div>
+        ),
+      },
+      {
+        name: "Pre-show",
+        bgVideo: "campfire-far",
+        livestream: "hidden",
+        babyClass: "hidden",
+        teleprompter: `
+          (Kill it dude!  Get pumped! Have FUN.)
+
+          ([Meditate and Pray])[NEXT]
+        `,
         backgroundChildren: (
           <div id="props">
-            <h1 className="layout-center"><NextShow /></h1>
+            <div className="layout-center -no-pointer">
+            <p>The ceremony will begin shortly.</p>
+            </div>
           </div>
         ),
       },
@@ -114,8 +131,12 @@ class Show extends React.Component {
         `,
         backgroundChildren: (
           <div id="props">
-            <h1>Stare into the flames!</h1>
-            <p>Please unmute the Twitch player and make sure it is playing.</p>
+            <div className="layout-top -no-pointer">
+              <p>Stare into the flames!</p>
+            </div>
+            <div className="layout-bottom -no-pointer">
+              <p style={{ maxWidth: '10em' }}>Be sure livestream is UNMUTED and PLAYING.</p>
+            </div>
           </div>
         ),
       },
@@ -145,9 +166,9 @@ class Show extends React.Component {
           `,        
           backgroundChildren: (
             <div id="props">
-            <div className="layout-top -no-pointer">
-              <p>Hooray! You are currently dying!</p>
-            </div>
+              <div className="layout-top -no-pointer">
+                <p>Hooray! You are currently dying!</p>
+              </div>
               <div className="layout-bottom">
                 <ClickSound sound={cheer1Sound} keyString="f">
                   <button className="button">REJOICE BUTTON</button>
@@ -288,12 +309,7 @@ class Show extends React.Component {
         `,
         foregroundChildren: (
           <div id="props">
-            <div className="layout-center">
-              <h1>Join the faith</h1>
-              <div className="mailchimp">
-                <MailchimpSubscribe url={MAILCHIMP_URL} />
-              </div>
-            </div>
+            <CTA />
           </div>
         ),
       },
@@ -329,7 +345,9 @@ class Show extends React.Component {
           <source src={`/videos/${currentScene.bgVideoOverlay}.mp4`} type="video/mp4" />
         </video>}
 
-        <div id="scene-name" className="-pointer-none">{currentScene.name}...</div>
+        {/* <div id="scene-name" className="-pointer-none">{currentScene.name}...</div> */}
+
+          <h1 id="title" className="-pointer-none">HOLY SPACE BABY</h1>
 
         {typeof currentScene.backgroundChildren !== 'undefined' && currentScene.backgroundChildren}
 

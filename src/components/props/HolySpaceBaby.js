@@ -1,10 +1,6 @@
 import React from 'react';
 import HolySpaceBabySvg from "../../svg/holy-space-baby.inline.svg"
 
-// Sounds
-import KeyPressSound from "./KeyPressSound.js"
-import cry1Sound from '../../sounds/cry1.wav';
-
 
 // TODO: Mobile fallback (animate transition between taps)
 // ANIMATE WITH: https://github.com/chenglou/react-motion
@@ -56,7 +52,6 @@ export default class HolySpaceBaby extends React.Component {
         className={babyClass}
       >
         <div className="center-wrap">
-          <KeyPressSound sound={cry1Sound} keyString="f" />
           <HolySpaceBabySvg />
           {/* TODO: Text: Tap or use the mouse to control the babe. Press F to cry.*/}
         </div>

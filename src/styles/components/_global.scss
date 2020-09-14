@@ -2,7 +2,19 @@ body {
     color: white;
 }
 
-.button {
+@mixin button-hover {
+    cursor: pointer;
+    transition: transform 0.1s;
+    &:hover {
+        transform: scale(1.1);
+    }
+    &:active {
+        // background: rgba(var(--baby-color,white),0.5);
+        transform: scale(1.2);
+    }
+}
+
+@mixin button {
     font-size: 2rem;
     @include text-box;
     color: white;
@@ -10,13 +22,11 @@ body {
     outline: 0;
     border-radius: 10px;
     cursor: pointer;
-    transition: transform 0.1s;
 
-    &:hover {
-        background: rgba(black,0.8);
-    }
-    &:active {
-        background: rgba(var(--baby-color,white),0.5);
-        transform: scale(1.2);
-    }
+    @include button-hover;
+
+}
+
+.button {
+    @include button;
 }

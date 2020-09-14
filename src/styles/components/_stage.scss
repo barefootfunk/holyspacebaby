@@ -30,5 +30,18 @@
     top: -2px;
     left: -2px;
     border: 0;
+    // display: none;
   }
+}
+
+#title {
+  @include text-box;
+  font-size: 0.5rem;
+  text-transform: uppercase;
+  display: inline-block;
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  border: 0;
+  margin: 0;
 }
