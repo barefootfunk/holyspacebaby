@@ -266,7 +266,7 @@ class Show extends React.Component {
               <p>You fly at light speed!</p>
             </div>
             <div className="layout-bottom -no-pointer">
-              <p>Click/tap portals.</p>
+              <p>Click/tap portals to enter.</p>
             </div>
           </div>
         ),
@@ -290,7 +290,7 @@ class Show extends React.Component {
               <p>You float and ponder!</p>
             </div>
             <div className="layout-bottom -no-pointer">
-              <p>Click/tap (and hold) on lights.</p>
+              <p style={{ maxWidth: '10em' }}>Click/tap (and hold) on lights to play bass.</p>
             </div>
           </div>
         ),
