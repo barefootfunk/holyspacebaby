@@ -44,7 +44,7 @@ const CustomForm = ({ status, message, onValidated }) => {
         />
       )}
       {!status && (
-        <p>(Exclusive updates/sermons)</p>
+        <p>(news + bonus videos)</p>
       )}
     </div>
   );
@@ -59,7 +59,7 @@ const CTA = () => {
 
       <div className="layout-center">
         <p>Thursdays 8pm CT</p>
-        <p>Starting 9/24</p>
+        <p>Premiering @ <a href="https://www.facebook.com/events/626771907981587" target="_blank">WordHack</a></p>{/* <p>Starting 9/24</p> */}
         <p>Be reborn</p>
         <div className="mailing-list">
         <MailchimpSubscribe

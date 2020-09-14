@@ -1,5 +1,9 @@
 body {
     color: white;
+
+    a {
+        color: inherit;
+    }
 }
 
 @mixin button-hover {
