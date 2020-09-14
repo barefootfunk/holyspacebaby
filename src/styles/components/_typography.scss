@@ -44,7 +44,7 @@
   }
 
 html {
-    @include font-copy;
+    @include font-display;
     color: white;
     font-size: 36px;
     @include glow(white);

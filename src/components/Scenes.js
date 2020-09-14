@@ -132,7 +132,7 @@ class Show extends React.Component {
         backgroundChildren: (
           <div id="props">
             <div className="layout-top -no-pointer">
-              <p>Stare into the flames!</p>
+              <p>Mic check!</p>
             </div>
             <div className="layout-bottom -no-pointer">
               <p style={{ maxWidth: '10em' }}>Be sure livestream is UNMUTED and PLAYING.</p>
@@ -347,7 +347,7 @@ class Show extends React.Component {
 
         {/* <div id="scene-name" className="-pointer-none">{currentScene.name}...</div> */}
 
-          <h1 id="title" className="-pointer-none">HOLY SPACE BABY</h1>
+          <h1 id="title" className="-pointer-none">HOLY SPACE . BABY</h1>
 
         {typeof currentScene.backgroundChildren !== 'undefined' && currentScene.backgroundChildren}
 
