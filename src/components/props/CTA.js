@@ -58,7 +58,7 @@ const CTA = () => {
       </div>
 
       <div className="layout-center">
-        <p>Thursday Evenings</p>
+        <p>Thursdays</p>
         <p>Premiering 9/17 @ <a href="https://www.facebook.com/events/626771907981587" target="_blank">WordHack</a></p>{/* <p>Starting 9/24</p> */}
         <p>Be reborn</p>
         <div className="mailing-list">
