@@ -50,7 +50,7 @@ const CustomForm = ({ status, message, onValidated }) => {
   );
 };
 
-const CTA = () => {
+const CTA = (props) => {
   return (
     <div id="cta">
       <div id="decorative-baby">
@@ -58,9 +58,11 @@ const CTA = () => {
       </div>
 
       <div className="layout-center">
-        <p>Thursdays</p>
-        <p>Premiering 9/17 @ <a href="https://www.facebook.com/events/626771907981587" target="_blank">WordHack</a></p>{/* <p>Starting 9/24</p> */}
-        <p>Be reborn</p>
+        {typeof props.children !== 'undefined' ? props.children : (<React.Fragment>
+          <p>Thursdays 7pm CST</p>
+          <p>Come to this page</p>
+          <p>Be reborn</p>
+        </React.Fragment>)}
         <div className="mailing-list">
         <MailchimpSubscribe
             url={MAILCHIMP_URL}
