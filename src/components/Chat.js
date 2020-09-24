@@ -56,7 +56,7 @@ export default class Chat extends React.Component {
             type="text" 
             value={currentMessage} 
             onChange={this.handleChange} 
-            placeholder="Type to chat"
+            placeholder="Type to chat (anonymous)"
             maxLength="30"
           />
           <input type="submit" value="Send!"/>

@@ -111,12 +111,12 @@ class Show extends React.Component {
         teleprompter: `
           (Kill it dude!  Get pumped! Have FUN.)
 
-          ([Meditate and Pray])[NEXT]
+          ([Warm up])[NEXT]
         `,
         backgroundChildren: (
           <div id="props">
             <div className="layout-center -no-pointer">
-            <p>The ceremony will begin shortly.</p>
+            <p>The ceremony will begin at 7p CST sharp.</p>
             </div>
           </div>
         ),
@@ -126,11 +126,11 @@ class Show extends React.Component {
         bgVideo: "campfire-far",
         babyClass: "hidden",
         teleprompter: `
-          [Meditate and Pray]
+          [Warm up]
           
-          Oh! I didn't see you there.
+          Intro
           
-          (Welcome brothers sisters and siblings.  The name is Cowboy Elijah–your local prophet. Our ceremony begins now.)[NEXT],
+          (Introduce self and magic trombone)[NEXT],
         `,
         backgroundChildren: (
           <div id="props">
@@ -151,11 +151,11 @@ class Show extends React.Component {
         teleprompter: `
           [SOLO]
           
-          [TRIGGER DRUMS] I have summoned ye to this here magical campfire to take you on a spiritual journey. In fact this is my first ever ceremony, so forgive me.
+          [TRIGGER DRUMS] Introduce ritual/ceremony
           
           [SOLO]
 
-          (First things, first, you'll have to... die.  Don't worry I'll take care of the hard part. I'm killing you right now with my magical trombone.)[NEXT]
+          (Choose your death.)[NEXT]
           `,
       },
       {
@@ -165,12 +165,12 @@ class Show extends React.Component {
         teleprompter: `
           [SOLO]
           
-          (Brothers, sisters and siblings. My condolences, you are now dead.)[NEXT]
+          (You are now dead)[NEXT]
           `,        
           backgroundChildren: (
             <div id="props">
               <div className="layout-top -no-pointer">
-                <p>Hooray! You are currently dying!</p>
+                <p>Hooray! You are dying.</p>
               </div>
               <div className="layout-bottom">
                 <ClickSound sound={cheer1Sound} keyString="f">
@@ -188,7 +188,7 @@ class Show extends React.Component {
         teleprompter: `
           [SOLO]
           
-          Hmmm. that wasn't so bad.  Wonder what all the philosophers were fussing about.  Anyway, don't fret none. For you will now be reborn in your true form!
+          You will now be reborn!
           
           ([SOLO])[NEXT]
           `,
@@ -209,10 +209,9 @@ class Show extends React.Component {
         name: "Rebirth",
         bgVideo: "void",
         teleprompter: `
-          Wow! It actullay worked!  You came back!  So, as you can see, you find yourself in an infant body with no memory of your previous life.  Everything is new and confusing.  And you seem to be able to choose your color.
-          [SOLO LONG]
+          You are an infant.
           
-          (You are so thirsty from your journey. What's this? Something to drink? That sounds good right now. Have a sip.)[NEXT]
+          (Thirsty)[NEXT]
           `,
         backgroundChildren: (
           <div id="props">
@@ -221,7 +220,7 @@ class Show extends React.Component {
               <p>You are reborn!</p>
             </div>
             <div className="layout-bottom -no-pointer">
-              <p>Click/tap a color.</p>
+              <p>Click a color.</p>
             </div>
           </div>
         ),
@@ -232,11 +231,11 @@ class Show extends React.Component {
       teleprompter: `
         [SOLO LONG]
         
-        Mmmmmm. It's so yummy.
+        Yum.
         
-        [STOP DRUMS] Uh oh.  You feel something strange inside ya.
+        [STOP DRUMS] Uh oh.
         
-        ([START SONG] You find yourself launched into the multiverse at light speed! What was in that bottle?!!!)[NEXT]
+        ([START SONG] You are launched!)[NEXT]
         `,
 
         backgroundChildren: (
@@ -246,7 +245,7 @@ class Show extends React.Component {
                 <p>You are thirsty.</p>
               </div>
               <div className="layout-bottom -no-pointer">
-                <p>Click/tap bottle.</p>
+                <p>Click bottle.</p>
               </div>
           </div>
         ),
@@ -256,11 +255,11 @@ class Show extends React.Component {
         bgVideo: "vortex",
         babyClass: "flight",
         teleprompter: `
-          Rips in spacetime fly by revealing all possible universes.  You try to peek inside some of them.  What do you see?
+          Introduce portals
           
           [LONG SOLO]
           
-          (And you're left to float there.  Tryng to make sense of it all...)[NEXT]
+          (Introduce meditation)[NEXT]
         `,
         backgroundChildren: (
           <div id="props">
@@ -269,7 +268,7 @@ class Show extends React.Component {
               <p>You fly at light speed!</p>
             </div>
             <div className="layout-bottom -no-pointer">
-              <p>Click/tap portals to enter.</p>
+              <p>Click portals to peak inside.</p>
             </div>
           </div>
         ),
@@ -290,10 +289,10 @@ class Show extends React.Component {
           <div id="props">
             <BassMatrix />        
             <div className="layout-top -no-pointer">
-              <p>You float and ponder!</p>
+              <p>You ponder: Are you enough?</p>
             </div>
             <div className="layout-bottom -no-pointer">
-              <p style={{ maxWidth: '10em' }}>Click/tap (and hold) on lights to play bass.</p>
+              <p style={{ maxWidth: '10em' }}>Click (and hold) lights to play bass notes.</p>
             </div>
           </div>
         ),
@@ -302,13 +301,41 @@ class Show extends React.Component {
         }
       },
       {
+        name: "Sermon",
+        bgVideo: "campfire-far",
+        babyClass: "hidden",
+        teleprompter: `
+          Back at fire
+
+          "She who feels like not enough, is correct. For enoughness is hers to author. It is written in her heart, not the stars."
+
+          Always chasing a feeling.  Of being worthy. Of belonging. Biological.
+          
+
+
+          No matter whether you feel like enough or not enough, you are correct because you are the only one who gets to say.
+
+          (Goodbye)[NEXT],
+        `,
+        backgroundChildren: (
+          <div id="props">
+            <div className="layout-top -no-pointer">
+              <p>"She who feels like not enough, is correct. For enoughness is hers to author. It is written in her heart, not the stars."</p>
+            </div>
+            <div className="layout-bottom -no-pointer">
+              <p>Book of Cowboy Jobe 3:17-20</p>
+            </div>
+          </div>
+        ),
+      },
+      {
         name: "Go in peace",
         bgVideo: "campfire-far",
         livestream: "hidden",
         teleprompter: `
-          [WAIT]
+          [Spooky] Call to action
 
-          [Spooky] Don't forget to sign the mailing list ooooooooo.... Sign the mailing list.... Find out about what happens next.  Maniacly laughter 
+          [Jam]
         `,
         foregroundChildren: (
           <div id="props">
@@ -350,7 +377,7 @@ class Show extends React.Component {
 
         {/* <div id="scene-name" className="-pointer-none">{currentScene.name}...</div> */}
 
-          <h1 id="title" className="-pointer-none">HOLY SPACE . BABY</h1>
+          <h1 id="title" className="-pointer-none">HolySpaceBaby</h1>
 
         {typeof currentScene.backgroundChildren !== 'undefined' && currentScene.backgroundChildren}
 
