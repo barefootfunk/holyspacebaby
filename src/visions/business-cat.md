@@ -1,5 +1,5 @@
 ---
-title: Depression
+title: Flaws
 featuredimage: /img/depression.webp
 heartChoice: Share tea
 chaosChoice: Back to the dark!
