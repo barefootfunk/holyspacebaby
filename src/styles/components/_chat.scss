@@ -9,6 +9,7 @@
     border: 2px solid white;
     background: black;
     border-radius: 3px;
+    font-size: 0.6em;
     padding: 0em 0.3em;
   }
   button {
@@ -17,7 +18,8 @@
   }
 
   input[type="text"] {
-    width: 180px;
+    width: 100px;
+    color: var(--baby-color);
   }
 }
 
@@ -34,8 +36,10 @@
 
 #chat-messages .message {
   position: fixed;
-  bottom: 50px;
+  bottom: 30px;
   right: 0;
+  font-size: 0.4em;
   color: var(--baby-color);
-  animation: float-away 20s forwards;
+  pointer-events: none;
+  animation: float-away 20s forwards linear;
 }

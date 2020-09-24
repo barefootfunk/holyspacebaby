@@ -350,7 +350,7 @@ class Show extends React.Component {
 
         {/* <div id="scene-name" className="-pointer-none">{currentScene.name}...</div> */}
 
-          <h1 id="title" className="-pointer-none">www . HOLY SPACE . BABY</h1>
+          <h1 id="title" className="-pointer-none">HOLY SPACE . BABY</h1>
 
         {typeof currentScene.backgroundChildren !== 'undefined' && currentScene.backgroundChildren}
 

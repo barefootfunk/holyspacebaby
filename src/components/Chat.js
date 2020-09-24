@@ -12,7 +12,10 @@ export default class Chat extends React.Component {
   }
 
   handleChange = (event) => {
-    this.setState({currentMessage: event.target.value});
+    const { value, maxLength } = event.target;
+    const message = value.slice(0, maxLength);
+
+    this.setState({currentMessage: message});
   }
 
   sendChat = (e) => {
@@ -49,7 +52,13 @@ export default class Chat extends React.Component {
     return (
       <React.Fragment>
         <form id="chat" onSubmit={this.sendChat}>
-          <input type="text" value={currentMessage} onChange={this.handleChange} placeholder="Type to chat"/>
+          <input 
+            type="text" 
+            value={currentMessage} 
+            onChange={this.handleChange} 
+            placeholder="Type to chat"
+            maxLength="30"
+          />
           <input type="submit" value="Send!"/>
         </form>
         <div id="chat-messages">
