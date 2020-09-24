@@ -48,7 +48,7 @@ export default class BassMatrix extends React.Component {
           1
         ],
         "phase": 0,
-        "type": "square6"
+        "type": "sine4"
       }
     }).toDestination();
   }

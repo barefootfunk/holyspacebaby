@@ -6,8 +6,8 @@ import io from "socket.io-client";
 // Show
 import Show from "./Scenes"
 
-const SOCKET_URL = 'https://holyspacebaby-server.herokuapp.com/'; 
-// const SOCKET_URL = 'http://localhost:3000';
+// const SOCKET_URL = 'https://holyspacebaby-server.herokuapp.com/'; 
+const SOCKET_URL = 'http://localhost:3000';
 
 export default class Stage extends React.Component {
 
@@ -70,11 +70,21 @@ export default class Stage extends React.Component {
       this.setState(newState);
     });
 
-
+    let messageId=0;
     this.socket.on('broadcastParticipantEvent', (event) => {
       console.log('SOCKET: broadcastParticipantEvent',event);
       if(event.type==='message') {
-        this.setState({ messages: [...this.state.messages, event.data] })
+        const maxMessages = 50;
+        const messages = this.state.messages;
+        const trimmedMessages = 
+          messages.length > maxMessages 
+            ? messages.slice(1)
+            : messages;
+
+        const newMessage = event.data;
+        newMessage.id = messageId;
+        messageId++;
+        this.setState({ messages: [...trimmedMessages, newMessage] })
       }
     });
   }

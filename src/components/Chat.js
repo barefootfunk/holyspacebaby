@@ -36,6 +36,9 @@ export default class Chat extends React.Component {
       type: 'message', 
       data: {
         message: cleanMessage,
+        color: this.props.color,
+        destinationX: Math.random(),
+        destinationY: Math.random(),
       }
     })
 
@@ -51,6 +54,25 @@ export default class Chat extends React.Component {
 
     return (
       <React.Fragment>
+        <div id="chat-messages">
+          {
+            messages.map((message,index) => {
+              return (
+                <div 
+                  className="message" 
+                  key={`message-${message.id}`} 
+                  id={`message-${message.id}`} 
+                  style={{
+                    color: message.color,
+                    transform: `translate(-${message.destinationX*200}vw,-${message.destinationY*100+100}vh)`,
+                  }}
+                >
+                  {message.message}
+                </div>
+                )
+            })
+          }
+        </div>
         <form id="chat" onSubmit={this.sendChat}>
           <input 
             type="text" 
@@ -61,13 +83,6 @@ export default class Chat extends React.Component {
           />
           <input type="submit" value="Send!"/>
         </form>
-        <div id="chat-messages">
-          {
-            messages.map((message,index) => {
-              return (<div className="message" key={index}>{message.message}</div>)
-            })
-          }
-        </div>
       </React.Fragment>
     );
   }

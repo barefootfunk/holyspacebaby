@@ -25,21 +25,26 @@
 
 @keyframes float-away {
   0% {
-    transform: translateY(0);
+    transform: translate(0,0);
     opacity: 1;
+    display: block;
+  }
+  99% {
+    opacity: 0.3;
+    display: block;
   }
   100% {
-    transform: translateY(-100vh);
-    opacity: 0;
+    opacity: 0.3;
+    display: none;
   }
 }
 
 #chat-messages .message {
   position: fixed;
-  bottom: 30px;
-  right: 0;
-  font-size: 0.4em;
-  color: var(--baby-color);
+  bottom: 0;
+  font-size: 0.6em;
+  color: white;
+  right: 10px;
   pointer-events: none;
-  animation: float-away 20s forwards linear;
+  animation: float-away 30s forwards linear;
 }

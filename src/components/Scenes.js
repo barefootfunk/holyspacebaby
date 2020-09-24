@@ -134,6 +134,7 @@ class Show extends React.Component {
         `,
         backgroundChildren: (
           <div id="props">
+            <NextShow/>
             <div className="layout-top -no-pointer">
               <p>Mic check!</p>
             </div>
@@ -157,6 +158,13 @@ class Show extends React.Component {
 
           (Choose your death.)[NEXT]
           `,
+          foregroundChildren: (
+            <div id="props">
+              <div className="layout-top-edge -no-pointer">
+                <p style={{fontSize: '2em'}}>Tonight's theme: "Enough"</p>
+              </div>
+            </div>
+          )
       },
       {
         name: "Goodbye cruel world",
@@ -309,9 +317,14 @@ class Show extends React.Component {
 
           "She who feels like not enough, is correct. For enoughness is hers to author. It is written in her heart, not the stars."
 
-          Always chasing a feeling.  Of being worthy. Of belonging. Biological.
+          Always chasing a feeling.
           
+          Can you ever catch it? What would that even look like?
 
+          The objectiveness of enough is such a tantalizing illusion that you may be wanting to defend it.
+
+          What is enough even?  Can you trace its origin?  Who told you were not enough? 
+          Too ugly? Too heavy? Not artistic? Too flawed? Not skilled? Unsuccessful?
 
           No matter whether you feel like enough or not enough, you are correct because you are the only one who gets to say.
 
@@ -402,7 +415,7 @@ class Show extends React.Component {
 
         <div id="funk-overlay" />
 
-        <Chat newParticipantEvent={newParticipantEvent} messages={messages} />
+        <Chat newParticipantEvent={newParticipantEvent} messages={messages} color={babyColor}/>
 
         {(typeof currentScene.teleprompter !== 'undefined' && mode==="performer") && <div id="teleprompter">{currentScene.teleprompter}</div>}
         
