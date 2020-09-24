@@ -1,7 +1,7 @@
 ---
-title: Business Cat
-featuredimage: /img/business-cat.webp
-heartChoice: Quit Job
-chaosChoice: Work Harder
+title: Depression
+featuredimage: /img/depression.webp
+heartChoice: Share tea
+chaosChoice: Back to the dark!
 ---
-Business cat is the best in the business.  Deal after deal.  But is this all there is?
+Hello.  I am your flaws.  You cannot grab me, I am ever-changing and I will always be here.
