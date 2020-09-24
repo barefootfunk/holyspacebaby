@@ -5,4 +5,4 @@ heartChoice: ""
 mindChoice: Enough
 chaosChoice: Not enough
 ---
-The mouth says happily: "This is all I have to give.  Please take it all.  I love you."
+The mouth says happily: "This is everything I have.  Please take it all.  I love you."
