@@ -6,11 +6,8 @@ import io from "socket.io-client";
 // Show
 import Show from "./Scenes"
 
-// Chat
-import Chat from "./Chat"
-
-// const SOCKET_URL = 'https://holyspacebaby-server.herokuapp.com/'; 
-const SOCKET_URL = 'http://localhost:3000';
+const SOCKET_URL = 'https://holyspacebaby-server.herokuapp.com/'; 
+// const SOCKET_URL = 'http://localhost:3000';
 
 export default class Stage extends React.Component {
 
