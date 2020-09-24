@@ -3,6 +3,9 @@ import React from 'react';
 // Utils
 import slugify from 'slugify';
 
+// Chat
+import Chat from "./Chat"
+
 // Props
 import Visions from "./props/Visions"
 import CTA from "./props/CTA"
@@ -96,11 +99,7 @@ class Show extends React.Component {
         babyClass: "hidden",
         foregroundChildren: (
           <div id="props">
-            <CTA>
-              <p>Thursdays</p>
-              <p>Premiering 9/17 @ <a href="https://www.facebook.com/events/626771907981587" target="_blank">WordHack</a></p>{/* <p>Starting 9/24</p> */}
-              <p>Be reborn</p>
-            </CTA>
+            <CTA />
           </div>
         ),
       },
@@ -319,7 +318,7 @@ class Show extends React.Component {
       },
     ];
 
-    let {scene, mode} = this.props;
+    let {scene, mode, messages, newParticipantEvent} = this.props;
     scene = Math.max(0,scene); // Render 0, if below
     scene = Math.min(scenes.length-1,scene); // Render last scene, if above
 
@@ -351,7 +350,7 @@ class Show extends React.Component {
 
         {/* <div id="scene-name" className="-pointer-none">{currentScene.name}...</div> */}
 
-          <h1 id="title" className="-pointer-none">HOLY SPACE . BABY</h1>
+          <h1 id="title" className="-pointer-none">www . HOLY SPACE . BABY</h1>
 
         {typeof currentScene.backgroundChildren !== 'undefined' && currentScene.backgroundChildren}
 
@@ -376,9 +375,9 @@ class Show extends React.Component {
 
         <div id="funk-overlay" />
 
-        {(typeof currentScene.teleprompter !== 'undefined' && mode==="performer") && <div id="teleprompter">{currentScene.teleprompter}</div>}
+        <Chat newParticipantEvent={newParticipantEvent} messages={messages} />
 
-        {/* Trigger warnings */}
+        {(typeof currentScene.teleprompter !== 'undefined' && mode==="performer") && <div id="teleprompter">{currentScene.teleprompter}</div>}
         
       </div>
     );
