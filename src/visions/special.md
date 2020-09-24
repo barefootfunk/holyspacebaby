@@ -1,8 +1,8 @@
 ---
 title: Special
-featuredimage: /img/tophy2.webp
-heartChoice: Lies!
+featuredimage: /img/trophy.webp
+heartChoice: Lies! All are equal.
 mindChoice: ""
-chaosChoice: Accept
+chaosChoice: Feel smug
 ---
 Congratulations! Only, rare, special people choose this portal.  You are far more special than anybody else.
