@@ -5,4 +5,4 @@ heartChoice: Beautiful
 mindChoice: Unknowable
 chaosChoice: Hideous
 ---
-Excuse me, little baby.  What do I look like?
+Excuse me, little one. If it's not too much trouble.... um... what do I look like?
