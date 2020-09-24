@@ -48,7 +48,7 @@ export default class BassMatrix extends React.Component {
           1
         ],
         "phase": 0,
-        "type": "sine4"
+        "type": "square6"
       }
     }).toDestination();
   }
@@ -58,7 +58,7 @@ export default class BassMatrix extends React.Component {
   }
   render() {
 
-    const notes = ['E2','B1','A1','D2'];
+    const notes = ['Ab2','F2','A2','Bb2',];
 
     return (
       <div id="bass-matrix" className="button-matrix">
