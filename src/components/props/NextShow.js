@@ -3,12 +3,17 @@ import Countdown from 'react-countdown';
 import { DateTime } from 'luxon';
 
 export default class NextShow extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.showDate = DateTime.local().endOf('hour').toISO();
+  }
   renderer = ({ days, hours, minutes, seconds, completed }) => {
     function twoDigits(n){
       return (n < 10 ? "0" : "") + n;
     }
 
-    if (completed) {
+    if (completed || minutes > 10) { // If +10 minutes, the clock rolled over somehow.
       // Render a completed state
       return <span id="show-countdown">Now!</span>;
     } else {
@@ -18,10 +23,8 @@ export default class NextShow extends React.Component {
     }
   };
   render() {
-    const showDate = DateTime.local().endOf('hour').toISO();
-    console.log(showDate);
     return <Countdown
-        date={showDate}
+        date={this.showDate}
         renderer={this.renderer}
     />
   }
