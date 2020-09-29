@@ -387,7 +387,7 @@ class Show extends React.Component {
 
         <Chat newParticipantEvent={newParticipantEvent} messages={messages} color={babyColor}/>
 
-        {(typeof currentScene.teleprompter !== 'undefined' && mode==="performer") && <div id="teleprompter">{currentScene.name}{currentScene.teleprompter}<span style={{color: 'red'}}>{nextScene.name}</span></div>}
+        {(mode==="performer") && <div id="teleprompter">{currentScene.name}{currentScene.teleprompter}<span style={{color: 'red'}}>{nextScene.name}</span></div>}
         
       </div>
     );
