@@ -28,6 +28,17 @@
     opacity: 0;
   }
 
+  &.corner {
+    // border: 1px solid red;
+    top: 0;
+    right: 0;
+    left: auto;
+    transform: translate(23%,-20%);
+    .sizing-wrap{
+      transform: scale(0.5);
+    }
+  }
+
   &.big {
     .sizing-wrap{
       transform: scale(2);

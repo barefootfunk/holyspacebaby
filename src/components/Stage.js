@@ -19,6 +19,7 @@ export default class Stage extends React.Component {
       connected: false,
       participantCount: 0,
       messages: [],
+      responses: {},
     };
 
   }
@@ -108,13 +109,13 @@ export default class Stage extends React.Component {
 
 
   render () {
-    const {scene, connected, participantCount, messages} = this.state;
+    const {scene, connected, participantCount, messages, responses} = this.state;
     const {mode} = this.props;
 
     return (
       <div id="stage">
 
-        <Show scene={scene} mode={mode} newParticipantEvent={this.newParticipantEvent} messages={messages}/>
+        <Show scene={scene} mode={mode} newParticipantEvent={this.newParticipantEvent} messages={messages} responses={responses}/>
 
         {mode==="performer" && (
           <React.Fragment>
