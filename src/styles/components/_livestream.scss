@@ -12,7 +12,7 @@
   left: 50%;
   line-height: 0;
   position: fixed;
-  transition: opacity 1s;
+  transition: opacity 1s, top 1s, left 1s, transform 1s;
   transform: translate(-50%,-50%);
   
   // --livestream-width: 70vw;
@@ -31,9 +31,8 @@
   &.corner {
     // border: 1px solid red;
     top: 0;
-    right: 0;
-    left: auto;
-    transform: translate(23%,-20%);
+    left: 0;
+    transform: translate(-23%,-20%);
     .sizing-wrap{
       transform: scale(0.5);
     }
@@ -44,13 +43,19 @@
       transform: scale(2);
     }
   }
+  &.tiny {
+    // opacity: 0.8;
+    .sizing-wrap{
+      transform: scale(0.5);
+    }
+  }
 
   .animation-wrap {
     animation: livestream-hover 8s infinite alternate;
   }
 
   .sizing-wrap{
-    transform: scale(0.9);
+    transform: scale(0.8);
     transition: transform 0.5s;
   }
 

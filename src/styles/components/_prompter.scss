@@ -1,0 +1,102 @@
+#prompt {
+  display: flex;
+  @include text-box;
+  justify-content: center;
+  padding: 20px;
+  input, button {
+    @include font-display;
+    color: white;
+    border: 2px solid white;
+    background: black;
+    border-radius: 3px;
+    padding: 0em 0.3em;
+  }
+  button {
+    @include button-hover;
+    margin-left: 10px;
+  }
+
+  input[type="text"] {
+    // width: 200px;
+  }
+}
+
+@keyframes float-to-position {
+  0% {
+    transform: translate(50vw,110vh);
+  }
+  100% {
+  }
+}
+
+#prompter-responses .response  {
+  @include ha;
+  // @include mask(black);
+  padding: 0;
+  opacity: 0.4;
+  border: none;
+  outline: none;
+  color: white;
+  display: inline-block;
+  cursor: pointer;
+  position: fixed;
+  text-align: center;
+  line-height: 0.5em;
+  // overflow-y: hidden;
+  background: transparent;
+  // border: 1px solid white;
+  // transition: transform 8s linear;
+  animation: float-to-position 3s linear;
+  transition: transform 8s linear, opacity 0.2s;
+  // background: red;
+  text-shadow: 0px 0px 3px black, 0px 0px 8px black, 0px 0px 8px black, 0px 0px 15px black;
+
+
+  background: radial-gradient(black 0%, transparent 70%);
+
+  &:hover {
+    // -webkit-text-stroke: 1px black;
+    opacity: 1;
+  }
+
+  &:active {
+    color: var(--baby-color);
+    // transform: scale(2);
+    text-shadow: 0px 0px 3px var(--baby-color), 0px 0px 8px var(--baby-color), 0px 0px 8px var(--baby-color), 0px 0px 15px var(--baby-color);
+
+  }
+}
+
+@keyframes portal-open {
+  0% {
+    transform: scale(0.1);
+    opacity: 0.2;
+  }
+  100% {
+    // opacity: 0.8;
+  }
+}
+
+#vision {
+  @include ha;
+  // @include mask(var(--baby-color));
+  // &::before {
+  //   z-index: -1;
+  //   // position: fixed;
+  // }
+  top: 5%;
+  left: 5%;
+  // transform: translate(-50%,-50%);
+  z-index: -1;
+  width: 90%;
+  height: 90%;
+  position: fixed;
+  background-size: auto 70%;
+  background-position: left center;
+  animation: portal-open 5s forwards;
+  border-radius: 50%;
+  box-shadow:
+  // 0 0 60px 30px #fff,  /* inner white */
+  0 0 20px var(--baby-color); /* middle magenta */
+  // 0 0 140px 90px #0ff; /* outer cyan */
+}

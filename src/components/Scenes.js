@@ -14,6 +14,7 @@ import ClickSound from "./props/ClickSound"
 import CountdownTimer from "./props/CountdownTimer"
 import BabyColorPicker from "./props/BabyColorPicker"
 import FunkBottle from "./props/FunkBottle"
+import VideoBg from "./props/VideoBg"
 import BassMatrix from "./props/BassMatrix"
 import Prompter from "./props/Prompter"
 
@@ -26,8 +27,28 @@ const BULLETIN = `
 `;
 const GOSPEL = '"Gospel Passage here"';
 const GOSPEL_SOURCE = 'Book of Cowboy Jobe 7:18-22';
-const CALM_BGS = ['calm1.mp4'];
-const FLYING_BGS = ['flying1.mp4'];
+const CALM_BGS = [
+  'calm1.mp4',
+  'calm2.mp4',
+  'calm3.mp4',
+];
+const FLIGHT_BGS = [
+  'flight1.mp4',
+  'flight2.mp4',
+  'flight3.mp4',
+  'flight4.mp4',
+  'flight5.mp4',
+  'flight6.mp4',
+  'flight7.mp4',
+  'flight8.mp4',
+  'flight9.mp4',
+  'flight10.mp4',
+  'flight11.mp4',
+  'flight12.mp4',
+  'flight13.mp4',
+  'flight14.mp4',
+  'flight15.mp4',
+];
 
 // Twitch
 // This has to be shut off for gatsby build because of breaking reference to window
@@ -67,11 +88,58 @@ class Show extends React.Component {
       babyClass: "hidden",
       foregroundChildren: (
         <React.Fragment>
-          {/* <VideoBg srcs={['campfire.mp4']}/> */}
+          <VideoBg key='campfire' srcs={['campfire.mp4']}/>
           <CTA />
         </React.Fragment>
       ),
     };
+
+    function visionScene(num,question,placeholder,gif) {
+      return {
+        name: `Vision ${num}`,
+        livestream: "tiny",
+        babyClass: "flight",
+        foregroundChildren: (
+          <React.Fragment>
+            <VideoBg key={`flight${num}`} srcs={FLIGHT_BGS}/>
+            <Prompter 
+              id={`vision${num}`}
+              key={`prompt-vision${num}`}
+              prompt={question}
+              placeholder={placeholder}
+              newParticipantEvent={newParticipantEvent} 
+              responses={responses} 
+              mode={mode}
+              soundMode='sample'
+              visionSrc={`/img/${gif}.webp`}
+            />
+          </React.Fragment>
+        ),
+      }
+    }
+
+    function meditationScene(num,question,placeholder) {
+      return {
+        name: `Meditation ${num}`,
+        livestream: "tiny",
+        foregroundChildren: (
+          <React.Fragment>
+            <VideoBg key={`calm${num}`} srcs={CALM_BGS} />
+            <VideoBg key={`fire${num}`} srcs={['campfire-close.mp4']} style={{opacity: num*0.2}} />
+            <Prompter 
+              id={`meditation${num}`}
+              key={`prompt-meditation${num}`}
+              prompt={question}
+              placeholder={placeholder}
+              newParticipantEvent={newParticipantEvent} 
+              responses={responses} 
+              mode={mode}
+              soundMode='synth'
+            />
+          </React.Fragment>
+        ),
+      };
+    }
 
     const scenes = [
       homepage,
@@ -81,7 +149,7 @@ class Show extends React.Component {
         babyClass: "hidden",
         backgroundChildren: (
           <React.Fragment>
-            {/* <VideoBg srcs={['campfire.mp4']}/> */}
+            <VideoBg key='campfire' srcs={['campfire.mp4']}/>
             <div className="layout-center -no-pointer">
               <p>Cowboy Elijah will appear just before 7p CST today.</p>
             </div>
@@ -97,7 +165,7 @@ class Show extends React.Component {
         babyClass: "hidden",
         backgroundChildren: (
           <React.Fragment>
-            {/* <VideoBg srcs={['campfire.mp4']}/> */}
+            <VideoBg key='campfire' srcs={['campfire.mp4']}/>
             <CountdownTimer />
             <div className="layout-top -no-pointer">
               <p>Mic check!</p>
@@ -124,7 +192,7 @@ class Show extends React.Component {
         babyClass: "hidden",
         foregroundChildren: (
           <React.Fragment>
-            {/* <VideoBg srcs={['campfire-close.mp4']}/> */}
+            <VideoBg key='campfire-close' srcs={['campfire-close.mp4']}/>
             <div className="layout-top-edge -no-pointer">
               <p style={{fontSize: '2em'}}>Tonight's theme: "{THEME}"</p>
             </div>
@@ -139,17 +207,14 @@ class Show extends React.Component {
       },
       {
         name: 'Death',
-        livestream: "corner",
+        livestream: "hidden",
+        babyClass: "hidden",
         backgroundChildren: (
           <React.Fragment>   
             {/* Black BG */} 
-            <Prompter 
-              id="death" 
-              prompt='You are now dead. How did you die?'
-              placeholder='Type a fun death'
-              newParticipantEvent={newParticipantEvent} 
-              responses={responses} 
-            />
+            <div className="layout-center -no-pointer">
+              <p>You are dead.</p>
+            </div>
           </React.Fragment>
         )
       },
@@ -159,160 +224,87 @@ class Show extends React.Component {
           YOU ARE REBORN
           CUSTOMIZE
           `,
-        livestream: "corner",
+        livestream: "tiny",
         backgroundChildren: (
           <React.Fragment>
-            {/* <VideoBg srcs={CALM_BGS}/> */}
             <BabyColorPicker setBabyColor={this.setBabyColor}/>
-            <FunkBottle incrementFunkLevel={this.incrementFunkLevel} />  
+            {/* <FunkBottle incrementFunkLevel={this.incrementFunkLevel} />   */}
             <div className="layout-top -no-pointer">
-              <p>You are reborn! And thirsty!</p>
+              <p>You are reborn!</p>
             </div>
             <div className="layout-bottom -no-pointer">
-              <p>Click to drink.</p>
+              <p>Customize your form.</p>
             </div>
+          </React.Fragment>
+        ),
+      },
+      {
+        name: "Name",
+        livestream: "tiny",
+        foregroundChildren: (
+          <React.Fragment>
+            <Prompter 
+              id="name" 
+              key="promt-name"
+              prompt='Name your holy space baby! (Others will see your response)'
+              placeholder='Not your real name (anonymous)'
+              newParticipantEvent={newParticipantEvent} 
+              responses={responses} 
+              mode={mode}
+              soundMode='sample'
+            />
           </React.Fragment>
         ),
       },
       {
         name: "Flight",
         babyClass: "flight",
-        livestream: "corner",
-        backgroundChildren: (
+        livestream: "tiny",
+        foregroundChildren: (
           <React.Fragment>
-            {/* <VideoBg srcs={FLIGHT_BGS}/> */}
-            <div className="layout-center -no-pointer">
-              <p>You fly at light speed! Witnessing</p>
+            <VideoBg key='flight0' srcs={FLIGHT_BGS}/>
+            <div className="layout-top -no-pointer">
+              <h1>VISIONS</h1>
+            </div>
+            <div className="layout-bottom -no-pointer">
+              <p>You fly at light speed! Witnessing many alternate universes.</p>
             </div>
           </React.Fragment>
         ),
       },
-      {
-        name: "Vision 1",
-        bgVideo: "vortex",
-        babyClass: "flight",
-        backgroundChildren: (
-          <React.Fragment>
-            {/* <VideoBg srcs={FLIGHT_BGS}/> */}
-            {/* <VisionPortal src='' /> */}
-            <Prompter 
-              id="vision1" 
-              prompt='Lorem Ipsum?'
-              placeholder='Type'
-              newParticipantEvent={newParticipantEvent} 
-              responses={responses} 
-            />
-          </React.Fragment>
-        ),
-      },
-      {
-        name: "Vision 2",
-        bgVideo: "vortex",
-        babyClass: "flight",
-        backgroundChildren: (
-          <React.Fragment>
-            {/* <VideoBg srcs={FLIGHT_BGS}/> */}
-            {/* <VisionPortal src='' /> */}
-            <Prompter 
-              id="vision2" 
-              prompt='Lorem Ipsum?'
-              placeholder='Type'
-              newParticipantEvent={newParticipantEvent} 
-              responses={responses} 
-            />
-          </React.Fragment>
-        ),
-      },
-      {
-        name: "Vision 3",
-        bgVideo: "vortex",
-        babyClass: "flight",
-        backgroundChildren: (
-          <React.Fragment>
-            {/* <VideoBg srcs={FLIGHT_BGS}/> */}
-            {/* <VisionPortal src='' /> */}
-            <Prompter 
-              id="vision3" 
-              prompt='Lorem Ipsum?'
-              placeholder='Type'
-              newParticipantEvent={newParticipantEvent} 
-              responses={responses} 
-            />
-          </React.Fragment>
-        ),
-      },
+      visionScene(1,'Silly Question...','Silly Answer (anonymous)','carrot'),
+      visionScene(2,'Silly Question...','Silly Answer (anonymous)','carrot'),
+      visionScene(3,'Silly Question...','Silly Answer (anonymous)','carrot'),
+      visionScene(4,'Silly Question...','Silly Answer (anonymous)','carrot'),
+      visionScene(5,'Silly Question...','Silly Answer (anonymous)','carrot'),
       {
         name: "Meditation Intro",
-        backgroundChildren: (
+        livestream: "hidden",
+        foregroundChildren: (
           <React.Fragment>
-            {/* <VideoBg srcs={CALM_BGS}/> */}
-            {/* <VideoBg srcs={['campfire-close.mp4'] style={{opacity: 0.2}}}/> */}
-            <Prompter 
-              id="meditation1" 
-              prompt='Lorem Ipsum?'
-              placeholder='Type'
-              newParticipantEvent={newParticipantEvent} 
-              responses={responses} 
-            />
+            <VideoBg key='calm0' srcs={CALM_BGS} />
+            <VideoBg key='fire0' srcs={['campfire-close.mp4']} style={{opacity: 0.1}} />
+            <div className="layout-top -no-pointer">
+              <h1>MEDITATION</h1>
+            </div>
+            <div className="layout-center -no-pointer">
+              <p>You float and ponder.</p>
+            </div>
           </React.Fragment>
         ),
       },
-      {
-        name: "Meditation 1",
-        backgroundChildren: (
-          <React.Fragment>
-            {/* <VideoBg srcs={CALM_BGS}/> */}
-            {/* <VideoBg srcs={['campfire-close.mp4'] style={{opacity: 0.2}}}/> */}
-            <Prompter 
-              id="meditation1" 
-              prompt='Lorem Ipsum?'
-              placeholder='Type'
-              newParticipantEvent={newParticipantEvent} 
-              responses={responses} 
-            />
-          </React.Fragment>
-        ),
-      },      
-      {
-        name: "Meditation 2",
-        backgroundChildren: (
-          <React.Fragment>
-            {/* <VideoBg srcs={CALM_BGS}/> */}
-            {/* <VideoBg srcs={['campfire-close.mp4'] style={{opacity: 0.2}}}/> */}
-            <Prompter 
-              id="meditation2" 
-              prompt='Lorem Ipsum?'
-              placeholder='Type'
-              newParticipantEvent={newParticipantEvent} 
-              responses={responses} 
-            />
-          </React.Fragment>
-        ),
-      },      
-      {
-        name: "Meditation 3",
-        backgroundChildren: (
-          <React.Fragment>
-            {/* <VideoBg srcs={CALM_BGS}/> */}
-            <Prompter 
-              id="meditation3" 
-              prompt='Lorem Ipsum?'
-              placeholder='Type'
-              newParticipantEvent={newParticipantEvent} 
-              responses={responses} 
-            />
-          </React.Fragment>
-        ),
-      },
+      meditationScene(1,'More Serious Question...','Answer (anonymous)'),
+      meditationScene(2,'More Serious Question...','Answer (anonymous)'),
+      meditationScene(3,'More Serious Question...','Answer (anonymous)'),
       {
         name: "Sermon",
         babyClass: "hidden",
         teleprompter: `
           SERMON, GOODBYE
         `,
-        backgroundChildren: (
+        foregroundChildren: (
           <React.Fragment>
-            {/* <VideoBg srcs={['campfire-close.mp4']}/> */}
+            <VideoBg key='fire5' srcs={['campfire-close.mp4']} />
             {/* <BestResponses /> */}
 
             {/* <div className="layout-top -no-pointer">
@@ -352,14 +344,6 @@ class Show extends React.Component {
         }}
       >
   
-        {/* {typeof currentScene.bgVideo !== 'undefined' && <video id="bg-video" className="bg-video" playsInline autoPlay muted loop key={currentScene.bgVideo}>
-          <source src={`/videos/${currentScene.bgVideo}.mp4`} type="video/mp4" />
-        </video>}
-
-        {typeof currentScene.bgVideoOverlay !== 'undefined' && <video id="bg-video-overlay" className="bg-video -overlay" playsInline autoPlay muted loop key={currentScene.bgVideoOverlay}>
-          <source src={`/videos/${currentScene.bgVideoOverlay}.mp4`} type="video/mp4" />
-        </video>} */}
-
         <h1 id="title" className="-pointer-none">HolySpaceBaby</h1>
 
         {typeof currentScene.backgroundChildren !== 'undefined' && currentScene.backgroundChildren}
