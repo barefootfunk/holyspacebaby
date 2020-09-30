@@ -11,53 +11,56 @@ const sampleLibrary = importAll(require.context('../../sounds/samples', false, /
 console.log(sampleLibrary);
 
 // this.synth = new Tone.Synth().toDestination();
-const SYNTH = new Tone.MonoSynth({
-  "volume": 3,
-  "detune": 0,
-  "portamento": 0.2,
-  "envelope": {
-    "attack": 1,
-    "attackCurve": "linear",
-    "decay": 0,
-    "decayCurve": "exponential",
-    "release": 30,
-    "releaseCurve": "exponential",
-    "sustain": 1
-  },
-  "filter": {
-    "Q": 0,
-    "detune": 0,
-    "frequency": 5000,
-    "gain": 0,
-    "rolloff": -12,
-    "type": "lowpass"
-  },
-  "filterEnvelope": {
-    "attack": 0.001,
-    "attackCurve": "linear",
-    "decay": 0.7,
-    "decayCurve": "exponential",
-    "release": 0.8,
-    "releaseCurve": "exponential",
-    "sustain": 0.1,
-    "baseFrequency": 300,
-    "exponent": 2,
-    "octaves": 4
-  },
-  "oscillator": {
-    "detune": 0,
-    "frequency": 440,
-    "partialCount": 4,
-    "partials": [
-      1,
-      1,
-      1,
-      1
-    ],
-    "phase": 0,
-    "type": "sine4"
-  }
-}).toDestination();
+const SYNTH = 
+  typeof window !== `undefined` ? 
+    new Tone.MonoSynth({
+      "volume": 3,
+      "detune": 0,
+      "portamento": 0.2,
+      "envelope": {
+        "attack": 1,
+        "attackCurve": "linear",
+        "decay": 0,
+        "decayCurve": "exponential",
+        "release": 30,
+        "releaseCurve": "exponential",
+        "sustain": 1
+      },
+      "filter": {
+        "Q": 0,
+        "detune": 0,
+        "frequency": 5000,
+        "gain": 0,
+        "rolloff": -12,
+        "type": "lowpass"
+      },
+      "filterEnvelope": {
+        "attack": 0.001,
+        "attackCurve": "linear",
+        "decay": 0.7,
+        "decayCurve": "exponential",
+        "release": 0.8,
+        "releaseCurve": "exponential",
+        "sustain": 0.1,
+        "baseFrequency": 300,
+        "exponent": 2,
+        "octaves": 4
+      },
+      "oscillator": {
+        "detune": 0,
+        "frequency": 440,
+        "partialCount": 4,
+        "partials": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "phase": 0,
+        "type": "sine4"
+      }
+    }).toDestination() 
+    : null;
 
 class Response extends React.Component {
   constructor(props) {
