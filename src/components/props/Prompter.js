@@ -226,7 +226,7 @@ export default class Prompter extends React.Component {
 
   render () {
     // const {messages} = this.props;
-    const {id, responses, prompt, placeholder, newParticipantEvent, soundMode, mode, visionSrc} = this.props;
+    const {id, responses, prompt, placeholder, newParticipantEvent, soundMode, mode, visionSrc, buttonText} = this.props;
     const {currentResponse, submitted, error} = this.state;
     const promptResponses = typeof responses[id] !== 'undefined' ? responses[id] : [];
 
@@ -287,9 +287,9 @@ export default class Prompter extends React.Component {
                     value={currentResponse} 
                     onChange={this.handleChange} 
                     placeholder={placeholder}
-                    maxLength="50"
+                    maxLength="100"
                   />
-                  <input type="submit" value="Answer!"/>
+                  <input type="submit" value={buttonText}/>
                 </form>
                   <p style={{color: 'red'}}>{error}</p>
               </div>

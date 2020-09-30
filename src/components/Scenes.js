@@ -7,7 +7,6 @@ import slugify from 'slugify';
 import Chat from "./Chat"
 
 // Props
-import Visions from "./props/Visions"
 import CTA from "./props/CTA"
 import HolySpaceBaby from "./props/HolySpaceBaby"
 import ClickSound from "./props/ClickSound"
@@ -15,18 +14,16 @@ import CountdownTimer from "./props/CountdownTimer"
 import BabyColorPicker from "./props/BabyColorPicker"
 import FunkBottle from "./props/FunkBottle"
 import VideoBg from "./props/VideoBg"
-import BassMatrix from "./props/BassMatrix"
 import Prompter from "./props/Prompter"
 
 // Sounds
 import cheer1Sound from '../sounds/cheer1.mp3';
 
-const THEME = 'boundaries';
-const BULLETIN = `
-  Church Bulletin content
-`;
-const GOSPEL = '"Gospel Passage here"';
-const GOSPEL_SOURCE = 'Book of Cowboy Jobe 7:18-22';
+
+// Twitch
+// This has to be shut off for gatsby build because of breaking reference to window
+const ReactTwitchEmbedVideo = typeof window !== `undefined` ? require("react-twitch-embed-video") : null
+
 const CALM_BGS = [
   'calm1.mp4',
   'calm2.mp4',
@@ -50,9 +47,52 @@ const FLIGHT_BGS = [
   'flight15.mp4',
 ];
 
-// Twitch
-// This has to be shut off for gatsby build because of breaking reference to window
-const ReactTwitchEmbedVideo = typeof window !== `undefined` ? require("react-twitch-embed-video") : null
+
+// CONTENT
+const THEME = 'unfinished';
+
+const BULLETIN = `Church Bulletin content`;
+
+const VISION_GIF_1         = "finish-me.webp";
+const VISION_QUESTION_1    = "My creator never completed me! I do not know my purpose!"; 
+const VISION_PLACEHOLDER_1 = "Type a calling";
+const VISION_BUTTON_1      = "Advise!";
+
+const VISION_GIF_2         = "pug-dog-bride.jpg";
+const VISION_QUESTION_2    = "Today is your wedding and you forgot to write vows! Wing it!"; 
+const VISION_PLACEHOLDER_2 = "Type a vow";
+const VISION_BUTTON_2      = "Vow!";
+
+const VISION_GIF_3         = "robot.webp";
+const VISION_QUESTION_3    = "I am programming myself.  QUICKLY.  Give me a thought!"; 
+const VISION_PLACEHOLDER_3 = "Type a thought";
+const VISION_BUTTON_3      = "Give!";
+
+const VISION_GIF_4         = "chimp-lament.webp";
+const VISION_QUESTION_4    = "\"I'll never finish my symphony.\""; 
+const VISION_PLACEHOLDER_4 = "Type encouragement";
+const VISION_BUTTON_4      = "Coach!";
+
+const VISION_GIF_5         = "crab.webp";
+const VISION_QUESTION_5    = "If crab stops typing her novel, the bomb will detonate. Hurry! Give her the next sentence!"; 
+const VISION_PLACEHOLDER_5 = "Type a sentence";
+const VISION_BUTTON_5      = "Suggest!";
+
+
+const MEDIATION_QUESTION_1    = "What is something you DID finish?";
+const MEDIATION_PLACEHOLDER_1 = "Answer Anonymously"; 
+const MEDIATION_BUTTON_1      = "Answer"; 
+
+const MEDIATION_QUESTION_2    = "What is something you haven't finished?";
+const MEDIATION_PLACEHOLDER_2 = "Answer Anonymously"; 
+const MEDIATION_BUTTON_2      = "Answer"; 
+
+const MEDIATION_QUESTION_3    = "Why did you stop?";
+const MEDIATION_PLACEHOLDER_3 = "Answer Anonymously"; 
+const MEDIATION_BUTTON_3      = "Answer"; 
+
+const GOSPEL = '"Some of the best things in life are unfini"';
+const GOSPEL_SOURCE = 'Book of Cowboy Jobe 7:18-18.5';
 
 class Show extends React.Component {
 
@@ -94,7 +134,7 @@ class Show extends React.Component {
       ),
     };
 
-    function visionScene(num,question,placeholder,gif) {
+    function visionScene(num,question,placeholder,buttonText,gif) {
       return {
         name: `Vision ${num}`,
         livestream: "tiny",
@@ -110,15 +150,16 @@ class Show extends React.Component {
               newParticipantEvent={newParticipantEvent} 
               responses={responses} 
               mode={mode}
+              buttonText={buttonText}
               soundMode='sample'
-              visionSrc={`/img/${gif}.webp`}
+              visionSrc={`/img/${gif}`}
             />
           </React.Fragment>
         ),
       }
     }
 
-    function meditationScene(num,question,placeholder) {
+    function meditationScene(num,question,placeholder,buttonText) {
       return {
         name: `Meditation ${num}`,
         livestream: "tiny",
@@ -134,6 +175,7 @@ class Show extends React.Component {
               newParticipantEvent={newParticipantEvent} 
               responses={responses} 
               mode={mode}
+              buttonText={buttonText}
               soundMode='synth'
             />
           </React.Fragment>
@@ -272,11 +314,11 @@ class Show extends React.Component {
           </React.Fragment>
         ),
       },
-      visionScene(1,'Silly Question...','Silly Answer (anonymous)','carrot'),
-      visionScene(2,'Silly Question...','Silly Answer (anonymous)','carrot'),
-      visionScene(3,'Silly Question...','Silly Answer (anonymous)','carrot'),
-      visionScene(4,'Silly Question...','Silly Answer (anonymous)','carrot'),
-      visionScene(5,'Silly Question...','Silly Answer (anonymous)','carrot'),
+      visionScene(1,VISION_QUESTION_1,VISION_PLACEHOLDER_1,VISION_BUTTON_1,VISION_GIF_1),
+      visionScene(2,VISION_QUESTION_2,VISION_PLACEHOLDER_2,VISION_BUTTON_2,VISION_GIF_2),
+      visionScene(3,VISION_QUESTION_3,VISION_PLACEHOLDER_3,VISION_BUTTON_3,VISION_GIF_3),
+      visionScene(4,VISION_QUESTION_4,VISION_PLACEHOLDER_4,VISION_BUTTON_4,VISION_GIF_4),
+      visionScene(5,VISION_QUESTION_5,VISION_PLACEHOLDER_5,VISION_BUTTON_5,VISION_GIF_5),
       {
         name: "Meditation Intro",
         livestream: "hidden",
@@ -293,9 +335,9 @@ class Show extends React.Component {
           </React.Fragment>
         ),
       },
-      meditationScene(1,'More Serious Question...','Answer (anonymous)'),
-      meditationScene(2,'More Serious Question...','Answer (anonymous)'),
-      meditationScene(3,'More Serious Question...','Answer (anonymous)'),
+      meditationScene(1,MEDIATION_QUESTION_1,MEDIATION_PLACEHOLDER_1,MEDIATION_BUTTON_1),
+      meditationScene(2,MEDIATION_QUESTION_2,MEDIATION_PLACEHOLDER_2,MEDIATION_BUTTON_2),
+      meditationScene(3,MEDIATION_QUESTION_3,MEDIATION_PLACEHOLDER_3,MEDIATION_BUTTON_3),
       {
         name: "Sermon",
         babyClass: "hidden",
@@ -307,12 +349,12 @@ class Show extends React.Component {
             <VideoBg key='fire5' srcs={['campfire-close.mp4']} />
             {/* <BestResponses /> */}
 
-            {/* <div className="layout-top -no-pointer">
+            <div className="layout-top -no-pointer">
               <p>{GOSPEL}</p>
             </div>
             <div className="layout-bottom -no-pointer">
               <p>{GOSPEL_SOURCE}</p>
-            </div> */}
+            </div>
           </React.Fragment>
         ),
       },
@@ -371,7 +413,7 @@ class Show extends React.Component {
 
         <Chat newParticipantEvent={newParticipantEvent} messages={messages} color={babyColor}/>
 
-        {(mode==="performer") && <div id="teleprompter">{currentScene.name}{currentScene.teleprompter}<span style={{color: 'red'}}>{nextScene.name}</span></div>}
+        {(mode==="performer") && <div id="teleprompter">{currentScene.name}{currentScene.teleprompter}<br/><span style={{color: 'red'}}>{nextScene.name}</span></div>}
         
       </div>
     );
