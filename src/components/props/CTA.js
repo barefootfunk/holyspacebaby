@@ -59,9 +59,7 @@ const CTA = (props) => {
 
       <div className="layout-center">
         {typeof props.children !== 'undefined' ? props.children : (<React.Fragment>
-          <p>Thursdays 7pm CST</p>
-          <p>Come to this page</p>
-          <p>Be reborn</p>
+          <p>Cowboy Elijah will appear in the flames just before 7p CST this Thursday.</p>
         </React.Fragment>)}
         <div className="mailing-list">
         <MailchimpSubscribe

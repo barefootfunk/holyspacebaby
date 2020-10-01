@@ -195,7 +195,7 @@ class Show extends React.Component {
           <React.Fragment>
             <VideoBg key='campfire' srcs={['campfire.mp4']}/>
             <div className="layout-center -no-pointer">
-              <p>Cowboy Elijah will appear just before 7p CST today to reincarnate you.</p>
+              <p>Cowboy Elijah will appear in the flames here just before 7p CST today to reincarnate you.</p>
             </div>
           </React.Fragment>
         ),
