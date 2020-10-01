@@ -8,11 +8,11 @@ export default class FunkBottle extends React.Component {
 
 
     return (
-      <div id="funk-bottle">
+      <div className={`funk-bottle -${this.props.bottleName}`}>
         <ClickSound sound={gulp1Sound} keyString="f">
           <button 
             style={{backgroundImage: `url(${funkBottleImage})`}}
-            onClick={() => {this.props.incrementFunkLevel()}} 
+            onClick={() => {this.props.onDrink()}} 
           />
         </ClickSound>
       </div>

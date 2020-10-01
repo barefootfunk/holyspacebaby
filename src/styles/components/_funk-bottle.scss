@@ -1,28 +1,40 @@
-#funk-bottle {
-  position: 'absolute';
-  top: 0;
-  left: 0;
+.funk-bottle {
   z-index: -1; 
   user-select: 'none';
+  position: fixed;
   display: inline-block;
   transition: transform 0.2s;
-  &:hover {
-    transform: translate(5%,5%);
+
+  &.-funk {
+    top: 0;
+    left: 0;
+    transform: rotate(45deg);
+  }
+
+  &.-color {
+    top: 0;
+    right: 0;
+    transform: rotate(135deg);
   }
 
   button {
-    background: transparent;
-    background-size: cover;
-    display: inline-block;
     border: 0;
     outline: 0;
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 150px;
     cursor: pointer;
+    display: inline-block;
+    background: transparent;
+    background-size: contain;
     transition: transform 0.2s;
+    background-repeat: no-repeat;
+
+    &:hover {
+      transform: scale(1.1);
+    }
 
     &:active {
-      transform: scale(1.2);
+      transform: scale(1.4);
     }
   }
 }

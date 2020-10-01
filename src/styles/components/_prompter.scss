@@ -33,7 +33,7 @@
   @include ha;
   // @include mask(black);
   padding: 0;
-  opacity: 0.4;
+  opacity: 0.3;
   border: none;
   outline: none;
   color: white;
@@ -49,7 +49,7 @@
   animation: float-to-position 3s linear;
   transition: transform 8s linear, opacity 0.2s;
   // background: red;
-  text-shadow: 0px 0px 3px black, 0px 0px 8px black, 0px 0px 8px black, 0px 0px 15px black;
+  text-shadow: 0px 0px 3px black, 0px 0px 8px black, 0px 0px 8px black, 0px 0px 15px black, 0px 0px 15px black, 0px 0px 15px black;
 
 
   background: radial-gradient(black 0%, transparent 70%);
@@ -95,8 +95,11 @@
   background-position: left center;
   animation: portal-open 5s forwards;
   border-radius: 50%;
-  box-shadow:
-  // 0 0 60px 30px #fff,  /* inner white */
-  0 0 20px var(--baby-color); /* middle magenta */
-  // 0 0 140px 90px #0ff; /* outer cyan */
+  box-shadow: 0 0 20px var(--baby-color);
+}
+
+.prompt-box {
+
+  box-shadow:0 0 20px var(--baby-color);
+  font-size: 1.5em;
 }

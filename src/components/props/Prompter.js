@@ -102,8 +102,8 @@ class Response extends React.Component {
     });
 
     const notes = [
-      'Ab2','F2','C2','Bb2',
-      'Ab3','F3','C3','Bb3',
+      'Ab2','F2','C2','Bb2','Eb2',
+      'Ab3','F3','C3','Bb3','Eb3',
       'Ab4','F4','C4','Bb4',
     ];
 
@@ -201,7 +201,7 @@ export default class Prompter extends React.Component {
     if (cleanResponse !== response) {
       this.setState({
         currentResponse: cleanResponse,
-        error: 'No profanity, please!'
+        error: `Can we try PG-13? I wanna set a good example for the younger cats!`
       });
       return;
     }
@@ -243,29 +243,25 @@ export default class Prompter extends React.Component {
             />
           )
         }
-        {(submitted || mode==='performer') && 
-          (
-            <div id="prompter-responses">
-              {
-                promptResponses.map((response,index) => {
-                  return (
-                    <Response 
-                      promptId={id} 
-                      response={response} 
-                      newParticipantEvent={newParticipantEvent} 
-                      key={`response-${response.id}`} 
-                      soundMode={soundMode}
-                    />
-                  )
-                })
-              }
-            </div>
-          )
-        }
+        <div id="prompter-responses">
+          {
+            promptResponses.map((response,index) => {
+              return (
+                <Response 
+                  promptId={id} 
+                  response={response} 
+                  newParticipantEvent={newParticipantEvent} 
+                  key={`response-${response.id}`} 
+                  soundMode={soundMode}
+                />
+              )
+            })
+          }
+        </div>
         {(submitted && mode!=='performer') && 
           (
             <div className="layout-bottom -no-pointer">
-              <p>Click other people's answers to ponder them.</p>
+              <p>{soundMode==='sample' ? "These other people's answers. Click them to ponder." : "Click and hold other answers."}</p>
             </div> 
           )
         }
@@ -279,7 +275,7 @@ export default class Prompter extends React.Component {
         {(!submitted && mode!=='performer') && 
           (
             <React.Fragment>
-              <div className="layout-bottom">
+              <div className="layout-bottom prompt-box">
                 <p className="-no-pointer">{prompt}</p>
                 <form id="prompt" onSubmit={this.sendPromptResponse}>
                   <input 
@@ -291,7 +287,7 @@ export default class Prompter extends React.Component {
                   />
                   <input type="submit" value={buttonText}/>
                 </form>
-                  <p style={{color: 'red'}}>{error}</p>
+                  <p style={{color: 'red', fontSize: '0.5em'}}>{error}</p>
               </div>
             </React.Fragment>
           )

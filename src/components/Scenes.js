@@ -11,7 +11,6 @@ import CTA from "./props/CTA"
 import HolySpaceBaby from "./props/HolySpaceBaby"
 import ClickSound from "./props/ClickSound"
 import CountdownTimer from "./props/CountdownTimer"
-import BabyColorPicker from "./props/BabyColorPicker"
 import FunkBottle from "./props/FunkBottle"
 import VideoBg from "./props/VideoBg"
 import Prompter from "./props/Prompter"
@@ -51,24 +50,31 @@ const FLIGHT_BGS = [
 // CONTENT
 const THEME = 'unfinished';
 
-const BULLETIN = `Church Bulletin content`;
+const BULLETIN = `
+I'll be cancelling my office hours in 50% of all possible universes. Having office hours in 100% of the multiverse was getting exhausting. This felt like a good compromise.
+
+If you travel faster than light speed when in holy space baby form, your sould will arrive home before you left and will collide with your already existing soul.  Please do not do this.
+
+Lastly, you can register to vote
+
+`;
 
 const VISION_GIF_1         = "finish-me.webp";
 const VISION_QUESTION_1    = "My creator never completed me! I do not know my purpose!"; 
 const VISION_PLACEHOLDER_1 = "Type a calling";
 const VISION_BUTTON_1      = "Advise!";
 
-const VISION_GIF_2         = "pug-dog-bride.jpg";
-const VISION_QUESTION_2    = "Today is your wedding and you forgot to write vows! Wing it!"; 
-const VISION_PLACEHOLDER_2 = "Type a vow";
-const VISION_BUTTON_2      = "Vow!";
+const VISION_GIF_2         = "robot.webp";
+const VISION_QUESTION_2    = "I am still programming myself.  QUICKLY.  Give me a thought!"; 
+const VISION_PLACEHOLDER_2 = "Type a thought";
+const VISION_BUTTON_2      = "Give!";
 
-const VISION_GIF_3         = "robot.webp";
-const VISION_QUESTION_3    = "I am programming myself.  QUICKLY.  Give me a thought!"; 
-const VISION_PLACEHOLDER_3 = "Type a thought";
-const VISION_BUTTON_3      = "Give!";
+const VISION_GIF_3         = "pug-dog-bride.jpg";
+const VISION_QUESTION_3    = "It's your wedding! Oh no! You didn't finish your vows!"; 
+const VISION_PLACEHOLDER_3 = "Improvise a vow";
+const VISION_BUTTON_3      = "Vow!";
 
-const VISION_GIF_4         = "chimp-lament.webp";
+const VISION_GIF_4         = "pupper.gif";
 const VISION_QUESTION_4    = "\"I'll never finish my symphony.\""; 
 const VISION_PLACEHOLDER_4 = "Type encouragement";
 const VISION_BUTTON_4      = "Coach!";
@@ -79,47 +85,43 @@ const VISION_PLACEHOLDER_5 = "Type a sentence";
 const VISION_BUTTON_5      = "Suggest!";
 
 
-const MEDIATION_QUESTION_1    = "What is something you DID finish?";
+const MEDIATION_QUESTION_1    = "What is something you haven't finished?";
 const MEDIATION_PLACEHOLDER_1 = "Answer Anonymously"; 
 const MEDIATION_BUTTON_1      = "Answer"; 
 
-const MEDIATION_QUESTION_2    = "What is something you haven't finished?";
+const MEDIATION_QUESTION_2    = "Why did you stop?";
 const MEDIATION_PLACEHOLDER_2 = "Answer Anonymously"; 
 const MEDIATION_BUTTON_2      = "Answer"; 
 
-const MEDIATION_QUESTION_3    = "Why did you stop?";
-const MEDIATION_PLACEHOLDER_3 = "Answer Anonymously"; 
-const MEDIATION_BUTTON_3      = "Answer"; 
+// const MEDIATION_QUESTION_3    = "How does that feel?";
+// const MEDIATION_PLACEHOLDER_3 = "Answer Anonymously"; 
+// const MEDIATION_BUTTON_3      = "Answer"; 
 
-const GOSPEL = '"Some of the best things in life are unfini"';
+const GOSPEL = '"The best things in life are unfini"';
 const GOSPEL_SOURCE = 'Book of Cowboy Jobe 7:18-18.5';
+const SERMON = `
+Life is never finished
+You are never finished
+What in life is ever truly finished?
+And so if all things are unfinished, the best things are
+so maybe we oughta be a little less afraid of all that unfinished stuff
+And aren't works in progress fun?
+I sure hope so, because there aren't any other type of works....
+`
+
+// TODO rethink beginning
+// CHURCH bulletin
 
 class Show extends React.Component {
 
   constructor (props) {
     super(props);
     this.state = {
-      babyColor: 'lime',
+      babyColor: 0,
       funkLevel: 0,
     }
-
-    this.setBabyColor = this.setBabyColor.bind(this);
   }
-
-  setBabyColor(newBabyColor) {
-    this.setState({
-      babyColor: newBabyColor,
-    })
-  }
-  incrementFunkLevel = () => {
-    this.setState({
-      funkLevel: this.state.funkLevel + 1,
-    })
-  }
-
   render () {
-
-
     let {scene, mode, messages, newParticipantEvent, responses} = this.props;
 
     const homepage = {
@@ -193,7 +195,7 @@ class Show extends React.Component {
           <React.Fragment>
             <VideoBg key='campfire' srcs={['campfire.mp4']}/>
             <div className="layout-center -no-pointer">
-              <p>Cowboy Elijah will appear just before 7p CST today.</p>
+              <p>Cowboy Elijah will appear just before 7p CST today to reincarnate you.</p>
             </div>
           </React.Fragment>
         ),
@@ -221,15 +223,10 @@ class Show extends React.Component {
       {
         name: 'Welcome',
         teleprompter: `
-          [JAM]
-
-          WELCOME/INTROS
-
-          THEME
-
-          REINCARNATION
+          The name's...
+          I have summoned..
+          I will now kill you and ressurrect you...
         `,
-        bgVideo: "campfire2", //5 is also cool
         livestream: "big",
         babyClass: "hidden",
         foregroundChildren: (
@@ -240,22 +237,26 @@ class Show extends React.Component {
             </div>
             <div className="layout-bottom">
               {/* <Credits /> */}
-              <ClickSound sound={cheer1Sound}>
-                <button className="button">REJOICE BUTTON</button>
-              </ClickSound>
             </div>
           </React.Fragment>
         )
       },
       {
-        name: 'Death',
-        livestream: "hidden",
+        name: 'Dying',
+        teleprompter: ``,
+        livestream: "big",
         babyClass: "hidden",
-        backgroundChildren: (
-          <React.Fragment>   
-            {/* Black BG */} 
-            <div className="layout-center -no-pointer">
-              <p>You are dead.</p>
+        foregroundChildren: (
+          <React.Fragment>
+            <VideoBg key='campfire-intense' srcs={['campfire-intense.mp4']}/>
+            <div className="layout-top-edge -no-pointer">
+              <p style={{fontSize: '2em'}}>YOU ARE NOW DYING!</p>
+            </div>
+            <div className="layout-bottom">
+              {/* <Credits /> */}
+              <ClickSound sound={cheer1Sound}>
+                <button className="button">REJOICE BUTTON</button>
+              </ClickSound>
             </div>
           </React.Fragment>
         )
@@ -269,32 +270,15 @@ class Show extends React.Component {
         livestream: "tiny",
         backgroundChildren: (
           <React.Fragment>
-            <BabyColorPicker setBabyColor={this.setBabyColor}/>
-            {/* <FunkBottle incrementFunkLevel={this.incrementFunkLevel} />   */}
+            <VideoBg key='sparks' srcs={['sparks.mp4']} />
+            <FunkBottle bottleName="funk" onDrink={() => { this.setState({funkLevel: this.state.funkLevel + 1,}) }}  />  
+            <FunkBottle bottleName="color" onDrink={() => { this.setState({babyColor: this.state.babyColor + 1,}) }}  />  
             <div className="layout-top -no-pointer">
               <p>You are reborn!</p>
             </div>
             <div className="layout-bottom -no-pointer">
-              <p>Customize your form.</p>
+              <p>Drink the funk.</p>
             </div>
-          </React.Fragment>
-        ),
-      },
-      {
-        name: "Name",
-        livestream: "tiny",
-        foregroundChildren: (
-          <React.Fragment>
-            <Prompter 
-              id="name" 
-              key="promt-name"
-              prompt='Name your holy space baby! (Others will see your response)'
-              placeholder='Not your real name (anonymous)'
-              newParticipantEvent={newParticipantEvent} 
-              responses={responses} 
-              mode={mode}
-              soundMode='sample'
-            />
           </React.Fragment>
         ),
       },
@@ -306,10 +290,10 @@ class Show extends React.Component {
           <React.Fragment>
             <VideoBg key='flight0' srcs={FLIGHT_BGS}/>
             <div className="layout-top -no-pointer">
-              <h1>VISIONS</h1>
+              <h1>YOU FLY!</h1>
             </div>
             <div className="layout-bottom -no-pointer">
-              <p>You fly at light speed! Witnessing many alternate universes.</p>
+              <p>You will witness alternate universes. Be creative. Answer quickly.</p>
             </div>
           </React.Fragment>
         ),
@@ -321,32 +305,32 @@ class Show extends React.Component {
       visionScene(5,VISION_QUESTION_5,VISION_PLACEHOLDER_5,VISION_BUTTON_5,VISION_GIF_5),
       {
         name: "Meditation Intro",
-        livestream: "hidden",
+        livestream: "tiny",
         foregroundChildren: (
           <React.Fragment>
             <VideoBg key='calm0' srcs={CALM_BGS} />
             <VideoBg key='fire0' srcs={['campfire-close.mp4']} style={{opacity: 0.1}} />
             <div className="layout-top -no-pointer">
-              <h1>MEDITATION</h1>
+              <h1>YOU PONDER!</h1>
             </div>
-            <div className="layout-center -no-pointer">
-              <p>You float and ponder.</p>
+            <div className="layout-bottom -no-pointer">
+              <p>Halfway between worlds. You introspect.  Be as real as you are comfortable being.</p>
             </div>
           </React.Fragment>
         ),
       },
       meditationScene(1,MEDIATION_QUESTION_1,MEDIATION_PLACEHOLDER_1,MEDIATION_BUTTON_1),
       meditationScene(2,MEDIATION_QUESTION_2,MEDIATION_PLACEHOLDER_2,MEDIATION_BUTTON_2),
-      meditationScene(3,MEDIATION_QUESTION_3,MEDIATION_PLACEHOLDER_3,MEDIATION_BUTTON_3),
+      // meditationScene(3,MEDIATION_QUESTION_3,MEDIATION_PLACEHOLDER_3,MEDIATION_BUTTON_3),
       {
         name: "Sermon",
         babyClass: "hidden",
         teleprompter: `
-          SERMON, GOODBYE
+          ${SERMON}
         `,
         foregroundChildren: (
           <React.Fragment>
-            <VideoBg key='fire5' srcs={['campfire-close.mp4']} />
+            <VideoBg key='fire-sermon' srcs={['campfire-close.mp4']} />
             {/* <BestResponses /> */}
 
             <div className="layout-top -no-pointer">
@@ -375,12 +359,14 @@ class Show extends React.Component {
 
     const {babyColor, funkLevel} = this.state;
 
+    const babyColors = ['lime','red','orange','yellow','cyan','violet']
+
     return (
       <div 
         id={`scene-${slugify(currentScene.name, {lower: true})}`} 
         className="scene"
         style={{
-          '--baby-color': babyColor,
+          '--baby-color': babyColors[babyColor % babyColors.length],
           '--funk-level-normalized': 1-(1/Math.pow(((funkLevel)/50+1),2)),
           '--funk-level': funkLevel,
         }}
