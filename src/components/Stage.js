@@ -18,6 +18,7 @@ export default class Stage extends React.Component {
       scene: 0,
       connected: false,
       participantCount: 0,
+      rehearsal: false,
       messages: [],
       responses: {},
     };
@@ -109,7 +110,7 @@ export default class Stage extends React.Component {
 
 
   render () {
-    const {scene, connected, participantCount, messages, responses} = this.state;
+    const {scene, connected, participantCount, messages, responses, rehearsal} = this.state;
     const {mode} = this.props;
 
     return (
@@ -123,12 +124,17 @@ export default class Stage extends React.Component {
               <button id="prev-scene" onClick={() => {this.updateDirectorState({scene: scene-1})}}>Prev</button>
               <div id="scene-number">{scene}</div>
               <button id="next-scene" onClick={() => {this.updateDirectorState({scene: scene+1})}}>Next</button>
+
+              <button id="rehearsal-button" className={rehearsal?'-on':'-off'} onClick={() => {this.updateDirectorState({rehearsal: !rehearsal})}}>Reh</button>
             </div>
             <div id="participant-stats">{participantCount}</div>
           </React.Fragment>
         )}
 
-        {!connected && <div className="connecting-alert">Connecting... {/* https://www.davidhu.io/react-spinners/ */}</div>}
+
+        {rehearsal && <div id="rehearsing-alert">Currently practicing/rehearsing!<br/>Feel free to hang/watch.</div>}
+
+        {!connected && <div className="connecting-alert">Connecting...</div>}
       </div>
     );
   }

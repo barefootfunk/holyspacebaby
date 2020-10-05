@@ -40,6 +40,19 @@ $control-padding: 30px;
     width: $control-padding*4;
     margin-right: $control-padding;
   }
+
+  #rehearsal-button {
+    position: fixed;
+    top: 0;
+    left: 0;
+    font-size: 2em;
+    padding: 0;
+  
+    &.-on {
+      background: red;
+      color: white;
+    }
+  }  
 }
 
 #teleprompter {
@@ -71,4 +84,17 @@ $control-padding: 30px;
   pointer-events: none;
   border: 1px dotted red;
   translate: transformX(-50%);
+}
+
+
+#rehearsing-alert {
+  position: fixed;
+  background: red;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  padding: 0 0.2em;
+  border: 2px solid white;
+  opacity: 0.9;
+  text-align: center;
 }
