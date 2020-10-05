@@ -1,0 +1,9 @@
+#show-countdown {
+  position: fixed;
+  top: 0;
+  right: 0;
+  font-size: 2em;
+  @include media(md) {
+    font-size: 4em;
+  }
+}

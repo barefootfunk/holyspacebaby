@@ -15,14 +15,6 @@
   transition: opacity 1s, top 1s, left 1s, transform 1s;
   transform: translate(-50%,-50%);
   
-  // --livestream-width: 70vw;
-
-  // @include media(md)  {
-  //   --livestream-width: 50vw;
-  // }
-  // @include media(lg)  {
-  //   --livestream-width: 30vw;
-  // }
 
   &.hidden {
     opacity: 0;
@@ -40,13 +32,28 @@
 
   &.big {
     .sizing-wrap{
-      transform: scale(2);
+      transform: scale(1.2);
+      @include min-screen(400px) {
+        transform: scale(1.4);
+      }
+      @include min-screen(500px) {
+        transform: scale(1.6);
+      }
+      @include min-screen(600px) {
+        transform: scale(1.8);
+      }
+      @include media-big {
+        transform: scale(2);
+      }
     }
   }
   &.tiny {
     // opacity: 0.8;
     .sizing-wrap{
-      transform: scale(0.5);
+      transform: scale(0.7);
+      @include media-big {
+        transform: scale(0.5);
+      }
     }
   }
 
@@ -55,20 +62,32 @@
   }
 
   .sizing-wrap{
-    transform: scale(0.8);
+    transform: scale(1);
     transition: transform 0.5s;
   }
 
-  iframe {
-    width: 36vw;
+  #twitch-embed {
+    height: 0;
+    width: 90vw;
     line-height: 0;
-    height: calc(36vw * .56);
-
-    opacity: 0.7;
-    overflow: hidden;
+    max-width: 300px;
     position: relative;
-    border-radius: 20px;
+    padding-bottom: 56%;
 
-    box-shadow: 0 0 50px white, 0 0 5px white;
+    @include media-big {
+      max-width: 400px;
+    }
+
+    iframe {
+      top: 0;
+      left: 0;
+      width: 100%;
+      opacity: 0.7;
+      height: 100%;
+      overflow: hidden;
+      position: absolute;
+      border-radius: 20px;
+      box-shadow: 0 0 50px white, 0 0 5px white;
+    }
   }
 }

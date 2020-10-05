@@ -1,33 +1,46 @@
 #chat {
-  position: fixed;
-  bottom: 0;
   right: 0;
+  bottom: 0;
+  position: fixed;
 
-  input, button {
+  input {
     @include font-display;
     color: white;
-    border: 2px solid white;
-    background: black;
+    font-size: 1em;
     border-radius: 3px;
-    font-size: 0.6em;
     padding: 0em 0.3em;
+    background: black;
+    border: 2px solid white;
+
+    @include media(md) {
+      // transform: none;
+    }
   }
-  button {
+  input[type="submit"] {
     @include button-hover;
-    margin-left: 10px;
+    margin-left: 5px;
   }
 
   input[type="text"] {
-    width: 200px;
+    width: 9em;
     color: var(--baby-color);
+  }
+
+
+  transform-origin: 100% 100%;
+  transform: scale(0.6);
+  transition: transform .2s;
+  &:focus-within {
+    transform: none;
+    // border: 1px solid red;
   }
 }
 
 @keyframes float-away {
   0% {
-    transform: translate(0,0);
     opacity: 1;
     display: block;
+    transform: translate(0,0);
   }
   99% {
     opacity: 0.3;
@@ -40,11 +53,11 @@
 }
 
 #chat-messages .message {
-  position: fixed;
   bottom: 0;
-  font-size: 0.6em;
-  color: white;
   right: 10px;
+  color: white;
+  position: fixed;
+  font-size: 0.6em;
   pointer-events: none;
   animation: float-away 30s forwards linear;
   text-shadow:  0px 0px 3px black, 0px 0px 8px black;

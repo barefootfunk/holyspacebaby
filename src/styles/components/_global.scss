@@ -1,3 +1,23 @@
+
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+html {
+    @include font-display;
+    color: white;
+    font-size: 24px;
+    @include media-big {
+            font-size: 36px;
+        
+    }
+
+    -webkit-tap-highlight-color: transparent !important;
+}
+
 body {
     color: white;
     user-select: none;
@@ -8,6 +28,21 @@ body {
         &:hover {
             text-decoration-color: red;
         }
+    }
+}
+
+.scene {
+    h1,h2,h3,h4,h5,h6,p,.text-box {
+        @include font-display;
+        @include text-box;
+        display: inline-block;
+        width: 80vw;
+
+        max-width: 13em;
+        margin: auto;
+        // max-width: 700px;
+        text-align: center;
+        @include glow(white);
     }
 }
 

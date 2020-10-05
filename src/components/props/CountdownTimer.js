@@ -15,7 +15,7 @@ export default class CountdownTimer extends React.Component {
 
     if (completed || minutes > 10) { // If +10 minutes, the clock likely rolled over somehow.
       // Render a completed state
-      return <span id="show-countdown">Now!</span>;
+      return '' // <span id="show-countdown">Now!</span>;
     } else {
 
       // Render a countdown

@@ -42,23 +42,3 @@
     //   border: 2px solid white;
       background: rgba(black,0.7);
   }
-
-html {
-    @include font-display;
-    color: white;
-    font-size: 36px;
-    @include glow(white);
-}
-
-.scene {
-    h1,h2,h3,h4,h5,h6,p,.text-box {
-        @include font-display;
-        @include text-box;
-        display: inline-block;
-        max-width: 90vw;
-        margin: auto;
-        display: block;
-        // max-width: 700px;
-        text-align: center;
-    }
-}

@@ -21,7 +21,7 @@ const CustomForm = ({ status, message, onValidated }) => {
     <div
     >
       {status !== "success" && (
-        <React.Fragment>
+        <div id='mailing-list-form'>
           <input
             ref={node => (email = node)}
             type="email"
@@ -30,7 +30,7 @@ const CustomForm = ({ status, message, onValidated }) => {
           <button onClick={submit}>
             Join!
           </button>
-        </React.Fragment>
+        </div>
       )}
       {status === "sending" && <div className="mailing-list-alert -sending">sending...</div>}
       {status === "error" && (
@@ -44,7 +44,7 @@ const CustomForm = ({ status, message, onValidated }) => {
         />
       )}
       {!status && (
-        <p>(show info, news + exclusive content)</p>
+        <p>(reminders and exclusive sermons)</p>
       )}
     </div>
   );
@@ -59,7 +59,7 @@ const CTA = (props) => {
 
       <div className="layout-center">
         {typeof props.children !== 'undefined' ? props.children : (<React.Fragment>
-          <p>Cowboy Elijah will appear in the flames just before 7p CST this Thursday.</p>
+          <p>Cowboy Elijah will appear in these flames just before 7p CST this Thursday.</p>
         </React.Fragment>)}
         <div className="mailing-list">
         <MailchimpSubscribe

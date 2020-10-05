@@ -10,8 +10,25 @@
 }
 
 #holy-space-baby {
-  --baby-size: 8vw;
+  --baby-size: 20vw;
   --spin-time: 10s;
+
+  @include min-screen(400px) {
+    --baby-size: 18vw;
+    
+  }
+  @include min-screen(500px) {
+    --baby-size: 16vw;
+    
+  }
+  @include min-screen(600px) {
+    --baby-size: 12vw;
+    
+  }
+
+  @include media-big {
+    --baby-size: 8vw;
+  }
   
   @include ha;
   @include colorize-fills-and-lines(var(--baby-color,lime));

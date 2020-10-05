@@ -9,6 +9,11 @@
       max-width: 250px;
     }
 
+    #mailing-list-form {
+      display: flex;
+      justify-content: center;
+    }
+
     input[type="email"] {
       width: 200px;
       // font-family: courier;
@@ -28,7 +33,7 @@
     }
     button {
       @include button-hover;
-      margin-left: 10px;
+      margin-left: 5px;
     }
   }
 
@@ -53,30 +58,22 @@
 
 #decorative-baby {
   position: fixed;
-  opacity: 0.2;
+  opacity: 0.1;
   bottom: -5vh;
-  right: -20vh;
-  width: 80vh;
-  height: 80vh;
+  right: -10vh;
+  width: 50vh;
+  height: 50vh;
   transform: rotate(-35deg);
+  @include media(md) {
+    bottom: -5vh;
+    right: -20vh;
+    width: 80vh;
+    height: 80vh;
+  }
   #lines {
     fill: white;
   }
   #fills {
     fill: transparent;
   }
-}
-
-
-#weekly-promise {
-  @include text-box;
-  font-size: 0.5rem;
-  text-transform: uppercase;
-  display: inline-block;
-  position: absolute;
-  bottom: -2px;
-  left: 50%;
-  transform: translateX(-50%);
-  border: 0;
-  margin: 0;
 }

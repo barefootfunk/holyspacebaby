@@ -287,7 +287,7 @@ export default class Prompter extends React.Component {
                   />
                   <input type="submit" value={buttonText}/>
                 </form>
-                  <p style={{color: 'red', fontSize: '0.5em'}}>{error}</p>
+                  {/* <p style={{color: 'red', fontSize: '0.5em'}}>{error}</p> */}
               </div>
             </React.Fragment>
           )
