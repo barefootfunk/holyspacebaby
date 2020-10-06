@@ -51,37 +51,37 @@ const FLIGHT_BGS = [
 const THEME = 'beauty';
 
 const BULLETIN = `
-  Physics has destabilized
-
+  Physics has destabilized, Open rehearsal, Do not travel faster than light, Exclusive sermons to mailing list, and beware baauty-eating orbs.
 `;
 
-const VISION_GIF_1         = "hot-alien.gif";
-const VISION_QUESTION_1    = "Zeenorb is tired of conforming to human-formed, eurocentric, heteronormative standards of beauty.";
-const VISION_PLACEHOLDER_1 = "Type a compliment";
-const VISION_BUTTON_1      = "Compliment!";
 
-const VISION_GIF_2         = "violin.gif";
-const VISION_QUESTION_2    = "This AI takes a single word as inspiration and composes 10,000,000 symphonies with avg beauty of 2.3 kiloBeethovens.";
-const VISION_PLACEHOLDER_2 = "Type a word";
-const VISION_BUTTON_2      = "Input!";
+const VISION_GIF_1         = "violin.gif";
+const VISION_QUESTION_1    = "This AI takes a single word as inspiration and composes 10,000,000 symphonies with avg beauty of 1.3 kiloBeethovens.";
+const VISION_PLACEHOLDER_1 = "Type a word";
+const VISION_BUTTON_1      = "Input!";
 
-const VISION_GIF_3         = "brain.webp";
-const VISION_QUESTION_3    = "Even with superior brain, I do not understand beauty.  Please give examples!";
-const VISION_PLACEHOLDER_3 = "Type something beautiful";
-const VISION_BUTTON_3      = "For example!";
+const VISION_GIF_2         = "orbs.gif";
+const VISION_QUESTION_2    = "We Orbs feed on beauty.  Feed us or perish!";
+const VISION_PLACEHOLDER_2 = "Type a beautiful object";
+const VISION_BUTTON_2      = "Feed!";
 
-const VISION_GIF_4         = "";
-const VISION_QUESTION_4    = "Placeholder";
-const VISION_PLACEHOLDER_4 = "Type ...";
-const VISION_BUTTON_4      = "Submit!";
+const VISION_GIF_3         = "worm.webp";
+const VISION_QUESTION_3    = "I am the inspiration worm, mother of beauty, universal muse.  I invented art and love.";
+const VISION_PLACEHOLDER_3 = "Type praise";
+const VISION_BUTTON_3      = "Worship!";
 
-const VISION_GIF_5         = "";
-const VISION_QUESTION_5    = "Placeholder";
-const VISION_PLACEHOLDER_5 = "Type ...";
-const VISION_BUTTON_5      = "Submit!";
+const VISION_GIF_4         = "hot-alien.gif";
+const VISION_QUESTION_4    = "Zeenorb is tired of conforming to human-formed, eurocentric, heteronormative standards of beauty.";
+const VISION_PLACEHOLDER_4 = "Type encouragement";
+const VISION_BUTTON_4      = "Compliment!";
+
+const VISION_GIF_5         = "eyes.webp";
+const VISION_QUESTION_5    = "My sight sees all beauty.  Even that imperceptible to humans.  YOU are truly beautiful.";
+const VISION_PLACEHOLDER_5 = "Type a response";
+const VISION_BUTTON_5      = "Respond!";
 
 
-const MEDIATION_QUESTION_1    = "What is something beautiful in the world?";
+const MEDIATION_QUESTION_1    = "What sorts of beauty to people make?";
 const MEDIATION_PLACEHOLDER_1 = "Answer Anonymously"; 
 const MEDIATION_BUTTON_1      = "Answer"; 
 
@@ -89,14 +89,13 @@ const MEDIATION_QUESTION_2    = "What is something beautiful in your life?";
 const MEDIATION_PLACEHOLDER_2 = "Answer Anonymously"; 
 const MEDIATION_BUTTON_2      = "Answer"; 
 
-const MEDIATION_QUESTION_3    = "What is a beauty you can add?";
+const MEDIATION_QUESTION_3    = "What is a beauty you can make?";
 const MEDIATION_PLACEHOLDER_3 = "Answer Anonymously"; 
 const MEDIATION_BUTTON_3      = "Answer"; 
 
-const GOSPEL = '"The best things in life are unfini"';
-const GOSPEL_SOURCE = 'Book of Cowboy Jobe 7:18-18.5';
+const GOSPEL = '"Spacetime folds itself into beauty factories."';
+const GOSPEL_SOURCE = 'Book of Cowboy Jobe 15:12';
 const SERMON = `
-
 `
 
 // TODO rethink beginning
