@@ -55,7 +55,7 @@ const BULLETIN = `
 `;
 
 
-const VISION_GIF_1         = "violin.gif";
+const VISION_GIF_1         = "violin.webp";
 const VISION_QUESTION_1    = "This AI takes a single word as inspiration and composes 10,000,000 symphonies with avg beauty of 1.3 kiloBeethovens.";
 const VISION_PLACEHOLDER_1 = "Type a word";
 const VISION_BUTTON_1      = "Input!";
@@ -70,7 +70,7 @@ const VISION_QUESTION_3    = "I am the inspiration worm, mother of beauty, unive
 const VISION_PLACEHOLDER_3 = "Type praise";
 const VISION_BUTTON_3      = "Worship!";
 
-const VISION_GIF_4         = "hot-alien.gif";
+const VISION_GIF_4         = "hot-alien.webp";
 const VISION_QUESTION_4    = "Zeenorb is tired of conforming to human-formed, eurocentric, heteronormative standards of beauty.";
 const VISION_PLACEHOLDER_4 = "Type encouragement";
 const VISION_BUTTON_4      = "Compliment!";
@@ -81,15 +81,15 @@ const VISION_PLACEHOLDER_5 = "Type a response";
 const VISION_BUTTON_5      = "Respond!";
 
 
-const MEDIATION_QUESTION_1    = "What sorts of beauty to people make?";
+const MEDIATION_QUESTION_1    = "What sorts of beauty do people make?";
 const MEDIATION_PLACEHOLDER_1 = "Answer Anonymously"; 
 const MEDIATION_BUTTON_1      = "Answer"; 
 
-const MEDIATION_QUESTION_2    = "What is something beautiful in your life?";
+const MEDIATION_QUESTION_2    = "What beauty have others made for you?";
 const MEDIATION_PLACEHOLDER_2 = "Answer Anonymously"; 
 const MEDIATION_BUTTON_2      = "Answer"; 
 
-const MEDIATION_QUESTION_3    = "What is a beauty you can make?";
+const MEDIATION_QUESTION_3    = "What is beauty you can make?";
 const MEDIATION_PLACEHOLDER_3 = "Answer Anonymously"; 
 const MEDIATION_BUTTON_3      = "Answer"; 
 
@@ -326,6 +326,7 @@ class Show extends React.Component {
         teleprompter: `
           ${SERMON}
         `,
+        livestream: 'big',
         foregroundChildren: (
           <React.Fragment>
             <VideoBg key='fire-sermon' srcs={['campfire-close.mp4']} />
