@@ -395,7 +395,7 @@ class Show extends React.Component {
 
         <div id="funk-overlay" />
 
-        <Chat newParticipantEvent={newParticipantEvent} messages={messages} color={babyColor}/>
+        <Chat newParticipantEvent={newParticipantEvent} messages={messages} color={babyColors[babyColor % babyColors.length]}/>
 
         {(mode==="performer") && <div id="teleprompter">{currentScene.name}{currentScene.teleprompter}<br/><span style={{color: 'red'}}>{nextScene.name}</span></div>}
         
