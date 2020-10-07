@@ -4,6 +4,11 @@
   background: black;
   max-width: 95vw;
   padding: 0.2em 0.4em 0.4em;
+
+  .error {
+    color: red;
+    @include glow(red);
+  }
 }
 
 #prompt {
@@ -28,22 +33,28 @@
 
   input[type="text"] {
     // width: 200px;
+    flex-grow: 1;
   }
 }
 
 @keyframes float-to-position {
   0% {
-    transform: translate(50vw,110vh);
+    transform: translate(calc(50vw - 50%),80vh);
+    opacity: 0;
+  }
+  10% {
+    transform: translate(calc(50vw - 50%),80vh);
+    opacity: 0.7;
   }
   100% {
   }
 }
 
 #prompter-responses .response  {
-  @include ha;
+  // @include ha;
   // @include mask(black);
   padding: 0;
-  opacity: 0.3;
+  opacity: 0.7;
   border: none;
   outline: none;
   color: white;
@@ -51,7 +62,7 @@
   cursor: pointer;
   position: fixed;
   text-align: center;
-  line-height: 0.5em;
+  // line-height: 0.5em;
   // overflow-y: hidden;
   background: transparent;
   // border: 1px solid white;
@@ -59,11 +70,12 @@
   animation: float-to-position 3s linear;
   transition: transform 8s linear, opacity 0.2s;
   // background: red;
-  text-shadow: 0px 0px 3px black, 0px 0px 8px black, 0px 0px 8px black, 0px 0px 15px black, 0px 0px 15px black, 0px 0px 15px black;
+  text-shadow: 0px 0px 3px black, 0px 0px 3px black, 0px 0px 8px black, 0px 0px 8px black, 0px 0px 15px black, 0px 0px 15px black, 0px 0px 15px black;
 
-  max-width: 7em;
+  max-width: 6em;
+  line-height: 0.6;
 
-  background: radial-gradient(black 0%, transparent 70%);
+  background: radial-gradient(black 0%, black 40%, transparent 70%);
 
   &:hover {
     // -webkit-text-stroke: 1px black;
@@ -95,17 +107,26 @@
   //   z-index: -1;
   //   // position: fixed;
   // }
-  top: 5%;
-  left: 5%;
-  // transform: translate(-50%,-50%);
   z-index: -1;
-  width: 90%;
-  height: 50%;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 60%;
   position: fixed;
-  background-size: auto 120%;
+  background-color: black;
+  border-radius: 50%;
+  background-size: auto 80%;
   background-position: center center;
   animation: portal-open 5s forwards;
-  border-radius: 50%;
+  // background-repeat: no-repeat;
   box-shadow: 0 0 20px var(--baby-color);
+
+  @include media(md) {
+    top: 5%;
+    left: 10%;
+    width: 80%;
+    height: 50%;
+    background-size: auto 100%;
+  }
 }
 

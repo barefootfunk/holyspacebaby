@@ -15,6 +15,7 @@ export default class HolySpaceBaby extends React.Component {
       y: 0,
       width: 0,
       height: 0,
+      touch: false,
     };
   }
 
@@ -28,32 +29,42 @@ export default class HolySpaceBaby extends React.Component {
     this.setState(dims);
   }
 
+  onFirstTouch = () => {
+    this.setState({
+      touch: true,
+    });
+    window.removeEventListener('touchstart', this.onFirstTouch);
+  }
+
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
     window.addEventListener('mousemove', this.handleMouseMove);
+    window.addEventListener('touchstart', this.onFirstTouch);
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions);
     window.removeEventListener('mousemove', this.handleMouseMove);
+    window.removeEventListener('touchstart', this.onFirstTouch);
   }
 
 
+
   render () {
-    const { x, y } = this.state;
+    const { x, y, touch } = this.state;
     const { babyClass } = this.props;
     return (
       <div 
         id="holy-space-baby" 
         style={{
-          transform: `translate(${x}px,${y}px)`
+          transform: `translate(${x}px,${y}px)`,
+          transition: touch ? 'transform 0.2s, width 0.2s, height 0.2s': 'width 0.2s, height 0.2s', 
         }}
         className={babyClass}
       >
         <div className="center-wrap">
           <HolySpaceBabySvg />
-          {/* TODO: Text: Tap or use the mouse to control the babe. Press F to cry.*/}
         </div>
       </div>
     );

@@ -33,12 +33,12 @@ const FLIGHT_BGS = [
   'flight2.mp4',
   'flight3.mp4',
   'flight4.mp4',
-  'flight5.mp4',
+  // 'flight5.mp4',
   'flight6.mp4',
-  'flight7.mp4',
+  // 'flight7.mp4',
   'flight8.mp4',
   'flight9.mp4',
-  'flight10.mp4',
+  // 'flight10.mp4',
   'flight11.mp4',
   'flight12.mp4',
   'flight13.mp4',
@@ -56,13 +56,13 @@ const BULLETIN = `
 
 
 const VISION_GIF_1         = "violin.webp";
-const VISION_QUESTION_1    = "This AI takes a single word as inspiration and composes 10,000,000 symphonies with avg beauty of 1.3 kiloBeethovens.";
+const VISION_QUESTION_1    = "This AI takes a single word and composes 10,000,000 symphonies with avg beauty of 1.3 kiloBeethovens.";
 const VISION_PLACEHOLDER_1 = "Type a word";
 const VISION_BUTTON_1      = "Input!";
 
 const VISION_GIF_2         = "orbs.gif";
 const VISION_QUESTION_2    = "We Orbs feed on beauty.  Feed us or perish!";
-const VISION_PLACEHOLDER_2 = "Type a beautiful object";
+const VISION_PLACEHOLDER_2 = "Type beautiful object";
 const VISION_BUTTON_2      = "Feed!";
 
 const VISION_GIF_3         = "worm.webp";
@@ -95,8 +95,7 @@ const MEDIATION_BUTTON_3      = "Answer";
 
 const GOSPEL = '"Spacetime folds itself into beauty factories."';
 const GOSPEL_SOURCE = 'Book of Cowboy Jobe 15:12';
-const SERMON = `
-`
+const SERMON = ``
 
 // TODO rethink beginning
 // CHURCH bulletin

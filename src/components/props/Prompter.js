@@ -102,9 +102,9 @@ class Response extends React.Component {
     });
 
     const notes = [
-      'Ab2','F2','C2','Bb2','Eb2',
-      'Ab3','F3','C3','Bb3','Eb3',
-      'Ab4','F4','C4','Bb4',
+      'D3','F#3','A3','E3',
+      'D4','F#4','A4','E4',
+      'D5','F#5','A5','E5',
     ];
 
     this.note = notes[Math.floor(Math.random()*notes.length)];
@@ -112,9 +112,10 @@ class Response extends React.Component {
     this.synthTimeout = null;
 
    
-
-    setTimeout(this.moveRandomly,4000);
-    this.interval = setInterval(this.moveRandomly,Math.random()*5000+3000);
+    this.transitionIntervalTime = Math.random()*5000+3000;
+    setTimeout(() => { this.moveRandomly(); this.interval = setInterval(this.moveRandomly,this.transitionIntervalTime);},5000);
+    
+    
 
     window.addEventListener('mouseup', this.stopSynth);
   }
@@ -134,7 +135,8 @@ class Response extends React.Component {
         className="response" 
         style={{
           transform: `translate(calc(${(floatX*20-10)+(response.x * 80+10)}vw - 50%),calc(${(floatY*20-10)+(response.y * 80+10)}vh - 50%)) rotate(${floatRot*60-30}deg)`,
-          fontSize: `${response.votes*.05+1}em`
+          transition: `transform ${this.transitionIntervalTime-1000}ms linear, opacity 0.2s`,
+          fontSize: `${response.votes*.05+1}em`,
         }}
         onMouseDown={() => {
           console.log(soundMode)
@@ -201,7 +203,7 @@ export default class Prompter extends React.Component {
     if (cleanResponse !== response) {
       this.setState({
         currentResponse: cleanResponse,
-        error: `Can we try PG-13? I wanna set a good example for the younger cats!`
+        error: `Can we avoid profanity for the younger participants? Try again!`
       });
       return;
     }
@@ -261,7 +263,7 @@ export default class Prompter extends React.Component {
         {(submitted && mode!=='performer') && 
           (
             <div className="layout-bottom -no-pointer">
-              <p>{soundMode==='sample' ? "These other people's answers. Click them to ponder." : "Click and hold other answers."}</p>
+              <p>{soundMode==='sample' ? "Click other answers to ponder." : "Click and HOLD other's answers."}</p>
             </div> 
           )
         }
@@ -275,8 +277,11 @@ export default class Prompter extends React.Component {
         {(!submitted && mode!=='performer') && 
           (
             <React.Fragment>
-              <div className="layout-bottom prompt-box">
-                <p className="-no-pointer">{prompt}</p>
+              <div className={`layout-bottom prompt-box ${error && '-error'}`}>
+                {error 
+                  ? <p className='error -no-pointer'>{error}</p>
+                  : <p className="-no-pointer">{prompt}</p>
+                }
                 <form id="prompt" onSubmit={this.sendPromptResponse}>
                   <input 
                     type="text" 
@@ -287,7 +292,6 @@ export default class Prompter extends React.Component {
                   />
                   <input type="submit" value={buttonText}/>
                 </form>
-                  {/* <p style={{color: 'red', fontSize: '0.5em'}}>{error}</p> */}
               </div>
             </React.Fragment>
           )

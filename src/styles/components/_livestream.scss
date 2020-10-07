@@ -50,7 +50,7 @@
   &.tiny {
     // opacity: 0.8;
     .sizing-wrap{
-      transform: scale(0.7);
+      transform: scale(0.9);
       @include media-big {
         transform: scale(0.5);
       }
