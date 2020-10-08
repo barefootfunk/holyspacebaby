@@ -16,7 +16,7 @@ const SYNTH =
     new Tone.MonoSynth({
       "volume": 3,
       "detune": 0,
-      "portamento": 0.2,
+      "portamento": 0,
       "envelope": {
         "attack": 1,
         "attackCurve": "linear",
@@ -70,6 +70,7 @@ class Response extends React.Component {
       floatX: 0.5,
       floatY: 0.5,
       floatRot: 0.5,
+      touch: false,
     }
   }
 
@@ -102,9 +103,9 @@ class Response extends React.Component {
     });
 
     const notes = [
+      'D2','F#2','A2','E2',
       'D3','F#3','A3','E3',
       'D4','F#4','A4','E4',
-      'D5','F#5','A5','E5',
     ];
 
     this.note = notes[Math.floor(Math.random()*notes.length)];
@@ -114,8 +115,6 @@ class Response extends React.Component {
    
     this.transitionIntervalTime = Math.random()*5000+3000;
     setTimeout(() => { this.moveRandomly(); this.interval = setInterval(this.moveRandomly,this.transitionIntervalTime);},5000);
-    
-    
 
     window.addEventListener('mouseup', this.stopSynth);
   }
@@ -127,9 +126,22 @@ class Response extends React.Component {
     // SYNTH.dispose();
   }
 
+  startPonder() {
+    if(this.props.soundMode==='sample') { this.playSample(); }
+    if(this.props.soundMode==='synth') { this.playSynth(); }
+
+    this.props.newParticipantEvent({
+      type: 'promptResponseVote', 
+      data: {
+        promptId: this.props.promptId,
+        responseId: this.props.response.id,
+      }
+    });
+  }
+
   render () {
     const {floatX, floatY, floatRot} = this.state;
-    const {promptId, response, newParticipantEvent, soundMode} = this.props;
+    const {response} = this.props;
     return (
       <button 
         className="response" 
@@ -139,21 +151,22 @@ class Response extends React.Component {
           fontSize: `${response.votes*.05+1}em`,
         }}
         onMouseDown={() => {
-          console.log(soundMode)
-          if(soundMode==='sample') { this.playSample(); }
-          if(soundMode==='synth') { this.playSynth(); }
-
-          newParticipantEvent({
-            type: 'promptResponseVote', 
-            data: {
-              promptId: promptId,
-              responseId: response.id,
-            }
-          });
+          if(!this.state.touch) {
+            this.startPonder();
+          }
         }}
-        // onMouseUp={() => {
-        //   if(soundMode==='synth') { this.stopSynth(); }
-        // }}
+        onTouchStart={() => {
+
+          // If first touch, let state know touch is enabled and remove mouseup events.
+          if(!this.state.touch) {
+            this.state.touch=true;
+            this.setState({touch: true,})
+            window.removeEventListener('mouseup', this.stopSynth);
+            window.addEventListener('touchend', this.stopSynth);
+          }
+          this.startPonder();
+
+        }}
       >
         <span 
           className="-no-pointer"
