@@ -23,33 +23,33 @@ export default class HolySpaceBaby extends React.Component {
     this.setState({ x: e.clientX, y: e.clientY });
   }
 
-
   updateWindowDimensions = () => {
     const dims = { width: window.innerWidth, height: window.innerHeight }
     this.setState(dims);
   }
 
-  onFirstTouch = () => {
+  handleTouch = (e) => {
+    if(!this.state.touch) {
+      window.removeEventListener('mousemove', this.handleMouseMove);
+    }
     this.setState({
       touch: true,
+      x: e.touches[0].clientX, y: e.touches[0].clientY,
     });
-    window.removeEventListener('touchstart', this.onFirstTouch);
   }
 
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
     window.addEventListener('mousemove', this.handleMouseMove);
-    window.addEventListener('touchstart', this.onFirstTouch);
+    window.addEventListener('touchstart', this.handleTouch);
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions);
     window.removeEventListener('mousemove', this.handleMouseMove);
-    window.removeEventListener('touchstart', this.onFirstTouch);
+    window.removeEventListener('touchstart', this.handleTouch);
   }
-
-
 
   render () {
     const { x, y, touch } = this.state;
@@ -59,7 +59,7 @@ export default class HolySpaceBaby extends React.Component {
         id="holy-space-baby" 
         style={{
           transform: `translate(${x}px,${y}px)`,
-          transition: touch ? 'transform 0.2s, width 0.2s, height 0.2s': 'width 0.2s, height 0.2s', 
+          transition: touch ? 'transform 0.2s ease-out, width 0.2s, height 0.2s': 'width 0.2s, height 0.2s', 
         }}
         className={babyClass}
       >
