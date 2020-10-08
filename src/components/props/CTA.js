@@ -20,6 +20,7 @@ const CustomForm = ({ status, message, onValidated }) => {
   return (
     <div
     >
+      <p>Get reminders and bonus content:</p>
       {status !== "success" && (
         <div id='mailing-list-form'>
           <input
@@ -43,9 +44,9 @@ const CustomForm = ({ status, message, onValidated }) => {
           dangerouslySetInnerHTML={{ __html: message }}
         />
       )}
-      {!status && (
+      {/* {!status && (
         <p>(reminders and exclusive sermons)</p>
-      )}
+      )} */}
     </div>
   );
 };
@@ -59,7 +60,8 @@ const CTA = (props) => {
 
       <div className="layout-center">
         {typeof props.children !== 'undefined' ? props.children : (<React.Fragment>
-          <p>Cowboy Elijah will appear in these flames just before 7p CST this Thursday.</p>
+          <p style={{ display: 'block', margin: '10px auto'}}>The world's first interactive electric trombone livestream adventure.</p>
+          <p style={{ display: 'block', margin: '10px auto'}}>Return here just before 7p CST every Thursday.</p>
         </React.Fragment>)}
         <div className="mailing-list">
         <MailchimpSubscribe

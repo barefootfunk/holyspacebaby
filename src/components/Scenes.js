@@ -48,10 +48,12 @@ const FLIGHT_BGS = [
 
 
 // CONTENT
+const EP_NUMBER = '4';
 const THEME = 'beauty';
 
 const BULLETIN = `
-  Physics has destabilized, Open rehearsal, Do not travel faster than light, Exclusive sermons to mailing list, and beware baauty-eating orbs.
+  Open rehearsal, no FTL travel, homework to mailing list, beware baauty-eating orbs.
+  Most beautiful thing you ever seen? Most beautiful creation recently? hotdog = sandwhich?
 `;
 
 
@@ -60,15 +62,15 @@ const VISION_QUESTION_1    = "This AI takes a single word and composes 10,000,00
 const VISION_PLACEHOLDER_1 = "Type a word";
 const VISION_BUTTON_1      = "Input!";
 
-const VISION_GIF_2         = "orbs.gif";
-const VISION_QUESTION_2    = "We Orbs feed on beauty.  Feed us or perish!";
-const VISION_PLACEHOLDER_2 = "Type beautiful object";
-const VISION_BUTTON_2      = "Feed!";
+const VISION_GIF_2         = "worm.webp";
+const VISION_QUESTION_2    = "I am the inspiration worm, mother of beauty, universal muse.  I invented art and love.";
+const VISION_PLACEHOLDER_2 = "Type praise";
+const VISION_BUTTON_2      = "Worship!";
 
-const VISION_GIF_3         = "worm.webp";
-const VISION_QUESTION_3    = "I am the inspiration worm, mother of beauty, universal muse.  I invented art and love.";
-const VISION_PLACEHOLDER_3 = "Type praise";
-const VISION_BUTTON_3      = "Worship!";
+const VISION_GIF_3         = "orbs.gif";
+const VISION_QUESTION_3    = "We Orbs feed on beauty.  Feed us or perish!";
+const VISION_PLACEHOLDER_3 = "Type beautiful object";
+const VISION_BUTTON_3      = "Feed!";
 
 const VISION_GIF_4         = "hot-alien.webp";
 const VISION_QUESTION_4    = "Zeenorb is tired of conforming to human-formed, eurocentric, heteronormative standards of beauty.";
@@ -76,10 +78,9 @@ const VISION_PLACEHOLDER_4 = "Type encouragement";
 const VISION_BUTTON_4      = "Compliment!";
 
 const VISION_GIF_5         = "eyes.webp";
-const VISION_QUESTION_5    = "My sight sees all beauty.  Even that imperceptible to humans.  YOU are truly beautiful.";
-const VISION_PLACEHOLDER_5 = "Type a response";
-const VISION_BUTTON_5      = "Respond!";
-
+const VISION_QUESTION_5    = "I am ironically quite blind, but I sense you are beautiful. What is most beautiful about you?";
+const VISION_PLACEHOLDER_5 = "Type something beautiful";
+const VISION_BUTTON_5      = "Own it!";
 
 const MEDIATION_QUESTION_1    = "What sorts of beauty do people make?";
 const MEDIATION_PLACEHOLDER_1 = "Answer Anonymously"; 
@@ -218,7 +219,11 @@ class Show extends React.Component {
           <React.Fragment>
             <VideoBg key='campfire-close' srcs={['campfire-close.mp4']}/>
             <div className="layout-top-edge -no-pointer">
-              <p style={{fontSize: '2em'}}>Tonight's theme: "{THEME}"</p>
+              
+              <p style={{fontSize: '2em'}}>
+               <span style={{fontSize: '0.7em', display: 'block'}}>Ceremony #{EP_NUMBER}</span>
+                Tonight's theme: "{THEME}"
+              </p>
             </div>
             <div className="layout-bottom">
               {/* <Credits /> */}
@@ -278,7 +283,7 @@ class Show extends React.Component {
               <h1>YOU FLY!</h1>
             </div>
             <div className="layout-bottom -no-pointer">
-              <p>You will witness alternate universes. Be creative. Answer quickly.</p>
+              <p>You will witness alternate universes. Be creative. Don't overthink. Answer quickly.</p>
             </div>
           </React.Fragment>
         ),
@@ -288,18 +293,18 @@ class Show extends React.Component {
       visionScene(3,VISION_QUESTION_3,VISION_PLACEHOLDER_3,VISION_BUTTON_3,VISION_GIF_3),
       visionScene(4,VISION_QUESTION_4,VISION_PLACEHOLDER_4,VISION_BUTTON_4,VISION_GIF_4),
       visionScene(5,VISION_QUESTION_5,VISION_PLACEHOLDER_5,VISION_BUTTON_5,VISION_GIF_5),
-      {
-        name: "Fireflies",
-        livestream: "tiny",
-        foregroundChildren: (
-          <React.Fragment>
-            {/* Black bg */}
-            <div className="layout-bottom -no-pointer">
-              <p>The lights are the other babies.</p>
-            </div>
-          </React.Fragment>
-        ),
-      },
+      // {
+      //   name: "Fireflies",
+      //   livestream: "tiny",
+      //   foregroundChildren: (
+      //     <React.Fragment>
+      //       {/* Black bg */}
+      //       <div className="layout-bottom -no-pointer">
+      //         <p>The lights are the other babies.</p>
+      //       </div>
+      //     </React.Fragment>
+      //   ),
+      // },
       {
         name: "Meditation Intro",
         livestream: "tiny",
@@ -311,7 +316,7 @@ class Show extends React.Component {
               <h1>YOU PONDER!</h1>
             </div>
             <div className="layout-bottom -no-pointer">
-              <p>Halfway between worlds. You introspect.  Be as real as you are comfortable being. All anonymous.</p>
+              <p>You introspect.  Be as real as you are comfortable being. All anonymous.</p>
             </div>
           </React.Fragment>
         ),
