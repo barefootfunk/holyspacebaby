@@ -20,7 +20,7 @@ const CustomForm = ({ status, message, onValidated }) => {
   return (
     <div
     >
-      <p>Get reminders and bonus content:</p>
+      <p>Join the mailing list for reminders and bonus content:</p>
       {status !== "success" && (
         <div id='mailing-list-form'>
           <input

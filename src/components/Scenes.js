@@ -94,10 +94,11 @@ const MEDIATION_QUESTION_3    = "What is beauty you can make?";
 const MEDIATION_PLACEHOLDER_3 = "Answer Anonymously"; 
 const MEDIATION_BUTTON_3      = "Answer"; 
 
-const GOSPEL = '"Ponder this miracle of reality: spacetime folding itself into factories of beauty.  \'Least around these parts, anyway."';
+const GOSPEL = '"Ponder this miracle of reality: spacetime foldin\' itself into factories o\' beauty.  \'Least round these parts, anyway."';
 const GOSPEL_SOURCE = '--Cowboy Jobe 15:12-13';
 const SERMON = ``
 
+const HW_LINK = "https://forms.gle/T8Ksv5fE5GWkHsMG6";
 // TODO rethink beginning
 // CHURCH bulletin
 
@@ -345,7 +346,20 @@ class Show extends React.Component {
           </React.Fragment>
         ),
       },
-      homepage,
+      {
+        name: 'Homepage',
+        livestream: "hidden",
+        babyClass: "hidden",
+        foregroundChildren: (
+          <React.Fragment>
+            <VideoBg key='campfire' srcs={['campfire.mp4']}/>
+            <CTA>
+            <p style={{ display: 'block', margin: '10px auto'}}>Complete the assignment <a href={HW_LINK} target="_blank">here</a> to get the special password.</p>
+            <p style={{ display: 'block', margin: '10px auto', fontSize: '0.5em'}}>(I'll send this link to the mailing list soon.)</p>
+            </CTA>
+          </React.Fragment>
+        ),
+      },
     ];
 
     scene = Math.max(0,scene); // Render 0, if below
