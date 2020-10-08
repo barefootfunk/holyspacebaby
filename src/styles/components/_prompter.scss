@@ -121,6 +121,8 @@
   // background-repeat: no-repeat;
   box-shadow: 0 0 20px var(--baby-color);
 
+  pointer-events: none;
+
   @include media(md) {
     top: 5%;
     left: 10%;

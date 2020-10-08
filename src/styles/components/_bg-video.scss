@@ -8,9 +8,6 @@
   overflow: hidden;
   min-width: 100vw;
   min-height: 100vh;
+  pointer-events: none;
   transform: translate(-50%,-50%);
-
-  &.-overlay {
-    opacity: 0.5;
-  }
 }
