@@ -94,8 +94,8 @@ const MEDIATION_QUESTION_3    = "What is beauty you can make?";
 const MEDIATION_PLACEHOLDER_3 = "Answer Anonymously"; 
 const MEDIATION_BUTTON_3      = "Answer"; 
 
-const GOSPEL = '"Spacetime folds itself into beauty factories."';
-const GOSPEL_SOURCE = 'Book of Cowboy Jobe 15:12';
+const GOSPEL = '"Ponder this miracle of reality: spacetime folding itself into factories of beauty.  \'Least around these parts, anyway."';
+const GOSPEL_SOURCE = '--Cowboy Jobe 15:12-13';
 const SERMON = ``
 
 // TODO rethink beginning
