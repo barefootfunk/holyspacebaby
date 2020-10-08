@@ -143,40 +143,40 @@ class Response extends React.Component {
     const {floatX, floatY, floatRot} = this.state;
     const {response} = this.props;
     return (
-      <button 
+      <span 
         className="response" 
         style={{
           transform: `translate(calc(${(floatX*20-10)+(response.x * 80+10)}vw - 50%),calc(${(floatY*20-10)+(response.y * 80+10)}vh - 50%)) rotate(${floatRot*60-30}deg)`,
           transition: `transform ${this.transitionIntervalTime-1000}ms linear, opacity 0.2s`,
           fontSize: `${response.votes*.05+1}em`,
         }}
-        onMouseDown={() => {
-          if(!this.state.touch) {
-            this.startPonder();
-          }
-        }}
-        onTouchStart={() => {
-
-          // If first touch, let state know touch is enabled and remove mouseup events.
-          if(!this.state.touch) {
-            this.state.touch=true;
-            this.setState({touch: true,})
-            window.removeEventListener('mouseup', this.stopSynth);
-            window.addEventListener('touchend', this.stopSynth);
-          }
-          this.startPonder();
-
-        }}
       >
-        <span 
-          className="-no-pointer"
+        <button 
+          onMouseDown={() => {
+            if(!this.state.touch) {
+              this.startPonder();
+            }
+          }}
+          onTouchStart={() => {
+
+            // If first touch, let state know touch is enabled and remove mouseup events.
+            if(!this.state.touch) {
+              this.state.touch=true;
+              this.setState({touch: true,})
+              window.removeEventListener('mouseup', this.stopSynth);
+              window.addEventListener('touchend', this.stopSynth);
+            }
+            this.startPonder();
+
+          }}
+          className=""
           // style={{
           //   transform: `scale(${response.votes*.07+1})`
           // }}
         >
-          {response.content}
-        </span>
-      </button>
+          <span>{response.content}</span>
+        </button>
+      </span>
     );
   }
 }

@@ -51,42 +51,46 @@
 }
 
 #prompter-responses .response  {
-  // @include ha;
-  // @include mask(black);
+  @include ha;
   padding: 0;
   opacity: 0.7;
-  border: none;
-  outline: none;
-  color: white;
   display: inline-block;
-  cursor: pointer;
   position: fixed;
   text-align: center;
-  // line-height: 0.5em;
-  // overflow-y: hidden;
-  background: transparent;
-  // border: 1px solid white;
-  // transition: transform 8s linear;
   animation: float-to-position 3s linear;
   transition: transform 8s linear, opacity 0.2s;
-  // background: red;
+  background: red;
   text-shadow: 0px 0px 3px black, 0px 0px 3px black, 0px 0px 8px black, 0px 0px 8px black, 0px 0px 15px black, 0px 0px 15px black, 0px 0px 15px black;
-
-  max-width: 6em;
-  line-height: 0.6;
-
+  pointer-events: none;
+ 
+  // padding: 0.3em;
   background: radial-gradient(black 0%, black 40%, transparent 70%);
 
-  &:hover {
-    // -webkit-text-stroke: 1px black;
-    opacity: 1;
-  }
+  button { 
+    pointer-events: auto;
+    cursor: pointer;
+    color: white;
+    border: none;
+    outline: none;
+    background: transparent;
+    max-width: 6em;
+    line-height: 0.6;
+    span {
 
-  &:active {
-    color: var(--baby-color);
-    // transform: scale(2);
-    text-shadow: 0px 0px 3px var(--baby-color), 0px 0px 8px var(--baby-color), 0px 0px 8px var(--baby-color), 0px 0px 15px var(--baby-color);
+      position: relative;
+    }
 
+    &:hover {
+      // -webkit-text-stroke: 1px black;
+      opacity: 1;
+    }
+  
+    &:active {
+      color: var(--baby-color);
+      // transform: scale(2);
+      text-shadow: 0px 0px 3px var(--baby-color), 0px 0px 8px var(--baby-color), 0px 0px 8px var(--baby-color), 0px 0px 15px var(--baby-color);
+  
+    }
   }
 }
 
