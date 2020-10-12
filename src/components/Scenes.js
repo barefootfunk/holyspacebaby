@@ -48,59 +48,81 @@ const FLIGHT_BGS = [
 
 
 // CONTENT
-const EP_NUMBER = '4';
-const THEME = 'beauty';
+const EP_NUMBER = '5';
+const THEME = 'heaviness';
 
 const BULLETIN = `
-  Open rehearsal, no FTL travel, homework to mailing list, beware baauty-eating orbs.
-  Most beautiful thing you ever seen? Most beautiful creation recently? hotdog = sandwhich?
+  HW, support module,
 `;
 
+const VISION_GIF_1         = "horse.webp";
+const VISION_QUESTION_1    = "I am Ga-horse-rial! Lifter of all things. Give me a challenge to lift!";
+const VISION_PLACEHOLDER_1 = "Type very heavy thing";
+const VISION_BUTTON_1      = "Lift!";
 
-const VISION_GIF_1         = "violin.webp";
-const VISION_QUESTION_1    = "This AI takes a single word and composes 10,000,000 symphonies with avg beauty of 1.3 kiloBeethovens.";
-const VISION_PLACEHOLDER_1 = "Type a word";
-const VISION_BUTTON_1      = "Input!";
+const VISION_GIF_2         = "elephant.webp";
+const VISION_QUESTION_2    = "Elle has been training for this moment 14 hours per day since age 5. She does her best.  Judges?";
+const VISION_PLACEHOLDER_2 = "Type feedback";
+const VISION_BUTTON_2      = "Critique!";
 
-const VISION_GIF_2         = "worm.webp";
-const VISION_QUESTION_2    = "I am the inspiration worm, mother of beauty, universal muse.  I invented art and love.";
-const VISION_PLACEHOLDER_2 = "Type praise";
-const VISION_BUTTON_2      = "Worship!";
+const VISION_GIF_3         = "super.webp";
+const VISION_QUESTION_3    = "Every time I endure harship, my power level increases. Quickly! War is at hand! I must get to 9000.";
+const VISION_PLACEHOLDER_3 = "Type hardship";
+const VISION_BUTTON_3      = "Endure!";
 
-const VISION_GIF_3         = "orbs.gif";
-const VISION_QUESTION_3    = "We Orbs feed on beauty.  Feed us or perish!";
-const VISION_PLACEHOLDER_3 = "Type beautiful object";
-const VISION_BUTTON_3      = "Feed!";
+const VISION_GIF_4         = "mime.gif";
+const VISION_QUESTION_4    = "The only being that can defeat Ga-horse-rial emerges from the orchestra. Weight is meaningless to physics-bender MIMOROTH.";
+const VISION_PLACEHOLDER_4 = "Swear allegiance";
+const VISION_BUTTON_4      = "Pick a side!";
 
-const VISION_GIF_4         = "hot-alien.webp";
-const VISION_QUESTION_4    = "Zeenorb is tired of conforming to human-formed, eurocentric, heteronormative standards of beauty.";
-const VISION_PLACEHOLDER_4 = "Type encouragement";
-const VISION_BUTTON_4      = "Compliment!";
+const VISION_GIF_5         = "hole.webp";
+const VISION_QUESTION_5    = "Neat! A tiny blackhole!  You can drop any memory in here and it will be gone forever.";
+const VISION_PLACEHOLDER_5 = "Type a memory";
+const VISION_BUTTON_5      = "Throw!";
 
-const VISION_GIF_5         = "eyes.webp";
-const VISION_QUESTION_5    = "I am ironically quite blind, but I sense you are beautiful. What is most beautiful about you?";
-const VISION_PLACEHOLDER_5 = "Type something beautiful";
-const VISION_BUTTON_5      = "Own it!";
+const VISION_GIF_6         = "battle.webp";
+const VISION_QUESTION_6    = "The battle rages between the forces of Ga-horse-rial and MIMOROTH.";
+const VISION_PLACEHOLDER_6 = "Type an attack";
+const VISION_BUTTON_6      = "Attack!";
 
-const MEDIATION_QUESTION_1    = "What sorts of beauty do people make?";
+const VISION_GIF_7         = "paint.webp";
+const VISION_QUESTION_7    = "Elle retires from olmpic gymnastics to pursue her dream of painting melancholy.  She is taking requests.";
+const VISION_PLACEHOLDER_7 = "Type something sad";
+const VISION_BUTTON_7      = "Suggest!";
+
+const MEDIATION_QUESTION_1    = "What is something you have overcome?";
 const MEDIATION_PLACEHOLDER_1 = "Answer Anonymously"; 
 const MEDIATION_BUTTON_1      = "Answer"; 
 
-const MEDIATION_QUESTION_2    = "What beauty have others made for you?";
+const MEDIATION_QUESTION_2    = "What did it teach you?";
 const MEDIATION_PLACEHOLDER_2 = "Answer Anonymously"; 
 const MEDIATION_BUTTON_2      = "Answer"; 
 
-const MEDIATION_QUESTION_3    = "What is beauty you can make?";
+const MEDIATION_QUESTION_3    = "What is something heavy you are trying to lift now?";
 const MEDIATION_PLACEHOLDER_3 = "Answer Anonymously"; 
 const MEDIATION_BUTTON_3      = "Answer"; 
 
-const GOSPEL = '"Ponder this miracle of reality: spacetime foldin\' itself into factories o\' beauty.  \'Least round these parts, anyway."';
-const GOSPEL_SOURCE = '--Cowboy Jobe 15:12-13';
+const GOSPEL = '"Hearts get swole by lifting feelings."';
+const GOSPEL_SOURCE = '--Cowboy Jobe 12:56';
 const SERMON = ``
 
-const HW_LINK = "https://forms.gle/T8Ksv5fE5GWkHsMG6";
-// TODO rethink beginning
-// CHURCH bulletin
+const HW_LINK = "";
+
+const FERNANDO_POEM = [
+  'I loved a man named Lon.',
+  'But he was animated and I am not.',
+  'One day he walked away',
+  'And I could not follow',
+  'I wept for him silently',
+  'Behind eyes that cannot cry',
+  'But it gives me great joy to know',
+  'That my heart now knows the strength to lose love',
+  'This is power',
+  'This is wisdom',
+  'This is the only way to become the man I wish to be',
+  'Perhaps I will find love one day again',
+  'Now that my heart is stronger than ever',
+];
 
 class Show extends React.Component {
 
@@ -294,6 +316,8 @@ class Show extends React.Component {
       visionScene(3,VISION_QUESTION_3,VISION_PLACEHOLDER_3,VISION_BUTTON_3,VISION_GIF_3),
       visionScene(4,VISION_QUESTION_4,VISION_PLACEHOLDER_4,VISION_BUTTON_4,VISION_GIF_4),
       visionScene(5,VISION_QUESTION_5,VISION_PLACEHOLDER_5,VISION_BUTTON_5,VISION_GIF_5),
+      visionScene(5,VISION_QUESTION_6,VISION_PLACEHOLDER_6,VISION_BUTTON_6,VISION_GIF_6),
+      visionScene(5,VISION_QUESTION_7,VISION_PLACEHOLDER_7,VISION_BUTTON_7,VISION_GIF_7),
       // {
       //   name: "Fireflies",
       //   livestream: "tiny",
