@@ -17,6 +17,12 @@
     transform: rotate(135deg);
   }
 
+  &.-hat {
+    bottom: 0;
+    left: 0;
+    transform: rotate(-45deg);
+  }
+
   button {
     border: 0;
     outline: 0;
@@ -39,5 +45,32 @@
     &:active {
       transform: scale(1.4);
     }
+  }
+}
+
+.vip-only {
+  &.-vip .funk-bottle {
+      @include rainbow-mask;
+    
+
+  }
+  &.-not-vip .funk-bottle {
+      pointer-events: none;
+      button {
+        opacity: 0.2;
+      }
+      &::after {
+        @include rainbow-text;
+        top:50%;
+        left: 50%;
+        opacity: 0.5;
+        color: white;
+        font-size: 0.5em;
+        position: absolute;
+        background: black;
+        content: 'VIP ONLY';
+        padding: 0.3em 0.4em 0.1em;
+        transform: translate(-50%,-50%);
+      }
   }
 }

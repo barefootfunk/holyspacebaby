@@ -8,7 +8,7 @@ function importAll(r) {
   return r.keys().map(r);
 }
 const sampleLibrary = importAll(require.context('../../sounds/samples', false, /\.(mp3|wav)$/));
-console.log(sampleLibrary);
+
 
 // this.synth = new Tone.Synth().toDestination();
 const SYNTH = 

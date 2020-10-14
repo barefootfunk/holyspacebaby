@@ -62,7 +62,12 @@
   }
 
   &.flight {
-    --spin-time: 1s;
+    --spin-time: 0.5s;
+  }
+
+
+  &.still {
+    --spin-time: 100s;
   }
 
   &.hidden {
@@ -72,8 +77,19 @@
   .center-wrap {
     @include mask(black);
 
-    svg {
+    .spin-wrap {
       animation: spin var(--spin-time) linear infinite;
+
+      .hat {
+        left: 25%;
+        bottom: 40%;
+        width: 100%;
+        height: 150%;
+        position: absolute;
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        background-size: 100%;
+      }
     }
   }
 }

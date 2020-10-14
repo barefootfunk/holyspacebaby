@@ -14,6 +14,8 @@ import CountdownTimer from "./props/CountdownTimer"
 import FunkBottle from "./props/FunkBottle"
 import VideoBg from "./props/VideoBg"
 import Prompter from "./props/Prompter"
+import VipPasswordInput from "./props/VipPasswordInput"
+import VipOnly from "./props/VipOnly"
 
 // Sounds
 import cheer1Sound from '../sounds/cheer1.mp3';
@@ -48,6 +50,8 @@ const FLIGHT_BGS = [
 
 
 // CONTENT
+
+const VIP_PASSWORD = 'SOBEAUTIFUL';
 const EP_NUMBER = '5';
 const THEME = 'heaviness';
 
@@ -130,11 +134,32 @@ class Show extends React.Component {
     super(props);
     this.state = {
       babyColor: 0,
+      babyHat: 0,
       funkLevel: 0,
+      vip: (this.props.mode==='performer'), // Performer defaults to vip=true, otherwise false
     }
   }
+
+  vipAuthenticate = () => {
+    const search = window.location.search;
+    const params = new URLSearchParams(search);
+    const password = params.get('vip-password');
+    if(!password) return;
+    if (password.toUpperCase() === VIP_PASSWORD.toUpperCase()) {
+      this.setState({
+        vip: true,
+      })
+    }
+  }
+
+  componentDidMount() {
+    this.vipAuthenticate();
+  }
+
   render () {
     let {scene, mode, messages, newParticipantEvent, responses} = this.props;
+
+    const {babyColor, funkLevel, babyHat, vip} = this.state;
 
     const homepage = {
       name: 'Homepage',
@@ -249,7 +274,8 @@ class Show extends React.Component {
               </p>
             </div>
             <div className="layout-bottom">
-              {/* <Credits /> */}
+              {vip ? <p class="rainbow-text">VIP mode activated!</p> :
+              <VipPasswordInput vipAuthenticate={this.vipAuthenticate}/>}
             </div>
           </React.Fragment>
         )
@@ -286,6 +312,9 @@ class Show extends React.Component {
             <VideoBg key='sparks' srcs={['sparks.mp4']} />
             <FunkBottle bottleName="funk" onDrink={() => { this.setState({funkLevel: this.state.funkLevel + 1,}) }}  />  
             <FunkBottle bottleName="color" onDrink={() => { this.setState({babyColor: this.state.babyColor + 1,}) }}  />  
+            <VipOnly vip={vip}>
+              <FunkBottle bottleName="hat" onDrink={() => { this.setState({babyHat: this.state.babyHat + 1,}) }}  />  
+            </VipOnly>
             {/* <div className="layout-top -no-pointer">
               <p>You are reborn!</p>
             </div> */}
@@ -398,7 +427,6 @@ class Show extends React.Component {
     // Run onStart function
     if(typeof currentScene.onStart !== 'undefined') { currentScene.onStart() }
 
-    const {babyColor, funkLevel} = this.state;
               
     const babyColors = ['lime','red','orange','yellow','cyan','violet']
 
@@ -414,6 +442,8 @@ class Show extends React.Component {
       >
   
         <h1 id="title" className="-pointer-none">HolySpaceBaby</h1>
+
+        {vip && <div id="vip-flag" className="-pointer-none rainbow-text text-box" style={{ position: 'fixed', top: 0, left: 0, width: 'auto', fontSize: '0.5em' }}>VIP MODE</div>}
 
         {typeof currentScene.backgroundChildren !== 'undefined' && currentScene.backgroundChildren}
 
@@ -434,7 +464,7 @@ class Show extends React.Component {
 
         {typeof currentScene.foregroundChildren !== 'undefined' && currentScene.foregroundChildren}
        
-        <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' ?  currentScene.babyClass : ''} />
+        <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' ?  currentScene.babyClass : ''} hatNumber={babyHat}/>
 
         <div id="funk-overlay" />
 

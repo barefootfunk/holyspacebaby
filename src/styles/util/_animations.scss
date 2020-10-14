@@ -9,3 +9,79 @@
     transform: rotate(-1turn);
   }
 }
+
+@keyframes rainbow-text {
+  0% { 
+      color: white; 
+      @include glow(white); 
+    }
+  15% { 
+      color: red; 
+      @include glow(red); 
+    }
+  30% { 
+      color: orange; 
+      @include glow(orange); 
+    }
+  45% { 
+      color: yellow; 
+      @include glow(yellow); 
+    }
+  60% { 
+      color: lime; 
+      @include glow(lime); 
+    }
+  75% { 
+      color: cyan; 
+      @include glow(cyan); 
+    }
+  90% { 
+      color: violet; 
+      @include glow(violet); 
+    }
+  100% {
+      color: white; 
+      @include glow(white); 
+    }
+}
+@mixin rainbow-text {
+  animation: rainbow-text 2s linear infinite;
+}
+.rainbow-text {
+  @include rainbow-text;
+}
+
+@keyframes rainbow-mask {
+  0% { 
+      background: radial-gradient(white 0%, transparent 70%);
+    }
+  15% { 
+      background: radial-gradient(red 0%, transparent 70%);
+    }
+  30% { 
+      background: radial-gradient(orange 0%, transparent 70%);
+    }
+  45% { 
+      background: radial-gradient(yellow 0%, transparent 70%);
+    }
+  60% { 
+      background: radial-gradient(lime 0%, transparent 70%);
+    }
+  75% { 
+      background: radial-gradient(cyan 0%, transparent 70%);
+    }
+  90% { 
+      background: radial-gradient(violet 0%, transparent 70%);
+    }
+  100% {
+      background: radial-gradient(white 0%, transparent 70%);
+    }
+}
+@mixin rainbow-mask {
+
+  @include mask(white);
+  &::before { animation: rainbow-mask 2s linear infinite; }
+}
+.rainbow-mask {
+  @include rainbow-mask;
+}

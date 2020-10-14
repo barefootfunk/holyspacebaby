@@ -2,6 +2,12 @@ import React from 'react';
 import HolySpaceBabySvg from "../../svg/holy-space-baby.inline.svg"
 
 
+// Import all hats
+function importAll(r) {
+  return r.keys().map(r);
+}
+const hatAssets = importAll(require.context('../../img/hats', false, /\.(png)$/));
+
 // TODO: Mobile fallback (animate transition between taps)
 // ANIMATE WITH: https://github.com/chenglou/react-motion
 // COPY THIS PATTERN: http://chenglou.github.io/react-motion/demos/demo1-chat-heads/
@@ -17,6 +23,9 @@ export default class HolySpaceBaby extends React.Component {
       height: 0,
       touch: false,
     };
+
+    this.hats = [false, ...hatAssets];
+    console.log(this.hats);
   }
 
   handleMouseMove = (e) => { 
@@ -53,7 +62,9 @@ export default class HolySpaceBaby extends React.Component {
 
   render () {
     const { x, y, touch } = this.state;
-    const { babyClass } = this.props;
+    const { babyClass, hatNumber } = this.props;
+    const currentHat = this.hats[hatNumber % this.hats.length];
+
     return (
       <div 
         id="holy-space-baby" 
@@ -64,7 +75,10 @@ export default class HolySpaceBaby extends React.Component {
         className={babyClass}
       >
         <div className="center-wrap">
-          <HolySpaceBabySvg />
+          <div className="spin-wrap">
+            {currentHat && <div className="hat" style={{ backgroundImage: `url(${currentHat})`}}/>}
+            <HolySpaceBabySvg />
+          </div>
         </div>
       </div>
     );
