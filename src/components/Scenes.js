@@ -56,41 +56,36 @@ const FLIGHT_BGS = [
 
 const VIP_PASSWORD = 'SOBEAUTIFUL';
 const EP_NUMBER = '5';
-const THEME = 'heaviness';
+const THEME = 'heavy';
 
 const BULLETIN = `
   HW, support module,
 `;
 
 const VISION_GIF_1         = "horse.webp";
-const VISION_QUESTION_1    = "I am Ga-horse-rial! Lifter of all things. Give me something challenging to lift!";
+const VISION_QUESTION_1    = "I am Ga-horse-rial! Lifter of all things. Give me a challenge!";
 const VISION_PLACEHOLDER_1 = "Type very heavy thing";
 const VISION_BUTTON_1      = "Lift!";
 
-const VISION_GIF_2         = "elephant.webp";
-const VISION_QUESTION_2    = "Elle has been training for this moment 14 hours per day since age 5. She does her best.  Judges?";
-const VISION_PLACEHOLDER_2 = "Type feedback";
-const VISION_BUTTON_2      = "Critique!";
+const VISION_GIF_2         = "hole.webp";
+const VISION_QUESTION_2    = "A tiny blackhole!  You can drop any memory in here and it will be gone forever.";
+const VISION_PLACEHOLDER_2 = "Type a memory";
+const VISION_BUTTON_2      = "Throw!";
 
-const VISION_GIF_3         = "super.webp";
-const VISION_QUESTION_3    = "Every time I experience hardship, my power level increases. Quickly! War is at hand! I must get to 9000.";
-const VISION_PLACEHOLDER_3 = "Type a failure";
-const VISION_BUTTON_3      = "Level up!";
+const VISION_GIF_3         = "mime.gif";
+const VISION_QUESTION_3    = "Ga-horse-rial's nemesis emerges. Weight is meaningless to physics-bender MIMOROTH.";
+const VISION_PLACEHOLDER_3 = "Swear allegiance";
+const VISION_BUTTON_3      = "Pick a side!";
 
-const VISION_GIF_4         = "mime.gif";
-const VISION_QUESTION_4    = "The only being that can defeat Ga-horse-rial emerges from the orchestra. Weight is meaningless to physics-bender MIMOROTH.";
-const VISION_PLACEHOLDER_4 = "Swear allegiance";
-const VISION_BUTTON_4      = "Pick a side!";
+const VISION_GIF_4         = "super.webp";
+const VISION_QUESTION_4    = "With every hardship, my power level increases. Quickly! I must reach 9000.";
+const VISION_PLACEHOLDER_4 = "Type a hardship";
+const VISION_BUTTON_4      = "Level up!";
 
-const VISION_GIF_5         = "hole.webp";
-const VISION_QUESTION_5    = "A tiny blackhole!  You can drop any memory in here and it will be gone forever.";
-const VISION_PLACEHOLDER_5 = "Type a memory";
-const VISION_BUTTON_5      = "Throw!";
-
-const VISION_GIF_6         = "battle.gif";
-const VISION_QUESTION_6    = "The battle rages between the forces of Ga-horse-rial and MIMOROTH.";
-const VISION_PLACEHOLDER_6 = "Type an attack";
-const VISION_BUTTON_6      = "Attack!";
+const VISION_GIF_5         = "battle.gif";
+const VISION_QUESTION_5    = "The battle rages between the forces of Ga-horse-rial and MIMOROTH.";
+const VISION_PLACEHOLDER_5 = "Type an attack";
+const VISION_BUTTON_5      = "Attack!";
 
 const NOTES = [
   'C2','F2','Bb2','G2',
@@ -151,8 +146,6 @@ const FERNANDO_POEM = [
   'Fernando: Farewell, my friends!',
   'Fernando: I will see you in a week\'s time!',
   'Fernando: Be sure to do your homework!',
-  '',
-  'Fernando: Goodbye.',
 ];
 
 class Show extends React.Component {
@@ -308,26 +301,26 @@ class Show extends React.Component {
           </React.Fragment>
         )
       },
-      {
-        name: 'Dying',
-        teleprompter: ``,
-        livestream: "big",
-        babyClass: "hidden",
-        foregroundChildren: (
-          <React.Fragment>
-            <VideoBg key='campfire-intense' srcs={['campfire-intense.mp4']}/>
-            <div className="layout-top -no-pointer">
-              <p style={{fontSize: '2em'}}>YOU ARE NOW DYING!</p>
-            </div>
-            <div className="layout-bottom">
-              {/* <Credits /> */}
-              <ClickSound sound={cheer1Sound}>
-                <button className="button">REJOICE BUTTON</button>
-              </ClickSound>
-            </div>
-          </React.Fragment>
-        )
-      },
+      // {
+      //   name: 'Dying',
+      //   teleprompter: ``,
+      //   livestream: "big",
+      //   babyClass: "hidden",
+      //   foregroundChildren: (
+      //     <React.Fragment>
+      //       <VideoBg key='campfire-intense' srcs={['campfire-intense.mp4']}/>
+      //       <div className="layout-top -no-pointer">
+      //         <p style={{fontSize: '2em'}}>YOU ARE NOW DYING!</p>
+      //       </div>
+      //       <div className="layout-bottom">
+      //         {/* <Credits /> */}
+      //         <ClickSound sound={cheer1Sound}>
+      //           <button className="button">REJOICE BUTTON</button>
+      //         </ClickSound>
+      //       </div>
+      //     </React.Fragment>
+      //   )
+      // },
       {
         name: 'Birth',
         teleprompter: `
@@ -373,8 +366,6 @@ class Show extends React.Component {
       visionScene(3,VISION_QUESTION_3,VISION_PLACEHOLDER_3,VISION_BUTTON_3,VISION_GIF_3),
       visionScene(4,VISION_QUESTION_4,VISION_PLACEHOLDER_4,VISION_BUTTON_4,VISION_GIF_4),
       visionScene(5,VISION_QUESTION_5,VISION_PLACEHOLDER_5,VISION_BUTTON_5,VISION_GIF_5),
-      visionScene(6,VISION_QUESTION_6,VISION_PLACEHOLDER_6,VISION_BUTTON_6,VISION_GIF_6),
-      // visionScene(7,VISION_QUESTION_7,VISION_PLACEHOLDER_7,VISION_BUTTON_7,VISION_GIF_7),
       // {
       //   name: "Fireflies",
       //   livestream: "tiny",
