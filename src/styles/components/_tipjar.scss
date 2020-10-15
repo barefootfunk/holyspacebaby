@@ -1,0 +1,15 @@
+.addthis_tipjar_inline {
+  height: 40px !important;
+  display: inline !important;
+  p {
+    display: none !important;
+  }
+  .slideInRight {
+    animation: none !important;
+  }
+  .addthis_toolbox {
+    margin-top: -0.4em !important;
+    display: flex !important;
+    justify-content: center !important;
+  }
+}

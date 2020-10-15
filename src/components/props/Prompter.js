@@ -102,17 +102,11 @@ class Response extends React.Component {
       src: [sampleLibrary[Math.floor(this.props.response.sound * sampleLibrary.length)]],
     });
 
-    const notes = [
-      'D2','F#2','A2','E2',
-      'D3','F#3','A3','E3',
-      'D4','F#4','A4','E4',
-    ];
-
+    const notes = this.props.notes ? this.props.notes : [];
     this.note = notes[Math.floor(Math.random()*notes.length)];
 
     this.synthTimeout = null;
 
-   
     this.transitionIntervalTime = Math.random()*5000+3000;
     setTimeout(() => { this.moveRandomly(); this.interval = setInterval(this.moveRandomly,this.transitionIntervalTime);},5000);
 
@@ -241,7 +235,7 @@ export default class Prompter extends React.Component {
 
   render () {
     // const {messages} = this.props;
-    const {id, responses, prompt, placeholder, newParticipantEvent, soundMode, mode, visionSrc, buttonText} = this.props;
+    const {id, responses, prompt, placeholder, newParticipantEvent, soundMode, mode, visionSrc, buttonText, notes} = this.props;
     const {currentResponse, submitted, error} = this.state;
     const promptResponses = typeof responses[id] !== 'undefined' ? responses[id] : [];
 
@@ -268,6 +262,7 @@ export default class Prompter extends React.Component {
                   newParticipantEvent={newParticipantEvent} 
                   key={`response-${response.id}`} 
                   soundMode={soundMode}
+                  notes={notes}
                 />
               )
             })

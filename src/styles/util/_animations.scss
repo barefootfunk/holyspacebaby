@@ -80,7 +80,7 @@
 @mixin rainbow-mask {
 
   @include mask(white);
-  &::before { animation: rainbow-mask 2s linear infinite; }
+  &::before { animation: rainbow-mask 4s linear infinite; }
 }
 .rainbow-mask {
   @include rainbow-mask;

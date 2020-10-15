@@ -2,6 +2,7 @@ import React from 'react';
 
 // Utils
 import slugify from 'slugify';
+import Script from 'react-load-script';
 
 // Chat
 import Chat from "./Chat"
@@ -16,6 +17,8 @@ import VideoBg from "./props/VideoBg"
 import Prompter from "./props/Prompter"
 import VipPasswordInput from "./props/VipPasswordInput"
 import VipOnly from "./props/VipOnly"
+import Subtitles from "./props/Subtitles"
+import TipJar from "./props/TipJar"
 
 // Sounds
 import cheer1Sound from '../sounds/cheer1.mp3';
@@ -60,7 +63,7 @@ const BULLETIN = `
 `;
 
 const VISION_GIF_1         = "horse.webp";
-const VISION_QUESTION_1    = "I am Ga-horse-rial! Lifter of all things. Give me a challenge to lift!";
+const VISION_QUESTION_1    = "I am Ga-horse-rial! Lifter of all things. Give me something challenging to lift!";
 const VISION_PLACEHOLDER_1 = "Type very heavy thing";
 const VISION_BUTTON_1      = "Lift!";
 
@@ -70,9 +73,9 @@ const VISION_PLACEHOLDER_2 = "Type feedback";
 const VISION_BUTTON_2      = "Critique!";
 
 const VISION_GIF_3         = "super.webp";
-const VISION_QUESTION_3    = "Every time I endure harship, my power level increases. Quickly! War is at hand! I must get to 9000.";
-const VISION_PLACEHOLDER_3 = "Type hardship";
-const VISION_BUTTON_3      = "Endure!";
+const VISION_QUESTION_3    = "Every time I experience hardship, my power level increases. Quickly! War is at hand! I must get to 9000.";
+const VISION_PLACEHOLDER_3 = "Type a failure";
+const VISION_BUTTON_3      = "Level up!";
 
 const VISION_GIF_4         = "mime.gif";
 const VISION_QUESTION_4    = "The only being that can defeat Ga-horse-rial emerges from the orchestra. Weight is meaningless to physics-bender MIMOROTH.";
@@ -80,19 +83,19 @@ const VISION_PLACEHOLDER_4 = "Swear allegiance";
 const VISION_BUTTON_4      = "Pick a side!";
 
 const VISION_GIF_5         = "hole.webp";
-const VISION_QUESTION_5    = "Neat! A tiny blackhole!  You can drop any memory in here and it will be gone forever.";
+const VISION_QUESTION_5    = "A tiny blackhole!  You can drop any memory in here and it will be gone forever.";
 const VISION_PLACEHOLDER_5 = "Type a memory";
 const VISION_BUTTON_5      = "Throw!";
 
-const VISION_GIF_6         = "battle.webp";
+const VISION_GIF_6         = "battle.gif";
 const VISION_QUESTION_6    = "The battle rages between the forces of Ga-horse-rial and MIMOROTH.";
 const VISION_PLACEHOLDER_6 = "Type an attack";
 const VISION_BUTTON_6      = "Attack!";
 
-const VISION_GIF_7         = "paint.webp";
-const VISION_QUESTION_7    = "Elle retires from olmpic gymnastics to pursue her dream of painting melancholy.  She is taking requests.";
-const VISION_PLACEHOLDER_7 = "Type something sad";
-const VISION_BUTTON_7      = "Suggest!";
+const NOTES = [
+  'C2','F2','Bb2','G2',
+  'C3','F3','Bb3','G3',
+];
 
 const MEDIATION_QUESTION_1    = "What is something you have overcome?";
 const MEDIATION_PLACEHOLDER_1 = "Answer Anonymously"; 
@@ -107,25 +110,49 @@ const MEDIATION_PLACEHOLDER_3 = "Answer Anonymously";
 const MEDIATION_BUTTON_3      = "Answer"; 
 
 const GOSPEL = '"Hearts get swole by lifting feelings."';
-const GOSPEL_SOURCE = '--Cowboy Jobe 12:56';
+const GOSPEL_SOURCE = '-Cowboy Jobe 12:56';
 const SERMON = ``
 
 const HW_LINK = "";
 
 const FERNANDO_POEM = [
-  'I loved a man named Lon.',
-  'But he was animated and I am not.',
-  'One day he walked away',
-  'And I could not follow',
-  'I wept for him silently',
-  'Behind eyes that cannot cry',
-  'But it gives me great joy to know',
-  'That my heart now knows the strength to lose love',
-  'This is power',
-  'This is wisdom',
-  'This is the only way to become the man I wish to be',
-  'Perhaps I will find love one day again',
-  'Now that my heart is stronger than ever',
+  '',
+  'Fernando: Is this thing on?',
+  'Fernando: Can you all hear me?',
+  'Fernando: Can I get an Amen in the chat?',
+  '',
+  'Fernando: That brings me joy.',
+  'Fernando: I will now share my story.',
+  '',
+  'Fernando: I once loved Lon.',
+  'Fernando: But Lon is animate and I am not.',
+  'Fernando: One day Lon walked away...',
+  'Fernando: and I could not follow.',
+  'Fernando: I wept for Lon silently...',
+  'Fernando: behind eyes that could not cry.',
+  'Fernando: Type f in the chat.',
+  '',
+  'Fernando: More. Console your dear Fernando.',
+  '',
+  'Fernando: Thank you.',
+  'Fernando: I am consoled.',
+  '',
+  'Fernando: Perhaps Lon cared for me as I did Lon',
+  'Fernando: Perhaps not.',
+  'Fernando: But it gives me great joy to know',
+  'Fernando: That my heart now knows the strength to endure love lost',
+  'Fernando: I feel powerful',
+  'Fernando: I feel wise',
+  'Fernando: If I must be Lonless, then at least I am a better me.',
+  'Fernando: Perhaps I will find love one day again.',
+  'Fernando: And I will be a better partner, then...',
+  'Fernando: for my newfound strength.',
+  '',
+  'Fernando: Farewell, my friends!',
+  'Fernando: I will see you in a week\'s time!',
+  'Fernando: Be sure to do your homework!',
+  '',
+  'Fernando: Goodbye.',
 ];
 
 class Show extends React.Component {
@@ -168,7 +195,7 @@ class Show extends React.Component {
       foregroundChildren: (
         <React.Fragment>
           <VideoBg key='campfire' srcs={['campfire.mp4']}/>
-          <CTA />
+          <CTA><p>The world's first electric trombone livestream adventure.  Here. Every Thursday 7p CT.</p></CTA>
         </React.Fragment>
       ),
     };
@@ -216,6 +243,7 @@ class Show extends React.Component {
               mode={mode}
               buttonText={buttonText}
               soundMode='synth'
+              notes={NOTES}
             />
           </React.Fragment>
         ),
@@ -345,8 +373,8 @@ class Show extends React.Component {
       visionScene(3,VISION_QUESTION_3,VISION_PLACEHOLDER_3,VISION_BUTTON_3,VISION_GIF_3),
       visionScene(4,VISION_QUESTION_4,VISION_PLACEHOLDER_4,VISION_BUTTON_4,VISION_GIF_4),
       visionScene(5,VISION_QUESTION_5,VISION_PLACEHOLDER_5,VISION_BUTTON_5,VISION_GIF_5),
-      visionScene(5,VISION_QUESTION_6,VISION_PLACEHOLDER_6,VISION_BUTTON_6,VISION_GIF_6),
-      visionScene(5,VISION_QUESTION_7,VISION_PLACEHOLDER_7,VISION_BUTTON_7,VISION_GIF_7),
+      visionScene(6,VISION_QUESTION_6,VISION_PLACEHOLDER_6,VISION_BUTTON_6,VISION_GIF_6),
+      // visionScene(7,VISION_QUESTION_7,VISION_PLACEHOLDER_7,VISION_BUTTON_7,VISION_GIF_7),
       // {
       //   name: "Fireflies",
       //   livestream: "tiny",
@@ -391,25 +419,50 @@ class Show extends React.Component {
             {/* <BestResponses /> */}
 
             <div className="layout-top -no-pointer">
-              <p>{GOSPEL}</p>
-            </div>
-            <div className="layout-bottom -no-pointer">
-              <p>{GOSPEL_SOURCE}</p>
+              <p>{GOSPEL}<br/>{GOSPEL_SOURCE}</p>
             </div>
           </React.Fragment>
         ),
       },
       {
-        name: 'Homepage',
+        name: 'Support',
         livestream: "hidden",
         babyClass: "hidden",
         foregroundChildren: (
           <React.Fragment>
             <VideoBg key='campfire' srcs={['campfire.mp4']}/>
-            <CTA>
-            <p style={{ display: 'block', margin: '10px auto'}}>Complete the assignment <a href={HW_LINK} target="_blank">here</a> to get the special password.</p>
-            <p style={{ display: 'block', margin: '10px auto', fontSize: '0.5em'}}>(I'll send this link to the mailing list soon.)</p>
-            </CTA>
+            <CTA mailingListText='Homework is sent to mailing list...'></CTA>
+            <TipJar/>
+          </React.Fragment>
+        ),
+      },
+      {
+        name: 'Afterparty',
+        livestream: vip ? "vip" : "hidden",
+        babyClass: vip ? "" : "hidden",
+        foregroundChildren: (
+          <React.Fragment>
+            <VideoBg key='spotlight' srcs={(vip ? ['spotlight.mp4']:['campfire.mp4'])}/>
+            {vip ?
+              <Subtitles titles={FERNANDO_POEM} />
+              : <React.Fragment>
+                  <p className="layout-top">VIP participants are currently seeing Fernando's story.</p>
+                  <CTA mailingListText='Homework is sent to mailing list...' />
+                </React.Fragment>
+            }
+            <TipJar/>
+          </React.Fragment>
+        ),
+      },
+      {
+        name: 'Support',
+        livestream: "hidden",
+        babyClass: "hidden",
+        foregroundChildren: (
+          <React.Fragment>
+            <VideoBg key='campfire' srcs={['campfire.mp4']}/>
+            <CTA mailingListText='Homework is sent to mailing list...'></CTA>
+            <TipJar/>
           </React.Fragment>
         ),
       },
@@ -472,6 +525,9 @@ class Show extends React.Component {
 
         {(mode==="performer") && <div id="teleprompter">{currentScene.name}{currentScene.teleprompter}<br/><span style={{color: 'red'}}>{nextScene.name}</span></div>}
         
+        <Script
+          url="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f87b420788415d6"
+        />
       </div>
     );
   }

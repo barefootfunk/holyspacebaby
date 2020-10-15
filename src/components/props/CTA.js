@@ -8,7 +8,7 @@ import HolySpaceBabySvg from "../../svg/holy-space-baby.inline.svg"
 const MAILCHIMP_URL='https://barefootfunk.us18.list-manage.com/subscribe/post?u=47e36bf28611ddfce598ffc89&id=8fa2164a2f';
 
 // a basic form
-const CustomForm = ({ status, message, onValidated }) => {
+const CustomForm = ({ status, message, onValidated, descriptionText }) => {
   let email, name;
   const submit = () =>
     email &&
@@ -20,7 +20,7 @@ const CustomForm = ({ status, message, onValidated }) => {
   return (
     <div
     >
-      <p>Join the mailing list for reminders and bonus content:</p>
+      <div style={{fontSize: '0.8em'}}>{descriptionText ? descriptionText : 'Mailing list'}</div>
       {status !== "success" && (
         <div id='mailing-list-form'>
           <input
@@ -59,10 +59,7 @@ const CTA = (props) => {
       </div>
 
       <div className="layout-center">
-        {typeof props.children !== 'undefined' ? props.children : (<React.Fragment>
-          <p style={{ display: 'block', margin: '10px auto'}}>The world's first interactive electric trombone livestream adventure.</p>
-          <p style={{ display: 'block', margin: '10px auto'}}>Return here just before 7p CST every Thursday.</p>
-        </React.Fragment>)}
+        {typeof props.children !== 'undefined' && props.children}
         <div className="mailing-list">
         <MailchimpSubscribe
             url={MAILCHIMP_URL}
@@ -71,6 +68,7 @@ const CTA = (props) => {
                 status={status}
                 message={message}
                 onValidated={formData => subscribe(formData)}
+                descriptionText={props.mailingListText}
               />
             )}
           />
