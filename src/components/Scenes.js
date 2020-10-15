@@ -188,7 +188,7 @@ class Show extends React.Component {
       foregroundChildren: (
         <React.Fragment>
           <VideoBg key='campfire' srcs={['campfire.mp4']}/>
-          <CTA><p>The world's first electric trombone livestream adventure.  Here. Every Thursday 7p CT.</p></CTA>
+          <CTA><p>The world's first interactive electric trombone livestream adventure.  Here. Every Thursday 7p CT.</p></CTA>
         </React.Fragment>
       ),
     };
