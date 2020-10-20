@@ -1,8 +1,19 @@
 #cta {
 
+  .add-to-cal {
+    display: block;
+    margin-top: 10px;
+    a {
+      @include button;
+      display: block;
+      text-decoration: none;
+      font-size: 1em;
+    }
+  }
+
   .mailing-list {
     @include text-box;
-    margin-top: 40px;
+    margin-top: 10px;
     text-align: center;
     p {
       font-size: 0.5rem;

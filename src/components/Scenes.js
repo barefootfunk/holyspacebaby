@@ -54,9 +54,13 @@ const FLIGHT_BGS = [
 
 // CONTENT
 
-const VIP_PASSWORD = 'SOBEAUTIFUL';
-const EP_NUMBER = '5';
-const THEME = 'heavy';
+//https://dashboard.eventable.com/
+const CAL_ID_THIS = '5f8edebb57f9810060289b0c';
+const CAL_ID_NEXT = '5f8ee83c62821f005a6b302a';
+
+const VIP_PASSWORD = 'HEARTGYM';
+const EP_NUMBER = '6';
+const THEME = 'puzzle';
 
 const BULLETIN = `
   HW, support module,
@@ -188,7 +192,7 @@ class Show extends React.Component {
       foregroundChildren: (
         <React.Fragment>
           <VideoBg key='campfire' srcs={['campfire.mp4']}/>
-          <CTA><p>The world's first interactive electric trombone livestream adventure.  Here. Every Thursday 7p CT.</p></CTA>
+          <CTA calEventId={CAL_ID_THIS}><p>The world's first interactive electric trombone livestream adventure.  Here. Every Thursday 7p CT.</p></CTA>
         </React.Fragment>
       ),
     };
@@ -422,7 +426,7 @@ class Show extends React.Component {
         foregroundChildren: (
           <React.Fragment>
             <VideoBg key='campfire' srcs={['campfire.mp4']}/>
-            <CTA mailingListText='Homework is sent to mailing list...'></CTA>
+            <CTA calEventId={CAL_ID_NEXT} mailingListText='Homework is sent to mailing list...'></CTA>
             <TipJar/>
           </React.Fragment>
         ),
@@ -438,7 +442,7 @@ class Show extends React.Component {
               <Subtitles titles={FERNANDO_POEM} />
               : <React.Fragment>
                   <p className="layout-top">VIP participants are currently seeing Fernando's story.</p>
-                  <CTA mailingListText='Homework is sent to mailing list...' />
+                  <CTA calEventId={CAL_ID_NEXT} mailingListText='Homework is sent to mailing list...' />
                 </React.Fragment>
             }
             <TipJar/>
@@ -452,7 +456,7 @@ class Show extends React.Component {
         foregroundChildren: (
           <React.Fragment>
             <VideoBg key='campfire' srcs={['campfire.mp4']}/>
-            <CTA mailingListText='Homework is sent to mailing list...'></CTA>
+            <CTA calEventId={CAL_ID_NEXT} mailingListText='Homework is sent to mailing list...'></CTA>
             <TipJar/>
           </React.Fragment>
         ),
