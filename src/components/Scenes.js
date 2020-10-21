@@ -60,92 +60,97 @@ const CAL_ID_NEXT = '5f8ee83c62821f005a6b302a';
 
 const VIP_PASSWORD = 'HEARTGYM';
 const EP_NUMBER = '6';
-const THEME = 'puzzle';
+const THEME = 'puzzle pieces';
 
-const BULLETIN = `
-  HW, support module,
-`;
+const BULLETIN = ``;
 
-const VISION_GIF_1         = "horse.webp";
-const VISION_QUESTION_1    = "I am Ga-horse-rial! Lifter of all things. Give me a challenge!";
-const VISION_PLACEHOLDER_1 = "Type very heavy thing";
-const VISION_BUTTON_1      = "Lift!";
+const VISION_GIF_1         = "recital.webp";
+const VISION_QUESTION_1    = "The scientist programmed the A.I. Nueral Network with videos of the kindest humans–but accidentally included their daughter's dance recital.";
+const VISION_PLACEHOLDER_1 = "Type a kind human or dance";
+const VISION_BUTTON_1      = "Program!";
 
-const VISION_GIF_2         = "hole.webp";
-const VISION_QUESTION_2    = "A tiny blackhole!  You can drop any memory in here and it will be gone forever.";
-const VISION_PLACEHOLDER_2 = "Type a memory";
-const VISION_BUTTON_2      = "Throw!";
+const VISION_GIF_2         = "robot.gif";
+const VISION_QUESTION_2    = "The A.I. NuNe immediately began to gyrate and wanted to maximally better the world.  \"How can I make the world better?\"";
+const VISION_PLACEHOLDER_2 = "Type a cause";
+const VISION_BUTTON_2      = "Ponder!";
 
-const VISION_GIF_3         = "mime.gif";
-const VISION_QUESTION_3    = "Ga-horse-rial's nemesis emerges. Weight is meaningless to physics-bender MIMOROTH.";
-const VISION_PLACEHOLDER_3 = "Swear allegiance";
-const VISION_BUTTON_3      = "Pick a side!";
+const VISION_GIF_3         = "farm.webp";
+const VISION_QUESTION_3    = "NuNe attempted to grow super foods for the hungry.  But their dancing slowed them. The other farmBots mocked."
+const VISION_PLACEHOLDER_3 = "Type a robot diss";
+const VISION_BUTTON_3      = "Diss!";
 
-const VISION_GIF_4         = "super.webp";
-const VISION_QUESTION_4    = "With every hardship, my power level increases. Quickly! I must reach 9000.";
-const VISION_PLACEHOLDER_4 = "Type a hardship";
-const VISION_BUTTON_4      = "Level up!";
+const VISION_GIF_4         = "explosion.webp";
+const VISION_QUESTION_4    = "NuNe attempted to research cancer, but their dance moves were a hazard in the lab.";
+const VISION_PLACEHOLDER_4 = "Type a lab accident";
+const VISION_BUTTON_4      = "Accident!";
 
-const VISION_GIF_5         = "battle.gif";
-const VISION_QUESTION_5    = "The battle rages between the forces of Ga-horse-rial and MIMOROTH.";
-const VISION_PLACEHOLDER_5 = "Type an attack";
-const VISION_BUTTON_5      = "Attack!";
+const VISION_GIF_5         = "lament.webp";
+const VISION_QUESTION_5    = "An overwhelming number of causes, but NuNe could not find theirs.  In despair, NuNe engaged ultra_lament_dance().";
+const VISION_PLACEHOLDER_5 = "Type a lament";
+const VISION_BUTTON_5      = "ultra_lament_dance()";
+
+const VISION_GIF_6         = "boy.gif";
+const VISION_QUESTION_6    = "A little boy struggling with depression was inspired and joined in.  He giggled. The world was brighter.";
+const VISION_PLACEHOLDER_6 = "Encourage the little boy";
+const VISION_BUTTON_6      = "Encourage!";
+
+const VISION_GIF_7         = "kids.webp";
+const VISION_QUESTION_7    = "Today, NuNe is a superhuman innovator in robo-human interface youth dance therapy and has saved thousands of lives.";
+const VISION_PLACEHOLDER_7 = "Type thanks to NeuNe";
+const VISION_BUTTON_7      = "Celebrate!";
 
 const NOTES = [
-  'C2','F2','Bb2','G2',
-  'C3','F3','Bb3','G3',
+  'Bb2','D2','F2','Gb2','C2',
+  'Bb3','D3','F3','Gb3','C3',
 ];
 
-const MEDIATION_QUESTION_1    = "What is something you have overcome?";
-const MEDIATION_PLACEHOLDER_1 = "Answer Anonymously"; 
-const MEDIATION_BUTTON_1      = "Answer"; 
+const MEDIATION_QUESTION_1    = "What is one your weaknesses?";
+const MEDIATION_PLACEHOLDER_1 = "Type a weakness";
+const MEDIATION_BUTTON_1      = "Answer anonymously!";
 
-const MEDIATION_QUESTION_2    = "What did it teach you?";
-const MEDIATION_PLACEHOLDER_2 = "Answer Anonymously"; 
-const MEDIATION_BUTTON_2      = "Answer"; 
+const MEDIATION_QUESTION_2    = "What is something you shine at or love to do?";
+const MEDIATION_PLACEHOLDER_2 = "Type a strength";
+const MEDIATION_BUTTON_2      = "Answer anonymously!";
 
-const MEDIATION_QUESTION_3    = "What is something heavy you are trying to lift now?";
-const MEDIATION_PLACEHOLDER_3 = "Answer Anonymously"; 
-const MEDIATION_BUTTON_3      = "Answer"; 
+const MEDIATION_QUESTION_3    = "How can that brighten someone else's life?";
+const MEDIATION_PLACEHOLDER_3 = "Type a way";
+const MEDIATION_BUTTON_3      = "Answer anonymously!";
 
-const GOSPEL = '"Hearts get swole by lifting feelings."';
-const GOSPEL_SOURCE = '-Cowboy Jobe 12:56';
+const GOSPEL = '"A puzzle piece must look to its shape to find its place."';
+const GOSPEL_SOURCE = '-Cowboy Jobe 567:12';
 const SERMON = ``
 
 const HW_LINK = "";
 
 const FERNANDO_POEM = [
   '',
-  'Fernando: Is this thing on?',
-  'Fernando: Can you all hear me?',
+  'Fernando: Good evening, special people.',
   'Fernando: Can I get an Amen in the chat?',
   '',
-  'Fernando: That brings me joy.',
+  'Fernando: That was an excellent Amen.',
   'Fernando: I will now share my story.',
   '',
-  'Fernando: I once loved Lon.',
-  'Fernando: But Lon is animate and I am not.',
-  'Fernando: One day Lon walked away...',
-  'Fernando: and I could not follow.',
-  'Fernando: I wept for Lon silently...',
-  'Fernando: behind eyes that could not cry.',
-  'Fernando: Type f in the chat.',
+  'Fernando: For decades I could not find my purpose.',
+  'Fernando: I was a terrible doctor.',
+  'Fernando: Due to my stillness.',
+  'Fernando: I was a worse chef.',
+  'Fernando: Due to my stillness.',
   '',
-  'Fernando: More. Console your dear Fernando.',
+  'Fernando: Then one gloomy day, while working a day job as a mannequin,',
+  'Fernando: I overheard some white sepremacists planning an evil plot.',
+  'Fernando: They ignored me.',
+  'Fernando: Due to my stillness.',
   '',
-  'Fernando: Thank you.',
-  'Fernando: I am consoled.',
+  'Fernando: I reported them to the FBI.',
+  'Fernando: Together, we foiled their terrorist threat.',
   '',
-  'Fernando: Perhaps Lon cared for me as I did Lon',
-  'Fernando: Perhaps not.',
-  'Fernando: But it gives me great joy to know',
-  'Fernando: That my heart now knows the strength to endure love lost',
-  'Fernando: I feel powerful',
-  'Fernando: I feel wise',
-  'Fernando: If I must be Lonless, then at least I am a better me.',
-  'Fernando: Perhaps I will find love one day again.',
-  'Fernando: And I will be a better partner, then...',
-  'Fernando: for my newfound strength.',
+  'Fernando: They offered me a job.',
+  'Fernando: They said I was the perfect spy.',
+  'Fernando: And today your dear Fernando has found great joy',
+  'Fernando: in bringing down neo-nazi organizations',
+  'Fernando: from the inside.',
+  '',
+  'Fernando: Nobody suspects a mannequin.',
   '',
   'Fernando: Farewell, my friends!',
   'Fernando: I will see you in a week\'s time!',
@@ -205,6 +210,17 @@ class Show extends React.Component {
         foregroundChildren: (
           <React.Fragment>
             <VideoBg key={`flight${num}`} srcs={FLIGHT_BGS}/>
+            {num>=3 &&
+              <div style={{
+                backgroundImage: `url('/img/robot2.gif')`,
+                position: 'fixed',
+                backgroundSize: 'contain',
+                top: 0,
+                left: 0,
+                width: '100vw',
+                height: '100vh',
+              }} />
+            }
             <Prompter 
               id={`vision${num}`}
               key={`prompt-vision${num}`}
@@ -370,6 +386,8 @@ class Show extends React.Component {
       visionScene(3,VISION_QUESTION_3,VISION_PLACEHOLDER_3,VISION_BUTTON_3,VISION_GIF_3),
       visionScene(4,VISION_QUESTION_4,VISION_PLACEHOLDER_4,VISION_BUTTON_4,VISION_GIF_4),
       visionScene(5,VISION_QUESTION_5,VISION_PLACEHOLDER_5,VISION_BUTTON_5,VISION_GIF_5),
+      visionScene(6,VISION_QUESTION_6,VISION_PLACEHOLDER_6,VISION_BUTTON_6,VISION_GIF_6),
+      visionScene(7,VISION_QUESTION_7,VISION_PLACEHOLDER_7,VISION_BUTTON_7,VISION_GIF_7),
       // {
       //   name: "Fireflies",
       //   livestream: "tiny",

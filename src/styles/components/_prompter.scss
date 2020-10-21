@@ -4,7 +4,10 @@
   background: black;
   max-width: 95vw;
   padding: 0.2em 0.4em 0.4em;
-
+  font-size: 0.7em;
+  p {
+    width: 100% !important;
+  }
   .error {
     color: red;
     @include glow(red);
@@ -18,13 +21,19 @@
   // padding: 20px;
   padding: 0;
   width: 100%;
+  flex-wrap: wrap;
+
+
+
   input, button {
     @include font-display;
+    display: block;
     color: white;
     border: 2px solid white;
     background: black;
     border-radius: 3px;
     padding: 0em 0.3em;
+    
   }
   button {
     @include button-hover;
@@ -32,7 +41,7 @@
   }
 
   input[type="text"] {
-    // width: 200px;
+    width: 325px;
     flex-grow: 1;
   }
 }
