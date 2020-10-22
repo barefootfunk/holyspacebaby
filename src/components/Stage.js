@@ -6,12 +6,16 @@ import io from "socket.io-client";
 // Show
 import Show from "./Scenes"
 
+// Amplitude
+import {initAmplitude, sendAmplitudeData} from './utilities/amplitude';
+
 const SOCKET_URL = 'https://holyspacebaby-server.herokuapp.com/'; 
 // const SOCKET_URL = 'http://localhost:3000';
 
 export default class Stage extends React.Component {
 
   constructor (props) {
+    
     super(props);
 
     this.state = {
@@ -26,6 +30,10 @@ export default class Stage extends React.Component {
   }
 
   componentDidMount () {
+    initAmplitude();
+    console.log('mode',this.props.mode);
+    sendAmplitudeData('join', {mode: this.props.mode}); 
+    
     this.socket = io(SOCKET_URL, {
       'reconnection': true,
       'reconnectionDelay': 500,

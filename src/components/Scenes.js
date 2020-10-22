@@ -55,6 +55,8 @@ const FLIGHT_BGS = [
 // CONTENT
 
 //https://dashboard.eventable.com/
+const DATE_THIS = 'OCT 22';
+const DATE_NEXT = 'OCT 29';
 const CAL_ID_THIS = '5f8edebb57f9810060289b0c';
 const CAL_ID_NEXT = '5f8ee83c62821f005a6b302a';
 
@@ -146,11 +148,15 @@ const FERNANDO_POEM = [
   '',
   'Fernando: They offered me a job.',
   'Fernando: They said I was the perfect spy.',
+  '',
+  'Fernando: Congratulate your Fernando.',
+  '',
+  'Fernando: Your dear Fernando is very congratulated.',
   'Fernando: And today your dear Fernando has found great joy',
   'Fernando: in bringing down neo-nazi organizations',
   'Fernando: from the inside.',
   '',
-  'Fernando: Nobody suspects a mannequin.',
+  'Fernando: Nobody suspects the mannequin.',
   '',
   'Fernando: Farewell, my friends!',
   'Fernando: I will see you in a week\'s time!',
@@ -165,6 +171,7 @@ class Show extends React.Component {
       babyColor: 0,
       babyHat: 0,
       funkLevel: 0,
+      babyRainbow: false,
       vip: (this.props.mode==='performer'), // Performer defaults to vip=true, otherwise false
     }
   }
@@ -188,7 +195,7 @@ class Show extends React.Component {
   render () {
     let {scene, mode, messages, newParticipantEvent, responses} = this.props;
 
-    const {babyColor, funkLevel, babyHat, vip} = this.state;
+    const {babyColor, funkLevel, babyHat, babyRainbow, vip} = this.state;
 
     const homepage = {
       name: 'Homepage',
@@ -197,7 +204,7 @@ class Show extends React.Component {
       foregroundChildren: (
         <React.Fragment>
           <VideoBg key='campfire' srcs={['campfire.mp4']}/>
-          <CTA calEventId={CAL_ID_THIS}><p>The world's first interactive electric trombone livestream adventure.  Here. Every Thursday 7p CT.</p></CTA>
+          <CTA calEventId={CAL_ID_THIS} nextCeremonyDate={DATE_THIS}><p>The world's first interactive electric trombone livestream adventure.  Here. Every Thursday 7p CT.</p></CTA>
         </React.Fragment>
       ),
     };
@@ -207,6 +214,7 @@ class Show extends React.Component {
         name: `Vision ${num}`,
         livestream: "tiny",
         babyClass: "flight",
+        teleprompter: `${question}`,
         foregroundChildren: (
           <React.Fragment>
             <VideoBg key={`flight${num}`} srcs={FLIGHT_BGS}/>
@@ -352,9 +360,12 @@ class Show extends React.Component {
           <React.Fragment>
             <VideoBg key='sparks' srcs={['sparks.mp4']} />
             <FunkBottle bottleName="funk" onDrink={() => { this.setState({funkLevel: this.state.funkLevel + 1,}) }}  />  
-            <FunkBottle bottleName="color" onDrink={() => { this.setState({babyColor: this.state.babyColor + 1,}) }}  />  
+            <FunkBottle bottleName="color" onDrink={() => { this.setState({babyColor: this.state.babyColor + 1, babyRainbow: false}) }}  />  
             <VipOnly vip={vip}>
               <FunkBottle bottleName="hat" onDrink={() => { this.setState({babyHat: this.state.babyHat + 1,}) }}  />  
+            </VipOnly>
+            <VipOnly vip={vip}>
+              <FunkBottle bottleName="rainbow" onDrink={() => { this.setState({babyRainbow: !this.state.babyRainbow}) }}  />  
             </VipOnly>
             {/* <div className="layout-top -no-pointer">
               <p>You are reborn!</p>
@@ -444,7 +455,7 @@ class Show extends React.Component {
         foregroundChildren: (
           <React.Fragment>
             <VideoBg key='campfire' srcs={['campfire.mp4']}/>
-            <CTA calEventId={CAL_ID_NEXT} mailingListText='Homework is sent to mailing list...'></CTA>
+            <CTA calEventId={CAL_ID_NEXT} nextCeremonyDate={DATE_NEXT} mailingListText='Homework is sent to mailing list...'></CTA>
             <TipJar/>
           </React.Fragment>
         ),
@@ -460,7 +471,7 @@ class Show extends React.Component {
               <Subtitles titles={FERNANDO_POEM} />
               : <React.Fragment>
                   <p className="layout-top">VIP participants are currently seeing Fernando's story.</p>
-                  <CTA calEventId={CAL_ID_NEXT} mailingListText='Homework is sent to mailing list...' />
+                  <CTA calEventId={CAL_ID_NEXT} nextCeremonyDate={DATE_NEXT} mailingListText='Homework is sent to mailing list...' />
                 </React.Fragment>
             }
             <TipJar/>
@@ -474,7 +485,7 @@ class Show extends React.Component {
         foregroundChildren: (
           <React.Fragment>
             <VideoBg key='campfire' srcs={['campfire.mp4']}/>
-            <CTA calEventId={CAL_ID_NEXT} mailingListText='Homework is sent to mailing list...'></CTA>
+            <CTA calEventId={CAL_ID_NEXT} nextCeremonyDate={DATE_NEXT} mailingListText='Homework is sent to mailing list...'></CTA>
             <TipJar/>
           </React.Fragment>
         ),
@@ -499,7 +510,7 @@ class Show extends React.Component {
     return (
       <div 
         id={`scene-${slugify(currentScene.name, {lower: true})}`} 
-        className="scene"
+        className={`scene ${babyRainbow ? 'rainbow-baby' : ''}`}
         style={{
           '--baby-color': babyColors[babyColor % babyColors.length],
           '--funk-level-normalized': 1-(1/Math.pow(((funkLevel)/20+1),2)),
@@ -534,7 +545,7 @@ class Show extends React.Component {
 
         <div id="funk-overlay" />
 
-        <Chat newParticipantEvent={newParticipantEvent} messages={messages} color={babyColors[babyColor % babyColors.length]}/>
+        <Chat newParticipantEvent={newParticipantEvent} messages={messages} color={babyColors[babyColor % babyColors.length]} rainbow={babyRainbow}/>
 
         {(mode==="performer") && <div id="teleprompter">{currentScene.name}{currentScene.teleprompter}<br/><span style={{color: 'red'}}>{nextScene.name}</span></div>}
         

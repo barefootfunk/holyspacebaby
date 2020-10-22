@@ -1,5 +1,6 @@
 import React from 'react';
 import Filter from 'bad-words';
+import {sendAmplitudeData} from './utilities/amplitude';
 
 export default class Chat extends React.Component {
 
@@ -31,12 +32,15 @@ export default class Chat extends React.Component {
     const filter = new Filter();
     const cleanMessage = filter.clean(message);
 
+    sendAmplitudeData('chat', {message: cleanMessage}); 
+
     // Send message to server as participant event
     this.props.newParticipantEvent({
       type: 'message', 
       data: {
         message: cleanMessage,
         color: this.props.color,
+        rainbow: this.props.rainbow,
         destinationX: Math.random(),
         destinationY: Math.random(),
       }
@@ -59,7 +63,7 @@ export default class Chat extends React.Component {
             messages.map((message,index) => {
               return (
                 <div 
-                  className="message" 
+                  className={`message `} 
                   key={`message-${message.id}`} 
                   id={`message-${message.id}`} 
                   style={{
@@ -67,7 +71,10 @@ export default class Chat extends React.Component {
                     transform: `translate(-${message.destinationX*200}vw,-${message.destinationY*100+100}vh)`,
                   }}
                 >
-                  {message.message}
+                  {message.rainbow ? 
+                    <span class="rainbow-text">{message.message}</span> :
+                    message.message
+                  }
                 </div>
                 )
             })

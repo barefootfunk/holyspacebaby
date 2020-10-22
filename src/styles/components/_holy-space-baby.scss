@@ -93,3 +93,41 @@
     }
   }
 }
+
+@keyframes rainbow-fills {
+  0% { 
+      fill: lime; 
+    }
+  15% { 
+      fill: red; 
+    }
+  30% { 
+      fill: orange; 
+    }
+  45% { 
+      fill: yellow; 
+    }
+  60% { 
+      fill: lime; 
+    }
+  75% { 
+      fill: cyan; 
+    }
+  90% { 
+      fill: violet; 
+    }
+  100% {
+      fill: blue; 
+    }
+}
+
+.scene.rainbow-baby {
+  #holy-space-baby {
+    #lines {
+      animation: rainbow-fills 1s infinite steps(20,end);
+    }
+    .center-wrap {
+      &::before { animation: rainbow-mask 1s linear infinite; }
+    }
+  }
+}
