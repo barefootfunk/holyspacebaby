@@ -64,10 +64,13 @@ const VIP_PASSWORD = 'HEARTGYM';
 const EP_NUMBER = '6';
 const THEME = 'puzzle pieces';
 
-const BULLETIN = `Homework/VIP,  Fernando, If you design any superintelligent AIs be careful what you input`;
+const BULLETIN = `Homework/VIP,  
+Fernando, 
+If you design any superintelligent AIs be careful what you input, 
+Thank yous/credits`;
 
 const VISION_GIF_1         = "recital.webp";
-const VISION_QUESTION_1    = "The scientist programmed the A.I. Nueral Network with videos of the kindest humans–but accidentally included their daughter's dance recital.";
+const VISION_QUESTION_1    = "The scientist programmed the A.I. Nueral Network with videos of the kindest, noblest humans–but accidentally included their daughter's dance recital.";
 const VISION_PLACEHOLDER_1 = "Type a kind human or dance";
 const VISION_BUTTON_1      = "Program!";
 
