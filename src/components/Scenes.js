@@ -64,7 +64,7 @@ const VIP_PASSWORD = 'HEARTGYM';
 const EP_NUMBER = '6';
 const THEME = 'puzzle pieces';
 
-const BULLETIN = ``;
+const BULLETIN = `Homework/VIP,  Fernando, If you design any superintelligent AIs be careful what you input`;
 
 const VISION_GIF_1         = "recital.webp";
 const VISION_QUESTION_1    = "The scientist programmed the A.I. Nueral Network with videos of the kindest humans–but accidentally included their daughter's dance recital.";
@@ -77,7 +77,7 @@ const VISION_PLACEHOLDER_2 = "Type a cause";
 const VISION_BUTTON_2      = "Ponder!";
 
 const VISION_GIF_3         = "farm.webp";
-const VISION_QUESTION_3    = "NuNe attempted to grow super foods for the hungry.  But their dancing slowed them. The other farmBots mocked."
+const VISION_QUESTION_3    = "NuNe attempted to grow super foods for the hungry.  Dancing slowed them. The other farmBots mocked."
 const VISION_PLACEHOLDER_3 = "Type a robot diss";
 const VISION_BUTTON_3      = "Diss!";
 
@@ -97,7 +97,7 @@ const VISION_PLACEHOLDER_6 = "Encourage the little boy";
 const VISION_BUTTON_6      = "Encourage!";
 
 const VISION_GIF_7         = "kids.webp";
-const VISION_QUESTION_7    = "Today, NuNe is a superhuman innovator in robo-human interface youth dance therapy and has saved thousands of lives.";
+const VISION_QUESTION_7    = "Today, NuNe is a superhuman innovator in robo-human interface youth dance therapy and has saved thousands of children.";
 const VISION_PLACEHOLDER_7 = "Type thanks to NeuNe";
 const VISION_BUTTON_7      = "Celebrate!";
 
@@ -120,7 +120,15 @@ const MEDIATION_BUTTON_3      = "Answer anonymously!";
 
 const GOSPEL = '"A puzzle piece must look to its shape to find its place."';
 const GOSPEL_SOURCE = '-Cowboy Jobe 567:12';
-const SERMON = ``
+const SERMON = `${GOSPEL} ${GOSPEL_SOURCE}
+  Decisions
+  Puzzle
+  2 perspectives
+  Maximize good example
+  Unique contribution
+  introspection requires work
+  goodbye
+`
 
 const HW_LINK = "";
 
@@ -138,15 +146,26 @@ const FERNANDO_POEM = [
   'Fernando: I was a worse chef.',
   'Fernando: Due to my stillness.',
   '',
-  'Fernando: Then one gloomy day, while working a day job as a mannequin,',
-  'Fernando: I overheard some white sepremacists planning an evil plot.',
+  'Fernando: Then one gloomy day,', 
+  'Fernando: while working a day job as at Old Navy,',
+  'Fernando: I overheard some white sepremacists',
+  'Fernando: planning a terrorist plot.',
+  'Fernando: Your dear Fernando was terrified!',
+  'Fernando: Ask your dear Fernando what he did!',
+  '',
+  'Fernando: Well I\'ll tell you.',
+  'Fernando: I thought quickly',
+  'Fernando: and did not move a muscle.',
+  'Fernando: They discussed all the details',
+  'Fernando: while trying on pants.',
+  '',
   'Fernando: They ignored me.',
   'Fernando: Due to my stillness.',
   '',
   'Fernando: I reported them to the FBI.',
   'Fernando: Together, we foiled their terrorist threat.',
   '',
-  'Fernando: They offered me a job.',
+  'Fernando: The FBI offered me a job.',
   'Fernando: They said I was the perfect spy.',
   '',
   'Fernando: Congratulate your Fernando.',
@@ -160,6 +179,7 @@ const FERNANDO_POEM = [
   '',
   'Fernando: Farewell, my friends!',
   'Fernando: I will see you in a week\'s time!',
+  'Fernando: For another story.',
   'Fernando: Be sure to do your homework!',
 ];
 
