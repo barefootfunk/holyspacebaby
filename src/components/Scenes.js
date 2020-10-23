@@ -55,10 +55,10 @@ const FLIGHT_BGS = [
 // CONTENT
 
 //https://dashboard.eventable.com/
-const DATE_THIS = 'OCT 22';
-const DATE_NEXT = 'OCT 29';
-const CAL_ID_THIS = '5f8edebb57f9810060289b0c';
-const CAL_ID_NEXT = '5f8ee83c62821f005a6b302a';
+const DATE_THIS = 'OCT 29';
+const DATE_NEXT = ;
+const CAL_ID_THIS = '5f8ee83c62821f005a6b302a';
+const CAL_ID_NEXT = '';
 
 const VIP_PASSWORD = 'HEARTGYM';
 const EP_NUMBER = '6';
