@@ -56,7 +56,7 @@ const FLIGHT_BGS = [
 
 //https://dashboard.eventable.com/
 const DATE_THIS = 'OCT 29';
-const DATE_NEXT = ;
+const DATE_NEXT = '';
 const CAL_ID_THIS = '5f8ee83c62821f005a6b302a';
 const CAL_ID_NEXT = '';
 
