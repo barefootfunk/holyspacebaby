@@ -47,17 +47,32 @@ export default class HolySpaceBaby extends React.Component {
     });
   }
 
+  updateFirefly = () => {
+    this.props.newParticipantEvent({
+      type:'updateFirefly',
+      data: {
+        x: this.state.x/this.state.width,
+        y: this.state.y/this.state.height,
+        color: this.props.color,
+        rainbow: false,
+      }
+    })
+  }
+
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
     window.addEventListener('mousemove', this.handleMouseMove);
     window.addEventListener('touchstart', this.handleTouch);
+
+    this.fireflyInterval = setInterval(this.updateFirefly, 500)
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions);
     window.removeEventListener('mousemove', this.handleMouseMove);
     window.removeEventListener('touchstart', this.handleTouch);
+    clearInterval(this.fireflyInterval)
   }
 
   render () {

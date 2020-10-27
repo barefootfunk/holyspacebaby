@@ -19,6 +19,7 @@ import VipPasswordInput from "./props/VipPasswordInput"
 import VipOnly from "./props/VipOnly"
 import Subtitles from "./props/Subtitles"
 import TipJar from "./props/TipJar"
+import Fireflies from "./props/Fireflies"
 
 // Sounds
 import cheer1Sound from '../sounds/cheer1.mp3';
@@ -121,17 +122,18 @@ const MEDIATION_QUESTION_3    = "How can that brighten someone else's life?";
 const MEDIATION_PLACEHOLDER_3 = "Type a way";
 const MEDIATION_BUTTON_3      = "Answer anonymously!";
 
-const GOSPEL = '"A puzzle piece must look to its shape to find its place."';
-const GOSPEL_SOURCE = '-Cowboy Jobe 567:12';
+const GOSPEL = '"Are you a zombie or a pancake–or are you you?"';
+const GOSPEL_SOURCE = '-Cowboy Jobe 1:19';
 const SERMON = `${GOSPEL} ${GOSPEL_SOURCE}
-  Decisions
-  Puzzle
-  2 perspectives
-  Maximize good example
-  Unique contribution
-  introspection requires work
-  goodbye
-`
+  Agency - define
+  too much makes you a zombie
+  too little makes you a pancake
+  flipflops
+  are you either of these things?
+  when are you you?
+  take the exact right size bite of the world
+  goldilocks
+`;
 
 const HW_LINK = "";
 
@@ -216,7 +218,7 @@ class Show extends React.Component {
   }
 
   render () {
-    let {scene, mode, messages, newParticipantEvent, responses} = this.props;
+    let {scene, mode, messages, newParticipantEvent, responses, directorState} = this.props;
 
     const {babyColor, funkLevel, babyHat, babyRainbow, vip} = this.state;
 
@@ -352,26 +354,26 @@ class Show extends React.Component {
           </React.Fragment>
         )
       },
-      // {
-      //   name: 'Dying',
-      //   teleprompter: ``,
-      //   livestream: "big",
-      //   babyClass: "hidden",
-      //   foregroundChildren: (
-      //     <React.Fragment>
-      //       <VideoBg key='campfire-intense' srcs={['campfire-intense.mp4']}/>
-      //       <div className="layout-top -no-pointer">
-      //         <p style={{fontSize: '2em'}}>YOU ARE NOW DYING!</p>
-      //       </div>
-      //       <div className="layout-bottom">
-      //         {/* <Credits /> */}
-      //         <ClickSound sound={cheer1Sound}>
-      //           <button className="button">REJOICE BUTTON</button>
-      //         </ClickSound>
-      //       </div>
-      //     </React.Fragment>
-      //   )
-      // },
+      {
+        name: 'Dying',
+        teleprompter: ``,
+        livestream: "big",
+        babyClass: "hidden",
+        foregroundChildren: (
+          <React.Fragment>
+            <VideoBg key='campfire-intense' srcs={['campfire-intense.mp4']}/>
+            <div className="layout-top -no-pointer">
+              <p style={{fontSize: '2em'}}>YOU ARE NOW DYING!</p>
+            </div>
+            <div className="layout-bottom">
+              {/* <Credits /> */}
+              <ClickSound sound={cheer1Sound}>
+                <button className="button">REJOICE BUTTON</button>
+              </ClickSound>
+            </div>
+          </React.Fragment>
+        )
+      },
       {
         name: 'Birth',
         teleprompter: `
@@ -530,6 +532,8 @@ class Show extends React.Component {
               
     const babyColors = ['lime','red','orange','yellow','cyan','violet']
 
+    console.log(directorState);
+
     return (
       <div 
         id={`scene-${slugify(currentScene.name, {lower: true})}`} 
@@ -564,7 +568,7 @@ class Show extends React.Component {
 
         {typeof currentScene.foregroundChildren !== 'undefined' && currentScene.foregroundChildren}
        
-        <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' ?  currentScene.babyClass : ''} hatNumber={babyHat}/>
+        <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' ?  currentScene.babyClass : ''} hatNumber={babyHat}  color={babyColors[babyColor % babyColors.length]} newParticipantEvent={newParticipantEvent}/>
 
         <div id="funk-overlay" />
 
@@ -572,9 +576,7 @@ class Show extends React.Component {
 
         {(mode==="performer") && <div id="teleprompter">{currentScene.name}{currentScene.teleprompter}<br/><span style={{color: 'red'}}>{nextScene.name}</span></div>}
         
-        <Script
-          url="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f87b420788415d6"
-        />
+        <Fireflies participants={directorState.participants} participantId={directorState.participantId} />
       </div>
     );
   }

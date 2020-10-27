@@ -25,6 +25,7 @@ export default class Stage extends React.Component {
       rehearsal: false,
       messages: [],
       responses: {},
+      participantId: null,
     };
 
   }
@@ -43,11 +44,11 @@ export default class Stage extends React.Component {
     // Socket lifecycle reporting
     this.socket.on('connect', () => { 
       console.log('SOCKET: connected');
-      this.setState({connected: this.socket.connected}) 
+      this.setState({connected: this.socket.connected, participantId: this.socket.id}) 
     });
     this.socket.on('reconnect', () => { 
       console.log('SOCKET: reconnect');
-      this.setState({connected: this.socket.connected}) 
+      this.setState({connected: this.socket.connected, participantId: this.socket.id}) 
     });
     this.socket.on('connecting', () => { 
       console.log('SOCKET: connecting');
@@ -76,13 +77,13 @@ export default class Stage extends React.Component {
 
     // HolySpaceBaby specific events
     this.socket.on('updateParticipantState', (newState) => {
-      console.log('SOCKET: updateParticipantState',newState);
+      // console.log('SOCKET: updateParticipantState',newState);
       this.setState(newState);
     });
 
     let messageId=0;
     this.socket.on('broadcastParticipantEvent', (event) => {
-      console.log('SOCKET: broadcastParticipantEvent',event);
+      // console.log('SOCKET: broadcastParticipantEvent',event);
       if(event.type==='message') {
         const maxMessages = 50;
         const messages = this.state.messages;
@@ -124,7 +125,7 @@ export default class Stage extends React.Component {
     return (
       <div id="stage">
 
-        <Show scene={scene} mode={mode} newParticipantEvent={this.newParticipantEvent} messages={messages} responses={responses}/>
+        <Show scene={scene} mode={mode} newParticipantEvent={this.newParticipantEvent} directorState={this.state} messages={messages} responses={responses}/>
 
         {mode==="performer" && (
           <React.Fragment>
