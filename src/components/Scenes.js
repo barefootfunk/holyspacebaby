@@ -114,25 +114,25 @@ const GOSPEL = '"The secret ingredient to curing zombiehood is something-you-can
 const GOSPEL_SOURCE = '-Cowboy Jobe 1:19';
 const SERMON = `${GOSPEL} ${GOSPEL_SOURCE}
   What makes a zombie? Nothing-you-can-do-about-it-ness.
-      life is happening to you
-      not in control of your destiny
-      cant make a difference
+  . life is happening to you
+  . not in control of your destiny
+  . cant make a difference
   this mistake is mixing up things you can/cant control
-    learned helplessness
-    dogs
-    your past
+  . learned helplessness
+  . dogs
+  . your past
   But there is always something you can do.  
-    Finding it easy
-      Journal--Have you tried? Where haven't you looked?
-    beliving it exists = hard
+  . Finding it easy
+  . Journal--Have you tried? Where haven't you looked?
+  . beliving it exists = hard
   Can't assume you control too much–pancake. Not sustainable
-    bite off the exact amount of the world
+  . bite off the exact amount of the world
   The difference is the faith.  
-    Yourself
-    your loved ones, community
+  . Yourself
+  . your loved ones, community
   Believe you can make change–whatever that may be.
-    Renew that belief everyday. 
-    Audit zombiehood.
+  . Renew that belief everyday. 
+  . Audit zombiehood.
 `;
 
 const HW_LINK = "";
