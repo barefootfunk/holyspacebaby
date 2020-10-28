@@ -90,8 +90,8 @@ const VISION_BUTTON_4      = "Concoct!";
 
 
 const NOTES = [
-  'Bb2','D2','F2','Gb2','C2',
-  'Bb3','D3','F3','Gb3','C3',
+  'Bb2','D2','E2','G2','C2','F',
+  'Bb3','D3','E3','G3','C3','F',
 ];
 
 const MEDIATION_QUESTION_1    = "What overwhelms you?";
@@ -102,23 +102,37 @@ const MEDIATION_QUESTION_2    = "What is out of your control?";
 const MEDIATION_PLACEHOLDER_2 = "Type a thing";
 const MEDIATION_BUTTON_2      = "Answer anonymously!";
 
-const MEDIATION_QUESTION_3    = "What can you control?";
+const MEDIATION_QUESTION_3    = "What CAN you control?";
 const MEDIATION_PLACEHOLDER_3 = "Type a thing";
 const MEDIATION_BUTTON_3      = "Answer anonymously!";
 
-const GOSPEL = '"Zombies n pancakes."';
+const MEDIATION_QUESTION_4    = "What's something small you can do to make things better?";
+const MEDIATION_PLACEHOLDER_4 = "Type a thing";
+const MEDIATION_BUTTON_4      = "Answer anonymously!";
+
+const GOSPEL = '"The secret ingredient to curing zombiehood is something-you-can-do-about-it-ness"';
 const GOSPEL_SOURCE = '-Cowboy Jobe 1:19';
 const SERMON = `${GOSPEL} ${GOSPEL_SOURCE}
-  Things are bad right now.
-  How much can you do to improve your situation?
-  If you think nothing--you become a zombie.
-  Learned helplessness experiment
-  If you think everything--you become a pancake.
-  Noble, but you can't help anybody if your flattened.
-  Bite off exactly the amount of the world you can chew.
-  There are things you CAN control.  Vote.  Clean your room.
-  Make every day a game you can win.
-  Day after day....
+  What makes a zombie? Nothing-you-can-do-about-it-ness.
+      life is happening to you
+      not in control of your destiny
+      cant make a difference
+  this mistake is mixing up things you can/cant control
+    learned helplessness
+    dogs
+    your past
+  But there is always something you can do.  
+    Finding it easy
+      Journal--Have you tried? Where haven't you looked?
+    beliving it exists = hard
+  Can't assume you control too much–pancake. Not sustainable
+    bite off the exact amount of the world
+  The difference is the faith.  
+    Yourself
+    your loved ones, community
+  Believe you can make change–whatever that may be.
+    Renew that belief everyday. 
+    Audit zombiehood.
 `;
 
 const HW_LINK = "";
@@ -398,6 +412,7 @@ class Show extends React.Component {
       meditationScene(1,MEDIATION_QUESTION_1,MEDIATION_PLACEHOLDER_1,MEDIATION_BUTTON_1),
       meditationScene(2,MEDIATION_QUESTION_2,MEDIATION_PLACEHOLDER_2,MEDIATION_BUTTON_2),
       meditationScene(3,MEDIATION_QUESTION_3,MEDIATION_PLACEHOLDER_3,MEDIATION_BUTTON_3),
+      meditationScene(4,MEDIATION_QUESTION_4,MEDIATION_PLACEHOLDER_4,MEDIATION_BUTTON_4),
       {
         name: "Sermon",
         babyClass: "hidden",
