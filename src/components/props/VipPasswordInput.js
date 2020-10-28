@@ -66,7 +66,7 @@ export default class VIPPasswordInput extends React.Component {
             placeholder="Type VIP password"
             maxLength="30"
           />
-          <div style={{ fontSize: '0.5em' }}>{currenPassword ? (notQuite ? 'Not quite.': 'Keep typing...') : 'If you did the weekly assignment, you can unlock VIP mode.'}</div>
+          <div style={{ fontSize: '1em' }}>{currenPassword ? (notQuite ? 'Not quite.': 'Keep typing...') : 'If you did the weekly assignment, you can unlock VIP mode.'}</div>
         </div>
     );
   }

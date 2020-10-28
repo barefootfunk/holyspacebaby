@@ -20,6 +20,7 @@ import VipOnly from "./props/VipOnly"
 import Subtitles from "./props/Subtitles"
 import TipJar from "./props/TipJar"
 import Fireflies from "./props/Fireflies"
+import GroupClicky from "./props/GroupClicky"
 
 // Sounds
 import cheer1Sound from '../sounds/cheer1.mp3';
@@ -61,131 +62,72 @@ const DATE_NEXT = '';
 const CAL_ID_THIS = '5f8ee83c62821f005a6b302a';
 const CAL_ID_NEXT = '';
 
-const VIP_PASSWORD = 'HEARTGYM';
-const EP_NUMBER = '6';
-const THEME = 'puzzle pieces';
+const VIP_PASSWORD = 'DANCEMACHINE';
+const EP_NUMBER = '7';
+const THEME = 'zombie';
 
-const BULLETIN = `Homework/VIP,  
-Fernando, 
-If you design any superintelligent AIs be careful what you input, 
-Thank yous/credits`;
+const BULLETIN = `Would you rather?`;
 
-const VISION_GIF_1         = "recital.webp";
-const VISION_QUESTION_1    = "The scientist programmed the A.I. Nueral Network with videos of the kindest, noblest humans–but accidentally included their daughter's dance recital.";
-const VISION_PLACEHOLDER_1 = "Type a kind human or dance";
-const VISION_BUTTON_1      = "Program!";
+const VISION_GIF_1         = "book.gif";
+const VISION_QUESTION_1    = "Hmmm grandma's book has all sorts of wierd passages. You read out loud. What does it say?";
+const VISION_PLACEHOLDER_1 = "Type a passage";
+const VISION_BUTTON_1      = "Recite!";
 
-const VISION_GIF_2         = "robot.gif";
-const VISION_QUESTION_2    = "The A.I. NuNe immediately began to gyrate and wanted to maximally better the world.  \"How can I make the world better?\"";
-const VISION_PLACEHOLDER_2 = "Type a cause";
-const VISION_BUTTON_2      = "Ponder!";
+const VISION_GIF_2         = "arms.webp";
+const VISION_QUESTION_2    = "Oh dangit!  The book was cursed.  Many bad things begin to happen.";
+const VISION_PLACEHOLDER_2 = "Type a curse.";
+const VISION_BUTTON_2      = "Regret!";
 
-const VISION_GIF_3         = "farm.webp";
-const VISION_QUESTION_3    = "NuNe attempted to grow super foods for the hungry.  Dancing slowed them. The other farmBots mocked."
-const VISION_PLACEHOLDER_3 = "Type a robot diss";
-const VISION_BUTTON_3      = "Diss!";
+const VISION_GIF_3         = "rise.webp";
+const VISION_QUESTION_3    = "The dead rise! They are overwhelmed by the world of the living. What do they fear?"
+const VISION_PLACEHOLDER_3 = "Type a zombie fear";
+const VISION_BUTTON_3      = "Overwhelm!";
 
-const VISION_GIF_4         = "explosion.webp";
-const VISION_QUESTION_4    = "NuNe attempted to research cancer, but their dance moves were a hazard in the lab.";
-const VISION_PLACEHOLDER_4 = "Type a lab accident";
-const VISION_BUTTON_4      = "Accident!";
+const VISION_GIF_4         = "science.gif";
+const VISION_QUESTION_4    = "Luckily, the curse also made all dogs hyperintelligent. \"Our anti-zomb serum is 60% encouragement.\" What else?";
+const VISION_PLACEHOLDER_4 = "Type another ingredient";
+const VISION_BUTTON_4      = "Concoct!";
 
-const VISION_GIF_5         = "lament.webp";
-const VISION_QUESTION_5    = "An overwhelming number of causes, but NuNe could not find theirs.  In despair, NuNe engaged ultra_lament_dance().";
-const VISION_PLACEHOLDER_5 = "Type a lament";
-const VISION_BUTTON_5      = "ultra_lament_dance()";
-
-const VISION_GIF_6         = "boy.gif";
-const VISION_QUESTION_6    = "A little boy struggling with depression was inspired and joined in.  He giggled. The world was brighter.";
-const VISION_PLACEHOLDER_6 = "Encourage the little boy";
-const VISION_BUTTON_6      = "Encourage!";
-
-const VISION_GIF_7         = "kids.webp";
-const VISION_QUESTION_7    = "Today, NuNe is a superhuman innovator in robo-human interface youth dance therapy and has saved thousands of children.";
-const VISION_PLACEHOLDER_7 = "Type thanks to NeuNe";
-const VISION_BUTTON_7      = "Celebrate!";
 
 const NOTES = [
   'Bb2','D2','F2','Gb2','C2',
   'Bb3','D3','F3','Gb3','C3',
 ];
 
-const MEDIATION_QUESTION_1    = "What is one your weaknesses?";
-const MEDIATION_PLACEHOLDER_1 = "Type a weakness";
+const MEDIATION_QUESTION_1    = "What overwhelms you?";
+const MEDIATION_PLACEHOLDER_1 = "Type a thing";
 const MEDIATION_BUTTON_1      = "Answer anonymously!";
 
-const MEDIATION_QUESTION_2    = "What is something you shine at or love to do?";
-const MEDIATION_PLACEHOLDER_2 = "Type a strength";
+const MEDIATION_QUESTION_2    = "What is out of your control?";
+const MEDIATION_PLACEHOLDER_2 = "Type a thing";
 const MEDIATION_BUTTON_2      = "Answer anonymously!";
 
-const MEDIATION_QUESTION_3    = "How can that brighten someone else's life?";
-const MEDIATION_PLACEHOLDER_3 = "Type a way";
+const MEDIATION_QUESTION_3    = "What can you control?";
+const MEDIATION_PLACEHOLDER_3 = "Type a thing";
 const MEDIATION_BUTTON_3      = "Answer anonymously!";
 
-const GOSPEL = '"Are you a zombie or a pancake–or are you you?"';
+const GOSPEL = '"Zombies n pancakes."';
 const GOSPEL_SOURCE = '-Cowboy Jobe 1:19';
 const SERMON = `${GOSPEL} ${GOSPEL_SOURCE}
-  Agency - define
-  too much makes you a zombie
-  too little makes you a pancake
-  flipflops
-  are you either of these things?
-  when are you you?
-  take the exact right size bite of the world
-  goldilocks
+  Things are bad right now.
+  How much can you do to improve your situation?
+  If you think nothing--you become a zombie.
+  Learned helplessness experiment
+  If you think everything--you become a pancake.
+  Noble, but you can't help anybody if your flattened.
+  Bite off exactly the amount of the world you can chew.
+  There are things you CAN control.  Vote.  Clean your room.
+  Make every day a game you can win.
+  Day after day....
 `;
 
 const HW_LINK = "";
 
 const FERNANDO_POEM = [
   '',
-  'Fernando: Good evening, special people.',
-  'Fernando: Can I get an Amen in the chat?',
-  '',
-  'Fernando: That was an excellent Amen.',
-  'Fernando: I will now share my story.',
-  '',
-  'Fernando: For decades I could not find my purpose.',
-  'Fernando: I was a terrible doctor.',
-  'Fernando: Due to my stillness.',
-  'Fernando: I was a worse chef.',
-  'Fernando: Due to my stillness.',
-  '',
-  'Fernando: Then one gloomy day,', 
-  'Fernando: while working a day job as at Old Navy,',
-  'Fernando: I overheard some white sepremacists',
-  'Fernando: planning a terrorist plot.',
-  'Fernando: I was terrified!',
-  'Fernando: Go ahead.',
-  'Fernando: Ask your dear Fernando what he did!',
-  '',
-  'Fernando: Well I\'ll tell you.',
-  'Fernando: I thought quickly',
-  'Fernando: and did not move a muscle.',
-  'Fernando: I listened as they discussed all the details',
-  'Fernando: while trying on their pants.',
-  '',
-  'Fernando: They ignored me.',
-  'Fernando: Due to my stillness.',
-  '',
-  'Fernando: I reported them to the FBI.',
-  'Fernando: Together, we foiled their terrorist threat.',
-  '',
-  'Fernando: The FBI offered me a job.',
-  'Fernando: They said I was the perfect spy.',
-  '',
-  'Fernando: Friends, congratulate your Fernando!',
-  '',
-  'Fernando: And today your dear Fernando has found great joy',
-  'Fernando: in bringing down neo-nazi organizations',
-  'Fernando: from the inside.',
-  '',
-  'Fernando: Nobody suspects the mannequin.',
-  '',
-  'Fernando: Farewell, my friends!',
-  'Fernando: I will see you in a week\'s time!',
-  'Fernando: For another story.',
-  'Fernando: Be sure to do your homework!',
+  'Fernando: Good evening',
+  'Fernando: Good evening'
+
 ];
 
 class Show extends React.Component {
@@ -193,7 +135,7 @@ class Show extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      babyColor: 0,
+      babyColor: Math.floor(Math.random()*7),
       babyHat: 0,
       funkLevel: 0,
       babyRainbow: false,
@@ -243,17 +185,6 @@ class Show extends React.Component {
         foregroundChildren: (
           <React.Fragment>
             <VideoBg key={`flight${num}`} srcs={FLIGHT_BGS}/>
-            {num>=3 &&
-              <div style={{
-                backgroundImage: `url('/img/robot2.gif')`,
-                position: 'fixed',
-                backgroundSize: 'contain',
-                top: 0,
-                left: 0,
-                width: '100vw',
-                height: '100vh',
-              }} />
-            }
             <Prompter 
               id={`vision${num}`}
               key={`prompt-vision${num}`}
@@ -320,7 +251,7 @@ class Show extends React.Component {
         babyClass: "hidden",
         backgroundChildren: (
           <React.Fragment>
-            <VideoBg key='campfire' srcs={['campfire.mp4']}/>
+            <VideoBg key='campfire-close' srcs={['campfire-close.mp4']}/>
             <CountdownTimer />
             <div className="layout-bottom -no-pointer">
               <p style={{ maxWidth: '10em' }}>Mic check! Be sure livestream is UNMUTED and PLAYING.</p>
@@ -339,7 +270,8 @@ class Show extends React.Component {
         babyClass: "hidden",
         foregroundChildren: (
           <React.Fragment>
-            <VideoBg key='campfire-close' srcs={['campfire-close.mp4']}/>
+            <VideoBg key='campfire-intense' srcs={['campfire-intense.mp4']}/>
+            <VideoBg key='fireloop' srcs={['fireloop.mp4']} style={{opacity: 0.5, transform: 'translate(-50%,-50%) scale(1.5)'}}/>
             <div className="layout-top-edge -no-pointer">
               
               <p style={{fontSize: '2em'}}>
@@ -354,26 +286,26 @@ class Show extends React.Component {
           </React.Fragment>
         )
       },
-      {
-        name: 'Dying',
-        teleprompter: ``,
-        livestream: "big",
-        babyClass: "hidden",
-        foregroundChildren: (
-          <React.Fragment>
-            <VideoBg key='campfire-intense' srcs={['campfire-intense.mp4']}/>
-            <div className="layout-top -no-pointer">
-              <p style={{fontSize: '2em'}}>YOU ARE NOW DYING!</p>
-            </div>
-            <div className="layout-bottom">
-              {/* <Credits /> */}
-              <ClickSound sound={cheer1Sound}>
-                <button className="button">REJOICE BUTTON</button>
-              </ClickSound>
-            </div>
-          </React.Fragment>
-        )
-      },
+      // {
+      //   name: 'Dying',
+      //   teleprompter: ``,
+      //   livestream: "big",
+      //   babyClass: "hidden",
+      //   foregroundChildren: (
+      //     <React.Fragment>
+      //       <VideoBg key='campfire-intense' srcs={['campfire-intense.mp4']}/>
+      //       <div className="layout-top -no-pointer">
+      //         <p style={{fontSize: '2em'}}>YOU ARE NOW DYING!</p>
+      //       </div>
+      //       <div className="layout-bottom">
+      //         {/* <Credits /> */}
+      //         <ClickSound sound={cheer1Sound}>
+      //           <button className="button">REJOICE BUTTON</button>
+      //         </ClickSound>
+      //       </div>
+      //     </React.Fragment>
+      //   )
+      // },
       {
         name: 'Birth',
         teleprompter: `
@@ -421,9 +353,20 @@ class Show extends React.Component {
       visionScene(2,VISION_QUESTION_2,VISION_PLACEHOLDER_2,VISION_BUTTON_2,VISION_GIF_2),
       visionScene(3,VISION_QUESTION_3,VISION_PLACEHOLDER_3,VISION_BUTTON_3,VISION_GIF_3),
       visionScene(4,VISION_QUESTION_4,VISION_PLACEHOLDER_4,VISION_BUTTON_4,VISION_GIF_4),
-      visionScene(5,VISION_QUESTION_5,VISION_PLACEHOLDER_5,VISION_BUTTON_5,VISION_GIF_5),
-      visionScene(6,VISION_QUESTION_6,VISION_PLACEHOLDER_6,VISION_BUTTON_6,VISION_GIF_6),
-      visionScene(7,VISION_QUESTION_7,VISION_PLACEHOLDER_7,VISION_BUTTON_7,VISION_GIF_7),
+      {
+        name: 'Zombie Slay',
+        livestream: "hidden",
+        babyClass: "flight",
+        teleprompter: `Cure the zombies!`,
+        foregroundChildren: (
+          <React.Fragment>
+            <VideoBg key={`zombies`} srcs={['spooky.mp4']} style={{opacity: 0.6 }}/>
+            <div className="layout-top -no-pointer">
+              <p>You must all encourage a single zombie at the same time to cure it.</p>
+            </div>
+          </React.Fragment>
+        ),
+      },
       // {
       //   name: "Fireflies",
       //   livestream: "tiny",
@@ -568,6 +511,11 @@ class Show extends React.Component {
 
         {typeof currentScene.foregroundChildren !== 'undefined' && currentScene.foregroundChildren}
        
+
+        {directorState.groupClickies && Object.keys(directorState.groupClickies).map((key,index) =>{
+          return (<GroupClicky clicky={directorState.groupClickies[key]} participants={directorState.participants} clickyId={key} newParticipantEvent={newParticipantEvent} />)
+        })}
+
         <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' ?  currentScene.babyClass : ''} hatNumber={babyHat}  color={babyColors[babyColor % babyColors.length]} newParticipantEvent={newParticipantEvent}/>
 
         <div id="funk-overlay" />

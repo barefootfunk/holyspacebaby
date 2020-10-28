@@ -26,6 +26,7 @@ export default class Stage extends React.Component {
       messages: [],
       responses: {},
       participantId: null,
+      groupClickies: {},
     };
 
   }
@@ -135,6 +136,8 @@ export default class Stage extends React.Component {
               <button id="next-scene" onClick={() => {this.updateDirectorState({scene: scene+1})}}>Next</button>
 
               <button id="rehearsal-button" className={rehearsal?'-on':'-off'} onClick={() => {this.updateDirectorState({rehearsal: !rehearsal})}}>Reh</button>
+              <button id="zombie-button" onClick={() => { this.newParticipantEvent({type: 'groupClickyAdd'}) }}>Zombie</button>
+              <button id="zombie-clear-button" onClick={() => { this.newParticipantEvent({type: 'groupClickyClear'}) }}>Clear</button>
             </div>
             <div id="participant-stats">{participantCount}</div>
           </React.Fragment>

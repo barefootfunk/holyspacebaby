@@ -20,7 +20,7 @@ export default class Chat extends React.Component {
                 style={{
                   transform: `translate(${participant.x*100}vw,${participant.y*100}vh)`,
                   animationDelay: `${(index%10)*0.1}s`,
-                  background: `radial-gradient(${participant.color} 0%, transparent 70%)`
+                  background: `radial-gradient(${participant.color} 0%, ${participant.color} 25%, transparent 70%)`
                 }}
               >
               </div>
