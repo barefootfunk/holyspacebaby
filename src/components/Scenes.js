@@ -279,7 +279,7 @@ class Show extends React.Component {
               <p>Cowboy Elijah will appear in the flames here just before 7p CST today to reincarnate you.</p>
             </div>
             <div className="layout-bottom">
-              <p>Message your friends NOW: <div style={{fontFamily:'courier new', fontSize:'0.5em'}} className="-selectable">Join us. A cowboy prophet requests your presence. <a href="https://www.holyspace.baby">https://www.holyspace.baby</a></div></p>
+              <p>Message your friends: <div style={{fontFamily:'courier new', fontSize:'0.5em'}} className="-selectable">Join us. A cowboy prophet requests your presence. <a href="https://www.holyspace.baby">https://www.holyspace.baby</a></div></p>
             </div>
           </React.Fragment>
         ),
@@ -299,7 +299,7 @@ class Show extends React.Component {
               <p style={{ maxWidth: '10em' }}>Mic check! Be sure livestream is UNMUTED and PLAYING.</p>
             </div>
             <div className="layout-bottom">
-              <p>Message your friends NOW: <div style={{fontFamily:'courier new', fontSize:'0.5em'}} className="-selectable">Join us. A cowboy prophet requests your presence. <a href="https://www.holyspace.baby">https://www.holyspace.baby</a></div></p>
+              <p>Message your friends: <div style={{fontFamily:'courier new', fontSize:'0.5em'}} className="-selectable">Join us. A cowboy prophet requests your presence. <a href="https://www.holyspace.baby">https://www.holyspace.baby</a></div></p>
             </div>
           </React.Fragment>
         ),
