@@ -24,12 +24,15 @@ export default class HolySpaceBaby extends React.Component {
       touch: false,
     };
 
+    this.inactiveTicks = 0;
+
     this.hats = [false, ...hatAssets];
-    console.log(this.hats);
+    // console.log(this.hats);
   }
 
   handleMouseMove = (e) => { 
     this.setState({ x: e.clientX, y: e.clientY });
+    this.hasChanged = true;
   }
 
   updateWindowDimensions = () => {
@@ -45,18 +48,29 @@ export default class HolySpaceBaby extends React.Component {
       touch: true,
       x: e.touches[0].clientX, y: e.touches[0].clientY,
     });
+    this.hasChanged = true;
   }
 
-  updateFirefly = () => {
+  updateParticipant = () => {
+    if(this.hasChanged) {
+      this.inactiveTicks = 0;
+    } else {
+      this.inactiveTicks++;
+    }
+    // Reset hasChanged
+    this.hasChanged = false;
+    // console.log(this.inactiveTicks);
+
     this.props.newParticipantEvent({
-      type:'updateFirefly',
+      type:'updateParticipant',
       data: {
         x: this.state.x/this.state.width,
         y: this.state.y/this.state.height,
         color: this.props.color,
         rainbow: false,
+        inactive: this.inactiveTicks>30, // Flag inactive if hasn't moved in a while.
       }
-    })
+    });
   }
 
   componentDidMount() {
@@ -65,7 +79,7 @@ export default class HolySpaceBaby extends React.Component {
     window.addEventListener('mousemove', this.handleMouseMove);
     window.addEventListener('touchstart', this.handleTouch);
 
-    this.fireflyInterval = setInterval(this.updateFirefly, 500)
+    this.fireflyInterval = setInterval(this.updateParticipant, 500)
   }
 
   componentWillUnmount() {

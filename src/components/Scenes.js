@@ -490,7 +490,7 @@ class Show extends React.Component {
               
     const babyColors = ['lime','red','orange','yellow','cyan','violet']
 
-    console.log(directorState);
+    // console.log(directorState);
 
     return (
       <div 
@@ -528,7 +528,7 @@ class Show extends React.Component {
        
 
         {directorState.groupClickies && Object.keys(directorState.groupClickies).map((key,index) =>{
-          return (<GroupClicky clicky={directorState.groupClickies[key]} participants={directorState.participants} clickyId={key} newParticipantEvent={newParticipantEvent} />)
+          return (<GroupClicky clicky={directorState.groupClickies[key]} key={key} activeParticipantCount={directorState.activeParticipantCount} clickyId={key} newParticipantEvent={newParticipantEvent} />)
         })}
 
         <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' ?  currentScene.babyClass : ''} hatNumber={babyHat}  color={babyColors[babyColor % babyColors.length]} newParticipantEvent={newParticipantEvent}/>

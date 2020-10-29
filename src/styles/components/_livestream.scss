@@ -18,6 +18,10 @@
 
   &.hidden {
     opacity: 0;
+    pointer-events: none;
+    .sizing-wrap {
+      transform: scale(0.1);
+    }
   }
 
   &.corner {

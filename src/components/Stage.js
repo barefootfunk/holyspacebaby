@@ -9,8 +9,8 @@ import Show from "./Scenes"
 // Amplitude
 import {initAmplitude, sendAmplitudeData} from './utilities/amplitude';
 
-const SOCKET_URL = 'https://holyspacebaby-server.herokuapp.com/'; 
-// const SOCKET_URL = 'http://localhost:3000';
+// const SOCKET_URL = 'https://holyspacebaby-server.herokuapp.com/'; 
+const SOCKET_URL = 'http://localhost:3000';
 
 export default class Stage extends React.Component {
 
@@ -21,7 +21,7 @@ export default class Stage extends React.Component {
     this.state = {
       scene: 0,
       connected: false,
-      participantCount: 0,
+      activeParticipantCount: 0,
       rehearsal: false,
       messages: [],
       responses: {},
@@ -46,6 +46,12 @@ export default class Stage extends React.Component {
     this.socket.on('connect', () => { 
       console.log('SOCKET: connected');
       this.setState({connected: this.socket.connected, participantId: this.socket.id}) 
+      this.newParticipantEvent({
+        type:'updateParticipant',
+        data: {
+          mode: this.props.mode,
+        }
+      });
     });
     this.socket.on('reconnect', () => { 
       console.log('SOCKET: reconnect');
@@ -102,12 +108,12 @@ export default class Stage extends React.Component {
   }
 
   updateDirectorState = (newState) => {
-    console.log('Attempting updateDirectorState', newState)
+    // console.log('Attempting updateDirectorState', newState)
     this.socket.emit('updateDirectorState', newState);
   }
 
   newParticipantEvent = (event) => {
-    console.log('Attempting newParticipantEvent', event)
+    // console.log('Attempting newParticipantEvent', event)
     this.socket.emit('newParticipantEvent', event);
   }
 
@@ -120,7 +126,7 @@ export default class Stage extends React.Component {
 
 
   render () {
-    const {scene, connected, participantCount, messages, responses, rehearsal} = this.state;
+    const {scene, connected, activeParticipantCount, messages, responses, rehearsal} = this.state;
     const {mode} = this.props;
 
     return (
@@ -139,7 +145,7 @@ export default class Stage extends React.Component {
               <button id="zombie-button" onClick={() => { this.newParticipantEvent({type: 'groupClickyAdd'}) }}>Zombie</button>
               <button id="zombie-clear-button" onClick={() => { this.newParticipantEvent({type: 'groupClickyClear'}) }}>Clear</button>
             </div>
-            <div id="participant-stats">{participantCount}</div>
+            <div id="participant-stats">{activeParticipantCount}</div>
           </React.Fragment>
         )}
 
