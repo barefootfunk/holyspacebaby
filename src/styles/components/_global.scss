@@ -74,3 +74,12 @@ body {
 .button {
     @include button;
 }
+
+.-selectable {
+    user-select: auto;
+    user-select: all;
+    ::select {
+        background-color: var('--baby-color');
+
+    }
+}

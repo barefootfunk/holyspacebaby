@@ -87,7 +87,7 @@ export default class Chat extends React.Component {
             onChange={this.handleChange} 
             placeholder="Type to chat (anonymous)"
             maxLength="30"
-            // style={{color: this.props.color}}
+            style={{color: this.props.color}}
           />
           <input type="submit" value="Send!"/>
         </form>

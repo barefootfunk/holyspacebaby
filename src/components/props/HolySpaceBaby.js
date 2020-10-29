@@ -68,7 +68,7 @@ export default class HolySpaceBaby extends React.Component {
         y: this.state.y/this.state.height,
         color: this.props.color,
         rainbow: false,
-        inactive: this.inactiveTicks>120, // Flag inactive if hasn't moved in 30s
+        inactive: this.inactiveTicks>60, // Flag inactive if hasn't moved in 30s
       }
     });
   }
@@ -79,7 +79,7 @@ export default class HolySpaceBaby extends React.Component {
     window.addEventListener('mousemove', this.handleMouseMove);
     window.addEventListener('touchstart', this.handleTouch);
 
-    this.fireflyInterval = setInterval(this.updateParticipant, 250)
+    this.fireflyInterval = setInterval(this.updateParticipant, 500)
   }
 
   componentWillUnmount() {

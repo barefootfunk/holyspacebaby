@@ -84,7 +84,7 @@ const VISION_PLACEHOLDER_3 = "Type a zombie fear";
 const VISION_BUTTON_3      = "Overwhelm!";
 
 const VISION_GIF_4         = "science.gif";
-const VISION_QUESTION_4    = "Luckily, the curse also made dogs hyperintelligent. \"Our anti-zomb serum is 60% encouragement.\" What else?";
+const VISION_QUESTION_4    = "Luckily, dogs are now hyperintelligent. \"Our anti-zomb serum is 60% encouragement.\" What other ingredients??";
 const VISION_PLACEHOLDER_4 = "Type another ingredient";
 const VISION_BUTTON_4      = "Concoct!";
 
@@ -278,6 +278,9 @@ class Show extends React.Component {
             <div className="layout-center -no-pointer">
               <p>Cowboy Elijah will appear in the flames here just before 7p CST today to reincarnate you.</p>
             </div>
+            <div className="layout-bottom">
+              <p>Message your friends NOW! <div style={{fontFamily:'courier new', fontSize:'0.5em'}} className="-selectable">Join us. A cowboy prophet requests your presence. <a href="https://www.holyspace.baby">https://www.holyspace.baby</a></div></p>
+            </div>
           </React.Fragment>
         ),
       },
@@ -292,8 +295,11 @@ class Show extends React.Component {
           <React.Fragment>
             <VideoBg key='campfire-close' srcs={['campfire-close.mp4']}/>
             <CountdownTimer />
-            <div className="layout-bottom -no-pointer">
+            <div className="layout-top -no-pointer">
               <p style={{ maxWidth: '10em' }}>Mic check! Be sure livestream is UNMUTED and PLAYING.</p>
+            </div>
+            <div className="layout-bottom">
+              <p>Message your friends NOW! <div style={{fontFamily:'courier new', fontSize:'0.5em'}} className="-selectable">Join us. A cowboy prophet requests your presence. <a href="https://www.holyspace.baby">https://www.holyspace.baby</a></div></p>
             </div>
           </React.Fragment>
         ),
