@@ -140,7 +140,7 @@ class Response extends React.Component {
       <span 
         className="response" 
         style={{
-          transform: `translate(calc(${(floatX*20-10)+(response.x * 80+10)}vw - 50%),calc(${(floatY*20-10)+(response.y * 80+10)}vh - 50%)) rotate(${floatRot*60-30}deg)`,
+          transform: `translate(calc(${(floatX*5-10)+(response.x * 80+10)}vw - 50%),calc(${(floatY*5-10)+(response.y * 80+10)}vh - 50%)) rotate(${floatRot*60-30}deg)`,
           transition: `transform ${this.transitionIntervalTime-1000}ms linear, opacity 0.2s`,
           fontSize: `${response.votes*.05+1}em`,
         }}

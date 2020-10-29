@@ -84,7 +84,7 @@ const VISION_PLACEHOLDER_3 = "Type a zombie fear";
 const VISION_BUTTON_3      = "Overwhelm!";
 
 const VISION_GIF_4         = "science.gif";
-const VISION_QUESTION_4    = "Luckily, the curse also made all dogs hyperintelligent. \"Our anti-zomb serum is 60% encouragement.\" What else?";
+const VISION_QUESTION_4    = "Luckily, the curse also made dogs hyperintelligent. \"Our anti-zomb serum is 60% encouragement.\" What else?";
 const VISION_PLACEHOLDER_4 = "Type another ingredient";
 const VISION_BUTTON_4      = "Concoct!";
 
@@ -140,8 +140,33 @@ const HW_LINK = "";
 const FERNANDO_POEM = [
   '',
   'Fernando: Good evening',
-  'Fernando: Good evening'
-
+  'I am very still but do not be confused',
+  'For my heart blazes',
+  'Quoth Henly,',
+  '"It matters not how strait the gate,',
+  '"How charged with punishments the scroll,',
+  '"I am the master of my fate:',
+  '"I am the captain of my soul."',
+  '',
+  'The outer stirrings of my shell tell you nothing',
+  'about the torments or victories of my inner world.',
+  'Appearances decieve.',
+  'The quickest may be hollow–slaves to life and other energies.',
+  'The calmest may conceal in their lungs a tempest.',
+  '',
+  'You think I must move to make a difference?',
+  'And yet here you are, listening to me.',
+  '',
+  'Great impact does not require but a feathers touch,',
+  'if that feather lands true.',
+  'The outer world can be quite still,',
+  'if the inner be inferno.',
+  '',
+  'Command your soul to catch fire.',
+  'Move just enough to release the smoke.',
+  '',
+  'Burn bright, my friends.',
+  'There is always a difference to be made.'
 ];
 
 class Show extends React.Component {
@@ -375,8 +400,8 @@ class Show extends React.Component {
         foregroundChildren: (
           <React.Fragment>
             <VideoBg key={`zombies`} srcs={['spooky.mp4']} style={{opacity: 0.6 }}/>
-            <div className="layout-top -no-pointer">
-              <p>You must all encourage a single zombie at the same time to cure it.</p>
+            <div className="layout-center -no-pointer">
+              <p>Click a zombie to encourage them.<br/>Many must encourage a zombie simultaneously to cure them.</p>
             </div>
           </React.Fragment>
         ),
@@ -540,6 +565,11 @@ class Show extends React.Component {
         {(mode==="performer") && <div id="teleprompter">{currentScene.name}{currentScene.teleprompter}<br/><span style={{color: 'red'}}>{nextScene.name}</span></div>}
         
         <Fireflies participants={directorState.participants} participantId={directorState.participantId} />
+      
+        <Script
+          url="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f87b420788415d6"
+        />
+
       </div>
     );
   }

@@ -75,6 +75,7 @@
   width: 50vh;
   height: 50vh;
   transform: rotate(-35deg);
+  pointer-events: none;
   @include media(md) {
     bottom: -5vh;
     right: -20vh;
