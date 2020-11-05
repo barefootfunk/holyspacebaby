@@ -108,7 +108,7 @@ const MEDIATION_BUTTON_4      = "Answer anonymously!";
 const GOSPEL = `"The sailor don't adjust the wind none, just the sail."`;
 const GOSPEL_SOURCE = '-Cowboy Jobe 1:19';
 const SERMON = `${GOSPEL} ${GOSPEL_SOURCE}
-  Uncertain times, tell own story. Nauseas, dizzy.
+  Uncertain times, Senate? presidency? country? tell own story. Nauseas, dizzy.
   Uncertainty is painful:
   - Uncertainty about electric shocks causes more stress than electric shocks
   1. Spreads us thin -> Journal
@@ -128,6 +128,7 @@ const SERMON = `${GOSPEL} ${GOSPEL_SOURCE}
   Sing your song, whatever that means
   What you build inside cant be taken from you–no matter how crazy things get.
   A sailor doesn't try to control the wind, they control how they sail
+  Because this storm is FAR from over.
 `;
 
   // Anxiety creates risk aversion, not loss aversion
@@ -382,7 +383,7 @@ class Show extends React.Component {
       visionScene(2,VISION_QUESTION_2,VISION_PLACEHOLDER_2,VISION_BUTTON_2,VISION_GIF_2),
 
       tugOfWarScene(0,
-        `The hell bus comes to a fork in the road. Quickly! Choose a road!`,
+        `The hell bus comes to a fork in the road. Quickly! Choose a road! Whichever side gets the most repeated, maniacal clicks from everybody wins.`,
         {
           image: 'turn0-ice.jpg',
           caption: 'Go to ice world',
@@ -422,7 +423,7 @@ class Show extends React.Component {
         }
       ),
       tugOfWarScene(3,
-        `The road continues to fork!`,
+        `The road continues to fork! WHich power do you choose?`,
         {
           image: 'turn3-poop.jpg',
           caption: `Poop money`,
