@@ -5,8 +5,8 @@
   max-width: 95vw;
   padding: 0.2em 0.4em 0.4em;
   font-size: 0.7em;
+  width: 350px !important;
   p {
-    width: 100% !important;
   }
   .error {
     color: red;
@@ -41,8 +41,8 @@
   }
 
   input[type="text"] {
-    width: 325px;
-    flex-grow: 1;
+    // width: 275px;
+    // flex-grow: 1;
   }
 }
 

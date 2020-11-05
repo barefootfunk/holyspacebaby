@@ -9,8 +9,8 @@ import Show from "./Scenes"
 // Amplitude
 import {initAmplitude, sendAmplitudeData} from './utilities/amplitude';
 
-const SOCKET_URL = 'https://holyspacebaby-server.herokuapp.com/'; 
-// const SOCKET_URL = 'http://localhost:3000';
+// const SOCKET_URL = 'https://holyspacebaby-server.herokuapp.com/'; 
+const SOCKET_URL = 'http://localhost:3000';
 
 export default class Stage extends React.Component {
 
@@ -27,6 +27,7 @@ export default class Stage extends React.Component {
       responses: {},
       participantId: null,
       groupClickies: {},
+      tugOfWars: {},
     };
 
   }
@@ -143,14 +144,14 @@ export default class Stage extends React.Component {
 
               <button id="rehearsal-button" className={rehearsal?'-on':'-off'} onClick={() => {this.updateDirectorState({rehearsal: !rehearsal})}}>Reh</button>
               <button id="zombie-button" onClick={() => { this.newParticipantEvent({type: 'groupClickyAdd'}) }}>Zombie</button>
-              <button id="zombie-clear-button" onClick={() => { this.newParticipantEvent({type: 'groupClickyClear'}) }}>Clear</button>
+              <button id="zombie-clear-button" onClick={() => { this.newParticipantEvent({type: 'clear'}) }}>Clear</button>
             </div>
             <div id="participant-stats">{activeParticipantCount}</div>
           </React.Fragment>
         )}
 
 
-        {rehearsal && <div id="rehearsing-alert">Currently practicing/rehearsing!<br/>Feel free to hang/watch.</div>}
+        {rehearsal && <div id="rehearsing-alert">Currently practicing/testing!</div>}
 
         {!connected && <div className="connecting-alert">Connecting...</div>}
       </div>

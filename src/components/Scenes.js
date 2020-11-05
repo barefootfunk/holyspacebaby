@@ -15,12 +15,13 @@ import CountdownTimer from "./props/CountdownTimer"
 import FunkBottle from "./props/FunkBottle"
 import VideoBg from "./props/VideoBg"
 import Prompter from "./props/Prompter"
-import VipPasswordInput from "./props/VipPasswordInput"
-import VipOnly from "./props/VipOnly"
+// import VipPasswordInput from "./props/VipPasswordInput"
+// import VipOnly from "./props/VipOnly"
 import Subtitles from "./props/Subtitles"
 import TipJar from "./props/TipJar"
 import Fireflies from "./props/Fireflies"
 import GroupClicky from "./props/GroupClicky"
+import TugOfWar from "./props/TugOfWar"
 
 // Sounds
 import cheer1Sound from '../sounds/cheer1.mp3';
@@ -63,111 +64,66 @@ const CAL_ID_THIS = '5f9b5fc9fe83af0140b9a0dd';
 const CAL_ID_NEXT = '5f9b5ff550b389001840abf0';
 
 const VIP_PASSWORD = 'DANCEMACHINE';
-const EP_NUMBER = '7';
-const THEME = 'zombie';
+const EP_NUMBER = '8';
+const THEME = 'uncertainty';
 
 const BULLETIN = `Would you rather?`;
 
-const VISION_GIF_1         = "book.gif";
-const VISION_QUESTION_1    = "Hmmm grandma's book has all sorts of wierd passages. You read out loud. What does it say?";
-const VISION_PLACEHOLDER_1 = "Type a passage";
-const VISION_BUTTON_1      = "Recite!";
+const VISION_GIF_1         = "";
+const VISION_QUESTION_1    = "You ride the hell bus, speeding through purgatory. Thank Mr. Hellbus Driver!";
+const VISION_PLACEHOLDER_1 = "Type thanks";
+const VISION_BUTTON_1      = "Thank!";
 
-const VISION_GIF_2         = "arms.webp";
-const VISION_QUESTION_2    = "Oh dangit!  The book was cursed.  Many bad things begin to happen.";
-const VISION_PLACEHOLDER_2 = "Type a curse.";
-const VISION_BUTTON_2      = "Regret!";
 
-const VISION_GIF_3         = "rise.webp";
-const VISION_QUESTION_3    = "The dead rise! They are overwhelmed by the world of the living. What do they fear?"
-const VISION_PLACEHOLDER_3 = "Type a zombie fear";
-const VISION_BUTTON_3      = "Overwhelm!";
+const VISION_GIF_2         = "";
+const VISION_QUESTION_2    = "Mr. Hellbus Driver has no idea where the hell bus is going. Yell directions!";
+const VISION_PLACEHOLDER_2 = "Type a direction";
+const VISION_BUTTON_2      = "Suggest!";
 
-const VISION_GIF_4         = "science.gif";
-const VISION_QUESTION_4    = "Luckily, dogs are now hyperintelligent. \"Our anti-zomb serum is 60% encouragement.\" What other ingredients??";
-const VISION_PLACEHOLDER_4 = "Type another ingredient";
-const VISION_BUTTON_4      = "Concoct!";
-
+const VISION_GIF_3         = "";
+const VISION_QUESTION_3    = "But he keeps singing because his song makes him ready for anything. Thank Mr. Hellbus Driver!";
+const VISION_PLACEHOLDER_3 = "Type thanks";
+const VISION_BUTTON_3      = "Thank!";
 
 const NOTES = [
   'Bb2','D2','E2','G2','C2','F',
   'Bb3','D3','E3','G3','C3','F',
 ];
 
-const MEDIATION_QUESTION_1    = "What overwhelms you?";
-const MEDIATION_PLACEHOLDER_1 = "Type a thing";
+const MEDIATION_QUESTION_1    = "What is an uncertainty you are facing?";
+const MEDIATION_PLACEHOLDER_1 = "Type an uncertainty";
 const MEDIATION_BUTTON_1      = "Answer anonymously!";
 
-const MEDIATION_QUESTION_2    = "What is out of your control?";
-const MEDIATION_PLACEHOLDER_2 = "Type a thing";
+const MEDIATION_QUESTION_2    = "How does it feel in your body?";
+const MEDIATION_PLACEHOLDER_2 = "Type a feeling";
 const MEDIATION_BUTTON_2      = "Answer anonymously!";
 
-const MEDIATION_QUESTION_3    = "What CAN you control?";
-const MEDIATION_PLACEHOLDER_3 = "Type a thing";
+const MEDIATION_QUESTION_3    = "What helps you feel grounded?";
+const MEDIATION_PLACEHOLDER_3 = "Type something that helps";
 const MEDIATION_BUTTON_3      = "Answer anonymously!";
 
-const MEDIATION_QUESTION_4    = "What's something small you can do to make things better?";
+const MEDIATION_QUESTION_4    = "Wnat's something about you that wont change–no matter how it turns out?";
 const MEDIATION_PLACEHOLDER_4 = "Type a thing";
 const MEDIATION_BUTTON_4      = "Answer anonymously!";
 
-const GOSPEL = '"The secret ingredient to curing zombiehood is something-you-can-do-about-it-ness"';
+const GOSPEL = `"The sailor don't adjust the wind none, just the sail."`;
 const GOSPEL_SOURCE = '-Cowboy Jobe 1:19';
 const SERMON = `${GOSPEL} ${GOSPEL_SOURCE}
-  What makes a zombie? Nothing-you-can-do-about-it-ness.
-      life is happening to you
-      not in control of your destiny
-      cant make a difference
-  this mistake is mixing up things you can/cant control
-    learned helplessness
-    dogs
-    your past
-  But there is always something you can do.  
-    Finding it easy
-      Journal--Have you tried? Where haven't you looked?
-    beliving it exists = hard
-  Can't assume you control too much–pancake. Not sustainable
-    bite off the exact amount of the world
-  The difference is the faith.  
-    Yourself
-    your loved ones, community
-  Believe you can make change–whatever that may be.
-    Renew that belief everyday. 
-    Audit zombiehood.
+  Uncertainty is painful:
+  - Uncertainty about electric shocks causes more stress than electric shocks
+  It puts our brain into overdrive
+  - Uncertainty creates a brain state facilitated by stress hormones
+  - Negative uncertainty is when we try the hardest--but that can be unproductive longterm
+  We want to feel like we are building something. Uncertainty feels like it halts our building.
+  Unless what we are building is ourselves. Our values, our judgement, our character.
+  And this is more valuable/permanent.
+  A sailor doesn't try to control the wind, they control how they sail
 `;
 
-const HW_LINK = "";
-
-const FERNANDO_POEM = [
-  '',
-  'Fernando: Good evening',
-  'I am very still but do not be confused',
-  'For my heart blazes',
-  'Quoth Henly,',
-  '"It matters not how strait the gate,',
-  '"How charged with punishments the scroll,',
-  '"I am the master of my fate:',
-  '"I am the captain of my soul."',
-  '',
-  'The outer stirrings of my shell tell you nothing',
-  'about the torments or victories of my inner world.',
-  'Appearances decieve.',
-  'The quickest may be hollow–slaves to life and other energies.',
-  'The calmest may conceal in their lungs a tempest.',
-  '',
-  'You think I must move to make a difference?',
-  'And yet here you are, listening to me.',
-  '',
-  'Great impact does not require but a feathers touch,',
-  'if that feather lands true.',
-  'The outer world can be quite still,',
-  'if the inner be inferno.',
-  '',
-  'Command your soul to catch fire.',
-  'Move just enough to release the smoke.',
-  '',
-  'Burn bright, my friends.',
-  'There is always a difference to be made.'
-];
+  // Anxiety creates risk aversion, not loss aversion
+// https://www.inc.com/mithu-storoni/this-is-why-youre-so-afraid-of-uncertainty-according-to-neuroscience.html
+// https://www.inc.com/mithu-storoni/your-brain-isnt-afraid-of-failure-heres-whats-really-going-on.html
+// https://www.theguardian.com/commentisfree/2016/apr/04/uncertainty-stressful-research-neuroscience
 
 class Show extends React.Component {
 
@@ -178,24 +134,24 @@ class Show extends React.Component {
       babyHat: 0,
       funkLevel: 0,
       babyRainbow: false,
-      vip: (this.props.mode==='performer'), // Performer defaults to vip=true, otherwise false
+      // vip: (this.props.mode==='performer'), // Performer defaults to vip=true, otherwise false
     }
   }
 
-  vipAuthenticate = () => {
-    const search = window.location.search;
-    const params = new URLSearchParams(search);
-    const password = params.get('vip-password');
-    if(!password) return;
-    if (password.toUpperCase() === VIP_PASSWORD.toUpperCase()) {
-      this.setState({
-        vip: true,
-      })
-    }
-  }
+  // vipAuthenticate = () => {
+  //   const search = window.location.search;
+  //   const params = new URLSearchParams(search);
+  //   const password = params.get('vip-password');
+  //   if(!password) return;
+  //   if (password.toUpperCase() === VIP_PASSWORD.toUpperCase()) {
+  //     this.setState({
+  //       vip: true,
+  //     })
+  //   }
+  // }
 
   componentDidMount() {
-    this.vipAuthenticate();
+    // this.vipAuthenticate();
   }
 
   render () {
@@ -221,9 +177,12 @@ class Show extends React.Component {
         livestream: "tiny",
         babyClass: "flight",
         teleprompter: `${question}`,
+        backgroundChildren: (
+          <div id="hellbus" className="-big"><button></button></div>
+        ),
         foregroundChildren: (
           <React.Fragment>
-            <VideoBg key={`flight${num}`} srcs={FLIGHT_BGS}/>
+            <VideoBg key={`tugofwar${num}`} srcs={['hellroad.mp4']} /> {/* <VideoBg key={`flight${num}`} srcs={FLIGHT_BGS}/> */}
             <Prompter 
               id={`vision${num}`}
               key={`prompt-vision${num}`}
@@ -234,7 +193,7 @@ class Show extends React.Component {
               mode={mode}
               buttonText={buttonText}
               soundMode='sample'
-              visionSrc={`/img/${gif}`}
+              // visionSrc={`/img/${gif}`}
             />
           </React.Fragment>
         ),
@@ -261,6 +220,31 @@ class Show extends React.Component {
               soundMode='synth'
               notes={NOTES}
             />
+          </React.Fragment>
+        ),
+      };
+    }
+
+    function tugOfWarScene(num,caption,side1,side2) {
+      const id = `turn${num}`
+      return {
+        name: `TugOfWar ${num}`,
+        livestream: "hidden",
+        foregroundChildren: (
+          <React.Fragment>
+            {/* {/* <VideoBg key={`calm${num}`} srcs={CALM_BGS} /> */}
+            <VideoBg key={`tugofwar${num}`} srcs={['hellroad.mp4']} /> 
+            <TugOfWar 
+              newParticipantEvent={newParticipantEvent} 
+              tugOfWarId={id} 
+              tugOfWar={directorState.tugOfWars[id]}
+              side1={side1}
+              side2={side2}
+            />
+            <div className="layout-top">
+              <p>{caption}</p>
+            </div>
+            <div id="hellbus"><button></button></div>
           </React.Fragment>
         ),
       };
@@ -318,15 +302,10 @@ class Show extends React.Component {
             <VideoBg key='campfire-intense' srcs={['campfire-intense.mp4']}/>
             <VideoBg key='fireloop' srcs={['fireloop.mp4']} style={{opacity: 0.5, transform: 'translate(-50%,-50%) scale(1.5)'}}/>
             <div className="layout-top-edge -no-pointer">
-              
               <p style={{fontSize: '2em'}}>
                <span style={{fontSize: '0.7em', display: 'block'}}>Ceremony #{EP_NUMBER}</span>
                 Tonight's theme: "{THEME}"
               </p>
-            </div>
-            <div className="layout-bottom">
-              {vip ? <p class="rainbow-text">VIP mode activated!</p> :
-              <VipPasswordInput vipAuthenticate={this.vipAuthenticate}/>}
             </div>
           </React.Fragment>
         )
@@ -363,12 +342,7 @@ class Show extends React.Component {
             <VideoBg key='sparks' srcs={['sparks.mp4']} />
             <FunkBottle bottleName="funk" onDrink={() => { this.setState({funkLevel: this.state.funkLevel + 1,}) }}  />  
             <FunkBottle bottleName="color" onDrink={() => { this.setState({babyColor: this.state.babyColor + 1, babyRainbow: false}) }}  />  
-            <VipOnly vip={vip}>
-              <FunkBottle bottleName="hat" onDrink={() => { this.setState({babyHat: this.state.babyHat + 1,}) }}  />  
-            </VipOnly>
-            <VipOnly vip={vip}>
-              <FunkBottle bottleName="rainbow" onDrink={() => { this.setState({babyRainbow: !this.state.babyRainbow}) }}  />  
-            </VipOnly>
+            <FunkBottle bottleName="hat" onDrink={() => { this.setState({babyHat: this.state.babyHat + 1,}) }}  />  
             {/* <div className="layout-top -no-pointer">
               <p>You are reborn!</p>
             </div> */}
@@ -396,22 +370,63 @@ class Show extends React.Component {
       },
       visionScene(1,VISION_QUESTION_1,VISION_PLACEHOLDER_1,VISION_BUTTON_1,VISION_GIF_1),
       visionScene(2,VISION_QUESTION_2,VISION_PLACEHOLDER_2,VISION_BUTTON_2,VISION_GIF_2),
+
+      tugOfWarScene(0,
+        `The hell bus comes to a fork in the road. Quickly! Choose a road!`,
+        {
+          image: 'turn0-ice.jpg',
+          caption: 'An ice world',
+          victory: 'You turn to the ice world'
+        },
+        {
+          image: 'turn0-swamp.jpg',
+          caption: 'A swamp world',
+          victory: 'You go into the swamp'
+        }
+      ),
+
+      tugOfWarScene(1,
+        `The road splits again! Which way?!`,
+        {
+          image: 'turn0-ice.jpg',
+          caption: 'An ice world',
+          victory: 'You turn to the ice world'
+        },
+        {
+          image: 'turn0-swamp.jpg',
+          caption: 'A swamp world',
+          victory: 'You go into the swamp'
+        }
+      ),
+      tugOfWarScene(2,
+        `Another fork! Mr. Hellbus Driver realizes he isn't always the one controlling the bus.`,
+        {
+          image: 'turn0-ice.jpg',
+          caption: 'An ice world',
+          victory: 'You turn to the ice world'
+        },
+        {
+          image: 'turn0-swamp.jpg',
+          caption: 'A swamp world',
+          victory: 'You go into the swamp'
+        }
+      ),
       visionScene(3,VISION_QUESTION_3,VISION_PLACEHOLDER_3,VISION_BUTTON_3,VISION_GIF_3),
-      visionScene(4,VISION_QUESTION_4,VISION_PLACEHOLDER_4,VISION_BUTTON_4,VISION_GIF_4),
-      {
-        name: 'Zombie Slay',
-        livestream: "hidden",
-        babyClass: "flight",
-        teleprompter: `Cure the zombies!`,
-        foregroundChildren: (
-          <React.Fragment>
-            <VideoBg key={`zombies`} srcs={['spooky.mp4']} style={{opacity: 0.6 }}/>
-            <div className="layout-center -no-pointer">
-              <p>Click a zombie to encourage them.<br/>Many must encourage a zombie simultaneously to cure them.</p>
-            </div>
-          </React.Fragment>
-        ),
-      },
+      // visionScene(4,VISION_QUESTION_4,VISION_PLACEHOLDER_4,VISION_BUTTON_4,VISION_GIF_4),
+      // {
+      //   name: 'Zombie Slay',
+      //   livestream: "hidden",
+      //   babyClass: "flight",
+      //   teleprompter: `Cure the zombies!`,
+      //   foregroundChildren: (
+      //     <React.Fragment>
+      //       <VideoBg key={`zombies`} srcs={['spooky.mp4']} style={{opacity: 0.6 }}/>
+      //       <div className="layout-center -no-pointer">
+      //         <p>Click a zombie to encourage them.<br/>Many must encourage a zombie simultaneously to cure them.</p>
+      //       </div>
+      //     </React.Fragment>
+      //   ),
+      // },
       // {
       //   name: "Fireflies",
       //   livestream: "tiny",
@@ -474,36 +489,36 @@ class Show extends React.Component {
           </React.Fragment>
         ),
       },
-      {
-        name: 'Afterparty',
-        livestream: vip ? "vip" : "hidden",
-        babyClass: vip ? "" : "hidden",
-        foregroundChildren: (
-          <React.Fragment>
-            <VideoBg key='spotlight' srcs={(vip ? ['spotlight.mp4']:['campfire.mp4'])}/>
-            {vip ?
-              <Subtitles titles={FERNANDO_POEM} />
-              : <React.Fragment>
-                  <p className="layout-top">VIP participants are currently seeing Fernando's story.</p>
-                  <CTA calEventId={CAL_ID_NEXT} nextCeremonyDate={DATE_NEXT} mailingListText='Homework is sent to mailing list...' />
-                </React.Fragment>
-            }
-            <TipJar/>
-          </React.Fragment>
-        ),
-      },
-      {
-        name: 'Support',
-        livestream: "hidden",
-        babyClass: "hidden",
-        foregroundChildren: (
-          <React.Fragment>
-            <VideoBg key='campfire' srcs={['campfire.mp4']}/>
-            <CTA calEventId={CAL_ID_NEXT} nextCeremonyDate={DATE_NEXT} mailingListText='Homework is sent to mailing list...'></CTA>
-            <TipJar/>
-          </React.Fragment>
-        ),
-      },
+      // {
+      //   name: 'Afterparty',
+      //   livestream: vip ? "vip" : "hidden",
+      //   babyClass: vip ? "" : "hidden",
+      //   foregroundChildren: (
+      //     <React.Fragment>
+      //       <VideoBg key='spotlight' srcs={(vip ? ['spotlight.mp4']:['campfire.mp4'])}/>
+      //       {vip ?
+      //         <Subtitles titles={FERNANDO_POEM} />
+      //         : <React.Fragment>
+      //             <p className="layout-top">VIP participants are currently seeing Fernando's story.</p>
+      //             <CTA calEventId={CAL_ID_NEXT} nextCeremonyDate={DATE_NEXT} mailingListText='Homework is sent to mailing list...' />
+      //           </React.Fragment>
+      //       }
+      //       <TipJar/>
+      //     </React.Fragment>
+      //   ),
+      // },
+      // {
+      //   name: 'Support',
+      //   livestream: "hidden",
+      //   babyClass: "hidden",
+      //   foregroundChildren: (
+      //     <React.Fragment>
+      //       <VideoBg key='campfire' srcs={['campfire.mp4']}/>
+      //       <CTA calEventId={CAL_ID_NEXT} nextCeremonyDate={DATE_NEXT} mailingListText='Homework is sent to mailing list...'></CTA>
+      //       <TipJar/>
+      //     </React.Fragment>
+      //   ),
+      // },
     ];
 
     scene = Math.max(0,scene); // Render 0, if below
@@ -535,8 +550,6 @@ class Show extends React.Component {
       >
   
         <h1 id="title" className="-pointer-none">HolySpaceBaby</h1>
-
-        {vip && <div id="vip-flag" className="-pointer-none rainbow-text text-box" style={{ position: 'fixed', top: 0, left: 0, width: 'auto', fontSize: '0.5em' }}>VIP MODE</div>}
 
         {typeof currentScene.backgroundChildren !== 'undefined' && currentScene.backgroundChildren}
 
