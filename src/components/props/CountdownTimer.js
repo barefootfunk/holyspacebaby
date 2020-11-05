@@ -6,7 +6,7 @@ export default class CountdownTimer extends React.Component {
   constructor(props) {
     super(props);
 
-    this.showDate = DateTime.local().endOf('hour').toISO(); // Next hour
+    this.showDate = DateTime.local().endOf('hour').plus({minutes: 2}).toISO(); // Next hour + 2min
   }
   renderer = ({ days, hours, minutes, seconds, completed }) => {
     function twoDigits(n){

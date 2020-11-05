@@ -67,7 +67,6 @@ export default class HolySpaceBaby extends React.Component {
         x: this.state.x/this.state.width,
         y: this.state.y/this.state.height,
         color: this.props.color,
-        rainbow: false,
         inactive: this.inactiveTicks>60, // Flag inactive if hasn't moved in 30s
       }
     });

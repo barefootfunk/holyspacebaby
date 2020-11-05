@@ -63,11 +63,10 @@ const DATE_NEXT = 'NOV 12';
 const CAL_ID_THIS = '5f9b5fc9fe83af0140b9a0dd';
 const CAL_ID_NEXT = '5f9b5ff550b389001840abf0';
 
-const VIP_PASSWORD = 'DANCEMACHINE';
 const EP_NUMBER = '8';
 const THEME = 'uncertainty';
 
-const BULLETIN = `Would you rather?`;
+const BULLETIN = `No VIP mode.  Warning`;
 
 const VISION_GIF_1         = "";
 const VISION_QUESTION_1    = "You ride the hell bus, speeding through purgatory. Thank Mr. Hellbus Driver!";
@@ -81,7 +80,7 @@ const VISION_PLACEHOLDER_2 = "Type a direction";
 const VISION_BUTTON_2      = "Suggest!";
 
 const VISION_GIF_3         = "";
-const VISION_QUESTION_3    = "But he keeps singing because his song makes him ready for anything. Thank Mr. Hellbus Driver!";
+const VISION_QUESTION_3    = "He realizes he isn't controlling the bus. But he keeps singing so he can be ready for anything. Thank Mr. Hellbus Driver.";
 const VISION_PLACEHOLDER_3 = "Type thanks";
 const VISION_BUTTON_3      = "Thank!";
 
@@ -109,14 +108,25 @@ const MEDIATION_BUTTON_4      = "Answer anonymously!";
 const GOSPEL = `"The sailor don't adjust the wind none, just the sail."`;
 const GOSPEL_SOURCE = '-Cowboy Jobe 1:19';
 const SERMON = `${GOSPEL} ${GOSPEL_SOURCE}
+  Uncertain times, tell own story. Nauseas, dizzy.
   Uncertainty is painful:
   - Uncertainty about electric shocks causes more stress than electric shocks
-  It puts our brain into overdrive
-  - Uncertainty creates a brain state facilitated by stress hormones
-  - Negative uncertainty is when we try the hardest--but that can be unproductive longterm
-  We want to feel like we are building something. Uncertainty feels like it halts our building.
+  1. Spreads us thin -> Journal
+  2. A-game, prolonged Fight or flight -> know your biases
+  - leads to zombiehood over time
+  3. Halts us -> Focus on ourselves
   Unless what we are building is ourselves. Our values, our judgement, our character.
-  And this is more valuable/permanent.
+  Who are you?
+  What is important to you?
+  What can you strengthen?
+  How hard are you willing to fight?
+  Compassion/love?
+
+  When there is no ground, be the ground. (with your loved ones + community) 
+  If you can't know the future, know yourself (know your loved ones)
+  Become someone who is ready for anything. (or part of a team)
+  Sing your song, whatever that means
+  What you build inside cant be taken from you–no matter how crazy things get.
   A sailor doesn't try to control the wind, they control how they sail
 `;
 
@@ -363,7 +373,7 @@ class Show extends React.Component {
               <h1>YOU FLY!</h1>
             </div>
             <div className="layout-bottom -no-pointer">
-              <p>You will witness alternate universes. Be creative. Don't overthink. Answer quickly.</p>
+              <p>You will now witness alternate universes.</p>
             </div>
           </React.Fragment>
         ),
@@ -375,40 +385,53 @@ class Show extends React.Component {
         `The hell bus comes to a fork in the road. Quickly! Choose a road!`,
         {
           image: 'turn0-ice.jpg',
-          caption: 'An ice world',
-          victory: 'You turn to the ice world'
+          caption: 'Go to ice world',
+          victory: 'Everybody is very cold. But you befriend a snowperson who teaches you algebra.'
         },
         {
           image: 'turn0-swamp.jpg',
           caption: 'A swamp world',
-          victory: 'You go into the swamp'
+          victory: `The swamp belongs to Shrek.  You drive quickly and do not exit the vehicle.  Beware Shrek's love.`
         }
       ),
 
       tugOfWarScene(1,
         `The road splits again! Which way?!`,
         {
-          image: 'turn0-ice.jpg',
-          caption: 'An ice world',
-          victory: 'You turn to the ice world'
+          image: 'turn1-under.jpg',
+          caption: 'Underhang land',
+          victory: 'You are all psycopaths.'
         },
         {
-          image: 'turn0-swamp.jpg',
-          caption: 'A swamp world',
-          victory: 'You go into the swamp'
+          image: 'turn1-over.jpg',
+          caption: 'Overhand land',
+          victory: 'You have chosen... wisely.'
         }
       ),
       tugOfWarScene(2,
-        `Another fork! Mr. Hellbus Driver realizes he isn't always the one controlling the bus.`,
+        `Everybody is hungry.  Where do we stop?`,
         {
-          image: 'turn0-ice.jpg',
-          caption: 'An ice world',
-          victory: 'You turn to the ice world'
+          image: 'turn2-pizza.jpg',
+          caption: `Hell's best pizza`,
+          victory: 'The pizza is cursed and your hands are now cheese.'
         },
         {
-          image: 'turn0-swamp.jpg',
-          caption: 'A swamp world',
-          victory: 'You go into the swamp'
+          image: 'turn2-tacos.jpg',
+          caption: `Hell's best tacos`,
+          victory: `The tacos are cursed and swarm you like piranhas. No survivors.`
+        }
+      ),
+      tugOfWarScene(3,
+        `The road continues to fork!`,
+        {
+          image: 'turn3-poop.jpg',
+          caption: `Poop money`,
+          victory: `If you don't improve your diet, it will be mostly coins.`,
+        },
+        {
+          image: 'turn3-future.jpg',
+          caption: `See 10 seconds into the future`,
+          victory: `You cannot be snuck up on, but nothing is fun anymore.`
         }
       ),
       visionScene(3,VISION_QUESTION_3,VISION_PLACEHOLDER_3,VISION_BUTTON_3,VISION_GIF_3),
@@ -535,15 +558,15 @@ class Show extends React.Component {
 
               
     const babyColors = ['lime','red','orange','yellow','cyan','violet']
-
+    const babyColorString = babyColors[babyColor % babyColors.length];
     // console.log(directorState);
 
     return (
       <div 
         id={`scene-${slugify(currentScene.name, {lower: true})}`} 
-        className={`scene ${babyRainbow ? 'rainbow-baby' : ''}`}
+        className={`scene`}
         style={{
-          '--baby-color': babyColors[babyColor % babyColors.length],
+          '--baby-color': babyColorString,
           '--funk-level-normalized': 1-(1/Math.pow(((funkLevel)/20+1),2)),
           '--funk-level': funkLevel,
         }}
@@ -575,11 +598,11 @@ class Show extends React.Component {
           return (<GroupClicky clicky={directorState.groupClickies[key]} key={key} activeParticipantCount={directorState.activeParticipantCount} clickyId={key} newParticipantEvent={newParticipantEvent} />)
         })}
 
-        <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' ?  currentScene.babyClass : ''} hatNumber={babyHat}  color={babyColors[babyColor % babyColors.length]} newParticipantEvent={newParticipantEvent}/>
+        <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' ?  currentScene.babyClass : ''} hatNumber={babyHat}  color={babyColorString} newParticipantEvent={newParticipantEvent}/>
 
         <div id="funk-overlay" />
 
-        <Chat newParticipantEvent={newParticipantEvent} messages={messages} color={babyColors[babyColor % babyColors.length]} rainbow={babyRainbow}/>
+        <Chat newParticipantEvent={newParticipantEvent} messages={messages} color={babyColorString} rainbow={babyRainbow}/>
 
         {(mode==="performer") && <div id="teleprompter">{currentScene.name}{currentScene.teleprompter}<br/><span style={{color: 'red'}}>{nextScene.name}</span></div>}
         
