@@ -122,13 +122,14 @@ const SERMON = `${GOSPEL} ${GOSPEL_SOURCE}
   How hard are you willing to fight?
   Compassion/love?
 
-  When there is no ground, be the ground. (with your loved ones + community) 
   If you can't know the future, know yourself (know your loved ones)
+  When there is no ground, be the ground. (with your loved ones + community) 
   Become someone who is ready for anything. (or part of a team)
-  Sing your song, whatever that means
+  And also look for new possibilities.
   What you build inside cant be taken from you–no matter how crazy things get.
   A sailor doesn't try to control the wind, they control how they sail
-  Because this storm is FAR from over.
+  Because this storm is FAR from over. 
+  Luckily, we are equal to it.
 `;
 
   // Anxiety creates risk aversion, not loss aversion
