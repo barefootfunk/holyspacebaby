@@ -58,10 +58,10 @@ const FLIGHT_BGS = [
 // CONTENT
 
 //https://dashboard.eventable.com/
-const DATE_THIS = 'NOV 5';
-const DATE_NEXT = 'NOV 12';
-const CAL_ID_THIS = '5f9b5fc9fe83af0140b9a0dd';
-const CAL_ID_NEXT = '5f9b5ff550b389001840abf0';
+const DATE_THIS = 'NOV 12';
+const DATE_NEXT = '';
+const CAL_ID_THIS = '5f9b5ff550b389001840abf0';
+const CAL_ID_NEXT = '';
 
 const EP_NUMBER = '8';
 const THEME = 'uncertainty';
