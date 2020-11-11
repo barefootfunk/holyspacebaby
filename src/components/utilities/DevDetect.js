@@ -1,8 +1,7 @@
-import process from "process";
+// import process from "process";
 
-const development = !process.env.NODE_ENV || process.env.NODE_ENV === 'development';
+export default function isDev(){
 
-export default function isDev()
-{
+  const development = typeof window !== `undefined` && window.location.hostname === 'localhost';
   return development;
 }

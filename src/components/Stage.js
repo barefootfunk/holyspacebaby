@@ -13,7 +13,6 @@ import isDev from "./utilities/DevDetect";
 let SOCKET_URL = 'https://holyspacebaby-server.herokuapp.com/'; 
 if (isDev()) {
   SOCKET_URL = 'http://localhost:3000';
-  console.log('dev server');
 }
 
 export default class Stage extends React.Component {
@@ -40,6 +39,7 @@ export default class Stage extends React.Component {
     initAmplitude();
     console.log('mode',this.props.mode);
     sendAmplitudeData('join', {mode: this.props.mode}); 
+    console.log(`SOCKET: will try server ${SOCKET_URL}`);
     
     this.socket = io(SOCKET_URL, {
       'reconnection': true,
@@ -49,7 +49,7 @@ export default class Stage extends React.Component {
 
     // Socket lifecycle reporting
     this.socket.on('connect', () => { 
-      console.log('SOCKET: connected');
+      console.log(`SOCKET: connected to ${SOCKET_URL}`);
       this.setState({connected: this.socket.connected, participantId: this.socket.id}) 
       this.newParticipantEvent({
         type:'updateParticipant',
