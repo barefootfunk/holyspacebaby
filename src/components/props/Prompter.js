@@ -270,21 +270,10 @@ export default class Prompter extends React.Component {
         </div>
         {(submitted && mode!=='performer') && 
           (
-            <div className="layout-bottom -no-pointer">
-              <p>{soundMode==='sample' ? "Click other answers to ponder." : "Click and HOLD other's answers."}</p>
-            </div> 
-          )
-        }
-        {mode==='performer' && 
-          (
-            <div className="layout-bottom -no-pointer">
-              <p className="-no-pointer">{prompt}</p>
-            </div>
-          )
-        }
-        {(!submitted && mode!=='performer') && 
-          (
             <React.Fragment>
+              <div className="layout-bottom -no-pointer">
+                <p>{soundMode==='sample' ? "Click other answers to ponder." : "Click and HOLD other's answers."}</p>
+              </div>             
               <div className={`layout-bottom prompt-box ${error && '-error'}`}>
                 {error 
                   ? <p className='error -no-pointer'>{error}</p>

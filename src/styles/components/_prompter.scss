@@ -24,7 +24,6 @@
   flex-wrap: wrap;
 
 
-
   input, button {
     @include font-display;
     display: block;
@@ -131,7 +130,7 @@
   background-size: auto 80%;
   background-position: center center;
   animation: portal-open 5s forwards;
-  // background-repeat: no-repeat;
+  background-repeat: no-repeat;
   box-shadow: 0 0 20px var(--baby-color);
 
   pointer-events: none;

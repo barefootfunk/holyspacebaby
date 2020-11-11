@@ -6,11 +6,15 @@ import io from "socket.io-client";
 // Show
 import Show from "./Scenes"
 
-// Amplitude
+// Utils
 import {initAmplitude, sendAmplitudeData} from './utilities/amplitude';
+import isDev from "./utilities/DevDetect";
 
-const SOCKET_URL = 'https://holyspacebaby-server.herokuapp.com/'; 
-// const SOCKET_URL = 'http://localhost:3000';
+let SOCKET_URL = 'https://holyspacebaby-server.herokuapp.com/'; 
+if (isDev()) {
+  SOCKET_URL = 'http://localhost:3000';
+  console.log('dev server');
+}
 
 export default class Stage extends React.Component {
 

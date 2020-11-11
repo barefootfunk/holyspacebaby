@@ -59,30 +59,16 @@ const FLIGHT_BGS = [
 
 //https://dashboard.eventable.com/
 const DATE_THIS = 'NOV 12';
-const DATE_NEXT = '';
+const DATE_NEXT = 'NOV 19';
+// const DATE_NEXT = 'NOV 26';
 const CAL_ID_THIS = '5f9b5ff550b389001840abf0';
-const CAL_ID_NEXT = '';
+const CAL_ID_NEXT = '5faaaeae20d745003fa28f65';
+// NOV 26 -- 5faaaf519960a00018f0026c
 
-const EP_NUMBER = '8';
-const THEME = 'uncertainty';
+const EP_NUMBER = '9';
+const THEME = 'safety';
 
 const BULLETIN = `No VIP mode.  Warning`;
-
-const VISION_GIF_1         = "";
-const VISION_QUESTION_1    = "You ride the hell bus, speeding through purgatory. Thank Mr. Hellbus Driver!";
-const VISION_PLACEHOLDER_1 = "Type thanks";
-const VISION_BUTTON_1      = "Thank!";
-
-
-const VISION_GIF_2         = "";
-const VISION_QUESTION_2    = "Mr. Hellbus Driver has no idea where the hell bus is going. Yell directions!";
-const VISION_PLACEHOLDER_2 = "Type a direction";
-const VISION_BUTTON_2      = "Suggest!";
-
-const VISION_GIF_3         = "";
-const VISION_QUESTION_3    = "He realizes he isn't controlling the bus. But he keeps singing so he can be ready for anything. Thank Mr. Hellbus Driver.";
-const VISION_PLACEHOLDER_3 = "Type thanks";
-const VISION_BUTTON_3      = "Thank!";
 
 const NOTES = [
   'Bb2','D2','E2','G2','C2','F',
@@ -105,37 +91,79 @@ const MEDIATION_QUESTION_4    = "Wnat's something about you that wont change–n
 const MEDIATION_PLACEHOLDER_4 = "Type a thing";
 const MEDIATION_BUTTON_4      = "Answer anonymously!";
 
-const GOSPEL = `"The sailor don't adjust the wind none, just the sail."`;
+const GOSPEL = `"Bravery and safety gotta rise like sun and moon–and to be safe is to belong."`;
 const GOSPEL_SOURCE = '-Cowboy Jobe 1:19';
 const SERMON = `${GOSPEL} ${GOSPEL_SOURCE}
-  Uncertain times, Senate? presidency? country? tell own story. Nauseas, dizzy.
-  Uncertainty is painful:
-  - Uncertainty about electric shocks causes more stress than electric shocks
-  1. Spreads us thin -> Journal
-  2. A-game, prolonged Fight or flight -> know your biases
-  - leads to zombiehood over time
-  3. Halts us -> Focus on ourselves
-  Unless what we are building is ourselves. Our values, our judgement, our character.
-  Who are you?
-  What is important to you?
-  What can you strengthen?
-  How hard are you willing to fight?
-  Compassion/love?
-
-  If you can't know the future, know yourself (know your loved ones)
-  When there is no ground, be the ground. (with your loved ones + community) 
-  Become someone who is ready for anything. (or part of a team)
-  And also look for new possibilities.
-  What you build inside cant be taken from you–no matter how crazy things get.
-  A sailor doesn't try to control the wind, they control how they sail
-  Because this storm is FAR from over. 
-  Luckily, we are equal to it.
+  We are exhausted.  We have had to wrestle with fear.  We have had to be brave.
+  And there is no end in sight.
+  fear as a compass.
+  bravery is required
+  but not sustainable
+  I am exhausted (election, weekly shows)
+  Relax/rest doesnt always recharge
+  Therapist, St. H: oppositve of bravery is not relaxation, its safety.
+  Not stress/recovery or sympathetic/parasympathetic, bravery/safety.
+  Safety is a feeling, from evolution 
+  thinking absence of danger, (cog reframe, permission)
+  comfort, 
+  nature,
+  deep breathing with slow outbreaths,
+  self-care
+  most overlooked CONNECTION
+  Homo sapiens survival strategy: communities and cooperating
+  Trust, connect, smile, play, hug, laugh
+  It worked for me.
+  takes time -- consistent little > big
+  send a text.
+  to be thinking of others and know they are thinking of you.
+  if you are feeling isolated, offer safety to others.
+  need for bravery will continue, facilitate this cycle.
+  brave sunrise, safe moonrise
+  Give yourself safety now, so you can be brave tomorrow.
 `;
 
+// Safety is a feeling, not a worldstate
+// mammals need to feel safe: 1. babies raised by mothers 2. social interdependency 3. safety needed for higher functions (thinking, sleep, nursing, digestion, reproduction)
+// safe states are prereq for higher forms of thinking, creativity generativity
+// para vs. symp s wrong  
+
+// breathing is the one autonomic thing you can control and it feeds back into the autonomic->cognitive loop, LONG exhale
+// mirroring others who are feeling safe
+
+// go to others for saefty
+// or GIVE it to others
+
+// safety is harder to feel for trauma 
+
+// safety is a runaway positive feedback loop (so is threat), both are vyvles
+// danger signals: low frqs, flat affect faces
+
+// smiles, eye contact, playful, prosidy
+// mid-frequencies
+// breath (make exhale longer)
+// environments that feel safe (outdoors, light, homey)
+// spendtime with people you like
+// do behaviors you do when you feel safe
+// ice water
+// old home movies
+// laughter
+// reduce sensory input
+
+// make space for this
+
+// safety => connection
+
+// relaxation,
+
+// not sources of DANGER/narratives
+
+// peobiotic, chocolate, b12, single cup of coffee, b complex
   // Anxiety creates risk aversion, not loss aversion
 // https://www.inc.com/mithu-storoni/this-is-why-youre-so-afraid-of-uncertainty-according-to-neuroscience.html
 // https://www.inc.com/mithu-storoni/your-brain-isnt-afraid-of-failure-heres-whats-really-going-on.html
 // https://www.theguardian.com/commentisfree/2016/apr/04/uncertainty-stressful-research-neuroscience
+
+// https://www.youtube.com/watch?v=br8-qebjIgs&ab_channel=NerdNite
 
 class Show extends React.Component {
 
@@ -183,18 +211,18 @@ class Show extends React.Component {
       ),
     };
 
-    function visionScene(num,question,placeholder,buttonText,gif) {
+    function promptScene(num,question,placeholder,buttonText,gif,bgs) {
       return {
         name: `Vision ${num}`,
         livestream: "tiny",
         babyClass: "flight",
         teleprompter: `${question}`,
-        backgroundChildren: (
-          <div id="hellbus" className="-big"><button></button></div>
-        ),
+        // backgroundChildren: (
+        //   <div id="hellbus" className="-big"><button></button></div>
+        // ),
         foregroundChildren: (
           <React.Fragment>
-            <VideoBg key={`tugofwar${num}`} srcs={['hellroad.mp4']} /> {/* <VideoBg key={`flight${num}`} srcs={FLIGHT_BGS}/> */}
+            <VideoBg key={`flight${num}`} srcs={bgs ? bgs : FLIGHT_BGS}/>
             <Prompter 
               id={`vision${num}`}
               key={`prompt-vision${num}`}
@@ -205,7 +233,7 @@ class Show extends React.Component {
               mode={mode}
               buttonText={buttonText}
               soundMode='sample'
-              // visionSrc={`/img/${gif}`}
+              visionSrc={gif ? `/img/${gif}` : false}
             />
           </React.Fragment>
         ),
@@ -256,7 +284,7 @@ class Show extends React.Component {
             <div className="layout-top">
               <p>{caption}</p>
             </div>
-            <div id="hellbus"><button></button></div>
+            {/* <div id="hellbus"><button></button></div> */}
           </React.Fragment>
         ),
       };
@@ -322,26 +350,6 @@ class Show extends React.Component {
           </React.Fragment>
         )
       },
-      // {
-      //   name: 'Dying',
-      //   teleprompter: ``,
-      //   livestream: "big",
-      //   babyClass: "hidden",
-      //   foregroundChildren: (
-      //     <React.Fragment>
-      //       <VideoBg key='campfire-intense' srcs={['campfire-intense.mp4']}/>
-      //       <div className="layout-top -no-pointer">
-      //         <p style={{fontSize: '2em'}}>YOU ARE NOW DYING!</p>
-      //       </div>
-      //       <div className="layout-bottom">
-      //         {/* <Credits /> */}
-      //         <ClickSound sound={cheer1Sound}>
-      //           <button className="button">REJOICE BUTTON</button>
-      //         </ClickSound>
-      //       </div>
-      //     </React.Fragment>
-      //   )
-      // },
       {
         name: 'Birth',
         teleprompter: `
@@ -380,9 +388,13 @@ class Show extends React.Component {
           </React.Fragment>
         ),
       },
-      visionScene(1,VISION_QUESTION_1,VISION_PLACEHOLDER_1,VISION_BUTTON_1,VISION_GIF_1),
-      visionScene(2,VISION_QUESTION_2,VISION_PLACEHOLDER_2,VISION_BUTTON_2,VISION_GIF_2),
-
+      promptScene(0,
+        `I am the octopus queen.  I am dying.  Grant me my final wish.`,
+        `VISION_PLACEHOLDER_1`,
+        `VISION_BUTTON_1`,
+        'octopus.gif',
+        false // Default BG
+      ),
       tugOfWarScene(0,
         `The hell bus comes to a fork in the road. Quickly! Choose a road! Whichever side gets the most repeated, maniacal clicks from everybody wins.`,
         {
@@ -396,74 +408,20 @@ class Show extends React.Component {
           victory: `The swamp belongs to Shrek.  You drive quickly and do not exit the vehicle.  Beware Shrek's love.`
         }
       ),
-
-      tugOfWarScene(1,
-        `The road splits again! Which way?!`,
-        {
-          image: 'turn1-under.jpg',
-          caption: 'Underhang land',
-          victory: 'You are all psycopaths.'
-        },
-        {
-          image: 'turn1-over.jpg',
-          caption: 'Overhand land',
-          victory: 'You have chosen... wisely.'
-        }
-      ),
-      tugOfWarScene(2,
-        `Everybody is hungry.  Where do we stop?`,
-        {
-          image: 'turn2-pizza.jpg',
-          caption: `Hell's best pizza`,
-          victory: 'The pizza is cursed and your hands are now cheese.'
-        },
-        {
-          image: 'turn2-tacos.jpg',
-          caption: `Hell's best tacos`,
-          victory: `The tacos are cursed and swarm you like piranhas. No survivors.`
-        }
-      ),
-      tugOfWarScene(3,
-        `The road continues to fork! WHich power do you choose?`,
-        {
-          image: 'turn3-poop.jpg',
-          caption: `Poop money`,
-          victory: `If you don't improve your diet, it will be mostly coins.`,
-        },
-        {
-          image: 'turn3-future.jpg',
-          caption: `See 10 seconds into the future`,
-          victory: `You cannot be snuck up on, but nothing is fun anymore.`
-        }
-      ),
-      visionScene(3,VISION_QUESTION_3,VISION_PLACEHOLDER_3,VISION_BUTTON_3,VISION_GIF_3),
-      // visionScene(4,VISION_QUESTION_4,VISION_PLACEHOLDER_4,VISION_BUTTON_4,VISION_GIF_4),
-      // {
-      //   name: 'Zombie Slay',
-      //   livestream: "hidden",
-      //   babyClass: "flight",
-      //   teleprompter: `Cure the zombies!`,
-      //   foregroundChildren: (
-      //     <React.Fragment>
-      //       <VideoBg key={`zombies`} srcs={['spooky.mp4']} style={{opacity: 0.6 }}/>
-      //       <div className="layout-center -no-pointer">
-      //         <p>Click a zombie to encourage them.<br/>Many must encourage a zombie simultaneously to cure them.</p>
-      //       </div>
-      //     </React.Fragment>
-      //   ),
-      // },
-      // {
-      //   name: "Fireflies",
-      //   livestream: "tiny",
-      //   foregroundChildren: (
-      //     <React.Fragment>
-      //       {/* Black bg */}
-      //       <div className="layout-bottom -no-pointer">
-      //         <p>The lights are the other babies.</p>
-      //       </div>
-      //     </React.Fragment>
-      //   ),
-      // },
+      {
+        name: 'Zombie Slay',
+        livestream: "hidden",
+        babyClass: "flight",
+        teleprompter: `Cure the zombies!`,
+        foregroundChildren: (
+          <React.Fragment>
+            <VideoBg key={`zombies`} srcs={['spooky.mp4']} style={{opacity: 0.6 }}/>
+            <div className="layout-center -no-pointer">
+              <p>Click a zombie to encourage them.<br/>Many must encourage a zombie simultaneously to cure them.</p>
+            </div>
+          </React.Fragment>
+        ),
+      },
       {
         name: "Meditation Intro",
         livestream: "tiny",
@@ -480,10 +438,26 @@ class Show extends React.Component {
           </React.Fragment>
         ),
       },
-      meditationScene(1,MEDIATION_QUESTION_1,MEDIATION_PLACEHOLDER_1,MEDIATION_BUTTON_1),
-      meditationScene(2,MEDIATION_QUESTION_2,MEDIATION_PLACEHOLDER_2,MEDIATION_BUTTON_2),
-      meditationScene(3,MEDIATION_QUESTION_3,MEDIATION_PLACEHOLDER_3,MEDIATION_BUTTON_3),
-      meditationScene(4,MEDIATION_QUESTION_4,MEDIATION_PLACEHOLDER_4,MEDIATION_BUTTON_4),
+      meditationScene(1,
+        `What has exhausted you lately?`,
+        `Type a thing`,
+        `Answer anonymously!`
+      ),
+      meditationScene(2,
+        `How does that feel in your body?`,
+        `Type a thing`,
+        `Answer anonymously!`
+      ),
+      meditationScene(3,
+        `What makes you feel safe?`,
+        `Type a thing`,
+        `Answer anonymously!`
+      ),
+      meditationScene(4,
+        `W`,
+        `Type a thing`,
+        `Answer anonymously!`
+      ),
       {
         name: "Sermon",
         babyClass: "hidden",

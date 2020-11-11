@@ -50,6 +50,7 @@ const CustomForm = ({ status, message, onValidated, descriptionText }) => {
     </div>
   );
 };
+/* <a href="https://add.eventable.com/subscribe/5f8edeb953314b00158b2ff5/" data-categories="all" class="eventable-link" target="_blank" data-key="5f8edeb953314b00158b2ff5" data-style="1">Add to Calendar</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://plugins.eventable.com/eventable.js";fjs.parentNode.insertBefore(js, fjs);}}(document, "script", "eventable-script");</script> */
 
 const CTA = (props) => {
   const addToCalScript = `<a href="https://add.eventable.com/events/5f8edeb953314b00158b2ff5/${props.calEventId}/" data-event="${props.eventId}" class="eventable-link" target="_blank" data-key="5f8edeb953314b00158b2ff5" data-style="1">Add ${props.nextCeremonyDate} ceremony to Calendar</a>` //<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://plugins.eventable.com/eventable.js";fjs.parentNode.insertBefore(js, fjs);}}(document, "script", "eventable-script");</script>
