@@ -203,6 +203,8 @@ class Show extends React.Component {
 
     const {babyColor, funkLevel, babyHat, babyRainbow, vip} = this.state;
 
+    console.log('babyColor',babyColor);
+
     function pomplo() { 
       return {
         name: 'Pomplo',
@@ -535,7 +537,7 @@ class Show extends React.Component {
       //   ),
       // },
     ];
-
+    console.log('babyColor',babyColor);
     scene = Math.max(0,scene); // Render 0, if below
     scene = Math.min(scenes.length-1,scene); // Render last scene, if above scenes length
     const currentScene = scenes[scene];
@@ -544,7 +546,7 @@ class Show extends React.Component {
     nextSceneNumber = Math.max(0,nextSceneNumber); // Render 0, if below
     nextSceneNumber = Math.min(scenes.length-1,nextSceneNumber); // Render last scene, if above scenes length
     const nextScene = scenes[nextSceneNumber];
-
+    console.log('babyColor',babyColor);
     // Run onStart function
     if(typeof currentScene.onStart !== 'undefined') { currentScene.onStart() }
 
@@ -552,7 +554,7 @@ class Show extends React.Component {
     const babyColors = ['lime','red','orange','yellow','cyan','violet']
     const babyColorString = babyColors[babyColor % babyColors.length];
     // console.log(directorState);
-
+    console.log('babyColor',babyColor,babyColorString);
     return (
       <div 
         id={`scene-${slugify(currentScene.name, {lower: true})}`} 
@@ -603,7 +605,7 @@ class Show extends React.Component {
         <Script
           url="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f87b420788415d6"
         />
-
+        {console.log('babyColor',babyColor,babyColorString)}
       </div>
     );
   }
