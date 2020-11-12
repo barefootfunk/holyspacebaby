@@ -63,18 +63,18 @@
   0% {
     opacity: 1;
     display: block;
-    transform: translate(0,0) scale(2);
+    transform: translate(0,0) scale(2) rotate(-1turn);
   }
-  6% {
+  30% {
     opacity: 1;
     display: block;
-    transform: translate(-50vw,-50vh) scale(6);
+    transform: translate(-50vw,-50vh) scale(6) rotate(-1turn);
   }
 
-  90% {
-    opacity: 0.3;
+  80% {
+    opacity: 0.5;
     display: block;
-    transform: translate(-50vw,-50vh) scale(12);
+    transform: translate(-50vw,-50vh) scale(8);
   }
   99% {
     opacity: 0;

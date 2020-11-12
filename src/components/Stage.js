@@ -151,7 +151,8 @@ export default class Stage extends React.Component {
               <button id="pomplo-button" onClick={() => {this.updateDirectorState({pomplo: {percentage: 0.8}})}}>pomplo</button>
               <button id="rehearsal-button" className={rehearsal?'-on':'-off'} onClick={() => {this.updateDirectorState({rehearsal: !rehearsal})}}>Reh</button>
               <button id="zombie-button" onClick={() => { this.newParticipantEvent({type: 'groupClickyAdd'}) }}>Zombie</button>
-              <button id="zombie-clear-button" onClick={() => { this.newParticipantEvent({type: 'clear'}) }}>Clear</button>
+              <button id="zombie-clear-button" onClick={() => { this.newParticipantEvent({type: 'clearGroupClickies'}) }}>ClrZom</button>
+              <button id="tug-clear-button" onClick={() => { this.newParticipantEvent({type: 'clearTugOfWars'}) }}>ClrTug</button>
             </div>
             <div id="participant-stats">{activeParticipantCount}</div>
           </React.Fragment>

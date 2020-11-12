@@ -19,8 +19,12 @@
     transition: width .1s;
 
     .caption {
+      position: absolute;
       @include text-box;
       color: white;
+      bottom: 10%;
+      left: 50%;
+      transform: translateX(-50%);
     }
     
     .background {

@@ -140,7 +140,7 @@ class Response extends React.Component {
       <span 
         className="response" 
         style={{
-          transform: `translate(calc(${(floatX*5-10)+(response.x * 80+10)}vw - 50%),calc(${(floatY*5-10)+(response.y * 80+10)}vh - 50%)) rotate(${floatRot*60-30}deg)`,
+          transform: `translate(calc(${(floatX*8-16)+(response.x * 70+15)}vw - 50%),calc(${(floatY*8-16)+(response.y * 70+15)}vh - 50%)) rotate(${floatRot*60-30}deg)`,
           transition: `transform ${this.transitionIntervalTime-1000}ms linear, opacity 0.2s`,
           fontSize: `${response.votes*.05+1}em`,
         }}
@@ -270,27 +270,29 @@ export default class Prompter extends React.Component {
         </div>
         {(submitted && mode!=='performer') && 
           (
-            <React.Fragment>
-              <div className="layout-bottom -no-pointer">
-                <p>{soundMode==='sample' ? "Click other answers to ponder." : "Click and HOLD other's answers."}</p>
-              </div>             
-              <div className={`layout-bottom prompt-box ${error && '-error'}`}>
-                {error 
-                  ? <p className='error -no-pointer'>{error}</p>
-                  : <p className="-no-pointer">{prompt}</p>
-                }
-                <form id="prompt" onSubmit={this.sendPromptResponse}>
-                  <input 
-                    type="text" 
-                    value={currentResponse} 
-                    onChange={this.handleChange} 
-                    placeholder={placeholder}
-                    maxLength="100"
-                  />
-                  <input type="submit" value={buttonText}/>
-                </form>
-              </div>
-            </React.Fragment>
+            <div className="layout-bottom -no-pointer">
+              <p>{soundMode==='sample' ? "Click other answers to ponder." : "Click and HOLD other's answers."}</p>
+            </div>   
+          )
+        }
+        {(!submitted && mode!=='performer') && 
+          (
+            <div className={`layout-bottom prompt-box ${error && '-error'}`}>
+              {error 
+                ? <p className='error -no-pointer'>{error}</p>
+                : <p className="-no-pointer">{prompt}</p>
+              }
+              <form id="prompt" onSubmit={this.sendPromptResponse}>
+                <input 
+                  type="text" 
+                  value={currentResponse} 
+                  onChange={this.handleChange} 
+                  placeholder={placeholder}
+                  maxLength="100"
+                />
+                <input type="submit" value={buttonText}/>
+              </form>
+            </div>
           )
         }
       </React.Fragment>

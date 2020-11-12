@@ -174,7 +174,7 @@ class Show extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      babyColor: Math.floor(Math.random()*7),
+      babyColor: 0,
       babyHat: 0,
       funkLevel: 0,
       babyRainbow: false,
@@ -196,6 +196,9 @@ class Show extends React.Component {
 
   componentDidMount() {
     // this.vipAuthenticate();
+    this.setState({
+      babyColor: Math.floor(Math.random()*7),
+    })
   }
 
   render () {
@@ -205,13 +208,22 @@ class Show extends React.Component {
 
     
 
-    function pomplo() { 
+    function pomploBattle(num,caption) { 
       return {
-        name: 'Pomplo',
+        name: 'Pomplo'+num,
         livestream: "hidden",
+        teleprompter: caption,
         babyClass: "flight",
+        backgroundChildren: (
+          <React.Fragment>
+            <VideoBg key='underwater' srcs={['underwater.mp4']}/>
+            {caption && <div className="layout-top -no-pointer">
+            <p>{caption}</p>
+            </div>}
+          </React.Fragment>
+        ),
         foregroundChildren: (
-          <Pomplo pomplo={directorState.pomplo}/>
+          <Pomplo directorState={directorState}/>
         ),
       };
     }
@@ -257,10 +269,40 @@ class Show extends React.Component {
       }
     }
 
+    function pomploPromptScene(num,question,placeholder,buttonText,gif,bgs) {
+      return {
+        name: `Vision ${num}`,
+        livestream: "hidden",
+        babyClass: "flight",
+        teleprompter: `${question}`,
+        backgroundChildren: (
+          <Pomplo directorState={directorState} hideHealthbar={true} />
+        ),
+        foregroundChildren: (
+          <React.Fragment>
+            <VideoBg key={`flight${num}`} srcs={['underwater.mp4']}/>
+            <Prompter 
+              id={`vision${num}`}
+              key={`prompt-vision${num}`}
+              prompt={question}
+              placeholder={placeholder}
+              newParticipantEvent={newParticipantEvent} 
+              responses={responses} 
+              mode={mode}
+              buttonText={buttonText}
+              soundMode='sample'
+              visionSrc={gif ? `/img/${gif}` : false}
+            />
+          </React.Fragment>
+        ),
+      }
+    }
+
     function meditationScene(num,question,placeholder,buttonText) {
       return {
         name: `Meditation ${num}`,
         livestream: "tiny",
+        teleprompter: `${question}`,
         foregroundChildren: (
           <React.Fragment>
             <VideoBg key={`calm${num}`} srcs={CALM_BGS} />
@@ -290,7 +332,7 @@ class Show extends React.Component {
         foregroundChildren: (
           <React.Fragment>
             {/* {/* <VideoBg key={`calm${num}`} srcs={CALM_BGS} /> */}
-            <VideoBg key={`tugofwar${num}`} srcs={['hellroad.mp4']} /> 
+            <VideoBg key={`tugofwar${num}`} srcs={['underwater.mp4']} /> 
             <TugOfWar 
               newParticipantEvent={newParticipantEvent} 
               tugOfWarId={id} 
@@ -301,7 +343,7 @@ class Show extends React.Component {
             <div className="layout-top">
               <p>{caption}</p>
             </div>
-            {/* <div id="hellbus"><button></button></div> */}
+            <Pomplo directorState={directorState} hideHealthbar={true} />
           </React.Fragment>
         ),
       };
@@ -309,7 +351,6 @@ class Show extends React.Component {
 
     const scenes = [
       homepage,
-      pomplo(),
       {
         name: 'Pre live',
         livestream: "hidden",
@@ -406,40 +447,43 @@ class Show extends React.Component {
           </React.Fragment>
         ),
       },
-      promptScene(0,
-        `I am the octopus queen.  I am dying.  Grant me my final wish.`,
-        `VISION_PLACEHOLDER_1`,
-        `VISION_BUTTON_1`,
+      promptScene(1,
+        `You encounter the benevolent Octopus Queen Melinda. "Who are you? Proove you belong to the ocean!"`,
+        `Type proof`,
+        `Prove!`,
         'octopus.gif',
         false // Default BG
       ),
-      tugOfWarScene(0,
-        `The hell bus comes to a fork in the road. Quickly! Choose a road! Whichever side gets the most repeated, maniacal clicks from everybody wins.`,
+      promptScene(2,
+        `"I'm sorry I doubted you.  I'm edge because I am dying. I have one wish. Please will you help?"`,
+        `Type answer`,
+        `Reply!`,
+        'octopus-dying.gif',
+        false // Default BG
+      ),
+      pomploPromptScene(3,
+        `This is my son Pomplo. He is part cow. Please keep him SAFE.`,
+        `Type answer`,
+        `I promise!`,
+        false,
+        false,
+      ),
+      tugOfWarScene(3,
+        `Pomplo likes trucks. Which toy to give Pomplo? Click one side repeatedly to vote.`,
         {
-          image: 'turn0-ice.jpg',
-          caption: 'Go to ice world',
-          victory: 'Everybody is very cold. But you befriend a snowperson who teaches you algebra.'
+          image: 'dumptruck.png',
+          caption: 'Dump truck',
+          victory: 'Pomplo giggles with delight at the dumptruck.'
         },
         {
-          image: 'turn0-swamp.jpg',
-          caption: 'A swamp world',
-          victory: `The swamp belongs to Shrek.  You drive quickly and do not exit the vehicle.  Beware Shrek's love.`
+          image: 'firetruck.png',
+          caption: 'Fire truck',
+          victory: `Pomplo feels like a very brave firefighter.`
         }
       ),
-      {
-        name: 'Zombie Slay',
-        livestream: "hidden",
-        babyClass: "flight",
-        teleprompter: `Cure the zombies!`,
-        foregroundChildren: (
-          <React.Fragment>
-            <VideoBg key={`zombies`} srcs={['spooky.mp4']} style={{opacity: 0.6 }}/>
-            <div className="layout-center -no-pointer">
-              <p>Click a zombie to encourage them.<br/>Many must encourage a zombie simultaneously to cure them.</p>
-            </div>
-          </React.Fragment>
-        ),
-      },
+      pomploBattle(0,'Defeat the zombies! Everybody must click on the same zombie at the same time.'),
+      pomploBattle(1,'Pomplo is hurt! Use the chat to tell Pomplo you love him.'),
+      pomploBattle(2,false),
       {
         name: "Meditation Intro",
         livestream: "tiny",
@@ -472,7 +516,7 @@ class Show extends React.Component {
         `Answer anonymously!`
       ),
       meditationScene(4,
-        `W`,
+        `Whats a simple way to connect with others?`,
         `Type a thing`,
         `Answer anonymously!`
       ),
@@ -551,7 +595,7 @@ class Show extends React.Component {
     if(typeof currentScene.onStart !== 'undefined') { currentScene.onStart() }
 
               
-    const babyColors = ['lime','red','orange','yellow','cyan','violet']
+    const babyColors = ['lime','red','orange','yellow','cyan','violet'];
     const babyColorString = babyColors[babyColor % babyColors.length];
     // console.log(directorState);
     console.log('babyColor',babyColor,babyColorString);
@@ -598,7 +642,7 @@ class Show extends React.Component {
 
         <Chat newParticipantEvent={newParticipantEvent} messages={messages} color={babyColorString} rainbow={babyRainbow}/>
 
-        {(mode==="performer") && <div id="teleprompter">{currentScene.name}{currentScene.teleprompter}<br/><span style={{color: 'red'}}>{nextScene.name}</span></div>}
+        {(mode==="performer") && <div id="teleprompter">{currentScene.name}<br />{currentScene.teleprompter}<br/><span style={{color: 'red'}}>{nextScene.name}</span></div>}
         
         <Fireflies participants={directorState.participants} participantId={directorState.participantId} />
       

@@ -65,7 +65,7 @@ export default class TugOfWar extends React.Component {
                     type: 'tugOfWarClick', 
                     data: {
                       tugOfWarId: tugOfWarId,
-                      change: -1,
+                      change: -1/100,
                     }
                   })
                 }}
@@ -84,7 +84,7 @@ export default class TugOfWar extends React.Component {
                     type: 'tugOfWarClick', 
                     data: {
                       tugOfWarId: tugOfWarId,
-                      change: 1,
+                      change: 0.5/100,
                     }
                   })
                 }}
