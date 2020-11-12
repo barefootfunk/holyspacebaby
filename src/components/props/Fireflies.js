@@ -17,7 +17,7 @@ export default class Fireflies extends React.Component {
             return (
               <div 
                 key={key}
-                className={`firefly ${participant.id === participantId ? '-user' : ''} ${participant.mode==='performer' ? '-performer' : ''} ${participant.inactive ? '-inactive' : ''}`} 
+                className={`firefly ${participant.id === participantId ? '-user' : ''} ${participant.clicking ? '-clicking' : ''} ${participant.mode==='performer' ? '-performer' : ''} ${participant.inactive ? '-inactive' : ''}`} 
                 style={{
                   transform: `translate(${participant.x*100}vw,${participant.y*100}vh)`,
                 }}
@@ -26,6 +26,9 @@ export default class Fireflies extends React.Component {
                   animationDelay: `${(index%10)*0.1}s`,
                   background: `radial-gradient(${participant.color} 0%, ${participant.color} 25%, transparent 70%)`
                 }} />
+                <span className='click' style={{
+                  borderColor: participant.color,
+                }}/>
               </div>
             );
           })}

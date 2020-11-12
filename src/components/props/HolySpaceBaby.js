@@ -72,9 +72,16 @@ export default class HolySpaceBaby extends React.Component {
     });
   }
 
+  sendClick = () => {
+    this.props.newParticipantEvent({
+      type:'participantClick',
+    });
+  }
+
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
+    window.addEventListener('click', this.sendClick);
     window.addEventListener('mousemove', this.handleMouseMove);
     window.addEventListener('touchstart', this.handleTouch);
 
@@ -83,6 +90,7 @@ export default class HolySpaceBaby extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions);
+    window.removeEventListener('click', this.sendClick);
     window.removeEventListener('mousemove', this.handleMouseMove);
     window.removeEventListener('touchstart', this.handleTouch);
     clearInterval(this.fireflyInterval)

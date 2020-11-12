@@ -31,10 +31,13 @@ export default class Stage extends React.Component {
       participantId: null,
       groupClickies: {},
       tugOfWars: {},
+      pomplo: {
+        percentage: 1,
+      }
     };
 
   }
-
+ pSc
   componentDidMount () {
     initAmplitude();
     console.log('mode',this.props.mode);
@@ -145,7 +148,7 @@ export default class Stage extends React.Component {
               <button id="prev-scene" onClick={() => {this.updateDirectorState({scene: scene-1})}}>Prev</button>
               <div id="scene-number">{scene}</div>
               <button id="next-scene" onClick={() => {this.updateDirectorState({scene: scene+1})}}>Next</button>
-
+              <button id="pomplo-button" onClick={() => {this.updateDirectorState({pomplo: {percentage: 0.8}})}}>pomplo</button>
               <button id="rehearsal-button" className={rehearsal?'-on':'-off'} onClick={() => {this.updateDirectorState({rehearsal: !rehearsal})}}>Reh</button>
               <button id="zombie-button" onClick={() => { this.newParticipantEvent({type: 'groupClickyAdd'}) }}>Zombie</button>
               <button id="zombie-clear-button" onClick={() => { this.newParticipantEvent({type: 'clear'}) }}>Clear</button>

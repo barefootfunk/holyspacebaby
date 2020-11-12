@@ -50,61 +50,100 @@ export default class GroupClicky extends React.Component {
     clearTimeout(this.percentageChangingTimeout);
   }
 
+  // function createLine(zombieX,zombieY, centerX,centerY){
+  //   var length = Math.sqrt((zombieX-centerX)*(zombieX-centerX) + (zombieY-y2)*(zombieY-y2));
+  //   var angle  = Math.atan2(y2 - zombieY, centerX - zombieX) * 180 / Math.PI;
+  //   var transform = 'rotate('+angle+'deg)';
+
+  //     var line = $('<div>')
+  //         .appendTo('#page')
+  //         .addClass('line')
+  //         .css({
+  //           'position': 'absolute',
+  //           'transform': transform
+  //         })
+  //         .width(length)
+  //         .offset({left: zombieX, top: zombieY});
+
+  //     return line;
+  // }
+
   render () {
     const {newParticipantEvent, clickyId, clicky} = this.props;
-    const {triggered, percentage, image} = clicky;
+    const {triggered, percentage, image, firing} = clicky;
     const {percentageChanging, percentageChange} = this.state;
+
+    const zombieY = clicky.y<0.5 ? clicky.y*.25+.10 : clicky.y*.25+.65;
+    const zombieX = clicky.x*0.8+.1;
+    const centerX = 0.5;
+    const centerY = 0.5;
     
     return (
-      <div 
+      <React.Fragment>
+        <div 
+          style={{
+            background: `radial-gradient(${percentageChanging ? (percentageChange>0 ? 'white' : 'red' ): 'black'} 0%, transparent 70%)`,
+            position: 'fixed',
+            transform: `translate(-50%,-50%)`,
+            top: `${zombieY*100}vh`,
+            left: `${zombieX*100}vw`,
+            pointerEvents: triggered ? 'none' : 'auto',
+          }}
+          key={clickyId}
+        >
+          <button 
+            onClick={()=>{
+              newParticipantEvent({
+                type: 'groupClickyClick', 
+                data: {
+                  clickyId: clickyId,
+                }
+              })
+            }}
+            style={{
+              transform: triggered ? 'scale(0.9)' : `scale(${1-percentage})`,
+              transition: 'transform 0.1s',
+              backgroundColor: 'transparent',
+              backgroundImage: `url(${ triggered ? curedImages[image]:zombieImages[image]})`,
+              backgroundSize: 'contain',
+              backgroundRepeat: 'no-repeat',
+              backgroundPosition: 'center',
+              border: 0,
+              outline: 0,
+              width: 150,
+              height: 150,
+              color: 'white',
+              curosr: 'pointer',
+            }}
+          />
+            <span 
+              style={{
+                fontSize: '0.5em',
+                position: 'absolute',
+                bottom: '10%',
+                left: '40%',
+                background: 'black',
+                border: '1px solid white',
+                padding: '0.2em 0.2em 0.1em',
+                pointerEvents: 'none',
+              }}
+            >{triggered ? 'CURED!': `${(100*clicky.percentage).toFixed(4)}% cured`}</span>
+        </div>
+
+        {firing && <div 
         style={{
-          background: `radial-gradient(${percentageChanging ? (percentageChange>0 ? 'white' : 'red' ): 'black'} 0%, transparent 70%)`,
-          position: 'fixed',
-          transform: `translate(-50%,-50%)`,
-          top: `${clicky.y*80+10}vh`,
-          left: `${clicky.x*80+10}vw`,
-          pointerEvents: triggered ? 'none' : 'auto',
+          transform: `rotate(${Math.atan2(centerY*window.innerHeight - zombieY*window.innerHeight, centerX*window.innerWidth - zombieX*window.innerWidth) * 180 / Math.PI}deg)`,
+          width: `${Math.sqrt((zombieX*window.innerWidth-centerX*window.innerWidth)*(zombieX*window.innerWidth-centerX*window.innerWidth) + (zombieY*window.innerHeight-centerY*window.innerHeight)*(zombieY*window.innerHeight-centerY*window.innerHeight))}px`,
+          left: `${zombieX*100}vw`, 
+          top: `calc( ${zombieY*100}vh - 30px )`,
+          position: `fixed`,
+          background: 'linear-gradient(to top, transparent 0%, red 50%, transparent 100%)',
+          transformOrigin: '0% 0%',
+          height: 10,
+          animation: 'flicker 0.1s infinite alternate',
         }}
-        key={clickyId}
-      >
-        <button 
-          onClick={()=>{
-            newParticipantEvent({
-              type: 'groupClickyClick', 
-              data: {
-                clickyId: clickyId,
-              }
-            })
-          }}
-          style={{
-            transform: triggered ? 'scale(0.9)' : `scale(${1-percentage})`,
-            transition: 'transform 0.1s',
-            backgroundColor: 'transparent',
-            backgroundImage: `url(${ triggered ? curedImages[image]:zombieImages[image]})`,
-            backgroundSize: 'contain',
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: 'center',
-            border: 0,
-            outline: 0,
-            width: 150,
-            height: 150,
-            color: 'white',
-            curosr: 'pointer',
-          }}
-        />
-          <span 
-          style={{
-            fontSize: '0.5em',
-            position: 'absolute',
-            bottom: '10%',
-            left: '40%',
-            background: 'black',
-            border: '1px solid white',
-            padding: '0.2em 0.2em 0.1em',
-            pointerEvents: 'none',
-          }}>{triggered ? 'CURED!': `${(100*clicky.percentage*2).toFixed(4)}% cured`}</span>
-          
-      </div>
+        />}
+      </React.Fragment>
     );
   }
 }

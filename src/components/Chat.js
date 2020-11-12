@@ -43,6 +43,7 @@ export default class Chat extends React.Component {
         rainbow: this.props.rainbow,
         destinationX: Math.random(),
         destinationY: Math.random(),
+        class: '',
       }
     })
 
@@ -63,7 +64,7 @@ export default class Chat extends React.Component {
             messages.map((message,index) => {
               return (
                 <div 
-                  className={`message `} 
+                  className={`message ${message.class}`} 
                   key={`message-${message.id}`} 
                   id={`message-${message.id}`} 
                   style={{
@@ -71,10 +72,7 @@ export default class Chat extends React.Component {
                     transform: `translate(-${message.destinationX*200}vw,-${message.destinationY*100+100}vh)`,
                   }}
                 >
-                  {message.rainbow ? 
-                    <span class="rainbow-text">{message.message}</span> :
-                    message.message
-                  }
+                    {message.message}
                 </div>
                 )
             })

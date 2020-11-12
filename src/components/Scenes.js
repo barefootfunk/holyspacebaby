@@ -21,6 +21,7 @@ import Subtitles from "./props/Subtitles"
 import TipJar from "./props/TipJar"
 import Fireflies from "./props/Fireflies"
 import GroupClicky from "./props/GroupClicky"
+import Pomplo from "./props/Pomplo"
 import TugOfWar from "./props/TugOfWar"
 
 // Sounds
@@ -68,7 +69,7 @@ const CAL_ID_NEXT = '5faaaeae20d745003fa28f65';
 const EP_NUMBER = '9';
 const THEME = 'safety';
 
-const BULLETIN = `No VIP mode.  Warning`;
+const BULLETIN = `Click on Zombies at same time`;
 
 const NOTES = [
   'Bb2','D2','E2','G2','C2','F',
@@ -94,12 +95,15 @@ const MEDIATION_BUTTON_4      = "Answer anonymously!";
 const GOSPEL = `"Bravery and safety gotta rise like sun and moon–and to be safe is to belong."`;
 const GOSPEL_SOURCE = '-Cowboy Jobe 1:19';
 const SERMON = `${GOSPEL} ${GOSPEL_SOURCE}
+// Problem -> Misconception -> Solution  
+
   We are exhausted.  We have had to wrestle with fear.  We have had to be brave.
   And there is no end in sight.
   fear as a compass.
   bravery is required
   but not sustainable
-  I am exhausted (election, weekly shows)
+  Symptoms: exhausted, like somthing is wrong with you, unable to get excited, constant dread
+  (trauma)
   Relax/rest doesnt always recharge
   Therapist, St. H: oppositve of bravery is not relaxation, its safety.
   Not stress/recovery or sympathetic/parasympathetic, bravery/safety.
@@ -199,6 +203,17 @@ class Show extends React.Component {
 
     const {babyColor, funkLevel, babyHat, babyRainbow, vip} = this.state;
 
+    function pomplo() { 
+      return {
+        name: 'Pomplo',
+        livestream: "hidden",
+        babyClass: "flight",
+        foregroundChildren: (
+          <Pomplo pomplo={directorState.pomplo}/>
+        ),
+      };
+    }
+
     const homepage = {
       name: 'Homepage',
       livestream: "hidden",
@@ -207,7 +222,7 @@ class Show extends React.Component {
         <React.Fragment>
           <VideoBg key='campfire' srcs={['campfire.mp4']}/>
           <CTA calEventId={CAL_ID_THIS} nextCeremonyDate={DATE_THIS}><p>The world's first interactive electric trombone livestream adventure.  Here. Every Thursday 7p CT.</p></CTA>
-        </React.Fragment>
+      </React.Fragment>
       ),
     };
 
@@ -292,6 +307,7 @@ class Show extends React.Component {
 
     const scenes = [
       homepage,
+      pomplo(),
       {
         name: 'Pre live',
         livestream: "hidden",

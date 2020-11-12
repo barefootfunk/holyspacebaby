@@ -24,6 +24,15 @@
     }
   }
 
+
+  &.full {
+    opacity: 0.2;
+    pointer-events: none;
+    .sizing-wrap {
+      transform: scale(4);
+    }
+  }
+
   &.corner {
     // border: 1px solid red;
     top: 0;
@@ -32,10 +41,6 @@
     .sizing-wrap{
       transform: scale(0.5);
     }
-  }
-
-  &.vip {
-    @include rainbow-mask;
   }
 
   &.big {

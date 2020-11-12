@@ -85,3 +85,15 @@
 .rainbow-mask {
   @include rainbow-mask;
 }
+
+@keyframes flicker {
+  0% {
+    opacity: .5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
