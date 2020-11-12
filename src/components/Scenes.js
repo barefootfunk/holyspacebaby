@@ -552,7 +552,7 @@ class Show extends React.Component {
 
               
     const babyColors = ['lime','red','orange','yellow','cyan','violet']
-    const babyColorString = 'pink';//babyColors[babyColor % babyColors.length];
+    const babyColorString = babyColors[3]; //babyColor % babyColors.length];
     // console.log(directorState);
     console.log('babyColor',babyColor,babyColorString);
     return (
