@@ -89,6 +89,7 @@ export default class Chat extends React.Component {
           />
           <input type="submit" value="Send!"/>
         </form>
+        {console.log('chat',this.props.color)}
       </React.Fragment>
     );
   }

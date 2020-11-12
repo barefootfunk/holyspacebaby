@@ -116,6 +116,8 @@ export default class HolySpaceBaby extends React.Component {
             <HolySpaceBabySvg />
           </div>
         </div>
+        {console.log('HolySpaceBaby',this.props.color)}
+
       </div>
     );
   }
