@@ -3,10 +3,10 @@ import React, { useEffect } from 'react';
 export default class TipJar extends React.Component {
 
   componentDidMount () {
-    window.addthis.init();
-    if(typeof window.addthis.layers.refresh === 'function') {
-      window.addthis.layers.refresh()
-    }
+    // window.addthis.init();
+    // if(typeof window.addthis.layers.refresh === 'function') {
+    //   window.addthis.layers.refresh()
+    // }
   }
 
   render () {
