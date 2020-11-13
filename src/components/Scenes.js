@@ -59,11 +59,11 @@ const FLIGHT_BGS = [
 // CONTENT
 
 //https://dashboard.eventable.com/
-const DATE_THIS = 'NOV 12';
-const DATE_NEXT = 'NOV 19';
+const DATE_THIS = 'NOV 19';
+const DATE_NEXT = ''; // WHOOPS THAT THANKSGIVING
 // const DATE_NEXT = 'NOV 26';
-const CAL_ID_THIS = '5f9b5ff550b389001840abf0';
-const CAL_ID_NEXT = '5faaaeae20d745003fa28f65';
+const CAL_ID_THIS = '5faaaeae20d745003fa28f65';
+const CAL_ID_NEXT = '';
 // NOV 26 -- 5faaaf519960a00018f0026c
 
 const EP_NUMBER = '9';
@@ -545,7 +545,7 @@ class Show extends React.Component {
         foregroundChildren: (
           <React.Fragment>
             <VideoBg key='campfire' srcs={['campfire.mp4']}/>
-            <CTA calEventId={CAL_ID_NEXT} nextCeremonyDate={DATE_NEXT} mailingListText='Homework is sent to mailing list...'></CTA>
+            <CTA calEventId={CAL_ID_NEXT} nextCeremonyDate={DATE_NEXT}></CTA>
             <TipJar/>
           </React.Fragment>
         ),
@@ -646,9 +646,9 @@ class Show extends React.Component {
         
         <Fireflies participants={directorState.participants} participantId={directorState.participantId} />
       
-        <Script
+        {/* <Script
           url="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f87b420788415d6"
-        />
+        /> */}
         
       </div>
     );
