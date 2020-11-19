@@ -33,6 +33,14 @@
   position: absolute;
   transform: translate(-50%,0);
 }
+
+.layout-bottom-edge {
+  top: auto;
+  bottom: 0;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%,0);
+}
   
 .layout-bottom {
   @include layout-bottom;

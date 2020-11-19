@@ -31,9 +31,10 @@ export default class Stage extends React.Component {
       participantId: null,
       groupClickies: {},
       tugOfWars: {},
-      pomplo: {
-        percentage: 1,
-      }
+      cake: {
+        percentage: 0,
+      },
+      coloringBook: {}
     };
 
   }
@@ -148,11 +149,17 @@ export default class Stage extends React.Component {
               <button id="prev-scene" onClick={() => {this.updateDirectorState({scene: scene-1})}}>Prev</button>
               <div id="scene-number">{scene}</div>
               <button id="next-scene" onClick={() => {this.updateDirectorState({scene: scene+1})}}>Next</button>
-              <button id="pomplo-button" onClick={() => {this.updateDirectorState({pomplo: {percentage: 0.8}})}}>pomplo</button>
+              <button id="pomplo-button" 
+                onClick={() => {this.updateDirectorState({
+                  cake: {
+                    percentage: 0,
+                  },
+                  coloringBook: {},
+                })}}>cake reset</button>
               <button id="rehearsal-button" className={rehearsal?'-on':'-off'} onClick={() => {this.updateDirectorState({rehearsal: !rehearsal})}}>Reh</button>
-              <button id="zombie-button" onClick={() => { this.newParticipantEvent({type: 'groupClickyAdd'}) }}>Zombie</button>
-              <button id="zombie-clear-button" onClick={() => { this.newParticipantEvent({type: 'clearGroupClickies'}) }}>ClrZom</button>
-              <button id="tug-clear-button" onClick={() => { this.newParticipantEvent({type: 'clearTugOfWars'}) }}>ClrTug</button>
+              {/* <button id="zombie-button" onClick={() => { this.newParticipantEvent({type: 'groupClickyAdd'}) }}>Zombie</button> */}
+              {/* <button id="zombie-clear-button" onClick={() => { this.newParticipantEvent({type: 'clearGroupClickies'}) }}>ClrZom</button> */}
+              {/* <button id="tug-clear-button" onClick={() => { this.newParticipantEvent({type: 'clearTugOfWars'}) }}>ClrTug</button> */}
             </div>
             <div id="participant-stats">{activeParticipantCount}</div>
           </React.Fragment>

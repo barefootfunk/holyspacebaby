@@ -8,7 +8,7 @@ export const initAmplitude = () => {
 
 export const sendAmplitudeData = (eventType, eventProperties) => {
   console.log('amplitude',eventType, eventProperties)
-  amplitude.getInstance().logEvent(eventType, eventProperties);
+  amplitude.getInstance().logEvent(eventType, {...eventProperties});
 };
 
 // export const setAmplitudeUserDevice = installationToken => {

@@ -23,6 +23,7 @@ import Fireflies from "./props/Fireflies"
 import GroupClicky from "./props/GroupClicky"
 import Pomplo from "./props/Pomplo"
 import TugOfWar from "./props/TugOfWar"
+import ColoringBook from "./props/ColoringBook"
 
 // Sounds
 import cheer1Sound from '../sounds/cheer1.mp3';
@@ -92,82 +93,46 @@ const MEDIATION_QUESTION_4    = "Wnat's something about you that wont change–n
 const MEDIATION_PLACEHOLDER_4 = "Type a thing";
 const MEDIATION_BUTTON_4      = "Answer anonymously!";
 
-const GOSPEL = `"Bravery and safety gotta rise like sun and moon–and to be safe is to belong."`;
+const GOSPEL = `"You cant take belief out of art any more than you can take sun outta a flower."`;
 const GOSPEL_SOURCE = '-Cowboy Jobe 1:19';
 const SERMON = `${GOSPEL} ${GOSPEL_SOURCE}
-// Problem -> Misconception -> Solution  
+  "Cant we just take a break from issues and get back to the art?"
+  No.  Not because we dont want to.  But because its impossible.
+  You cant take belief out of art any more that you can take sun outta a flower.
+  Art is a language.  It is always saying something.  It always has a message.
+  You can try to make art that has no message. Then, ironically, having no message will become your message.
+  And the harder you try to not stand for anything, the more you will stand for NOTHING–advocating the absence of standing, with your example.
+  Now Im not saying every piece of art needs to be overtly political or issue-based.  
+  And Im also not anti-escapism.  Some art should take us on a journey away from our problems! (But I personally think it has the responsibility to also bring us back to em stronger.)
+  All I AM saying is that art dont just spontaneously come to be from a vacuum.
+  All I AM saying is that we have to drop the expectation that art *can* (let alone *should*) be decoupled from its creator and its context.
+  And that goes just as much for the consumer of art. Celebrating art is implicitly celebrating its creator and its context.
+  I'll tell you what got me thinkin about this. 
+  The music that I make and celebrate was created by black artists.
+  The teachers who crafted my ability to play the holy genre of funk were all black men and women.
+  Seems, though, some of my listeners like the pretty sounds–but dont so much like the pondering of their origin.
+  If I make a comment about racial justice, sometimes Im told to stay in my lane–to just play trombone and avoid makin very strong statements.
+  BUT.
+  To enjoy black excellence without advocating for black issues in our current little moment of history, that itself is making a very strong statement.
+  Ergo, you cant so easily avoid very strong statements. So you might as well make em the right ones.
+  And it dont stop there.
+  Our culture is shaped probably most of all by artists who we oppress.
+  To consume and celebrate art made by women without advocating for their health, equality and rights, that is a very strong statement.
+  To consume and celebrate art made by the lgbtq community without advocating the same for them, that is a very strong statement.
+  To consume and celebrate art made by those who actively do harm to all of the above, that is a very strong statement, too.
+  If you're trying to be truly neutral, your best bet is to avoid creating and consuming art altogether.
+  Neutrality's just a mask that complicity wears in public, after all.
+  Now this isn't a sermon on identity politics.  There are people who should lead that conversation other than this humble cowboy prophet.
+  But this is just one pertinent example where the marriage or art and belief is apprent and important.
+  This week, can you think of other examples?
+  What do you believe?  How is that coming through what you create and consume?
+  Take a moment to reflect on the art you make.  What are you saying with it?
+  Take a moment to reflect on the art you consume.  What is it saying? What are you saying by the way you celebrate it?
+  It is on the artist to recognize that, like it or not, they have a voice.
+  It is on the art consumer to recognize that, like it or not, they have an ear.
+  And the dance between voices and ears is one that is inextricably to the rhtyhm to our hearts–and the beliefs that fill em.`;
 
-  We are exhausted.  We have had to wrestle with fear.  We have had to be brave.
-  And there is no end in sight.
-  fear as a compass.
-  bravery is required
-  but not sustainable
-  Symptoms: exhausted, like somthing is wrong with you, unable to get excited, constant dread
-  (trauma)
-  Relax/rest doesnt always recharge
-  Therapist, St. H: oppositve of bravery is not relaxation, its safety.
-  Not stress/recovery or sympathetic/parasympathetic, bravery/safety.
-  Safety is a feeling, from evolution 
-  thinking absence of danger, (cog reframe, permission)
-  comfort, 
-  nature,
-  deep breathing with slow outbreaths,
-  self-care
-  most overlooked CONNECTION
-  Homo sapiens survival strategy: communities and cooperating
-  Trust, connect, smile, play, hug, laugh
-  It worked for me.
-  takes time -- consistent little > big
-  send a text.
-  to be thinking of others and know they are thinking of you.
-  if you are feeling isolated, offer safety to others.
-  need for bravery will continue, facilitate this cycle.
-  brave sunrise, safe moonrise
-  Give yourself safety now, so you can be brave tomorrow.
-`;
 
-// Safety is a feeling, not a worldstate
-// mammals need to feel safe: 1. babies raised by mothers 2. social interdependency 3. safety needed for higher functions (thinking, sleep, nursing, digestion, reproduction)
-// safe states are prereq for higher forms of thinking, creativity generativity
-// para vs. symp s wrong  
-
-// breathing is the one autonomic thing you can control and it feeds back into the autonomic->cognitive loop, LONG exhale
-// mirroring others who are feeling safe
-
-// go to others for saefty
-// or GIVE it to others
-
-// safety is harder to feel for trauma 
-
-// safety is a runaway positive feedback loop (so is threat), both are vyvles
-// danger signals: low frqs, flat affect faces
-
-// smiles, eye contact, playful, prosidy
-// mid-frequencies
-// breath (make exhale longer)
-// environments that feel safe (outdoors, light, homey)
-// spendtime with people you like
-// do behaviors you do when you feel safe
-// ice water
-// old home movies
-// laughter
-// reduce sensory input
-
-// make space for this
-
-// safety => connection
-
-// relaxation,
-
-// not sources of DANGER/narratives
-
-// peobiotic, chocolate, b12, single cup of coffee, b complex
-  // Anxiety creates risk aversion, not loss aversion
-// https://www.inc.com/mithu-storoni/this-is-why-youre-so-afraid-of-uncertainty-according-to-neuroscience.html
-// https://www.inc.com/mithu-storoni/your-brain-isnt-afraid-of-failure-heres-whats-really-going-on.html
-// https://www.theguardian.com/commentisfree/2016/apr/04/uncertainty-stressful-research-neuroscience
-
-// https://www.youtube.com/watch?v=br8-qebjIgs&ab_channel=NerdNite
 
 class Show extends React.Component {
 
@@ -206,7 +171,24 @@ class Show extends React.Component {
 
     const {babyColor, funkLevel, babyHat, babyRainbow, vip} = this.state;
 
-    
+    function cake(num,caption,tele) {
+      return {
+        name: 'cake'+num,
+        livestream: "hidden",
+        teleprompter: tele,
+        babyClass: "flight",
+        backgroundChildren: (
+          <React.Fragment>
+            <VideoBg key={`flight${num}`} srcs={FLIGHT_BGS}/>
+            <VideoBg key='glub' srcs={['glubgo.gif']} classes="bg-video--portal bg-video--corner"/>
+            {typeof caption !=='undefined' && caption}
+          </React.Fragment>
+        ),
+        foregroundChildren: (
+          <ColoringBook coloringBook={directorState.coloringBook} cake={directorState.cake} newParticipantEvent={newParticipantEvent}/>
+        ),
+      };
+    }
 
     function pomploBattle(num,caption) { 
       return {
@@ -447,59 +429,37 @@ class Show extends React.Component {
           </React.Fragment>
         ),
       },
-      promptScene(1,
-        `You encounter the benevolent Octopus Queen Melinda. "Who are you? Proove you belong to the ocean!"`,
-        `Type proof`,
-        `Prove!`,
-        'octopus.gif',
-        false // Default BG
-      ),
-      promptScene(2,
-        `"I'm sorry I doubted you.  I'm edge because I am dying. I have one wish. Please will you help?"`,
-        `Type answer`,
-        `Reply!`,
-        'octopus-dying.gif',
-        false // Default BG
-      ),
-      pomploPromptScene(3,
-        `This is my son Pomplo. He is part cow. Please keep him SAFE.`,
-        `Type answer`,
-        `I promise!`,
-        false,
-        false,
-      ),
-      tugOfWarScene(3,
-        `Pomplo likes trucks. Which toy to give Pomplo? Click one side repeatedly to vote.`,
-        {
-          image: 'dumptruck.png',
-          caption: 'Dump truck',
-          victory: 'Pomplo giggles with delight at the dumptruck.'
-        },
-        {
-          image: 'firetruck.png',
-          caption: 'Fire truck',
-          victory: `Pomplo feels like a very brave firefighter.`
-        }
-      ),
-      pomploBattle(0,'Defeat the zombies! Everybody must click on the same zombie at the same time.'),
-      pomploBattle(1,'Pomplo is hurt! Use the chat to tell Pomplo you love him.'),
-      pomploBattle(2,false),
-      {
-        name: "Meditation Intro",
-        livestream: "tiny",
-        foregroundChildren: (
-          <React.Fragment>
-            <VideoBg key='calm0' srcs={CALM_BGS} />
-            <VideoBg key='fire0' srcs={['campfire-close.mp4']} style={{opacity: 0.1}} />
-            <div className="layout-top -no-pointer">
-              <h1>YOU PONDER!</h1>
-            </div>
-            <div className="layout-bottom -no-pointer">
-              <p>You introspect.  Be as real as you are comfortable being. All anonymous.</p>
-            </div>
-          </React.Fragment>
+      // `${((Object.keys(this.props.directorState.coloringBook).length/421)*100).toFixed(4)}% frosted`
+      cake(0,
+        (
+        <div className="layout-center -no-pointer">
+          <p>It’s Glubgo’s birthday!  We must bake him a cake! His favorite flavor of cake is IDEAS. </p>
+        </div>
         ),
-      },
+        'intro'
+      ),
+      cake(1,
+        (<React.Fragment>
+          <div className="layout-top-edge">
+            <p>Let's bake! We need some IDEAS.  Type something you think into the chat. "I think..."</p>
+          </div>
+          <div className="layout-bottom-edge">
+          <p>{`Cake is ${(this.props.directorState.cake.percentage*100).toFixed(4)}% baked`}</p>
+          </div>
+        </React.Fragment>),
+        'bake'
+      ),
+      cake(1,
+        (<React.Fragment>
+          <div className="layout-top-edge">
+            <p>Click the cake to help frost it.</p>
+          </div>
+          <div className="layout-bottom-edge">
+          <p>{`Cake is ${((Object.keys(this.props.directorState.coloringBook).length/421)*100).toFixed(4)}% frosted`}</p>
+          </div>
+        </React.Fragment>),
+        'frost'
+      ),
       meditationScene(1,
         `What has exhausted you lately?`,
         `Type a thing`,
@@ -598,7 +558,7 @@ class Show extends React.Component {
     const babyColors = ['lime','red','orange','yellow','cyan','violet'];
     const babyColorString = babyColors[babyColor % babyColors.length];
     // console.log(directorState);
-    console.log('babyColor',babyColor,babyColorString);
+    // console.log('babyColor',babyColor,babyColorString);
     return (
       <div 
         id={`scene-${slugify(currentScene.name, {lower: true})}`} 
