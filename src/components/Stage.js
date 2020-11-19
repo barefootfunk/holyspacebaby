@@ -156,6 +156,13 @@ export default class Stage extends React.Component {
                   },
                   coloringBook: {},
                 })}}>cake reset</button>
+                <button id="zombie-button" 
+                onClick={() => {this.updateDirectorState({
+                  cake: {
+                    percentage: 1,
+                  },
+                  coloringBook: {},
+                })}}>cake rebuild</button>
               <button id="rehearsal-button" className={rehearsal?'-on':'-off'} onClick={() => {this.updateDirectorState({rehearsal: !rehearsal})}}>Reh</button>
               {/* <button id="zombie-button" onClick={() => { this.newParticipantEvent({type: 'groupClickyAdd'}) }}>Zombie</button> */}
               {/* <button id="zombie-clear-button" onClick={() => { this.newParticipantEvent({type: 'clearGroupClickies'}) }}>ClrZom</button> */}

@@ -25,16 +25,18 @@ export default class ColoringBook extends React.Component {
   }
 
   handlePathClick = (e) => {
-    if(typeof e.target.id !== 'undefined'){
-      const id = e.target.id;
-      // console.log('coloringbook click id ',id)
-      this.props.newParticipantEvent({
-        type: 'coloringBookClick', 
-        data: {
-          id: id,
-          color: this.randomColor(),
-        }
-      })
+    if(this.props.allowFrost) {
+      if(typeof e.target.id !== 'undefined'){
+        const id = e.target.id;
+        // console.log('coloringbook click id ',id)
+        this.props.newParticipantEvent({
+          type: 'coloringBookClick', 
+          data: {
+            id: id,
+            color: this.randomColor(),
+          }
+        })
+      }
     }
   }
 
@@ -44,7 +46,7 @@ export default class ColoringBook extends React.Component {
     if(typeof this.props.coloringBook[id] !== 'undefined') {
       style.fill = this.props.coloringBook[id];
     } else {
-      style.fill = '#361702';
+      style.fill = this.props.allowFrost ? '#361702' : '#8f4e00';
     }
     if(this.props.cake.percentage<(i/421)) {
       style.display='none';

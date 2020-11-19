@@ -185,7 +185,7 @@ class Show extends React.Component {
           </React.Fragment>
         ),
         foregroundChildren: (
-          <ColoringBook coloringBook={directorState.coloringBook} cake={directorState.cake} newParticipantEvent={newParticipantEvent}/>
+          <ColoringBook coloringBook={directorState.coloringBook} cake={directorState.cake} allowFrost={directorState.scene===9} newParticipantEvent={newParticipantEvent}/>
         ),
       };
     }
@@ -228,12 +228,14 @@ class Show extends React.Component {
         livestream: "tiny",
         babyClass: "flight",
         teleprompter: `${question}`,
-        // backgroundChildren: (
-        //   <div id="hellbus" className="-big"><button></button></div>
-        // ),
-        foregroundChildren: (
+        backgroundChildren: (
           <React.Fragment>
             <VideoBg key={`flight${num}`} srcs={bgs ? bgs : FLIGHT_BGS}/>
+            <VideoBg key='glub' srcs={['glubgo.gif']} classes="bg-video--portal bg-video--corner"/>
+          </React.Fragment>
+        ),
+        foregroundChildren: (
+          <React.Fragment>
             <Prompter 
               id={`vision${num}`}
               key={`prompt-vision${num}`}
@@ -430,10 +432,11 @@ class Show extends React.Component {
         ),
       },
       // `${((Object.keys(this.props.directorState.coloringBook).length/421)*100).toFixed(4)}% frosted`
+      promptScene(1,'It’s Glubgo’s birthday! Wish him a happy birthday!','Type birthday greeting','Wish well!',false,false),
       cake(0,
         (
         <div className="layout-center -no-pointer">
-          <p>It’s Glubgo’s birthday!  We must bake him a cake! His favorite flavor of cake is IDEAS. </p>
+          <p>We must bake him a cake! His favorite flavor of cake is... IDEAS. </p>
         </div>
         ),
         'intro'
@@ -441,10 +444,10 @@ class Show extends React.Component {
       cake(1,
         (<React.Fragment>
           <div className="layout-top-edge">
-            <p>Let's bake! We need some IDEAS.  Type something you think into the chat. "I think..."</p>
+            <p>Let's bake! We need some IDEAS.  Quickly! Type some thoughts into the CHAT.</p>
           </div>
           <div className="layout-bottom-edge">
-          <p>{`Cake is ${(this.props.directorState.cake.percentage*100).toFixed(4)}% baked`}</p>
+          <p>{`Cake status: ${(this.props.directorState.cake.percentage*100).toFixed(4)}% built`}</p>
           </div>
         </React.Fragment>),
         'bake'
@@ -452,32 +455,32 @@ class Show extends React.Component {
       cake(1,
         (<React.Fragment>
           <div className="layout-top-edge">
-            <p>Click the cake to help frost it.</p>
+            <p>Baked! Click the cake to help frost it.</p>
           </div>
           <div className="layout-bottom-edge">
-          <p>{`Cake is ${((Object.keys(this.props.directorState.coloringBook).length/421)*100).toFixed(4)}% frosted`}</p>
+          <p>{`Frosting phase: ${((Object.keys(this.props.directorState.coloringBook).length/421)*100*2).toFixed(4)}% rad`}</p>
           </div>
         </React.Fragment>),
         'frost'
       ),
       meditationScene(1,
-        `What has exhausted you lately?`,
-        `Type a thing`,
+        `What is a favorite peiece of art? (poem, dance, song, painting, game, book, anything...)`,
+        `Type an art`,
         `Answer anonymously!`
       ),
       meditationScene(2,
-        `How does that feel in your body?`,
-        `Type a thing`,
+        `What does it mean to you?`,
+        `Type an answer`,
         `Answer anonymously!`
       ),
       meditationScene(3,
-        `What makes you feel safe?`,
+        `What is a piece of art that has changed or expanded your view?`,
         `Type a thing`,
         `Answer anonymously!`
       ),
       meditationScene(4,
-        `Whats a simple way to connect with others?`,
-        `Type a thing`,
+        `What did it teach you?`,
+        `Type a lesson`,
         `Answer anonymously!`
       ),
       {
