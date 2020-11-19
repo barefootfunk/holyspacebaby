@@ -24,6 +24,7 @@ import GroupClicky from "./props/GroupClicky"
 import Pomplo from "./props/Pomplo"
 import TugOfWar from "./props/TugOfWar"
 import ColoringBook from "./props/ColoringBook"
+import Share from "./props/Share"
 
 // Sounds
 import cheer1Sound from '../sounds/cheer1.mp3';
@@ -61,14 +62,14 @@ const FLIGHT_BGS = [
 
 //https://dashboard.eventable.com/
 const DATE_THIS = 'NOV 19';
-const DATE_NEXT = ''; // WHOOPS THAT THANKSGIVING
+const DATE_NEXT = 'DEC 3'; // WHOOPS THAT THANKSGIVING
 // const DATE_NEXT = 'NOV 26';
 const CAL_ID_THIS = '5faaaeae20d745003fa28f65';
-const CAL_ID_NEXT = '';
+const CAL_ID_NEXT = '5faaaf5fd3fd170066d3669a';
 // NOV 26 -- 5faaaf519960a00018f0026c
 
-const EP_NUMBER = '9';
-const THEME = 'safety';
+const EP_NUMBER = '10';
+const THEME = 'belief';
 
 const BULLETIN = `Click on Zombies at same time`;
 
@@ -96,41 +97,48 @@ const MEDIATION_BUTTON_4      = "Answer anonymously!";
 const GOSPEL = `"You cant take belief out of art any more than you can take sun outta a flower."`;
 const GOSPEL_SOURCE = '-Cowboy Jobe 1:19';
 const SERMON = `${GOSPEL} ${GOSPEL_SOURCE}
-  "Cant we just take a break from issues and get back to the art?"
-  No.  Not because we dont want to.  But because its impossible.
-  You cant take belief out of art any more that you can take sun outta a flower.
-  Art is a language.  It is always saying something.  It always has a message.
-  You can try to make art that has no message. Then, ironically, having no message will become your message.
-  And the harder you try to not stand for anything, the more you will stand for NOTHING–advocating the absence of standing, with your example.
-  Now Im not saying every piece of art needs to be overtly political or issue-based.  
-  And Im also not anti-escapism.  Some art should take us on a journey away from our problems! (But I personally think it has the responsibility to also bring us back to em stronger.)
-  All I AM saying is that art dont just spontaneously come to be from a vacuum.
-  All I AM saying is that we have to drop the expectation that art *can* (let alone *should*) be decoupled from its creator and its context.
-  And that goes just as much for the consumer of art. Celebrating art is implicitly celebrating its creator and its context.
-  I'll tell you what got me thinkin about this. 
-  The music that I make and celebrate was created by black artists.
-  The teachers who crafted my ability to play the holy genre of funk were all black men and women.
-  Seems, though, some of my listeners like the pretty sounds–but dont so much like the pondering of their origin.
-  If I make a comment about racial justice, sometimes Im told to stay in my lane–to just play trombone and avoid makin very strong statements.
-  BUT.
-  To enjoy black excellence without advocating for black issues in our current little moment of history, that itself is making a very strong statement.
-  Ergo, you cant so easily avoid very strong statements. So you might as well make em the right ones.
-  And it dont stop there.
-  Our culture is shaped probably most of all by artists who we oppress.
-  To consume and celebrate art made by women without advocating for their health, equality and rights, that is a very strong statement.
-  To consume and celebrate art made by the lgbtq community without advocating the same for them, that is a very strong statement.
-  To consume and celebrate art made by those who actively do harm to all of the above, that is a very strong statement, too.
-  If you're trying to be truly neutral, your best bet is to avoid creating and consuming art altogether.
-  Neutrality's just a mask that complicity wears in public, after all.
-  Now this isn't a sermon on identity politics.  There are people who should lead that conversation other than this humble cowboy prophet.
-  But this is just one pertinent example where the marriage or art and belief is apprent and important.
-  This week, can you think of other examples?
-  What do you believe?  How is that coming through what you create and consume?
-  Take a moment to reflect on the art you make.  What are you saying with it?
-  Take a moment to reflect on the art you consume.  What is it saying? What are you saying by the way you celebrate it?
-  It is on the artist to recognize that, like it or not, they have a voice.
-  It is on the art consumer to recognize that, like it or not, they have an ear.
-  And the dance between voices and ears is one that is inextricably to the rhtyhm to our hearts–and the beliefs that fill em.`;
+"Cant we just take a break from issues and get back to the art?"
+No. Not because we dont want to. But because its impossible.
+You cant take belief out of art any more that you can take sun outta a flower.
+Art is a language. It is always saying something. It always has a message.
+You can try to make art that has no message. Then, ironically, having no message will become your message.
+And the harder you try to not stand for anything, the more you will stand for NOTHING–advocating the absence of standing, with your example.
+
+Now Im not saying every piece of art needs to be overtly political or issue-based.
+And Im also not anti-escapism. Some art should take us on a journey away from our problems! (But I personally think it has the responsibility to also bring us back to em stronger.)
+All I AM saying is that art dont just spontaneously come to be from a vacuum.
+All I AM saying is that we have to drop the expectation that art *can* (let alone *should*) be decoupled from its creator and its context.
+And that goes just as much for the consumer of art. Celebrating art is implicitly celebrating its creator and its context.
+
+I'll tell you what got me thinkin about this.
+The music that I make and celebrate was created by black artists.
+The teachers who crafted my ability to play the holy genre of funk were all black men and women.
+Seems, though, some of my listeners like the pretty sounds–but dont so much like the pondering of their origin.
+If I make a comment about racial justice, sometimes Im told to stay in my lane–to just play trombone and avoid makin very strong statements.
+BUT.
+To enjoy black excellence without advocating for black issues in our current little moment of history, that itself is making a very strong statement.
+Ergo, you cant so easily avoid very strong statements. So you might as well make em the right ones.
+
+And it dont stop there.
+Our culture is shaped probably most of all by artists who we oppress.
+To consume and celebrate art made by women without advocating for their health, equality and rights, that is a very strong statement.
+To consume and celebrate art made by the lgbtq community without advocating the same for them, that is a very strong statement.
+To consume and celebrate art made by those who actively do harm to all of the above, that is a very strong statement, too.
+If you're trying to be truly neutral, your best bet is to avoid creating and consuming art altogether.
+Neutrality's just a mask that complicity wears in public, after all.
+
+Now this isn't a sermon on identity politics. There are people who should lead that conversation other than this humble cowboy prophet.
+Im just presenting this as one pertinent example where the marriage or art and belief is both apparent and important.
+This week, can you think of other examples?
+
+What do you believe? How is that coming through what you create and consume?
+Take a moment to reflect on the art you make. What are you saying with it?
+Take a moment to reflect on the art you consume. What is it saying? What are you saying by the way you celebrate it?
+
+It is on the artist to recognize that, like it or not, they have a voice.
+It is on the art consumer to recognize that, like it or not, they have an ear.
+And the dance between voices and ears is one that is inextricably to the rhtyhm to our hearts–and the beliefs that fill em.
+  `;
 
 
 
@@ -345,9 +353,7 @@ class Show extends React.Component {
             <div className="layout-center -no-pointer">
               <p>Cowboy Elijah will appear in the flames here just before 7p CST today to reincarnate you.</p>
             </div>
-            <div className="layout-bottom">
-              <p>Message your friends: <div style={{fontFamily:'courier new', fontSize:'0.5em'}} className="-selectable">Join us. A cowboy prophet requests your presence. <a href="https://www.holyspace.baby">https://www.holyspace.baby</a></div></p>
-            </div>
+            <Share />
           </React.Fragment>
         ),
       },
@@ -365,9 +371,7 @@ class Show extends React.Component {
             <div className="layout-top -no-pointer">
               <p style={{ maxWidth: '10em' }}>Mic check! Be sure livestream is UNMUTED and PLAYING.</p>
             </div>
-            <div className="layout-bottom">
-              <p>Message your friends: <div style={{fontFamily:'courier new', fontSize:'0.5em'}} className="-selectable">Join us. A cowboy prophet requests your presence. <a href="https://www.holyspace.baby">https://www.holyspace.baby</a></div></p>
-            </div>
+            <Share />
           </React.Fragment>
         ),
       },
@@ -510,6 +514,7 @@ class Show extends React.Component {
             <VideoBg key='campfire' srcs={['campfire.mp4']}/>
             <CTA calEventId={CAL_ID_NEXT} nextCeremonyDate={DATE_NEXT}></CTA>
             <TipJar/>
+            <Share />
           </React.Fragment>
         ),
       },
@@ -560,8 +565,6 @@ class Show extends React.Component {
               
     const babyColors = ['lime','red','orange','yellow','cyan','violet'];
     const babyColorString = babyColors[babyColor % babyColors.length];
-    // console.log(directorState);
-    // console.log('babyColor',babyColor,babyColorString);
     return (
       <div 
         id={`scene-${slugify(currentScene.name, {lower: true})}`} 
@@ -608,10 +611,6 @@ class Show extends React.Component {
         {(mode==="performer") && <div id="teleprompter">{currentScene.name}<br />{currentScene.teleprompter}<br/><span style={{color: 'red'}}>{nextScene.name}</span></div>}
         
         <Fireflies participants={directorState.participants} participantId={directorState.participantId} />
-      
-        {/* <Script
-          url="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5f87b420788415d6"
-        /> */}
         
       </div>
     );

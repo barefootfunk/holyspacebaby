@@ -1,3 +1,47 @@
+#tips {
+  width: 330px;
+  max-width: none;
+  .buttons { 
+    margin-top: 10px;
+    display: flex; 
+    justify-content: center;
+  }
+  .button {
+    &:first-of-type {
+      margin-right: 10px;
+    }
+    display: inline-block;
+    text-decoration: none;
+    font-size: 1.5em;
+  }
+}
+
+#share {
+  width: 360px;
+  font-size: 1em;
+  // border: 2px solid white;
+  form {
+    margin: 10px auto 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    input {
+      font-family: 'courier new';
+      font-size: 0.5em;
+      width: 15em;
+      margin-right: 5px;
+    }
+
+    input, button {
+      padding: 0.1em;
+      background: black;
+      color: white;
+      border: 2px solid white;
+      border-radius: 2px;
+    }
+  }
+}
+
 #cta {
 
   .add-to-cal {
