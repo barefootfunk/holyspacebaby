@@ -61,11 +61,11 @@ const FLIGHT_BGS = [
 // CONTENT
 
 //https://dashboard.eventable.com/
-const DATE_THIS = 'NOV 19';
-const DATE_NEXT = 'DEC 3'; // WHOOPS THAT THANKSGIVING
+const DATE_THIS = 'DEC 3';
+const DATE_NEXT = ''; // WHOOPS THAT THANKSGIVING
 // const DATE_NEXT = 'NOV 26';
-const CAL_ID_THIS = '5faaaeae20d745003fa28f65';
-const CAL_ID_NEXT = '5faaaf5fd3fd170066d3669a';
+const CAL_ID_THIS = '5faaaf5fd3fd170066d3669a';
+const CAL_ID_NEXT = '';
 // NOV 26 -- 5faaaf519960a00018f0026c
 
 const EP_NUMBER = '10';
