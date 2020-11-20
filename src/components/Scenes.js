@@ -351,7 +351,7 @@ class Show extends React.Component {
           <React.Fragment>
             <VideoBg key='campfire' srcs={['campfire.mp4']}/>
             <div className="layout-center -no-pointer">
-              <p>Cowboy Elijah will appear in the flames here just before 7p CST today to reincarnate you.</p>
+              <p>Cowboy Elijah will appear in the flames here just before 7p CST today to reincarnate you.  This week we are part of a larger show called Wordhack–go the the <a href="https://www.twitch.tv/babycastles">@BabyCastles twitch feed</a> NOW to see more cool digital art!</p>
             </div>
             <Share />
           </React.Fragment>
@@ -515,6 +515,9 @@ class Show extends React.Component {
             <CTA calEventId={CAL_ID_NEXT} nextCeremonyDate={DATE_NEXT}></CTA>
             <TipJar/>
             <Share />
+            <div className="layout-bottom-edge">
+              <p>Go to the <a href="https://www.twitch.tv/babycastles">@BabyCastles twitch feed</a> NOW!</p>
+            </div>
           </React.Fragment>
         ),
       },
