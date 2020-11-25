@@ -24,6 +24,7 @@ import GroupClicky from "./props/GroupClicky"
 import Pomplo from "./props/Pomplo"
 import TugOfWar from "./props/TugOfWar"
 import ColoringBook from "./props/ColoringBook"
+import StarDraw from "./props/StarDraw"
 import Share from "./props/Share"
 
 // Sounds
@@ -198,25 +199,17 @@ class Show extends React.Component {
       };
     }
 
-    function pomploBattle(num,caption) { 
+    function starDraw(num) {
       return {
-        name: 'Pomplo'+num,
+        name: 'cake'+num,
         livestream: "hidden",
-        teleprompter: caption,
-        babyClass: "flight",
-        backgroundChildren: (
-          <React.Fragment>
-            <VideoBg key='underwater' srcs={['underwater.mp4']}/>
-            {caption && <div className="layout-top -no-pointer">
-            <p>{caption}</p>
-            </div>}
-          </React.Fragment>
-        ),
+        // babyClass: "hidden",
         foregroundChildren: (
-          <Pomplo directorState={directorState}/>
+          <StarDraw />
         ),
       };
     }
+
 
     const homepage = {
       name: 'Homepage',
@@ -244,35 +237,6 @@ class Show extends React.Component {
         ),
         foregroundChildren: (
           <React.Fragment>
-            <Prompter 
-              id={`vision${num}`}
-              key={`prompt-vision${num}`}
-              prompt={question}
-              placeholder={placeholder}
-              newParticipantEvent={newParticipantEvent} 
-              responses={responses} 
-              mode={mode}
-              buttonText={buttonText}
-              soundMode='sample'
-              visionSrc={gif ? `/img/${gif}` : false}
-            />
-          </React.Fragment>
-        ),
-      }
-    }
-
-    function pomploPromptScene(num,question,placeholder,buttonText,gif,bgs) {
-      return {
-        name: `Vision ${num}`,
-        livestream: "hidden",
-        babyClass: "flight",
-        teleprompter: `${question}`,
-        backgroundChildren: (
-          <Pomplo directorState={directorState} hideHealthbar={true} />
-        ),
-        foregroundChildren: (
-          <React.Fragment>
-            <VideoBg key={`flight${num}`} srcs={['underwater.mp4']}/>
             <Prompter 
               id={`vision${num}`}
               key={`prompt-vision${num}`}
@@ -342,6 +306,7 @@ class Show extends React.Component {
     }
 
     const scenes = [
+      starDraw(0),
       homepage,
       {
         name: 'Pre live',
