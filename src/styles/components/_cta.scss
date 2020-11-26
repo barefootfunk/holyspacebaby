@@ -44,6 +44,12 @@
 
 #cta {
 
+  .row {
+    @include media(lg) {
+      display: flex;
+    }
+  }
+
   .add-to-cal {
     display: block;
     margin-top: 10px;

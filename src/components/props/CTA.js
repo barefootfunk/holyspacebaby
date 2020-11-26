@@ -3,6 +3,8 @@ import React from 'react';
 import MailchimpSubscribe from "react-mailchimp-subscribe";
 import HolySpaceBabySvg from "../../svg/holy-space-baby.inline.svg"
 
+// Amplitude
+import {initAmplitude, sendAmplitudeData} from '../utilities/amplitude';
 
 
 const MAILCHIMP_URL='https://barefootfunk.us18.list-manage.com/subscribe/post?u=47e36bf28611ddfce598ffc89&id=8fa2164a2f';
@@ -53,16 +55,21 @@ const CustomForm = ({ status, message, onValidated, descriptionText }) => {
 /* <a href="https://add.eventable.com/subscribe/5f8edeb953314b00158b2ff5/" data-categories="all" class="eventable-link" target="_blank" data-key="5f8edeb953314b00158b2ff5" data-style="1">Add to Calendar</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://plugins.eventable.com/eventable.js";fjs.parentNode.insertBefore(js, fjs);}}(document, "script", "eventable-script");</script> */
 
 const CTA = (props) => {
-  const addToCalScript = `<a href="https://add.eventable.com/events/5f8edeb953314b00158b2ff5/${props.calEventId}/" data-event="${props.eventId}" class="eventable-link" target="_blank" data-key="5f8edeb953314b00158b2ff5" data-style="1">Add ${props.nextCeremonyDate} ceremony to Calendar</a>` //<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://plugins.eventable.com/eventable.js";fjs.parentNode.insertBefore(js, fjs);}}(document, "script", "eventable-script");</script>
   return (
     <div id="cta">
       <div id="decorative-baby">
         <HolySpaceBabySvg />
       </div>
 
-      <div className="layout-bottom-edge">
+      <div className="layout-bottom-edge row">
         {typeof props.children !== 'undefined' && props.children}
-        <div className="add-to-cal text-box"><span dangerouslySetInnerHTML={{ __html: addToCalScript }} /></div>
+        <div className="add-to-cal text-box">
+        <a href={`https://add.eventable.com/events/5f8edeb953314b00158b2ff5/${props.calEventId}/`} 
+          onClick={() => {
+            sendAmplitudeData('add-to-calendar', {}); 
+          }}
+          target="_blank">Add {props.nextCeremonyDate} ceremony to Calendar</a>
+        </div>
         <div className="mailing-list">
           <MailchimpSubscribe
             url={MAILCHIMP_URL}
@@ -70,7 +77,12 @@ const CTA = (props) => {
               <CustomForm
                 status={status}
                 message={message}
-                onValidated={formData => subscribe(formData)}
+                onValidated={formData => {
+                  
+                  sendAmplitudeData('join-mailing-list', {}); 
+                  subscribe(formData);
+                }
+                }
                 descriptionText={props.mailingListText}
               />
             )}
