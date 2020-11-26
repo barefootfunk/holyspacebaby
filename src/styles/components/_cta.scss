@@ -45,7 +45,7 @@
 #cta {
 
   .row {
-    @include media(lg) {
+    @include media(md) {
       display: flex;
     }
   }
@@ -53,6 +53,9 @@
   .add-to-cal {
     display: block;
     margin-top: 10px;
+    min-width: 10em;
+    width: 10em;
+    max-width: none;
     a {
       @include button;
       display: block;
