@@ -324,7 +324,7 @@ class Show extends React.Component {
             <div id="vimeo" className={'big'}>
               <div className="animation-wrap">
                 <div className="sizing-wrap">
-                  <Vimeo videoId={ 484153477 } autoplay={true} />
+                {typeof window !== `undefined` && <Vimeo videoId={ 484153477 } autoplay={true} />}
                 </div>
               </div>
             </div>
