@@ -1,0 +1,20 @@
+@keyframes pulse {
+  0% {
+    opacity: 0.1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0.1;
+  }
+
+}
+#star-draw {
+  width: 3000px;
+  height: 1646px;
+  background-image: url('../img/star-draw/nightsky.jpg');
+  #star-draw-canvases {
+    animation: pulse 5s infinite;
+  }
+}

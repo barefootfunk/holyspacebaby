@@ -7,7 +7,7 @@
   }
 }
 
-#livestream {
+#livestream, #vimeo {
   top: 50%;
   left: 50%;
   line-height: 0;
@@ -79,7 +79,7 @@
     transition: transform 0.5s;
   }
 
-  #twitch-embed {
+  #twitch-embed, .vimeo {
     height: 0;
     width: 90vw;
     line-height: 0;

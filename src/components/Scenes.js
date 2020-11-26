@@ -34,6 +34,7 @@ import cheer1Sound from '../sounds/cheer1.mp3';
 // Twitch
 // This has to be shut off for gatsby build because of breaking reference to window
 const ReactTwitchEmbedVideo = typeof window !== `undefined` ? require("react-twitch-embed-video") : null
+const Vimeo = typeof window !== `undefined` ? require('react-vimeo') : null;
 
 const CALM_BGS = [
   'calm1.mp4',
@@ -95,7 +96,7 @@ const MEDIATION_QUESTION_4    = "Wnat's something about you that wont change–n
 const MEDIATION_PLACEHOLDER_4 = "Type a thing";
 const MEDIATION_BUTTON_4      = "Answer anonymously!";
 
-const GOSPEL = `"You cant take belief out of art any more than you can take sun outta a flower."`;
+const GOSPEL = `"Gratitude is to sip miracles like a fine wine–and to taste the stars."`;
 const GOSPEL_SOURCE = '-Cowboy Jobe 1:19';
 const SERMON = `${GOSPEL} ${GOSPEL_SOURCE}
 "Cant we just take a break from issues and get back to the art?"
@@ -201,11 +202,14 @@ class Show extends React.Component {
 
     function starDraw(num) {
       return {
-        name: 'cake'+num,
+        name: 'stardraw'+num,
         livestream: "hidden",
-        // babyClass: "hidden",
-        foregroundChildren: (
-          <StarDraw />
+        babyClass: "hidden",
+        backgroundChildren: (
+          <StarDraw 
+            newParticipantEvent={newParticipantEvent} 
+            linesToDraw={directorState.linesToDraw}
+          />
         ),
       };
     }
@@ -306,6 +310,32 @@ class Show extends React.Component {
     }
 
     const scenes = [
+      {
+        name: "Sermon",
+        babyClass: "hidden",
+        teleprompter: `
+          ${SERMON}
+        `,
+        livestream: 'hidden',
+        foregroundChildren: (
+          <React.Fragment>
+            <VideoBg key='fire-sermon' srcs={['campfire-close.mp4']} />
+            {/* <BestResponses /> */}
+            <div id="vimeo" className={'big'}>
+              <div className="animation-wrap">
+                <div className="sizing-wrap">
+                  <Vimeo videoId={ 484153477 } autoplay={true} />
+                </div>
+              </div>
+            </div>
+
+            <div className="layout-top-edge -no-pointer">
+              <p>{GOSPEL}<br/>{GOSPEL_SOURCE}</p>
+            </div>
+            <CTA calEventId={CAL_ID_THIS} nextCeremonyDate={DATE_THIS} />
+          </React.Fragment>
+        ),
+      },
       starDraw(0),
       homepage,
       {
@@ -566,19 +596,19 @@ class Show extends React.Component {
         {typeof currentScene.foregroundChildren !== 'undefined' && currentScene.foregroundChildren}
        
 
-        {directorState.groupClickies && Object.keys(directorState.groupClickies).map((key,index) =>{
+        {/* // SERVER_REMOVE {directorState.groupClickies && Object.keys(directorState.groupClickies).map((key,index) =>{
           return (<GroupClicky clicky={directorState.groupClickies[key]} key={key} activeParticipantCount={directorState.activeParticipantCount} clickyId={key} newParticipantEvent={newParticipantEvent} />)
-        })}
+        })} */}
 
-        <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' ?  currentScene.babyClass : ''} hatNumber={babyHat}  color={babyColorString} newParticipantEvent={newParticipantEvent}/>
+        {/* // SERVER_REMOVE <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' ?  currentScene.babyClass : ''} hatNumber={babyHat}  color={babyColorString} newParticipantEvent={newParticipantEvent}/> */}
 
         <div id="funk-overlay" />
 
-        <Chat newParticipantEvent={newParticipantEvent} messages={messages} color={babyColorString} rainbow={babyRainbow}/>
+        {/* // SERVER_REMOVE <Chat newParticipantEvent={newParticipantEvent} messages={messages} color={babyColorString} rainbow={babyRainbow}/> */}
 
         {(mode==="performer") && <div id="teleprompter">{currentScene.name}<br />{currentScene.teleprompter}<br/><span style={{color: 'red'}}>{nextScene.name}</span></div>}
         
-        <Fireflies participants={directorState.participants} participantId={directorState.participantId} />
+        {/* // SERVER_REMOVE <Fireflies participants={directorState.participants} participantId={directorState.participantId} /> */}
         
       </div>
     );

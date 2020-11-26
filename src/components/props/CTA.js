@@ -60,7 +60,7 @@ const CTA = (props) => {
         <HolySpaceBabySvg />
       </div>
 
-      <div className="layout-center">
+      <div className="layout-bottom-edge">
         {typeof props.children !== 'undefined' && props.children}
         <div className="add-to-cal text-box"><span dangerouslySetInnerHTML={{ __html: addToCalScript }} /></div>
         <div className="mailing-list">
