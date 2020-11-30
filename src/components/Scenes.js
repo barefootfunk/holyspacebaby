@@ -310,32 +310,32 @@ class Show extends React.Component {
     }
 
     const scenes = [
-      {
-        name: "Sermon",
-        babyClass: "hidden",
-        teleprompter: `
-          ${SERMON}
-        `,
-        livestream: 'hidden',
-        foregroundChildren: (
-          <React.Fragment>
-            <VideoBg key='fire-sermon' srcs={['campfire-close.mp4']} />
-            {/* <BestResponses /> */}
-            <div id="vimeo" className={'big'}>
-              <div className="animation-wrap">
-                <div className="sizing-wrap">
-                {typeof window !== `undefined` && <Vimeo videoId={ 484153477 } autoplay={true} />}
-                </div>
-              </div>
-            </div>
+      // {
+      //   name: "Sermon",
+      //   babyClass: "hidden",
+      //   teleprompter: `
+      //     ${SERMON}
+      //   `,
+      //   livestream: 'hidden',
+      //   foregroundChildren: (
+      //     <React.Fragment>
+      //       <VideoBg key='fire-sermon' srcs={['campfire-close.mp4']} />
+      //       {/* <BestResponses /> */}
+      //       <div id="vimeo" className={'big'}>
+      //         <div className="animation-wrap">
+      //           <div className="sizing-wrap">
+      //           {typeof window !== `undefined` && <Vimeo videoId={ 484153477 } autoplay={true} />}
+      //           </div>
+      //         </div>
+      //       </div>
 
-            <div className="layout-top-edge -no-pointer">
-              <p>{GOSPEL}<br/>{GOSPEL_SOURCE}</p>
-            </div>
-            <CTA calEventId={CAL_ID_THIS} nextCeremonyDate={DATE_THIS} />
-          </React.Fragment>
-        ),
-      },
+      //       <div className="layout-top-edge -no-pointer">
+      //         <p>{GOSPEL}<br/>{GOSPEL_SOURCE}</p>
+      //       </div>
+      //       <CTA calEventId={CAL_ID_THIS} nextCeremonyDate={DATE_THIS} />
+      //     </React.Fragment>
+      //   ),
+      // },
       starDraw(0),
       homepage,
       {
@@ -596,19 +596,19 @@ class Show extends React.Component {
         {typeof currentScene.foregroundChildren !== 'undefined' && currentScene.foregroundChildren}
        
 
-        {/* // SERVER_REMOVE {directorState.groupClickies && Object.keys(directorState.groupClickies).map((key,index) =>{
+        {directorState.groupClickies && Object.keys(directorState.groupClickies).map((key,index) =>{
           return (<GroupClicky clicky={directorState.groupClickies[key]} key={key} activeParticipantCount={directorState.activeParticipantCount} clickyId={key} newParticipantEvent={newParticipantEvent} />)
-        })} */}
+        })}
 
-        {/* // SERVER_REMOVE <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' ?  currentScene.babyClass : ''} hatNumber={babyHat}  color={babyColorString} newParticipantEvent={newParticipantEvent}/> */}
+        <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' ?  currentScene.babyClass : ''} hatNumber={babyHat}  color={babyColorString} newParticipantEvent={newParticipantEvent}/>
 
         <div id="funk-overlay" />
 
-        {/* // SERVER_REMOVE <Chat newParticipantEvent={newParticipantEvent} messages={messages} color={babyColorString} rainbow={babyRainbow}/> */}
+        <Chat newParticipantEvent={newParticipantEvent} messages={messages} color={babyColorString} rainbow={babyRainbow}/>
 
         {(mode==="performer") && <div id="teleprompter">{currentScene.name}<br />{currentScene.teleprompter}<br/><span style={{color: 'red'}}>{nextScene.name}</span></div>}
         
-        {/* // SERVER_REMOVE <Fireflies participants={directorState.participants} participantId={directorState.participantId} /> */}
+        <Fireflies participants={directorState.participants} participantId={directorState.participantId} />
         
       </div>
     );

@@ -11,9 +11,9 @@ import {initAmplitude, sendAmplitudeData} from './utilities/amplitude';
 import isDev from "./utilities/DevDetect";
 
 let SOCKET_URL = 'https://holyspacebaby-server.herokuapp.com/'; 
-if (isDev()) {
-  SOCKET_URL = 'http://localhost:3000';
-}
+// if (isDev()) {
+//   SOCKET_URL = 'http://localhost:3000';
+// }
 
 export default class Stage extends React.Component {
 
@@ -23,7 +23,7 @@ export default class Stage extends React.Component {
 
     this.state = {
       scene: 0,
-      connected: true, // SERVER_REMOVE
+      connected: false,
       activeParticipantCount: 0,
       rehearsal: false,
       messages: [],
@@ -46,88 +46,84 @@ export default class Stage extends React.Component {
     sendAmplitudeData('join', {mode: this.props.mode}); 
     console.log(`SOCKET: will try server ${SOCKET_URL}`);
     
-    // SERVER_REMOVE
-  //   this.socket = io(SOCKET_URL, {
-  //     'reconnection': true,
-  //     'reconnectionDelay': 500,
-  //     'reconnectionDelayMax' : 1000,
-  //   });
 
-  //   // Socket lifecycle reporting
-  //   this.socket.on('connect', () => { 
-  //     console.log(`SOCKET: connected to ${SOCKET_URL}`);
-  //     this.setState({connected: this.socket.connected, participantId: this.socket.id}) 
-  //     this.newParticipantEvent({
-  //       type:'updateParticipant',
-  //       data: {
-  //         mode: this.props.mode,
-  //       }
-  //     });
-  //   });
-  //   this.socket.on('reconnect', () => { 
-  //     console.log('SOCKET: reconnect');
-  //     this.setState({connected: this.socket.connected, participantId: this.socket.id}) 
-  //   });
-  //   this.socket.on('connecting', () => { 
-  //     console.log('SOCKET: connecting');
-  //     this.setState({connected: this.socket.connected}) 
-  //   });
-  //   this.socket.on('reconnectrng', () => { 
-  //     console.log('SOCKET: reconnecting');
-  //     this.setState({connected: this.socket.connected}) 
-  //   });
-  //   this.socket.on('connect_failed', () => { 
-  //     console.log('SOCKET: connect failed');
-  //     this.setState({connected: this.socket.connected}) 
-  //   });
-  //   this.socket.on('reconnect_failed', () => { 
-  //     console.log('SOCKET: reconnect failed');
-  //     this.setState({connected: this.socket.connected}) 
-  //   });
-  //   this.socket.on('close', () => { 
-  //     console.log('SOCKET: close');
-  //     this.setState({connected: this.socket.connected}) 
-  //   });
-  //   this.socket.on('disconnect', () => { 
-  //     console.log('SOCKET: disconnect');
-  //     this.setState({connected: this.socket.connected}) 
-  //   });
+    this.socket = io(SOCKET_URL, {
+      'reconnection': true,
+      'reconnectionDelay': 500,
+      'reconnectionDelayMax' : 1000,
+    });
 
-  //   // HolySpaceBaby specific events
-  //   this.socket.on('updateParticipantState', (newState) => {
-  //     // console.log('SOCKET: updateParticipantState',newState);
-  //     this.setState(newState);
-  //   });
+    // Socket lifecycle reporting
+    this.socket.on('connect', () => { 
+      console.log(`SOCKET: connected to ${SOCKET_URL}`);
+      this.setState({connected: this.socket.connected, participantId: this.socket.id}) 
+      this.newParticipantEvent({
+        type:'updateParticipant',
+        data: {
+          mode: this.props.mode,
+        }
+      });
+    });
+    this.socket.on('reconnect', () => { 
+      console.log('SOCKET: reconnect');
+      this.setState({connected: this.socket.connected, participantId: this.socket.id}) 
+    });
+    this.socket.on('connecting', () => { 
+      console.log('SOCKET: connecting');
+      this.setState({connected: this.socket.connected}) 
+    });
+    this.socket.on('reconnectrng', () => { 
+      console.log('SOCKET: reconnecting');
+      this.setState({connected: this.socket.connected}) 
+    });
+    this.socket.on('connect_failed', () => { 
+      console.log('SOCKET: connect failed');
+      this.setState({connected: this.socket.connected}) 
+    });
+    this.socket.on('reconnect_failed', () => { 
+      console.log('SOCKET: reconnect failed');
+      this.setState({connected: this.socket.connected}) 
+    });
+    this.socket.on('close', () => { 
+      console.log('SOCKET: close');
+      this.setState({connected: this.socket.connected}) 
+    });
+    this.socket.on('disconnect', () => { 
+      console.log('SOCKET: disconnect');
+      this.setState({connected: this.socket.connected}) 
+    });
 
-  //   let messageId=0;
-  //   this.socket.on('broadcastParticipantEvent', (event) => {
-  //     // console.log('SOCKET: broadcastParticipantEvent',event);
-  //     if(event.type==='message') {
-  //       const maxMessages = 50;
-  //       const messages = this.state.messages;
-  //       const trimmedMessages = 
-  //         messages.length > maxMessages 
-  //           ? messages.slice(1)
-  //           : messages;
+    // HolySpaceBaby specific events
+    this.socket.on('updateParticipantState', (newState) => {
+      // console.log('SOCKET: updateParticipantState',newState);
+      this.setState(newState);
+    });
 
-  //       const newMessage = event.data;
-  //       newMessage.id = messageId;
-  //       messageId++;
-  //       this.setState({ messages: [...trimmedMessages, newMessage] })
-  //     }
-  //   });
+    let messageId=0;
+    this.socket.on('broadcastParticipantEvent', (event) => {
+      // console.log('SOCKET: broadcastParticipantEvent',event);
+      if(event.type==='message') {
+        const maxMessages = 50;
+        const messages = this.state.messages;
+        const trimmedMessages = 
+          messages.length > maxMessages 
+            ? messages.slice(1)
+            : messages;
+
+        const newMessage = event.data;
+        newMessage.id = messageId;
+        messageId++;
+        this.setState({ messages: [...trimmedMessages, newMessage] })
+      }
+    });
   }
 
-  // SERVER_REMOVE
   updateDirectorState = (newState) => {
-    // // console.log('Attempting updateDirectorState', newState)
-    // this.socket.emit('updateDirectorState', newState);
+    this.socket.emit('updateDirectorState', newState);
   }
 
-  // SERVER_REMOVE
   newParticipantEvent = (event) => {
-    // // console.log('Attempting newParticipantEvent', event)
-    // this.socket.emit('newParticipantEvent', event);
+    this.socket.emit('newParticipantEvent', event);
   }
 
   // get password () {
