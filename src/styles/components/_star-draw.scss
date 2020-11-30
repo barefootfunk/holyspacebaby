@@ -11,10 +11,9 @@
 
 }
 #star-draw {
-  width: 3000px;
-  height: 1646px;
+  width: 100vw;
+  height: 100vh;
+  background-position: bottom;
+  background-size: cover;
   background-image: url('../img/star-draw/nightsky.jpg');
-  #star-draw-canvases {
-    animation: pulse 5s infinite;
-  }
 }
