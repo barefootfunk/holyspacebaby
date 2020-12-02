@@ -502,6 +502,8 @@ class Show extends React.Component {
         teleprompter: `
           "${CONTENT.gospel.passage}"
           -${CONTENT.gospel.book}
+
+          ${CONTENT.gospel.sermon}
         `,
         livestream: 'big',
         foregroundChildren: (
