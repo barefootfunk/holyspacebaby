@@ -64,14 +64,12 @@ const FLIGHT_BGS = [
 
 //https://dashboard.eventable.com/
 const DATE_THIS = 'DEC 3';
-const DATE_NEXT = ''; // WHOOPS THAT THANKSGIVING
-// const DATE_NEXT = 'NOV 26';
+const DATE_NEXT = 'DEC 10';
 const CAL_ID_THIS = '5faaaf5fd3fd170066d3669a';
-const CAL_ID_NEXT = '';
-// NOV 26 -- 5faaaf519960a00018f0026c
+const CAL_ID_NEXT = '5fc728379c997c0089df835f';
 
-const EP_NUMBER = '10';
-const THEME = 'belief';
+const EP_NUMBER = '12';
+const THEME = 'failure';
 
 const BULLETIN = `Click on Zombies at same time`;
 
@@ -80,67 +78,89 @@ const NOTES = [
   'Bb3','D3','E3','G3','C3','F',
 ];
 
-const MEDIATION_QUESTION_1    = "What is an uncertainty you are facing?";
-const MEDIATION_PLACEHOLDER_1 = "Type an uncertainty";
-const MEDIATION_BUTTON_1      = "Answer anonymously!";
+const CONTENT = {
+  meditations: [
+    {
+      question: `How does failure make you feel?`,
+      placeholder: `Type a feeling`,
+      button: `Answer anonymously!`,
+    },
+    {
+      question: `What's a failure you fear?`,
+      placeholder: `Type a failure`,
+      button: `Answer anonymously!`,
+    },
+    {
+      question: `What's a failure you've experienced?`,
+      placeholder: `Type a failure`,
+      button: `Answer anonymously!`,
+    },
+    {
+      question: `Wnat did you learn?`,
+      placeholder: `Type a lesson`,
+      button: `Answer anonymously!`,
+    },
+    {
+      question: `Will you try again?`,
+      placeholder: `Type answer`,
+      button: `Answer anonymously!`,
+    },
+  ],
+  gospel: {
+    passage: `Failure is an old wisened guru atop the mountain. He will answer ANY question you ask–provided you let him punch you in the face.`,
+    book: `Cowboy Jobe 1:19`,
+    sermon: `There ain't nothin failin can't teach ya.  You just gotta be willing to take one on the jaw.
 
-const MEDIATION_QUESTION_2    = "How does it feel in your body?";
-const MEDIATION_PLACEHOLDER_2 = "Type a feeling";
-const MEDIATION_BUTTON_2      = "Answer anonymously!";
-
-const MEDIATION_QUESTION_3    = "What helps you feel grounded?";
-const MEDIATION_PLACEHOLDER_3 = "Type something that helps";
-const MEDIATION_BUTTON_3      = "Answer anonymously!";
-
-const MEDIATION_QUESTION_4    = "Wnat's something about you that wont change–no matter how it turns out?";
-const MEDIATION_PLACEHOLDER_4 = "Type a thing";
-const MEDIATION_BUTTON_4      = "Answer anonymously!";
-
-const GOSPEL = `"Gratitude is to sip miracles like a fine wine–and to taste the stars."`;
-const GOSPEL_SOURCE = '-Cowboy Jobe 1:19';
-const SERMON = `${GOSPEL} ${GOSPEL_SOURCE}
-"Cant we just take a break from issues and get back to the art?"
-No. Not because we dont want to. But because its impossible.
-You cant take belief out of art any more that you can take sun outta a flower.
-Art is a language. It is always saying something. It always has a message.
-You can try to make art that has no message. Then, ironically, having no message will become your message.
-And the harder you try to not stand for anything, the more you will stand for NOTHING–advocating the absence of standing, with your example.
-
-Now Im not saying every piece of art needs to be overtly political or issue-based.
-And Im also not anti-escapism. Some art should take us on a journey away from our problems! (But I personally think it has the responsibility to also bring us back to em stronger.)
-All I AM saying is that art dont just spontaneously come to be from a vacuum.
-All I AM saying is that we have to drop the expectation that art *can* (let alone *should*) be decoupled from its creator and its context.
-And that goes just as much for the consumer of art. Celebrating art is implicitly celebrating its creator and its context.
-
-I'll tell you what got me thinkin about this.
-The music that I make and celebrate was created by black artists.
-The teachers who crafted my ability to play the holy genre of funk were all black men and women.
-Seems, though, some of my listeners like the pretty sounds–but dont so much like the pondering of their origin.
-If I make a comment about racial justice, sometimes Im told to stay in my lane–to just play trombone and avoid makin very strong statements.
-BUT.
-To enjoy black excellence without advocating for black issues in our current little moment of history, that itself is making a very strong statement.
-Ergo, you cant so easily avoid very strong statements. So you might as well make em the right ones.
-
-And it dont stop there.
-Our culture is shaped probably most of all by artists who we oppress.
-To consume and celebrate art made by women without advocating for their health, equality and rights, that is a very strong statement.
-To consume and celebrate art made by the lgbtq community without advocating the same for them, that is a very strong statement.
-To consume and celebrate art made by those who actively do harm to all of the above, that is a very strong statement, too.
-If you're trying to be truly neutral, your best bet is to avoid creating and consuming art altogether.
-Neutrality's just a mask that complicity wears in public, after all.
-
-Now this isn't a sermon on identity politics. There are people who should lead that conversation other than this humble cowboy prophet.
-Im just presenting this as one pertinent example where the marriage or art and belief is both apparent and important.
-This week, can you think of other examples?
-
-What do you believe? How is that coming through what you create and consume?
-Take a moment to reflect on the art you make. What are you saying with it?
-Take a moment to reflect on the art you consume. What is it saying? What are you saying by the way you celebrate it?
-
-It is on the artist to recognize that, like it or not, they have a voice.
-It is on the art consumer to recognize that, like it or not, they have an ear.
-And the dance between voices and ears is one that is inextricably to the rhtyhm to our hearts–and the beliefs that fill em.
-  `;
+    Wanna know the correct way to ride a bike?
+    All you gotta do is get punched in the face!
+    
+    Wanna know what stands between you and that new job?
+    You can find out with a few face punches.
+    
+    Wanna know if the practice strategy for your senior recital was good?
+    Face punch.
+    
+    Does your crush like you back?
+    Face punch.
+    
+    Wanna know if your new comedy routine is funny?
+    Face punch.
+    
+    Seeing this transaction with failure gets you thinkin right.
+    When you see it as a transaction, you stop running from it and start trying to get a good deal!
+    
+    You better make sure you get your face punch worth of answers!
+    You better make sure you ask dang good questions, worth a good face punch.
+    And certainly not the same question over and over.  Listen to what failure says the first time!
+    Otherwise you'll get punched way more times that you need to.
+    
+    There's plenty of questions for which the answers are WELL WORTH the face punch.
+    You can get HUGE bargains.
+    I mean how many times would you get punched in the face 
+    if you knew you'd come out with clarity about how to make all your dreams come true?
+    And most of the best questions can ONLY be answered with a good clockin.  
+    It's not just a way to learn.  Sometimes its the ONLY way!
+    
+    Now I'm not gonna tell you that it stops hurting to get punched in the face.
+    Even with lots of practice.
+    We all know it deep down.  The face punches always hurt and always will hurt.  That never goes away.  No matter how many you take.
+    But your relationship to the pain can change–especially when you see it in the light of this metaphor.
+    
+    Next time your jaw hurts, ask yourself--what answers did failure give me in exchange for this?
+    Start journalin and dont you dare stop.  The more your face hurts, the bigger an answer he probably gave you.  
+    His answer is always longer than you think.  But you gotta listen.
+    
+    But wait!  There's more. A bonus.  Get this:
+    Sometimes failure don't punch you none.  
+    Sometimes you ask failure a question and he just gives you the answer for free.
+    And you both just do a little dance or something--I dunno.
+    And when that happens that's nice.
+    But the knowledge you seek was something you were willing to get punched for.
+    
+    Now youve heard failure is good before.
+    So why are you still afraid?`,
+  }
+}
 
 
 
@@ -181,6 +201,10 @@ class Show extends React.Component {
 
     const {babyColor, funkLevel, babyHat, babyRainbow, vip} = this.state;
 
+    const babyColors = ['lime','red','orange','yellow','cyan','violet'];
+    const babyColorString = babyColors[babyColor % babyColors.length];
+   
+
     function cake(num,caption,tele) {
       return {
         name: 'cake'+num,
@@ -206,10 +230,15 @@ class Show extends React.Component {
         livestream: "hidden",
         babyClass: "hidden",
         backgroundChildren: (
-          <StarDraw 
-            newParticipantEvent={newParticipantEvent} 
-            linesToDraw={directorState.linesToDraw}
-          />
+          <React.Fragment>
+            <div className="connecting-alert -fake">Connecting...</div>
+            <StarDraw 
+              newParticipantEvent={newParticipantEvent} 
+              linesToDraw={directorState.linesToDraw}
+              brushColor={babyColorString}
+              catenaryColor={babyColorString}
+            />
+          </React.Fragment>
         ),
       };
     }
@@ -258,11 +287,11 @@ class Show extends React.Component {
       }
     }
 
-    function meditationScene(num,question,placeholder,buttonText) {
+    function meditationScene(num,meditationContent) {
       return {
         name: `Meditation ${num}`,
         livestream: "tiny",
-        teleprompter: `${question}`,
+        teleprompter: `${meditationContent.question}`,
         foregroundChildren: (
           <React.Fragment>
             <VideoBg key={`calm${num}`} srcs={CALM_BGS} />
@@ -270,12 +299,12 @@ class Show extends React.Component {
             <Prompter 
               id={`meditation${num}`}
               key={`prompt-meditation${num}`}
-              prompt={question}
-              placeholder={placeholder}
+              prompt={meditationContent.question}
+              placeholder={meditationContent.placeholder}
               newParticipantEvent={newParticipantEvent} 
               responses={responses} 
               mode={mode}
-              buttonText={buttonText}
+              buttonText={meditationContent.button}
               soundMode='synth'
               notes={NOTES}
             />
@@ -337,7 +366,6 @@ class Show extends React.Component {
       //   ),
       // },
       homepage,
-      starDraw(0),
       {
         name: 'Pre live',
         livestream: "hidden",
@@ -346,9 +374,9 @@ class Show extends React.Component {
           <React.Fragment>
             <VideoBg key='campfire' srcs={['campfire.mp4']}/>
             <div className="layout-center -no-pointer">
-              <p>Cowboy Elijah will appear in the flames here just before 7p CST today to reincarnate you.<br/><br/>This week we are part of a larger show called Wordhack–go the the <a href="https://www.twitch.tv/babycastles">@BabyCastles twitch feed</a> NOW to see more cool digital art!</p>
+              <p>Cowboy Elijah will appear in the flames here just before 7p CST today to reincarnate you.</p>
             </div>
-            {/* <Share /> */}
+            <Share />
           </React.Fragment>
         ),
       },
@@ -431,62 +459,49 @@ class Show extends React.Component {
         ),
       },
       // `${((Object.keys(this.props.directorState.coloringBook).length/421)*100).toFixed(4)}% frosted`
-      promptScene(1,'It’s Glubgo’s birthday! Wish him a happy birthday!','Type birthday greeting','Wish well!',false,false),
-      cake(0,
-        (
-        <div className="layout-center -no-pointer">
-          <p>We must bake him a cake! His favorite flavor of cake is... IDEAS. </p>
-        </div>
-        ),
-        'intro'
-      ),
-      cake(1,
-        (<React.Fragment>
-          <div className="layout-top-edge">
-            <p>Let's bake! We need some IDEAS.  Quickly! Type some thoughts into the CHAT.</p>
-          </div>
-          <div className="layout-bottom-edge">
-          <p>{`Cake status: ${(this.props.directorState.cake.percentage*100).toFixed(4)}% built`}</p>
-          </div>
-        </React.Fragment>),
-        'bake'
-      ),
-      cake(1,
-        (<React.Fragment>
-          <div className="layout-top-edge">
-            <p>Baked! Click the cake to help frost it.</p>
-          </div>
-          <div className="layout-bottom-edge">
-          <p>{`Frosting phase: ${((Object.keys(this.props.directorState.coloringBook).length/421)*100*2).toFixed(4)}% rad`}</p>
-          </div>
-        </React.Fragment>),
-        'frost'
-      ),
-      meditationScene(1,
-        `What is a favorite peiece of art? (poem, dance, song, painting, game, book, anything...)`,
-        `Type an art`,
-        `Answer anonymously!`
-      ),
-      meditationScene(2,
-        `What does it mean to you?`,
-        `Type an answer`,
-        `Answer anonymously!`
-      ),
-      meditationScene(3,
-        `What is a piece of art that has changed or expanded your view?`,
-        `Type a thing`,
-        `Answer anonymously!`
-      ),
-      meditationScene(4,
-        `What did it teach you?`,
-        `Type a lesson`,
-        `Answer anonymously!`
-      ),
+      promptScene(0,'It’s Glubgo’s birthday! Wish him a happy birthday!','Type birthday greeting','Wish well!',false,false),
+      starDraw(0),
+      // cake(0,
+      //   (
+      //   <div className="layout-center -no-pointer">
+      //     <p>We must bake him a cake! His favorite flavor of cake is... IDEAS. </p>
+      //   </div>
+      //   ),
+      //   'intro'
+      // ),
+      // cake(1,
+      //   (<React.Fragment>
+      //     <div className="layout-top-edge">
+      //       <p>Let's bake! We need some IDEAS.  Quickly! Type some thoughts into the CHAT.</p>
+      //     </div>
+      //     <div className="layout-bottom-edge">
+      //     <p>{`Cake status: ${(this.props.directorState.cake.percentage*100).toFixed(4)}% built`}</p>
+      //     </div>
+      //   </React.Fragment>),
+      //   'bake'
+      // ),
+      // cake(1,
+      //   (<React.Fragment>
+      //     <div className="layout-top-edge">
+      //       <p>Baked! Click the cake to help frost it.</p>
+      //     </div>
+      //     <div className="layout-bottom-edge">
+      //     <p>{`Frosting phase: ${((Object.keys(this.props.directorState.coloringBook).length/421)*100*2).toFixed(4)}% rad`}</p>
+      //     </div>
+      //   </React.Fragment>),
+      //   'frost'
+      // ),
+      meditationScene(0,CONTENT.meditations[0]),
+      meditationScene(1,CONTENT.meditations[1]),
+      meditationScene(2,CONTENT.meditations[2]),
+      meditationScene(3,CONTENT.meditations[3]),
+      meditationScene(4,CONTENT.meditations[4]),
       {
         name: "Sermon",
         babyClass: "hidden",
         teleprompter: `
-          ${SERMON}
+          "${CONTENT.gospel.passage}"
+          -${CONTENT.gospel.book}
         `,
         livestream: 'big',
         foregroundChildren: (
@@ -495,7 +510,7 @@ class Show extends React.Component {
             {/* <BestResponses /> */}
 
             <div className="layout-top -no-pointer">
-              <p>{GOSPEL}<br/>{GOSPEL_SOURCE}</p>
+              <p>"{CONTENT.gospel.passage}"<br/>-{CONTENT.gospel.book}</p>
             </div>
           </React.Fragment>
         ),
@@ -509,10 +524,6 @@ class Show extends React.Component {
             <VideoBg key='campfire' srcs={['campfire.mp4']}/>
             <CTA calEventId={CAL_ID_NEXT} nextCeremonyDate={DATE_NEXT}></CTA>
             <TipJar/>
-            {/* <Share /> */}
-            <div className="layout-bottom-edge">
-              <p>Go to the <a href="https://www.twitch.tv/babycastles">@BabyCastles twitch feed</a> NOW!</p>
-            </div>
           </React.Fragment>
         ),
       },
@@ -561,9 +572,7 @@ class Show extends React.Component {
     if(typeof currentScene.onStart !== 'undefined') { currentScene.onStart() }
 
               
-    const babyColors = ['lime','red','orange','yellow','cyan','violet'];
-    const babyColorString = babyColors[babyColor % babyColors.length];
-    return (
+     return (
       <div 
         id={`scene-${slugify(currentScene.name, {lower: true})}`} 
         className={`scene`}

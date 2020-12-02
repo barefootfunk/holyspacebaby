@@ -17,3 +17,8 @@
   background-size: cover;
   background-image: url('../img/star-draw/nightsky.jpg');
 }
+
+.connecting-alert.-fake {
+  z-index: auto;
+  @include rainbow-text;
+}

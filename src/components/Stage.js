@@ -172,7 +172,6 @@ export default class Stage extends React.Component {
           </React.Fragment>
         )}
 
-
         {rehearsal && <div id="rehearsing-alert">Currently practicing/testing!</div>}
 
         {!connected && <div className="connecting-alert">Connecting...</div>}

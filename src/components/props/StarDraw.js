@@ -71,13 +71,13 @@ export default class extends PureComponent {
     loadTimeOffset: 5,
     lazyRadius: 0,
     brushRadius: 1,
-    brushColor: "#fff",
-    catenaryColor: "red",
+    brushColor: 'white',
+    catenaryColor: 'white',
     gridColor: "rgba(150,150,150,0.17)",
     backgroundColor: "transparent",
     hideGrid: true,
-    canvasWidth: 800,
-    canvasHeight: 800,
+    canvasWidth: 1500,
+    canvasHeight: 1500,
     disabled: false,
     imgSrc: "",
     saveData: "",
@@ -319,10 +319,12 @@ export default class extends PureComponent {
   };
 
   handleDrawEnd = e => {
-    e.preventDefault();
+    if(e) {
+      e.preventDefault();
 
-    // Draw to this end pos
-    this.handleDrawMove(e);
+      // Draw to this end pos
+      this.handleDrawMove(e);
+    }
 
     if(this.points.length>0) {
       const line = {
@@ -418,37 +420,42 @@ export default class extends PureComponent {
   };
 
   drawPoints = ({ points, brushColor, brushRadius }) => {
-    this.ctx.temp.lineJoin = "round";
-    this.ctx.temp.lineCap = "round";
-    this.ctx.temp.strokeStyle = brushColor;
-
-    this.ctx.temp.clearRect(
-      0,
-      0,
-      this.ctx.temp.canvas.width,
-      this.ctx.temp.canvas.height
-    );
-    this.ctx.temp.lineWidth = brushRadius * 2;
 
     let p1 = points[0];
     let p2 = points[1];
 
-    this.ctx.temp.moveTo(p2.x, p2.y);
-    this.ctx.temp.beginPath();
+    if(typeof p1 !== 'undefined' && typeof p2 !== 'undefined') {
+      this.ctx.temp.lineJoin = "round";
+      this.ctx.temp.lineCap = "round";
+      this.ctx.temp.strokeStyle = brushColor;
+  
+      this.ctx.temp.clearRect(
+        0,
+        0,
+        this.ctx.temp.canvas.width,
+        this.ctx.temp.canvas.height
+      );
+      this.ctx.temp.lineWidth = brushRadius * 2;
+      
+      this.ctx.temp.moveTo(p2.x, p2.y);
+      this.ctx.temp.beginPath();
 
-    for (var i = 1, len = points.length; i < len; i++) {
-      // we pick the point between pi+1 & pi+2 as the
-      // end point and p1 as our control point
-      var midPoint = midPointBtw(p1, p2);
-      this.ctx.temp.quadraticCurveTo(p1.x, p1.y, midPoint.x, midPoint.y);
-      p1 = points[i];
-      p2 = points[i + 1];
+      for (var i = 1, len = points.length; i < len; i++) {
+        // we pick the point between pi+1 & pi+2 as the
+        // end point and p1 as our control point
+        var midPoint = midPointBtw(p1, p2);
+        this.ctx.temp.quadraticCurveTo(p1.x, p1.y, midPoint.x, midPoint.y);
+        p1 = points[i];
+        p2 = points[i + 1];
+      }
+      // Draw last line as a straight line while
+      // we wait for the next point to be able to calculate
+      // the bezier control point
+      this.ctx.temp.lineTo(p1.x, p1.y);
+      this.ctx.temp.stroke();
+    } else {
+      // this.handleDrawEnd(false);
     }
-    // Draw last line as a straight line while
-    // we wait for the next point to be able to calculate
-    // the bezier control point
-    this.ctx.temp.lineTo(p1.x, p1.y);
-    this.ctx.temp.stroke();
   };
 
   saveLine = ({ brushColor, brushRadius } = {}) => {
