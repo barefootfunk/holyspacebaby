@@ -336,8 +336,8 @@ class Show extends React.Component {
       //     </React.Fragment>
       //   ),
       // },
-      starDraw(0),
       homepage,
+      starDraw(0),
       {
         name: 'Pre live',
         livestream: "hidden",

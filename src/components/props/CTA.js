@@ -60,9 +60,10 @@ const CTA = (props) => {
       <div id="decorative-baby">
         <HolySpaceBabySvg />
       </div>
-
-      <div className="layout-bottom-edge row">
+      <div className="layout-top">
         {typeof props.children !== 'undefined' && props.children}
+      </div>
+      <div className="layout-bottom row">
         <div className="add-to-cal text-box">
         <a href={`https://add.eventable.com/events/5f8edeb953314b00158b2ff5/${props.calEventId}/`} 
           onClick={() => {

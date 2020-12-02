@@ -11,9 +11,9 @@ import {initAmplitude, sendAmplitudeData} from './utilities/amplitude';
 import isDev from "./utilities/DevDetect";
 
 let SOCKET_URL = 'https://holyspacebaby-server.herokuapp.com/'; 
-// if (isDev()) {
-//   SOCKET_URL = 'http://localhost:3000';
-// }
+if (isDev()) {
+  SOCKET_URL = 'http://localhost:3000';
+}
 
 export default class Stage extends React.Component {
 
