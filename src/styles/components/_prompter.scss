@@ -7,6 +7,8 @@
   font-size: 0.7em;
   width: 350px !important;
   p {
+    display: block;
+    max-width: 250px;
   }
   .error {
     color: red;
