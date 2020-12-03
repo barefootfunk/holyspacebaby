@@ -258,7 +258,7 @@ class Show extends React.Component {
               />
             </div>
             <div className="connecting-alert -fake">Connecting...</div>
-            <div className="layout-bottom-edge -no-pointer rainbow-text"><p>Click to draw</p></div>
+            <div className="layout-bottom-edge -no-pointer rainbow-text"><p>{'<?Click to draw?>'}</p></div>
           </React.Fragment>
         ),
       };
