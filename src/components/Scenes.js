@@ -553,7 +553,7 @@ class Show extends React.Component {
           "${CONTENT.gospel.passage}"
           -${CONTENT.gospel.book}
 
-          ${CONTENT.gospel.book}
+          ${CONTENT.gospel.sermon}
         `,
         livestream: 'big',
         foregroundChildren: (
