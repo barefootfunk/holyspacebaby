@@ -160,15 +160,16 @@ export default class extends PureComponent {
     }
 
     // Draw any lines recieved from the server
-    
-    if(prevProps.linesToDraw !== this.props.linesToDraw) {
-      const linesToDrawFromServer = this.props.linesToDraw;
-      // console.log(linesToDrawFromServer);
-      if(linesToDrawFromServer.length>0) {
-        this.simulateDrawingLines({
-          lines: linesToDrawFromServer,
-          immediate: true,
-        });
+    if(this.props.mode==='reciever') {
+      if(prevProps.linesToDraw !== this.props.linesToDraw) {
+        const linesToDrawFromServer = this.props.linesToDraw;
+        // console.log(linesToDrawFromServer);
+        if(linesToDrawFromServer.length>0) {
+          this.simulateDrawingLines({
+            lines: linesToDrawFromServer,
+            immediate: false,
+          });
+        }
       }
     }
   }
@@ -332,12 +333,14 @@ export default class extends PureComponent {
         brushColor: this.props.brushColor,
         brushRadius: this.props.brushRadius
       };
-      this.props.newParticipantEvent({
-        type: 'lineDraw',
-        data: {
-          line: line,
-        }
-      });
+      if(this.props.mode==='transmitter') {
+        this.props.newParticipantEvent({
+          type: 'lineDraw',
+          data: {
+            line: line,
+          }
+        });
+      }
     }
 
     // Stop drawing & save the drawn line
@@ -601,10 +604,9 @@ export default class extends PureComponent {
 
   render() {
     return (
-      <div id="star-draw">
+      <div className={`star-draw ${this.props.mode==='reciever'?'-reciever':''} ${this.props.mode==='transmitter'?'-transmitter':''}`}>
         <div
-          id="star-draw-canvases"
-          className={this.props.className}
+          className={'star-draw-canvases '+this.props.className}
           style={{
             display: "block",
             background: this.props.backgroundColor,

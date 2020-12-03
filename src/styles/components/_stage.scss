@@ -20,6 +20,13 @@
   justify-content: center;
 }
 
+.connecting-alert.-fake {
+  // z-index: auto;
+  @include rainbow-text;
+  background: radial-gradient(black 0%, black 3%, transparent 20%);
+  pointer-events: none;
+}
+
 .scene {
   #scene-name {
     @include text-box;

@@ -1,3 +1,15 @@
+@keyframes chaos1 {
+  0% {
+    transform: rotate(180deg); 
+  }
+  50% {
+    transform: rotate(4000deg); 
+  }
+  100% {
+    transform: rotate (10deg);
+  }
+}
+
 #coloring-book {
   // background: white;
   .mask{
@@ -9,11 +21,14 @@
     height: 100%;
     position: absolute;
     // mix-blend-mode: multiply;
-    background: radial-gradient(white 0%, transparent 70%);
+    background: radial-gradient(violet 0%, transparent 70%);
   }
   svg {
+    // background: white;
     width: 100vw;
     height: 100vh;
     padding: 1vw;
+    transform: rotate(180deg); // CHAOS
+    animation: chaos1 100s infinite alternate steps(10);
   }
 }

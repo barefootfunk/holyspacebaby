@@ -25,7 +25,7 @@ export default class ColoringBook extends React.Component {
   }
 
   handlePathClick = (e) => {
-    if(this.props.allowFrost) {
+    // if(this.props.allowFrost) {
       if(typeof e.target.id !== 'undefined'){
         const id = e.target.id;
         // console.log('coloringbook click id ',id)
@@ -37,7 +37,7 @@ export default class ColoringBook extends React.Component {
           }
         })
       }
-    }
+    // }
   }
 
   stylePath = (i) => {
@@ -46,7 +46,7 @@ export default class ColoringBook extends React.Component {
     if(typeof this.props.coloringBook[id] !== 'undefined') {
       style.fill = this.props.coloringBook[id];
     } else {
-      style.fill = this.props.allowFrost ? '#361702' : '#8f4e00';
+      style.fill = '#8f4e00';
     }
     if(this.props.cake.percentage<(i/421)) {
       style.display='none';

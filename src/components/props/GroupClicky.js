@@ -84,7 +84,7 @@ export default class GroupClicky extends React.Component {
           style={{
             background: `radial-gradient(${percentageChanging ? (percentageChange>0 ? 'white' : 'red' ): 'black'} 0%, transparent 70%)`,
             position: 'fixed',
-            transform: `translate(-50%,-50%)`,
+            transform: `translate(-50%,-50%) rotate(45deg)`,
             top: `${zombieY*100}vh`,
             left: `${zombieX*100}vw`,
             pointerEvents: triggered ? 'none' : 'auto',

@@ -7,37 +7,46 @@ export default class Pomplo extends React.Component {
 
   constructor (props) {
     super(props);
-
-    this.oldPercentage = this.props.directorState.pomplo.percentage;
-    this.percentageChangingTimeout = null;
+    this.randomTimeout = null;
+    // this.oldPercentage = this.props.directorState.pomplo.percentage;
+    // this.percentageChangingTimeout = null;
     this.state = {
-      percentageChanging: false,
-      percentageChange: false,
+      percentage: 1,
     }
   }
 
-  componentWillUpdate() {
-    if (!this.props.directorState.pomplo.triggered) {
-      if (this.oldPercentage !== this.props.directorState.pomplo.percentage) {
-        this.state.percentageChanging =  true
-        this.state.percentageChange = this.props.directorState.pomplo.percentage - this.oldPercentage;
+  // componentWillUpdate() {
+  //   if (!this.props.directorState.pomplo.triggered) {
+  //     if (this.oldPercentage !== this.props.directorState.pomplo.percentage) {
+  //       this.state.percentageChanging =  true
+  //       this.state.percentageChange = this.props.directorState.pomplo.percentage - this.oldPercentage;
 
-        this.oldPercentage = this.props.directorState.pomplo.percentage;
-        this.percentageChangingTimout = setTimeout(() => {
-          this.setState({percentageChanging: false})
-        },50)
-      }
-    }
+  //       this.oldPercentage = this.props.directorState.pomplo.percentage;
+  //       this.percentageChangingTimout = setTimeout(() => {
+  //         this.setState({percentageChanging: false})
+  //       },50)
+  //     }
+  //   }
+  // }
+
+  componentDidMount() {
+    this.randomTimeout = setInterval(() => {
+      this.setState({
+        percentage: Math.random()*20-10,
+      })
+    },100);
   }
 
   componentWillUnmount() {
-    clearTimeout(this.percentageChangingTimeout);
+    // clearTimeout(this.percentageChangingTimeout);
+    clearInterval(this.randomTimeout);
   }
 
   render () {
-    const {pomplo,tugOfWars} = this.props.directorState;
-    const {percentage} = pomplo;
-    const {percentageChanging, percentageChange} = this.state;
+    // const {pomplo,tugOfWars} = this.props.directorState;
+    const percentage = this.state.percentage;
+    // const {percentage} = pomplo;
+    // const {percentageChanging, percentageChange} = this.state;
     const hideHealthbar = this.props.hideHealthbar ? true:false;
 
     
@@ -45,8 +54,9 @@ export default class Pomplo extends React.Component {
       <React.Fragment>
         <div id="pomplo" 
           className={
-            (percentage < 0.5 ? (percentage < 0 ? '-dead': '-sad') : '') + ' ' +
-            (percentageChanging ? (percentageChange < 0 ? '-hurting': '-healing') : '') }>
+            (percentage < 0.5 ? (percentage < 0 ? '-dead': '-sad') : '') //+ ' ' +
+            //(percentageChanging ? (percentageChange < 0 ? '-hurting': '-healing') : '') 
+            }>
           <button />
         
           { !hideHealthbar && <div 
@@ -64,12 +74,12 @@ export default class Pomplo extends React.Component {
               }}
             >{`${(100*percentage).toFixed(0)}% alive`}</div> }
 
-          {(tugOfWars['turn3'].percentage < 0.1 || tugOfWars['turn3'].percentage > 0.9) && <div 
+          {(percentage < 0.1 || percentage > 0.9) && <div 
             style={{
               position: 'absolute',
               top: '60%',
               left: '58%',
-              backgroundImage: `url(${tugOfWars['turn3'].percentage > 0.5 ? fireTruck : dumpTruck})`,
+              backgroundImage: `url(${percentage > 0.5 ? fireTruck : dumpTruck})`,
               backgroundSize: 'contain',
               backgroundRepeat: 'no-repeat',
               width: '10vw',

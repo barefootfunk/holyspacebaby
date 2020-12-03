@@ -1,24 +1,29 @@
-@keyframes pulse {
-  0% {
-    opacity: 0.1;
-  }
-  50% {
-    opacity: 0.6;
-  }
-  100% {
-    opacity: 0.1;
-  }
+// @keyframes pulse {
+//   0% {
+//     opacity: 0.1;
+//   }
+//   50% {
+//     opacity: 0.6;
+//   }
+//   100% {
+//     opacity: 0.1;
+//   }
 
-}
-#star-draw {
-  width: 100vw;
-  height: 100vh;
-  background-position: bottom;
-  background-size: cover;
-  background-image: url('../img/star-draw/nightsky.jpg');
-}
+// }
+// #star-draw {
+//   width: 100vw;
+//   height: 100vh;
+//   background-position: bottom;
+//   background-size: cover;
+//   background-image: url('../img/star-draw/nightsky.jpg');
+// }
 
-.connecting-alert.-fake {
-  z-index: auto;
-  @include rainbow-text;
+.star-draws {
+  .star-draw {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    canvas {border: 1px solid #333;}
+  }
 }

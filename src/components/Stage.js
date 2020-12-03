@@ -32,7 +32,7 @@ export default class Stage extends React.Component {
       groupClickies: {},
       tugOfWars: {},
       cake: {
-        percentage: 0,
+        percentage: .98,
       },
       coloringBook: {},
       linesToDraw: [],
@@ -149,24 +149,19 @@ export default class Stage extends React.Component {
               <button id="prev-scene" onClick={() => {this.updateDirectorState({scene: scene-1})}}>Prev</button>
               <div id="scene-number">{scene}</div>
               <button id="next-scene" onClick={() => {this.updateDirectorState({scene: scene+1})}}>Next</button>
-              <button id="pomplo-button" 
-                onClick={() => {this.updateDirectorState({
-                  cake: {
-                    percentage: 0,
-                  },
-                  coloringBook: {},
-                })}}>cake reset</button>
-                <button id="zombie-button" 
-                onClick={() => {this.updateDirectorState({
-                  cake: {
-                    percentage: 1,
-                  },
-                  coloringBook: {},
-                })}}>cake rebuild</button>
-              <button id="rehearsal-button" className={rehearsal?'-on':'-off'} onClick={() => {this.updateDirectorState({rehearsal: !rehearsal})}}>Reh</button>
-              {/* <button id="zombie-button" onClick={() => { this.newParticipantEvent({type: 'groupClickyAdd'}) }}>Zombie</button> */}
-              {/* <button id="zombie-clear-button" onClick={() => { this.newParticipantEvent({type: 'clearGroupClickies'}) }}>ClrZom</button> */}
-              {/* <button id="tug-clear-button" onClick={() => { this.newParticipantEvent({type: 'clearTugOfWars'}) }}>ClrTug</button> */}
+              <div className="small-buttons">
+                <button className={rehearsal?'-on':'-off'} onClick={() => {this.updateDirectorState({rehearsal: !rehearsal})}}>Rehearsing</button><br/>
+                <button
+                  onClick={() => {this.updateDirectorState({
+                    cake: {
+                      percentage: 0.98,
+                    },
+                    coloringBook: {},
+                  })}}>Defrost Cake</button><br/>
+                <button onClick={() => { this.newParticipantEvent({type: 'groupClickyAdd'}) }}>Zombie</button>
+                <button onClick={() => { this.newParticipantEvent({type: 'clearGroupClickies'}) }}>Clear Zombies</button><br/>
+                <button onClick={() => { this.newParticipantEvent({type: 'clearTugOfWars'}) }}>Clear Tug</button>
+              </div>
             </div>
             <div id="participant-stats">{activeParticipantCount}</div>
           </React.Fragment>

@@ -213,13 +213,11 @@ class Show extends React.Component {
         babyClass: "flight",
         backgroundChildren: (
           <React.Fragment>
-            <VideoBg key={`flight${num}`} srcs={FLIGHT_BGS}/>
-            <VideoBg key='glub' srcs={['glubgo.gif']} classes="bg-video--portal bg-video--corner"/>
-            {typeof caption !=='undefined' && caption}
+            <div className="connecting-alert -fake">Connecting...</div>
           </React.Fragment>
         ),
         foregroundChildren: (
-          <ColoringBook coloringBook={directorState.coloringBook} cake={directorState.cake} allowFrost={directorState.scene===9} newParticipantEvent={newParticipantEvent}/>
+          <ColoringBook coloringBook={directorState.coloringBook} cake={directorState.cake} allowFrost={true} newParticipantEvent={newParticipantEvent}/>
         ),
       };
     }
@@ -228,16 +226,32 @@ class Show extends React.Component {
       return {
         name: 'stardraw'+num,
         livestream: "hidden",
-        babyClass: "hidden",
+        babyClass: "chaos",
         backgroundChildren: (
           <React.Fragment>
+            <div className='star-draws'>
+              <StarDraw 
+                // newParticipantEvent={newParticipantEvent} 
+                linesToDraw={directorState.linesToDraw}
+                // brushColor={babyColorString}
+                // catenaryColor={babyColorString}
+                mode='reciever'
+                hideInterface={true}
+                disabled={true}
+                canvasWidth={1500}
+                canvasHeight={1500}
+              />            
+              <StarDraw 
+                newParticipantEvent={newParticipantEvent} 
+                // linesToDraw={directorState.linesToDraw}
+                brushColor={babyColorString}
+                catenaryColor={babyColorString}
+                mode='transmitter'
+                canvasWidth={1500}
+                canvasHeight={1500}
+              />
+            </div>
             <div className="connecting-alert -fake">Connecting...</div>
-            <StarDraw 
-              newParticipantEvent={newParticipantEvent} 
-              linesToDraw={directorState.linesToDraw}
-              brushColor={babyColorString}
-              catenaryColor={babyColorString}
-            />
           </React.Fragment>
         ),
       };
@@ -264,7 +278,7 @@ class Show extends React.Component {
         teleprompter: `${question}`,
         backgroundChildren: (
           <React.Fragment>
-            <VideoBg key={`flight${num}`} srcs={bgs ? bgs : FLIGHT_BGS}/>
+            
             <VideoBg key='glub' srcs={['glubgo.gif']} classes="bg-video--portal bg-video--corner"/>
           </React.Fragment>
         ),
@@ -333,6 +347,42 @@ class Show extends React.Component {
               <p>{caption}</p>
             </div>
             <Pomplo directorState={directorState} hideHealthbar={true} />
+          </React.Fragment>
+        ),
+      };
+    }
+
+    function chaosScene(num) {
+      return {
+        name: 'chaos'+num,
+        livestream: "hidden",
+        babyClass: "chaos",
+        teleprompter: num===6 ? 'do the zombies!' : '',
+        backgroundChildren: (
+          <React.Fragment>
+            {num>=1 && <VideoBg key={`code`} srcs={['code.mp4']}/>}
+          </React.Fragment>
+        ),
+        foregroundChildren: (
+          <React.Fragment>
+            {num>=2 && <CTA calEventId={CAL_ID_NEXT} nextCeremonyDate={DATE_NEXT} chaos />}
+            {num>=3 && <div className="layout-top-edge -no-pointer" style={{transform: 'rotate(180deg)'}}><p>Cowboy Elijah will appear in the flames here just before 7p CST today to reincarnate you.</p></div>}
+            {num>=4 && <div id="hellbus"><button /></div>}
+            {num>=5 && <Pomplo fireflies={directorState} />}
+            {num>=6 && <Prompter 
+              id={`vision1`}
+              key={`prompt-vision1`}
+              prompt={'Lie to me'}
+              placeholder={'Type your truth'}
+              newParticipantEvent={newParticipantEvent} 
+              responses={responses} 
+              mode={mode}
+              buttonText={'Never Submit'}
+              soundMode='sample'
+              // visionSrc={false}
+            />}
+            {num>=7 && <ColoringBook coloringBook={directorState.coloringBook} cake={directorState.cake} newParticipantEvent={newParticipantEvent}/>}
+            <div className="connecting-alert -fake">Connecting...</div>
           </React.Fragment>
         ),
       };
@@ -460,37 +510,31 @@ class Show extends React.Component {
       },
       // `${((Object.keys(this.props.directorState.coloringBook).length/421)*100).toFixed(4)}% frosted`
       promptScene(0,'It’s Glubgo’s birthday! Wish him a happy birthday!','Type birthday greeting','Wish well!',false,false),
+      chaosScene(0),
+      chaosScene(1),
+      chaosScene(2),
+      chaosScene(3),
+      chaosScene(4),
+      chaosScene(5),
+      chaosScene(6),
+      chaosScene(7),
       starDraw(0),
-      // cake(0,
-      //   (
-      //   <div className="layout-center -no-pointer">
-      //     <p>We must bake him a cake! His favorite flavor of cake is... IDEAS. </p>
-      //   </div>
-      //   ),
-      //   'intro'
-      // ),
-      // cake(1,
-      //   (<React.Fragment>
-      //     <div className="layout-top-edge">
-      //       <p>Let's bake! We need some IDEAS.  Quickly! Type some thoughts into the CHAT.</p>
-      //     </div>
-      //     <div className="layout-bottom-edge">
-      //     <p>{`Cake status: ${(this.props.directorState.cake.percentage*100).toFixed(4)}% built`}</p>
-      //     </div>
-      //   </React.Fragment>),
-      //   'bake'
-      // ),
-      // cake(1,
-      //   (<React.Fragment>
-      //     <div className="layout-top-edge">
-      //       <p>Baked! Click the cake to help frost it.</p>
-      //     </div>
-      //     <div className="layout-bottom-edge">
-      //     <p>{`Frosting phase: ${((Object.keys(this.props.directorState.coloringBook).length/421)*100*2).toFixed(4)}% rad`}</p>
-      //     </div>
-      //   </React.Fragment>),
-      //   'frost'
-      // ),
+      {
+        name: "Meditation Intro",
+        livestream: "tiny",
+        foregroundChildren: (
+          <React.Fragment>
+            <VideoBg key='calm' srcs={CALM_BGS} />
+            <VideoBg key='fire' srcs={['campfire-close.mp4']} style={{opacity: 0.1}} />
+            <div className="layout-top -no-pointer">
+              <h1>YOU PONDER!</h1>
+            </div>
+            <div className="layout-bottom -no-pointer">
+              <p>You introspect.  Be as real as you are comfortable being. All anonymous.</p>
+            </div>
+          </React.Fragment>
+        ),
+      },
       meditationScene(0,CONTENT.meditations[0]),
       meditationScene(1,CONTENT.meditations[1]),
       meditationScene(2,CONTENT.meditations[2]),
@@ -503,7 +547,7 @@ class Show extends React.Component {
           "${CONTENT.gospel.passage}"
           -${CONTENT.gospel.book}
 
-          ${CONTENT.gospel.sermon}
+          ${CONTENT.gospel.book}
         `,
         livestream: 'big',
         foregroundChildren: (

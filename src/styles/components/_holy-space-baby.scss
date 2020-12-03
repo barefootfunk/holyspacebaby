@@ -9,6 +9,21 @@
   background:  radial-gradient(transparent 0%, transparent 60%, var(--baby-color) 90%);
 }
 
+@keyframes chaos2 {
+  0% { transform: scaleY(0.5) }
+  5% { transform: scaleY(1) }
+  10% { transform: scaleY(0.2) }
+  15% { transform: scaleY(1.5) }
+  20% { transform: scaleY(1.4) rotate(-180deg) }
+  25% { transform: scaleY(3) }
+  30% { transform: scaleY(0.3) }
+  35% { transform: scaleY(0.1) }
+  40% { transform: scaleY(0.9) }
+  45% { transform: scaleY(1.5) }
+  50% { transform: scaleY(1.1) }
+  55% { transform: scaleY(1) }
+}
+
 #holy-space-baby {
   --baby-size: 20vw;
   --spin-time: 10s;
@@ -65,6 +80,14 @@
     --spin-time: 4s;
   }
 
+
+  &.chaos {
+    // --spin-time: 4s;
+    .center-wrap .spin-wrap {
+      animation: chaos2 2s infinite alternate-reverse;
+      transform: rotate(-200deg);
+    }
+  }
 
   &.still {
     --spin-time: 100s;

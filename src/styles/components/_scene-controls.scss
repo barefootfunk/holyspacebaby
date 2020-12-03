@@ -41,47 +41,49 @@ $control-padding: 30px;
     margin-right: $control-padding;
   }
 
-  #rehearsal-button {
-    position: fixed;
-    top: 0;
-    left: 0;
-    font-size: 2em;
-    padding: 0;
-  
-    &.-on {
-      background: red;
-      color: white;
-    }
-  }  
-
-  #zombie-button {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    font-size: 2em;
-    padding: 0;
-  }    
-  #pomplo-button {
-    position: fixed;
-    top: 0;
-    right: 50%;
-    font-size: 2em;
-    padding: 0;
-  }  
-  #tug-clear-button {
-    position: fixed;
+  .small-buttons {
+    font-size: 0.3em;
+    position: absolute;
     bottom: 100%;
-    left: 0;
-    font-size: 2em;
-    padding: 0;
-  }  
-  #zombie-clear-button {
-    position: fixed;
-    top: 50%;
-    left: 0;
-    font-size: 2em;
-    padding: 0;
-  }  
+    button {
+      padding: 5px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      &.-on {
+        background: red;
+        color: white;
+      }
+    }
+  }
+
+//   #zombie-button {
+//     position: fixed;
+//     bottom: 0;
+//     left: 0;
+//     font-size: 2em;
+//     padding: 0;
+//   }    
+//   #pomplo-button {
+//     position: fixed;
+//     top: 0;
+//     right: 50%;
+//     font-size: 2em;
+//     padding: 0;
+//   }  
+//   #tug-clear-button {
+//     position: fixed;
+//     bottom: 100%;
+//     left: 0;
+//     font-size: 2em;
+//     padding: 0;
+//   }  
+//   #zombie-clear-button {
+//     position: fixed;
+//     top: 50%;
+//     left: 0;
+//     font-size: 2em;
+//     padding: 0;
+//   }  
 }
 
 #teleprompter {
