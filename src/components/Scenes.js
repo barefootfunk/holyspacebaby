@@ -258,6 +258,7 @@ class Show extends React.Component {
               />
             </div>
             <div className="connecting-alert -fake">Connecting...</div>
+            <div className="layout-bottom-edge -no-pointer rainbow-text"><p>Click to draw</p></div>
           </React.Fragment>
         ),
       };
@@ -358,7 +359,7 @@ class Show extends React.Component {
       };
     }
 
-    function chaosScene(num) {
+    function chaosScene(num,caption) {
       return {
         name: 'chaos'+num,
         livestream: "hidden",
@@ -373,9 +374,9 @@ class Show extends React.Component {
           <React.Fragment>
             {num>=2 && <CTA calEventId={CAL_ID_NEXT} nextCeremonyDate={DATE_NEXT} chaos />}
             {num>=3 && <div className="layout-top-edge -no-pointer" style={{transform: 'rotate(180deg)'}}><p>Cowboy Elijah will appear in the flames here just before 7p CST today to reincarnate you.</p></div>}
-            {num>=4 && <div id="hellbus"><button /></div>}
-            {num>=5 && <Pomplo fireflies={directorState} />}
-            {num>=6 && <Prompter 
+            
+            {num>=4 && <Pomplo fireflies={directorState} />}
+            {num===5 && <Prompter 
               id={`vision1`}
               key={`prompt-vision1`}
               prompt={'Lie to me'}
@@ -383,12 +384,34 @@ class Show extends React.Component {
               newParticipantEvent={newParticipantEvent} 
               responses={responses} 
               mode={mode}
-              buttonText={'Never Submit'}
+              buttonText={'Subm!t'}
               soundMode='sample'
               // visionSrc={false}
             />}
-            {num>=7 && <ColoringBook coloringBook={directorState.coloringBook} cake={directorState.cake} newParticipantEvent={newParticipantEvent}/>}
+            {num>=7 && typeof directorState.tugOfWars['turn0'] !== 'undefined' &&
+              <React.Fragment>
+                <div id="hellbus"><button /></div>
+                <TugOfWar 
+                  newParticipantEvent={newParticipantEvent} 
+                  tugOfWarId={'turn0'} 
+                  tugOfWar={directorState.tugOfWars['turn0']}
+                  side1={{
+                    image: 'cat.jpg',
+                    victory: 'cat superior',
+                    caption: 'vote cat?',
+                  }}
+                  side2={{
+                    image: 'dog.jpg',
+                    victory: 'dog superior',
+                    caption: 'vote dog?',
+                  }}
+                />
+              </React.Fragment>
+            }
+                       
+            {num>=8 && <ColoringBook coloringBook={directorState.coloringBook} cake={directorState.cake} newParticipantEvent={newParticipantEvent}/>}
             <div className="connecting-alert -fake">Connecting...</div>
+            {caption && <div className="layout-bottom-edge -no-pointer rainbow-text"><p>{caption}</p></div>}
           </React.Fragment>
         ),
       };
@@ -516,14 +539,15 @@ class Show extends React.Component {
       },
       // `${((Object.keys(this.props.directorState.coloringBook).length/421)*100).toFixed(4)}% frosted`
       promptScene(0,'It’s Glubgo’s birthday! Wish him a happy birthday!','Type birthday greeting','Wish well!',false,false),
-      chaosScene(0),
-      chaosScene(1),
-      chaosScene(2),
-      chaosScene(3),
-      chaosScene(4),
-      chaosScene(5),
-      chaosScene(6),
-      chaosScene(7),
+      chaosScene(0,''),
+      chaosScene(1,''),
+      chaosScene(2,''),
+      chaosScene(3,''),
+      chaosScene(4,''),
+      chaosScene(5,'<?This crashed me last time?>'),
+      chaosScene(6,'<?Everybody click one zombie at the same time to cure them?>'),
+      chaosScene(7,'<?Click repeatedly to vote?>'),
+      chaosScene(8,'<?Click cake to frost?>'),
       starDraw(0),
       {
         name: "Meditation Intro",

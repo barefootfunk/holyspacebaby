@@ -30,6 +30,10 @@ $control-padding: 30px;
     &:first-of-type {
       margin-right: $control-padding;
     }
+    &:active{
+      color: white;
+      background: black;
+    }
   }
 
   #scene-number {

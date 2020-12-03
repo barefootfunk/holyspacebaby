@@ -159,8 +159,8 @@ export default class Stage extends React.Component {
                     coloringBook: {},
                   })}}>Defrost Cake</button><br/>
                 <button onClick={() => { this.newParticipantEvent({type: 'groupClickyAdd'}) }}>Zombie</button><br/>
-                <button onClick={() => { this.newParticipantEvent({type: 'clearGroupClickies'}) }}>Clear Zombies</button>
-                {/* <button onClick={() => { this.newParticipantEvent({type: 'clearTugOfWars'}) }}>Clear Tug</button> */}
+                <button onClick={() => { this.newParticipantEvent({type: 'clearGroupClickies'}) }}>Clear Zombies</button><br/>
+                <button onClick={() => { this.newParticipantEvent({type: 'clearTugOfWars'}) }}>Clear Tug</button>
               </div>
             </div>
             <div id="participant-stats">{activeParticipantCount}</div>
