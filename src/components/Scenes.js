@@ -96,69 +96,75 @@ const CONTENT = {
       button: `Answer anonymously!`,
     },
     {
-      question: `Wnat did you learn?`,
+      question: `How did you change after?`,
       placeholder: `Type a lesson`,
       button: `Answer anonymously!`,
     },
     {
-      question: `Will you try again?`,
+      question: `Will you ever try again?`,
       placeholder: `Type answer`,
       button: `Answer anonymously!`,
     },
   ],
   gospel: {
+    // passage: ``,
     passage: `Failure is an old wisened guru atop the mountain. He will answer ANY question you ask–provided you let him punch you in the face.`,
     book: `Cowboy Jobe 1:19`,
-    sermon: `There ain't nothin failin can't teach ya.  You just gotta be willing to take one on the jaw.
+    sermon: `
+      If you got design your life before you was born, if you could choose to have ANY amount of failure in that life. 
+      What would the right amount of failure be?
 
-    Wanna know the correct way to ride a bike?
-    All you gotta do is get punched in the face!
-    
-    Wanna know what stands between you and that new job?
-    You can find out with a few face punches.
-    
-    Wanna know if the practice strategy for your senior recital was good?
-    Face punch.
-    
-    Does your crush like you back?
-    Face punch.
-    
-    Wanna know if your new comedy routine is funny?
-    Face punch.
-    
-    Seeing this transaction with failure gets you thinkin right.
-    When you see it as a transaction, you stop running from it and start trying to get a good deal!
-    
-    You better make sure you get your face punch worth of answers!
-    You better make sure you ask dang good questions, worth a good face punch.
-    And certainly not the same question over and over.  Listen to what failure says the first time!
-    Otherwise you'll get punched way more times that you need to.
-    
-    There's plenty of questions for which the answers are WELL WORTH the face punch.
-    You can get HUGE bargains.
-    I mean how many times would you get punched in the face 
-    if you knew you'd come out with clarity about how to make all your dreams come true?
-    And most of the best questions can ONLY be answered with a good clockin.  
-    It's not just a way to learn.  Sometimes its the ONLY way!
-    
-    Now I'm not gonna tell you that it stops hurting to get punched in the face.
-    Even with lots of practice.
-    We all know it deep down.  The face punches always hurt and always will hurt.  That never goes away.  No matter how many you take.
-    But your relationship to the pain can change–especially when you see it in the light of this metaphor.
-    
-    Next time your jaw hurts, ask yourself--what answers did failure give me in exchange for this?
-    Start journalin and dont you dare stop.  The more your face hurts, the bigger an answer he probably gave you.  
-    His answer is always longer than you think.  But you gotta listen.
-    
-    But wait!  There's more. A bonus.  Get this:
-    Sometimes failure don't punch you none.  
-    Sometimes you ask failure a question and he just gives you the answer for free.
-    And you both just do a little dance or something--I dunno.
-    And when that happens that's nice.
-    But the knowledge you seek was something you were willing to get punched for.
-    
-    Now youve heard failure is good before.
-    So why are you still afraid?`,
+      PROMPT CHAT
+
+      100% is bad
+      0%?
+
+      PROMPT CHAT
+
+      Why not?
+
+      Failure is a currency.
+
+      Failure buys some things cheaper.
+      Boat/holes.
+
+      There are things you can only buy with failure.
+      Grit. (try again)
+      Strength. (train to failure)
+      Empathy. (you must know)
+      Solidity. (be a leader in crisis)
+      Bravery.
+      Serenditipity. (accidents require failure, accidents let us hack out of the bounds of our creativity)
+      Expertise (who would you rather have as your teacher? dumb luck or fail-to-succeed)
+      Accomplishing anything in the real world.
+      
+      Get a good deal.
+
+      Some of you are checkin your watch because you heard this before
+      You've seen the inspirational vids
+
+      SO why does it still hurt?  Why avoid?
+
+      [Music]
+      Supposed to hurt.
+
+      Size
+      We change size all the time
+      For a cheek, getting slapped is the end of the world.
+      But you aint a cheek.
+
+      How big are you?
+      This project? (failure is devestating)
+      Many projects? (lose 1 game, win the rest)
+      A whole person? (love relationships)
+      Part of a community?
+      Part of the universe?
+
+      
+      Fassilure is a currency
+      Dont be stingy. But get good deals.
+      And be big enough
+    `,
   }
 }
 
