@@ -35,9 +35,9 @@ export default class Stage extends React.Component {
         percentage: .98,
       },
       coloringBook: {},
+      darkWall: {},
       linesToDraw: [],
     };
-
   }
   
   componentDidMount () {

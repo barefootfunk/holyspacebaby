@@ -24,6 +24,7 @@ import GroupClicky from "./props/GroupClicky"
 import Pomplo from "./props/Pomplo"
 import TugOfWar from "./props/TugOfWar"
 import ColoringBook from "./props/ColoringBook"
+import DarkWall from "./props/DarkWall"
 import StarDraw from "./props/StarDraw"
 import Share from "./props/Share"
 
@@ -224,6 +225,24 @@ class Show extends React.Component {
         ),
         foregroundChildren: (
           <ColoringBook coloringBook={directorState.coloringBook} cake={directorState.cake} allowFrost={true} newParticipantEvent={newParticipantEvent}/>
+        ),
+      };
+    }
+
+
+    function darkWallScene(num,caption,tele) {
+      return {
+        name: 'cake'+num,
+        livestream: "hidden",
+        teleprompter: tele,
+        babyClass: "flight",
+        backgroundChildren: (
+          <React.Fragment>
+            <VideoBg key='campfire' srcs={['flight13.mp4']}/>
+          </React.Fragment>
+        ),
+        foregroundChildren: (
+          <DarkWall participants={directorState.participants} participantId={directorState.participantId}/>
         ),
       };
     }
@@ -538,16 +557,17 @@ class Show extends React.Component {
         ),
       },
       // `${((Object.keys(this.props.directorState.coloringBook).length/421)*100).toFixed(4)}% frosted`
-      promptScene(0,'It’s Glubgo’s birthday! Wish him a happy birthday!','Type birthday greeting','Wish well!',false,false),
-      chaosScene(0,''),
-      chaosScene(1,''),
-      chaosScene(2,''),
-      chaosScene(3,''),
-      chaosScene(4,''),
-      chaosScene(5,'<?This crashed me last time?>'),
-      chaosScene(6,'<?Everybody click one zombie at the same time to cure them?>'),
-      chaosScene(7,'<?Click repeatedly to vote?>'),
-      chaosScene(8,'<?Click cake to frost?>'),
+      darkWallScene(0,'',''),
+      // promptScene(0,'It’s Glubgo’s birthday! Wish him a happy birthday!','Type birthday greeting','Wish well!',false,false),
+      // chaosScene(0,''),
+      // chaosScene(1,''),
+      // chaosScene(2,''),
+      // chaosScene(3,''),
+      // chaosScene(4,''),
+      // chaosScene(5,'<?This crashed me last time?>'),
+      // chaosScene(6,'<?Everybody click one zombie at the same time to cure them?>'),
+      // chaosScene(7,'<?Click repeatedly to vote?>'),
+      // chaosScene(8,'<?Click cake to frost?>'),
       starDraw(0),
       {
         name: "Meditation Intro",

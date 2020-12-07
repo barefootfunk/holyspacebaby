@@ -1,0 +1,103 @@
+import React from 'react';
+// import SVG from 'react-inlinesvg';
+
+export default class DarkWall extends React.Component {
+
+  constructor (props) {
+    super(props);
+  }
+
+  // componentDidMount() {
+  //   document.getElementById('coloring-book').addEventListener('click',this.handleClick);
+  // }
+
+  getIdName = (i) => {
+    return `dark-${i}`;
+  }
+
+  handleRectMouseEnter = (e) => {
+    // if(this.props.allowFrost) {
+      if(typeof e.target.id !== 'undefined'){
+        const id = e.target.id;
+        // console.log('darkWall click id ',id)
+        this.props.newParticipantEvent({
+          type: 'darkWallClick', 
+          data: {
+            id: id,
+            color: this.randomColor(),
+          }
+        })
+      }
+    // }
+  }
+
+  stylePath = (i) => {
+    const id = this.getIdName(i);
+    const style = {};
+    if(typeof this.props.darkWall[id] !== 'undefined') {
+      style.fill = this.props.darkWall[id];
+    } else {
+      style.fill = 'black';
+    }
+    return style;
+  }
+
+  // randomColor() {
+  //   const colors = ['yellow','lime','red','orange','blue','violet','green','pink','purple','indigo','fuscia','cyan'];
+  //   return colors[Math.floor(Math.random()*colors.length)];
+  // }
+
+  rectGrid () {
+    let rects=[];
+    const size=50;
+    let i=0;
+    for (let j = 0; j < 1000/size; j++) {
+      for (let k = 0; k < 1000/size; k++) {
+        rects.push(
+          <rect 
+          key={this.getIdName(i)} 
+          id={this.getIdName(i)} 
+          onMouseEnter={this.handleRectMouseEnter}
+          onMouseLeave={this.handleRectMouseLeave} 
+          style={this.stylePath(i)} 
+          x={size*j} y={size*k}  
+          width={size} height={size}
+          />
+        );
+        i++;
+      }
+    }
+    return rects;
+  }
+
+
+  render () {
+    let i=0;
+    const rects = this.rectGrid();
+    return (
+      <React.Fragment>
+        <div style={{
+        }}>
+          {/* Made with help from SVGR */}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width={1000}
+            height={1000}
+            viewBox="0 0 1000 1000"
+            preserveAspectRatio="none"
+            style={{
+              width: '100vw',
+              height: '100vh',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              background: 'white',
+            }}
+          >
+            {rects}
+          </svg>
+        </div>
+      </React.Fragment>
+    );
+  }
+}

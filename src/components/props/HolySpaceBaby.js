@@ -81,16 +81,16 @@ export default class HolySpaceBaby extends React.Component {
   componentDidMount() {
     this.updateWindowDimensions();
     window.addEventListener('resize', this.updateWindowDimensions);
-    window.addEventListener('click', this.sendClick);
+    window.addEventListener('mousedown', this.sendClick);
     window.addEventListener('mousemove', this.handleMouseMove);
     window.addEventListener('touchstart', this.handleTouch);
 
-    this.fireflyInterval = setInterval(this.updateParticipant, 500)
+    this.fireflyInterval = setInterval(this.updateParticipant, 200)
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.updateWindowDimensions);
-    window.removeEventListener('click', this.sendClick);
+    window.removeEventListener('mousedown', this.sendClick);
     window.removeEventListener('mousemove', this.handleMouseMove);
     window.removeEventListener('touchstart', this.handleTouch);
     clearInterval(this.fireflyInterval)
