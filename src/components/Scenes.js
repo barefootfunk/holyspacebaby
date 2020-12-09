@@ -82,28 +82,28 @@ const NOTES = [
 const CONTENT = {
   meditations: [
     {
-      question: `How does failure make you feel?`,
-      placeholder: `Type a feeling`,
+      question: `What is a detail about yourself you fixate on?`,
+      placeholder: `Type a detail`,
       button: `Answer anonymously!`,
     },
     {
-      question: `What's a failure you fear?`,
-      placeholder: `Type a failure`,
+      question: `What is something you don't like about yourself or your work?`,
+      placeholder: `Type a flaw`,
       button: `Answer anonymously!`,
     },
     {
-      question: `What's a failure you've experienced?`,
-      placeholder: `Type a failure`,
+      question: `How do you know? What makes you think that?`,
+      placeholder: `Type how`,
       button: `Answer anonymously!`,
     },
     {
-      question: `How did you change after?`,
-      placeholder: `Type a lesson`,
+      question: `What is something you LIKE about yourself or your work?`,
+      placeholder: `Type a flaw`,
       button: `Answer anonymously!`,
     },
     {
-      question: `Will you ever try again?`,
-      placeholder: `Type answer`,
+      question: `How do you know? What makes you think that?`,
+      placeholder: `Type how`,
       button: `Answer anonymously!`,
     },
   ],
@@ -112,59 +112,39 @@ const CONTENT = {
     passage: `Failure is an old wisened guru atop the mountain. He will answer ANY question you ask–provided you let him punch you in the face.`,
     book: `Cowboy Jobe 1:19`,
     sermon: `
-      If you got design your life before you was born, if you could choose to have ANY amount of failure in that life. 
-      What would the right amount of failure be?
+      That Can't be me
+      Body
+      Trombone
+      Writing
 
-      PROMPT CHAT
+      Wheres Waldo -- can't see everyone
 
-      100% is bad
-      0%?
+      Cant see yourself, then
 
-      PROMPT CHAT
+      We are humble about knowin the outside world.
 
-      Why not?
+      Yet we are convinced introspection is a different situation.
+      When it comes to me, I can see the full picture.
+      When it comes to me, I have unique and privileged access to all the data simultaneously.
+      When it comes to me, 
+      I am omnicient.  
+      I all of the sudden have godlike superhuman capabilities of attention and deduction.
 
-      Failure is a currency.
+      And often, when it comes to me, I don't like what I see.  
+      And because of my godlike powers of perception, I should know.
+      Try to convince me otherwise.  But I know you're full of it, because I'll always know best what I am.
 
-      Failure buys some things cheaper.
-      Boat/holes.
+      But the truth is... YOU are a where's waldo paintin. A chaotic explosion of elements good bad and neutral.  Far too much for any eye to see at once–even yours.
 
-      There are things you can only buy with failure.
-      Grit. (try again)
-      Strength. (train to failure)
-      Empathy. (you must know)
-      Solidity. (be a leader in crisis)
-      Bravery.
-      Serenditipity. (accidents require failure, accidents let us hack out of the bounds of our creativity)
-      Expertise (who would you rather have as your teacher? dumb luck or fail-to-succeed)
-      Accomplishing anything in the real world.
-      
-      Get a good deal.
+      That false confidence, that we can see the full picture of ourselves and we can do so better than anyone else,
+      that false confidence allows us to think the judgemental voice in our head is a default source of truth rather than just some other asshole with an opinion
+      pardon my french
 
-      Some of you are checkin your watch because you heard this before
-      You've seen the inspirational vids
+      You ever done the where's waldo side quests?  They say things like "find everyone with a blue hat."  Suppose you did that.  Suppose
 
-      SO why does it still hurt?  Why avoid?
 
-      [Music]
-      Supposed to hurt.
 
-      Size
-      We change size all the time
-      For a cheek, getting slapped is the end of the world.
-      But you aint a cheek.
-
-      How big are you?
-      This project? (failure is devestating)
-      Many projects? (lose 1 game, win the rest)
-      A whole person? (love relationships)
-      Part of a community?
-      Part of the universe?
-
-      
-      Fassilure is a currency
-      Dont be stingy. But get good deals.
-      And be big enough
+      What are the chances that 10 different people looking at you see the same thing?
     `,
   }
 }
@@ -231,18 +211,28 @@ class Show extends React.Component {
 
 
     function darkWallScene(num,caption,tele) {
+      
+      let looseCount = 0;
+      Object.keys(directorState.groupClickies).map(key => {
+        if(!directorState.groupClickies[key].triggered) { looseCount++ }
+      });
+
       return {
-        name: 'cake'+num,
+        name: 'darkWall'+num,
         livestream: "hidden",
         teleprompter: tele,
         babyClass: "flight",
         backgroundChildren: (
           <React.Fragment>
-            <VideoBg key='campfire' srcs={['flight13.mp4']}/>
+            <VideoBg key='campfire' srcs={['quantum.mp4']}/>
           </React.Fragment>
         ),
         foregroundChildren: (
-          <DarkWall participants={directorState.participants} participantId={directorState.participantId}/>
+          <React.Fragment>
+            <DarkWall participants={directorState.participants} participantId={directorState.participantId}/>
+            <div className="layout-top-edge -no-pointer rainbow-text"><p>Many people clicking together will zap an atom.</p></div>
+            <div className="layout-bottom-edge -no-pointer rainbow-text"><p>{looseCount} atoms loose</p></div>
+          </React.Fragment>
         ),
       };
     }
@@ -701,9 +691,14 @@ class Show extends React.Component {
         {typeof currentScene.foregroundChildren !== 'undefined' && currentScene.foregroundChildren}
        
 
-        {directorState.groupClickies && Object.keys(directorState.groupClickies).map((key,index) =>{
-          return (<GroupClicky clicky={directorState.groupClickies[key]} key={key} activeParticipantCount={directorState.activeParticipantCount} clickyId={key} newParticipantEvent={newParticipantEvent} />)
-        })}
+        {directorState.groupClickies && 
+          <React.Fragment>
+
+            {Object.keys(directorState.groupClickies).map((key,index) =>{
+              return (<GroupClicky clicky={directorState.groupClickies[key]} key={key} activeParticipantCount={directorState.activeParticipantCount} clickyId={key} newParticipantEvent={newParticipantEvent} />)
+            })}
+          </React.Fragment>
+        }
 
         <HolySpaceBaby babyClass={typeof currentScene.babyClass !== 'undefined' ?  currentScene.babyClass : ''} hatNumber={babyHat}  color={babyColorString} newParticipantEvent={newParticipantEvent}/>
 

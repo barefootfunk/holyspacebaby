@@ -114,18 +114,20 @@ export default class DarkWall extends React.Component {
 
     Object.keys(this.circles).map((key,index) => {
 
-      this.circles[key].x += (this.props.participants[key].x - this.circles[key].x) * 0.16;
-      this.circles[key].y += (this.props.participants[key].y - this.circles[key].y) * 0.16;
+      if (this.props.participants[key].mode !=='performer' && !this.props.participants[key].inactive) {
+        this.circles[key].x += (this.props.participants[key].x - this.circles[key].x) * 0.16;
+        this.circles[key].y += (this.props.participants[key].y - this.circles[key].y) * 0.16;
 
 
-      const circle = this.circles[key];
-      // console.log(circle.x, circle.y);
+        const circle = this.circles[key];
+        // console.log(circle.x, circle.y);
 
-      const x = circle.x*this.darknessWidth;
-      const y = circle.y*this.darknessHeight;
-      this.holeSpriteCtx.beginPath();
-      this.holeSpriteCtx.arc(x, y, this.darknessWidth/30, 0, Math.PI*2);
-      this.holeSpriteCtx.fill();
+        const x = circle.x*this.darknessWidth;
+        const y = circle.y*this.darknessHeight;
+        this.holeSpriteCtx.beginPath();
+        this.holeSpriteCtx.arc(x, y, 40, 0, Math.PI*2);
+        this.holeSpriteCtx.fill();
+      }
     })
 
     this.holeSprite.texture.update();
@@ -150,7 +152,13 @@ export default class DarkWall extends React.Component {
   render() {
 
     return (
-      <div ref={(thisDiv) => {this.gameCanvas = thisDiv}} />
+      <div ref={(thisDiv) => {this.gameCanvas = thisDiv}} style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        zIndex: 0,
+        pointerEvents: 'none',
+      }}/>
     );
   }
 }

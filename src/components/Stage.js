@@ -151,16 +151,16 @@ export default class Stage extends React.Component {
               <button id="next-scene" onClick={() => {this.updateDirectorState({scene: scene+1})}}>Next</button>
               <div className="small-buttons">
                 <button className={rehearsal?'-on':'-off'} onClick={() => {this.updateDirectorState({rehearsal: !rehearsal})}}>Rehearsing</button><br/>
-                <button
+                {/* <button
                   onClick={() => {this.updateDirectorState({
                     cake: {
                       percentage: 0.98,
                     },
                     coloringBook: {},
-                  })}}>Defrost Cake</button><br/>
-                <button onClick={() => { this.newParticipantEvent({type: 'groupClickyAdd'}) }}>Zombie</button><br/>
-                <button onClick={() => { this.newParticipantEvent({type: 'clearGroupClickies'}) }}>Clear Zombies</button><br/>
-                <button onClick={() => { this.newParticipantEvent({type: 'clearTugOfWars'}) }}>Clear Tug</button>
+                  })}}>Defrost Cake</button><br/> */}
+                <button onClick={() => { this.newParticipantEvent({type: 'groupClickyAdd'}) }}>Atom</button><br/>
+                <button onClick={() => { this.newParticipantEvent({type: 'clearGroupClickies'}) }}>Clear Atoms</button><br/>
+                {/* <button onClick={() => { this.newParticipantEvent({type: 'clearTugOfWars'}) }}>Clear Tug</button> */}
               </div>
             </div>
             <div id="participant-stats">{activeParticipantCount}</div>

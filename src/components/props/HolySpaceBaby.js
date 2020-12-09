@@ -41,6 +41,8 @@ export default class HolySpaceBaby extends React.Component {
   }
 
   handleTouch = (e) => {
+    this.sendClick();
+    
     if(!this.state.touch) {
       window.removeEventListener('mousemove', this.handleMouseMove);
     }

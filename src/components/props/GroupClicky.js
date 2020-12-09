@@ -1,16 +1,16 @@
 import React from 'react';
-import zombieImage1 from '../../img/zombie/zombie1.gif';
-import zombieImage2 from '../../img/zombie/zombie2.gif';
-import zombieImage3 from '../../img/zombie/zombie3.gif';
-import zombieImage4 from '../../img/zombie/zombie4.gif';
-import zombieImage5 from '../../img/zombie/zombie5.gif';
+import zombieImage1 from '../../img/atomic-dog/atom.gif';
+// import zombieImage2 from '../../img/zombie/zombie2.gif';
+// import zombieImage3 from '../../img/zombie/zombie3.gif';
+// import zombieImage4 from '../../img/zombie/zombie4.gif';
+// import zombieImage5 from '../../img/zombie/zombie5.gif';
 import curedImage1 from '../../img/zombie/cured1.gif';
 import curedImage2 from '../../img/zombie/cured2.gif';
 import curedImage3 from '../../img/zombie/cured3.gif';
 import curedImage4 from '../../img/zombie/cured4.gif';
 import curedImage5 from '../../img/zombie/cured5.gif';
 
-const zombieImages = [zombieImage1,zombieImage2,zombieImage3,zombieImage4,zombieImage5]
+const zombieImages = [zombieImage1]
 const curedImages = [curedImage1,curedImage2,curedImage3,curedImage4,curedImage5]
 
 // Import all samples
@@ -73,76 +73,84 @@ export default class GroupClicky extends React.Component {
     const {triggered, percentage, image, firing} = clicky;
     const {percentageChanging, percentageChange} = this.state;
 
-    const zombieY = clicky.y<0.5 ? clicky.y*.25+.10 : clicky.y*.25+.65;
+    const zombieY = clicky.y*0.8+.1; //clicky.y<0.5 ? clicky.y*.25+.10 : clicky.y*.25+.65;
     const zombieX = clicky.x*0.8+.1;
     const centerX = 0.5;
     const centerY = 0.5;
     
     return (
       <React.Fragment>
-        <div 
-          style={{
-            background: `radial-gradient(${percentageChanging ? (percentageChange>0 ? 'white' : 'red' ): 'black'} 0%, transparent 70%)`,
-            position: 'fixed',
-            transform: `translate(-50%,-50%) rotate(45deg)`,
-            top: `${zombieY*100}vh`,
-            left: `${zombieX*100}vw`,
-            pointerEvents: triggered ? 'none' : 'auto',
-          }}
-          key={clickyId}
-        >
-          <button 
-            onClick={()=>{
-              newParticipantEvent({
-                type: 'groupClickyClick', 
-                data: {
-                  clickyId: clickyId,
-                }
-              })
-            }}
+        
+          <div 
             style={{
-              transform: triggered ? 'scale(0.9)' : `scale(${1-percentage})`,
-              transition: 'transform 0.1s',
-              backgroundColor: 'transparent',
-              backgroundImage: `url(${ triggered ? curedImages[image]:zombieImages[image]})`,
-              backgroundSize: 'contain',
-              backgroundRepeat: 'no-repeat',
-              backgroundPosition: 'center',
-              border: 0,
-              outline: 0,
-              width: 150,
-              height: 150,
-              color: 'white',
-              curosr: 'pointer',
+              background: `radial-gradient(${percentageChanging ? (percentageChange>0 ? 'white' : 'red' ): 'black'} 0%, transparent 70%)`,
+              position: 'fixed',
+              transform: `translate(-50%,-50%)`,
+              top: `${zombieY*100}vh`,
+              left: `${zombieX*100}vw`,
+              pointerEvents: triggered ? 'none' : 'auto',
+              zIndex: -1,
             }}
-          />
+            key={clickyId}
+          >
+            <button 
+              onClick={()=>{
+                newParticipantEvent({
+                  type: 'groupClickyClick', 
+                  data: {
+                    clickyId: clickyId,
+                  }
+                })
+              }}
+              style={{
+                transform: triggered ? 'scale(0.9)' : `scale(${1-percentage})`,
+                transition: 'transform 0.1s',
+                backgroundColor: 'transparent',
+                backgroundImage: `url(${ triggered ? curedImages[image]:zombieImages[0]})`, //`url(${ triggered ? curedImages[image]:zombieImages[image]})`,
+                backgroundSize: 'contain',
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: 'center',
+                border: 0,
+                outline: 0,
+                width: 80,
+                height: 80,
+                color: 'white',
+                cursor: 'pointer',
+              }}
+            />
+          </div>
+          {(clicky.nClickers>=1 ||  triggered) &&
             <span 
               style={{
-                fontSize: '0.5em',
-                position: 'absolute',
-                bottom: '10%',
-                left: '40%',
+                fontSize: '0.7em',
+                position: 'fixed',
+                top: `calc(${zombieY*100}vh + 40px)`,
+                left: `${zombieX*100}vw`,
                 background: 'black',
-                border: '1px solid white',
                 padding: '0.2em 0.2em 0.1em',
                 pointerEvents: 'none',
-              }}
-            >{triggered ? 'CURED!': `${(100*clicky.percentage).toFixed(4)}% cured`}</span>
-        </div>
+                animation: 'rainbow-text 2s linear infinite',
+                zIndex: 10,
+                textAlign: 'center',
+              }}å
+            >{triggered ? 'ZAPPED!': (<span>{`${clicky.nClickers} of ${clicky.nNeeded}`}<br/><span style={{ fontSize: `0.7em` }}>clickers needed</span></span>)}</span>
+          }
+{/* 
+          {firing && <div 
+          style={{
+            transform: `rotate(${Math.atan2(centerY*window.innerHeight - zombieY*window.innerHeight, centerX*window.innerWidth - zombieX*window.innerWidth) * 180 / Math.PI}deg)`,
+            width: `${Math.sqrt((zombieX*window.innerWidth-centerX*window.innerWidth)*(zombieX*window.innerWidth-centerX*window.innerWidth) + (zombieY*window.innerHeight-centerY*window.innerHeight)*(zombieY*window.innerHeight-centerY*window.innerHeight))}px`,
+            left: `${zombieX*100}vw`, 
+            top: `calc( ${zombieY*100}vh - 30px )`,
+            position: `fixed`,
+            background: 'linear-gradient(to top, transparent 0%, red 50%, transparent 100%)',
+            transformOrigin: '0% 0%',
+            height: 10,
+            animation: 'flicker 0.1s infinite alternate',
+          }} 
+          />}*/}
 
-        {firing && <div 
-        style={{
-          transform: `rotate(${Math.atan2(centerY*window.innerHeight - zombieY*window.innerHeight, centerX*window.innerWidth - zombieX*window.innerWidth) * 180 / Math.PI}deg)`,
-          width: `${Math.sqrt((zombieX*window.innerWidth-centerX*window.innerWidth)*(zombieX*window.innerWidth-centerX*window.innerWidth) + (zombieY*window.innerHeight-centerY*window.innerHeight)*(zombieY*window.innerHeight-centerY*window.innerHeight))}px`,
-          left: `${zombieX*100}vw`, 
-          top: `calc( ${zombieY*100}vh - 30px )`,
-          position: `fixed`,
-          background: 'linear-gradient(to top, transparent 0%, red 50%, transparent 100%)',
-          transformOrigin: '0% 0%',
-          height: 10,
-          animation: 'flicker 0.1s infinite alternate',
-        }}
-        />}
+        
       </React.Fragment>
     );
   }
