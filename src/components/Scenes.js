@@ -109,7 +109,7 @@ const CONTENT = {
   ],
   gospel: {
     // passage: ``,
-    passage: `Failure is an old wisened guru atop the mountain. He will answer ANY question you ask–provided you let him punch you in the face.`,
+    passage: `You are a Where's Waldo painting.  A fractal explosion of uncountable elements–good, bad and neutral.  Don't kid yourself that you can make perfect sense of it.`,
     book: `Cowboy Jobe 1:19`,
     sermon: `
       That Can't be me
