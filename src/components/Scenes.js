@@ -31,6 +31,8 @@ import Share from "./props/Share"
 // Sounds
 import cheer1Sound from '../sounds/cheer1.mp3';
 
+import {initAmplitude, sendAmplitudeData} from './utilities/amplitude';
+
 
 // Twitch
 // This has to be shut off for gatsby build because of breaking reference to window
@@ -68,6 +70,8 @@ const DATE_THIS = 'DEC 10';
 const DATE_NEXT = '';
 const CAL_ID_THIS = '5fc728379c997c0089df835f';
 const CAL_ID_NEXT = '';
+const CAL_ID_TEST = '5fd13dcc04ea890a70fa3960';
+
 
 const EP_NUMBER = '13';
 const THEME = 'attention';
@@ -281,7 +285,12 @@ class Show extends React.Component {
       foregroundChildren: (
         <React.Fragment>
           <VideoBg key='campfire' srcs={['campfire.mp4']}/>
-          <CTA calEventId={CAL_ID_THIS} nextCeremonyDate={DATE_THIS}><p>The world's first interactive electric trombone livestream adventure.  Here. Every Thursday 7p CT.</p></CTA>
+          <CTA calEventId={CAL_ID_THIS} nextCeremonyDate={DATE_THIS}><p>The world's first interactive electric trombone livestream adventure.  Here. Every Thursday 7p CT. <a href={`https://add.eventable.com/events/5f8edeb953314b00158b2ff5/${CAL_ID_TEST}/`} 
+          onClick={() => {
+            sendAmplitudeData('add-to-calendar', {}); 
+          }}
+          target="_blank">Help test!</a></p></CTA>
+
       </React.Fragment>
       ),
     };
