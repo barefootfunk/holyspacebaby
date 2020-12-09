@@ -69,8 +69,8 @@ const DATE_NEXT = '';
 const CAL_ID_THIS = '5fc728379c997c0089df835f';
 const CAL_ID_NEXT = '';
 
-const EP_NUMBER = '12';
-const THEME = 'failure';
+const EP_NUMBER = '13';
+const THEME = 'attention';
 
 const BULLETIN = `Click on Zombies at same time`;
 
