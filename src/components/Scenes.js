@@ -558,7 +558,7 @@ class Show extends React.Component {
       // chaosScene(6,'<?Everybody click one zombie at the same time to cure them?>'),
       // chaosScene(7,'<?Click repeatedly to vote?>'),
       // chaosScene(8,'<?Click cake to frost?>'),
-      starDraw(0),
+      // starDraw(0),
       {
         name: "Meditation Intro",
         livestream: "tiny",
