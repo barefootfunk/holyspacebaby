@@ -86,28 +86,23 @@ const NOTES = [
 const CONTENT = {
   meditations: [
     {
-      question: `What is a detail about yourself you fixate on?`,
+      question: `What is something you constantly fixate on in your work, studies, what you do?`,
       placeholder: `Type a detail`,
       button: `Answer anonymously!`,
     },
     {
-      question: `What is something you don't like about yourself or your work?`,
-      placeholder: `Type a flaw`,
+      question: `What is something you constantly fixate on in others?`,
+      placeholder: `Type a detail`,
       button: `Answer anonymously!`,
     },
     {
-      question: `How do you know? What makes you think that?`,
-      placeholder: `Type how`,
+      question: `What is something NEGATIVE you constantly fixate on about yourself?`,
+      placeholder: `Type a detail`,
       button: `Answer anonymously!`,
     },
     {
-      question: `What is something you LIKE about yourself or your work?`,
-      placeholder: `Type a flaw`,
-      button: `Answer anonymously!`,
-    },
-    {
-      question: `How do you know? What makes you think that?`,
-      placeholder: `Type how`,
+      question: `What is something POSITIVE you constantly fixate on about yourself?`,
+      placeholder: `Type a detail`,
       button: `Answer anonymously!`,
     },
   ],
@@ -225,7 +220,7 @@ class Show extends React.Component {
         name: 'darkWall'+num,
         livestream: "hidden",
         teleprompter: tele,
-        babyClass: "flight",
+        babyClass: "micro",
         backgroundChildren: (
           <React.Fragment>
             <VideoBg key='campfire' srcs={['quantum.mp4']}/>
@@ -233,9 +228,16 @@ class Show extends React.Component {
         ),
         foregroundChildren: (
           <React.Fragment>
-            <DarkWall participants={directorState.participants} participantId={directorState.participantId}/>
-            <div className="layout-top-edge -no-pointer rainbow-text"><p>Many people clicking together will zap an atom.</p></div>
-            <div className="layout-bottom-edge -no-pointer rainbow-text"><p>{looseCount} atoms loose</p></div>
+            <DarkWall participants={directorState.participants} difficulty={directorState.difficulty} participantId={directorState.participantId}/>
+            {caption ? 
+            (<React.Fragment>
+              <div className="layout-top-edge -no-pointer rainbow-text"><p>{caption}</p></div>
+            </React.Fragment>) :
+            (<React.Fragment>
+              <div className="layout-top-edge -no-pointer rainbow-text"><p>Everyone must click an atom TOGETHER to zap it.</p></div>
+              <div className="layout-bottom-edge -no-pointer rainbow-text"><p>{looseCount} atoms loose</p></div>
+            </React.Fragment>) 
+            }
           </React.Fragment>
         ),
       };
@@ -303,8 +305,9 @@ class Show extends React.Component {
         teleprompter: `${question}`,
         backgroundChildren: (
           <React.Fragment>
-            
-            <VideoBg key='glub' srcs={['glubgo.gif']} classes="bg-video--portal bg-video--corner"/>
+            <VideoBg key={`calm${num}`} srcs={FLIGHT_BGS} />
+            <div id="atomic-dog"><button/></div>
+            {/* <VideoBg key='glub' srcs={['glubgo.gif']} classes="bg-video--portal bg-video--corner"/> */}
           </React.Fragment>
         ),
         foregroundChildren: (
@@ -555,8 +558,19 @@ class Show extends React.Component {
           </React.Fragment>
         ),
       },
-      // `${((Object.keys(this.props.directorState.coloringBook).length/421)*100).toFixed(4)}% frosted`
-      darkWallScene(0,'',''),
+      promptScene(0,'Woof. I am the atomic dog... powered by ancient nuclear fusion tech. But my atoms are escaping!  Will you save me?','Type answer here','Pledge!','atoms.gif',false),
+      promptScene(1,'Thanks.  I will now shrink you down to micro-quantum size.  Tiny chance it will melt you.  If so, any final requests?','Type request','Request!','shrink-ray.gif',false),
+      
+      darkWallScene(0,'You are now small and can only observe a tiny quantum window in front of you.','You are small'),
+      darkWallScene(0,false,'Bryant, RELEASE THE ATOMS'),
+      
+      // promptScene(1,'Thank you.  I will now shrink you down to micro-quantum size.  Tiny chance it will melt you.  If so, any final requests?','Type request','Request!',false,false),
+      
+      // tugOfWarScene(0,'You now have enough atoms to save atomic dog OR power all of earth.',
+      //   {caption},
+      //   {side2}
+      // )
+
       // promptScene(0,'It’s Glubgo’s birthday! Wish him a happy birthday!','Type birthday greeting','Wish well!',false,false),
       // chaosScene(0,''),
       // chaosScene(1,''),
@@ -588,7 +602,7 @@ class Show extends React.Component {
       meditationScene(1,CONTENT.meditations[1]),
       meditationScene(2,CONTENT.meditations[2]),
       meditationScene(3,CONTENT.meditations[3]),
-      meditationScene(4,CONTENT.meditations[4]),
+      // meditationScene(4,CONTENT.meditations[4]),
       {
         name: "Sermon",
         babyClass: "hidden",
@@ -704,7 +718,7 @@ class Show extends React.Component {
           <React.Fragment>
 
             {Object.keys(directorState.groupClickies).map((key,index) =>{
-              return (<GroupClicky clicky={directorState.groupClickies[key]} key={key} activeParticipantCount={directorState.activeParticipantCount} clickyId={key} newParticipantEvent={newParticipantEvent} />)
+              return (<GroupClicky clicky={directorState.groupClickies[key]} key={key} activeParticipantCount={directorState.activeParticipantCount} clickyId={key} newParticipantEvent={newParticipantEvent} mode={mode} />)
             })}
           </React.Fragment>
         }

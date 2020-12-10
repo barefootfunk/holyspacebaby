@@ -79,6 +79,11 @@
   &.flight {
     --spin-time: 4s;
   }
+  &.micro {
+    --spin-time: 4s;
+    width: calc(var(--baby-size) /3);
+    height: calc(var(--baby-size) /3);
+  }
 
 
   &.chaos {

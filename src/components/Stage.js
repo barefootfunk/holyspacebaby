@@ -37,6 +37,7 @@ export default class Stage extends React.Component {
       coloringBook: {},
       darkWall: {},
       linesToDraw: [],
+      difficulty: 0
     };
   }
   
@@ -135,7 +136,7 @@ export default class Stage extends React.Component {
 
 
   render () {
-    const {scene, connected, activeParticipantCount, messages, responses, rehearsal} = this.state;
+    const {scene, connected, activeParticipantCount, messages, responses, rehearsal,difficulty} = this.state;
     const {mode} = this.props;
 
     return (
@@ -151,6 +152,7 @@ export default class Stage extends React.Component {
               <button id="next-scene" onClick={() => {this.updateDirectorState({scene: scene+1})}}>Next</button>
               <div className="small-buttons">
                 <button className={rehearsal?'-on':'-off'} onClick={() => {this.updateDirectorState({rehearsal: !rehearsal})}}>Rehearsing</button><br/>
+                <button onClick={() => {this.updateDirectorState({difficulty: ((difficulty+1) % 5) })}}>Difficulty: {difficulty}</button><br/>
                 {/* <button
                   onClick={() => {this.updateDirectorState({
                     cake: {

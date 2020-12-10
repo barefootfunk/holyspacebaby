@@ -125,7 +125,7 @@ export default class DarkWall extends React.Component {
         const x = circle.x*this.darknessWidth;
         const y = circle.y*this.darknessHeight;
         this.holeSpriteCtx.beginPath();
-        this.holeSpriteCtx.arc(x, y, 40, 0, Math.PI*2);
+        this.holeSpriteCtx.arc(x, y, 40-(this.props.difficulty*7), 0, Math.PI*2);
         this.holeSpriteCtx.fill();
       }
     })

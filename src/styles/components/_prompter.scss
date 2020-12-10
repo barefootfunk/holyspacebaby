@@ -8,7 +8,7 @@
   width: 350px !important;
   p {
     display: block;
-    max-width: 250px;
+    max-width: 330px;
   }
   .error {
     color: red;
@@ -129,7 +129,7 @@
   position: fixed;
   background-color: black;
   border-radius: 50%;
-  background-size: auto 80%;
+  background-size: cover; //auto 80%;
   background-position: center center;
   animation: portal-open 5s forwards;
   background-repeat: no-repeat;
@@ -139,10 +139,10 @@
 
   @include media(md) {
     top: 5%;
-    left: 10%;
-    width: 80%;
+    left: 25%;
+    width: 50%;
     height: 50%;
-    background-size: auto 100%;
+    background-size: cover; //auto 100%;
   }
 }
 

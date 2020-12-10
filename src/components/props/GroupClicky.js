@@ -73,7 +73,7 @@ export default class GroupClicky extends React.Component {
     const {triggered, percentage, image, firing} = clicky;
     const {percentageChanging, percentageChange} = this.state;
 
-    const zombieY = clicky.y*0.8+.1; //clicky.y<0.5 ? clicky.y*.25+.10 : clicky.y*.25+.65;
+    const zombieY = clicky.y*0.7+.1; //clicky.y<0.5 ? clicky.y*.25+.10 : clicky.y*.25+.65;
     const zombieX = clicky.x*0.8+.1;
     const centerX = 0.5;
     const centerY = 0.5;
@@ -89,7 +89,7 @@ export default class GroupClicky extends React.Component {
               top: `${zombieY*100}vh`,
               left: `${zombieX*100}vw`,
               pointerEvents: triggered ? 'none' : 'auto',
-              zIndex: -1,
+              zIndex: this.props.mode==='performer' ? 1 : -1,
             }}
             key={clickyId}
           >
