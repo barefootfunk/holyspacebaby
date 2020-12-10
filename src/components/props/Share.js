@@ -1,5 +1,9 @@
 import React from 'react';
 
+// Amplitude
+import {initAmplitude, sendAmplitudeData} from '../utilities/amplitude';
+
+
 class Copy extends React.Component {
 
   constructor(props) {
@@ -9,11 +13,13 @@ class Copy extends React.Component {
   }
 
   copyToClipboard = (e) => {
+    e.preventDefault();
     this.textArea.select();
     document.execCommand('copy');
     // This is just personal preference.
     // I prefer to not show the whole text area selected.
     e.target.focus();
+    sendAmplitudeData('url-copied-for-share', {}); 
     this.setState({ copySuccess: 'Copied!' });
   };
 
