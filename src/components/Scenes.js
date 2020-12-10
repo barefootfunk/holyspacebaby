@@ -111,40 +111,29 @@ const CONTENT = {
     passage: `You are a Where's Waldo painting.  A fractal explosion of uncountable elements–good, bad and neutral.  Don't kid yourself that you can make perfect sense of it.`,
     book: `Cowboy Jobe 1:19`,
     sermon: `
-      That Can't be me
-      Body
-      Trombone
-      Writing
+      Story: body
+      Story: trombone
 
-      Wheres Waldo -- can't see everyone
+      Eating Disorder Eye Tracking
+      Flat Earth
 
-      Cant see yourself, then
+      [Music]
+      Where's Waldo
+      Cant see all at once
+      100 people see different things
+      your opinion only a little better
 
-      We are humble about knowin the outside world.
+      [Music]
+      Snap judgements? How many blue hats?
+      Are you a good person?
+      We know we our view of the world is limited
+      But we think we're gods when it comes to self-understanding
 
-      Yet we are convinced introspection is a different situation.
-      When it comes to me, I can see the full picture.
-      When it comes to me, I have unique and privileged access to all the data simultaneously.
-      When it comes to me, 
-      I am omnicient.  
-      I all of the sudden have godlike superhuman capabilities of attention and deduction.
-
-      And often, when it comes to me, I don't like what I see.  
-      And because of my godlike powers of perception, I should know.
-      Try to convince me otherwise.  But I know you're full of it, because I'll always know best what I am.
-
-      But the truth is... YOU are a where's waldo paintin. A chaotic explosion of elements good bad and neutral.  Far too much for any eye to see at once–even yours.
-
-      That false confidence, that we can see the full picture of ourselves and we can do so better than anyone else,
-      that false confidence allows us to think the judgemental voice in our head is a default source of truth rather than just some other asshole with an opinion
-      pardon my french
-
-      You ever done the where's waldo side quests?  They say things like "find everyone with a blue hat."  Suppose you did that.  Suppose
-
-
-
-      What are the chances that 10 different people looking at you see the same thing?
-    `,
+      [Silence]
+      Skeptical
+      Just another voice
+      Free to just be
+   `,
   }
 }
 
