@@ -67,9 +67,9 @@ const FLIGHT_BGS = [
 
 //https://dashboard.eventable.com/
 const DATE_THIS = 'DEC 10';
-const DATE_NEXT = '';
+const DATE_NEXT = 'DEC 17';
 const CAL_ID_THIS = '5fc728379c997c0089df835f';
-const CAL_ID_NEXT = '';
+const CAL_ID_NEXT = '5fd13d744bc5e103b18004ac';
 const CAL_ID_TEST = '5fd13dcc04ea890a70fa3960';
 
 
@@ -632,6 +632,7 @@ class Show extends React.Component {
           <React.Fragment>
             <VideoBg key='campfire' srcs={['campfire.mp4']}/>
             <CTA calEventId={CAL_ID_NEXT} nextCeremonyDate={DATE_NEXT}></CTA>
+            <div className="layout-center"><Share /></div>
             <TipJar/>
           </React.Fragment>
         ),

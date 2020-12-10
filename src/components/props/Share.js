@@ -38,7 +38,7 @@ class Copy extends React.Component {
 export default class Share extends React.Component {
   render () {
     return (
-      <div id="share" className="layout-bottom">
+      <div id="share" className="layout-bottom text-box">
         <div style={{texAlign: 'center'}}>Spread the good word:</div>
         <Copy />
         {/* <p>Message your friends: <div style={{fontFamily:'courier new', fontSize:'0.5em'}} className="-selectable"><a href="https://www.holyspace.baby">https://www.holyspace.baby</a></div></p> */}
