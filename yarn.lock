@@ -11051,6 +11051,11 @@ pixelworks@1.1.0:
   resolved "https://registry.yarnpkg.com/pixelworks/-/pixelworks-1.1.0.tgz#1f095ad48dca8bf8a1c8258e0092031a44f22ca5"
   integrity sha1-Hwla1I3Ki/ihyCWOAJIDGkTyLKU=
 
+pixi-particles@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/pixi-particles/-/pixi-particles-4.3.0.tgz#bd27f54c3af480e0cab5ea50573bb06200137a5e"
+  integrity sha512-3G66vSFMbp+LnD3P6SYIxOo3f1X3yxkPbP1Tr2o+o18ZkkT6mePpCvsPUrM8s+xCW7oK816/wDYZXMtKzJ61CQ==
+
 pixi.js@^5.3.3:
   version "5.3.3"
   resolved "https://registry.yarnpkg.com/pixi.js/-/pixi.js-5.3.3.tgz#6e326a52542f4acd97ea3f8593cb0aeae502df9a"

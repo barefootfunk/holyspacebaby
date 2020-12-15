@@ -208,15 +208,15 @@ class Show extends React.Component {
         name: 'monster'+num,
         livestream: "hidden",
         teleprompter: tele,
-        babyClass: "flight",
+        babyClass: "micro",
         backgroundChildren: (
           <React.Fragment>
-            <VideoBg key='campfire' srcs={['quantum.mp4']}/>
+            <VideoBg key='monster' srcs={['aurora.mp4']}/>
           </React.Fragment>
         ),
         foregroundChildren: (
           <React.Fragment>
-            <Monster participants={directorState.participants} difficulty={directorState.difficulty} participantId={directorState.participantId} monster={directorState.monster} />
+            <Monster participants={directorState.participants} baddies={directorState.baddies} difficulty={directorState.difficulty} participantId={directorState.participantId} monster={directorState.monster} />
             {caption ? 
             (<React.Fragment>
               <div className="layout-top-edge -no-pointer rainbow-text"><p>{caption}</p></div>

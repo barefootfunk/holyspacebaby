@@ -29,6 +29,7 @@
     "luxon": "^1.25.0",
     "netlify-cms-app": "^2.12.20",
     "node-sass": "^4.14.1",
+    "pixi-particles": "^4.3.0",
     "pixi.js": "^5.3.3",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",

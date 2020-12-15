@@ -61,7 +61,7 @@
 }
 
 #scene-darkwall0, #scene-darkwall1, #scene-monster0, #scene-monster1 {
-  .firefly .light {
+  .firefly .light, .firefly .click {
     display: none;
   }
 }
