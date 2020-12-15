@@ -35,8 +35,13 @@ export default class Stage extends React.Component {
         percentage: .98,
       },
       coloringBook: {},
-      darkWall: {},
       linesToDraw: [],
+      monster: {
+        x: .5,
+        y: .5,
+        velX: 0,
+        velY: 0,
+      },
       difficulty: 0
     };
   }

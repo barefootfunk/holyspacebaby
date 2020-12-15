@@ -24,7 +24,7 @@ import GroupClicky from "./props/GroupClicky"
 import Pomplo from "./props/Pomplo"
 import TugOfWar from "./props/TugOfWar"
 import ColoringBook from "./props/ColoringBook"
-import DarkWall from "./props/DarkWall"
+import Monster from "./props/Monster"
 import StarDraw from "./props/StarDraw"
 import Share from "./props/Share"
 
@@ -197,19 +197,18 @@ class Show extends React.Component {
       };
     }
 
-
-    function darkWallScene(num,caption,tele) {
+    function monsterScene(num,caption,tele) {
       
-      let looseCount = 0;
-      Object.keys(directorState.groupClickies).map(key => {
-        if(!directorState.groupClickies[key].triggered) { looseCount++ }
-      });
+      // let looseCount = 0;
+      // Object.keys(directorState.groupClickies).map(key => {
+      //   if(!directorState.groupClickies[key].triggered) { looseCount++ }
+      // });
 
       return {
-        name: 'darkWall'+num,
+        name: 'monster'+num,
         livestream: "hidden",
         teleprompter: tele,
-        babyClass: "micro",
+        babyClass: "flight",
         backgroundChildren: (
           <React.Fragment>
             <VideoBg key='campfire' srcs={['quantum.mp4']}/>
@@ -217,20 +216,53 @@ class Show extends React.Component {
         ),
         foregroundChildren: (
           <React.Fragment>
-            <DarkWall participants={directorState.participants} difficulty={directorState.difficulty} participantId={directorState.participantId}/>
+            <Monster participants={directorState.participants} difficulty={directorState.difficulty} participantId={directorState.participantId} monster={directorState.monster} />
             {caption ? 
             (<React.Fragment>
               <div className="layout-top-edge -no-pointer rainbow-text"><p>{caption}</p></div>
             </React.Fragment>) :
             (<React.Fragment>
-              <div className="layout-top-edge -no-pointer rainbow-text"><p>Everyone must click an atom TOGETHER to zap it.</p></div>
-              <div className="layout-bottom-edge -no-pointer rainbow-text"><p>{looseCount} atoms loose</p></div>
+              <div className="layout-top-edge -no-pointer rainbow-text"><p>Click to release cheese fragrance and attract monster.</p></div>
             </React.Fragment>) 
             }
           </React.Fragment>
         ),
       };
     }
+
+    // function darkWallScene(num,caption,tele) {
+      
+    //   let looseCount = 0;
+    //   Object.keys(directorState.groupClickies).map(key => {
+    //     if(!directorState.groupClickies[key].triggered) { looseCount++ }
+    //   });
+
+    //   return {
+    //     name: 'darkWall'+num,
+    //     livestream: "hidden",
+    //     teleprompter: tele,
+    //     babyClass: "micro",
+    //     backgroundChildren: (
+    //       <React.Fragment>
+    //         <VideoBg key='campfire' srcs={['quantum.mp4']}/>
+    //       </React.Fragment>
+    //     ),
+    //     foregroundChildren: (
+    //       <React.Fragment>
+    //         <DarkWall participants={directorState.participants} difficulty={directorState.difficulty} participantId={directorState.participantId}/>
+    //         {caption ? 
+    //         (<React.Fragment>
+    //           <div className="layout-top-edge -no-pointer rainbow-text"><p>{caption}</p></div>
+    //         </React.Fragment>) :
+    //         (<React.Fragment>
+    //           <div className="layout-top-edge -no-pointer rainbow-text"><p>Everyone must click an atom TOGETHER to zap it.</p></div>
+    //           <div className="layout-bottom-edge -no-pointer rainbow-text"><p>{looseCount} atoms loose</p></div>
+    //         </React.Fragment>) 
+    //         }
+    //       </React.Fragment>
+    //     ),
+    //   };
+    // }
 
     function starDraw(num) {
       return {
@@ -550,8 +582,8 @@ class Show extends React.Component {
       promptScene(0,'Woof. I am the atomic dog... powered by ancient nuclear fusion tech. But my atoms are escaping!  Will you save me?','Type answer here','Pledge!','atoms.gif',false),
       promptScene(1,'Thanks.  I will now shrink you down to micro-quantum size.  Tiny chance it will melt you.  If so, any final requests?','Type request','Request!','shrink-ray.gif',false),
       
-      darkWallScene(0,'You are now small and can only observe a tiny quantum window in front of you.','You are small'),
-      darkWallScene(0,false,'Bryant, RELEASE THE ATOMS'),
+      monsterScene(0,'You are now small and can only observe a tiny quantum window in front of you.','You are small'),
+      monsterScene(0,false,'Bryant, RELEASE THE ATOMS'),
       
       // promptScene(1,'Thank you.  I will now shrink you down to micro-quantum size.  Tiny chance it will melt you.  If so, any final requests?','Type request','Request!',false,false),
       
