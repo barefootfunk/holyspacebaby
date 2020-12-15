@@ -186,7 +186,7 @@ export default class Monster extends React.Component {
       if(baddy.dying) {
         this.baddies[index].dyingTime+=1;
         this.baddies[index].death.clear();
-        this.baddies[index].death.beginFill(0xff0000);
+        this.baddies[index].death.beginFill(0x18f601);
         this.baddies[index].death.drawCircle(this.baddies[index].x, this.baddies[index].y, this.baddies[index].dyingTime*30);
         this.baddies[index].death.endFill();
       } else {

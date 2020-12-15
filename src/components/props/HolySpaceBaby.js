@@ -87,7 +87,7 @@ export default class HolySpaceBaby extends React.Component {
     window.addEventListener('mousemove', this.handleMouseMove);
     window.addEventListener('touchstart', this.handleTouch);
 
-    this.fireflyInterval = setInterval(this.updateParticipant, 200)
+    this.fireflyInterval = setInterval(this.updateParticipant, 100)
   }
 
   componentWillUnmount() {
