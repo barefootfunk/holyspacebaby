@@ -3,10 +3,9 @@ import _ from 'lodash';
 import monsterSvg from '../../img/monster/monster.svg'
 import cheesePng from '../../img/monster/cheese.png'
 import minePng from '../../img/monster/mine.png'
-import particlePng from '../../img/monster/particle.png'
+import jewelPng from '../../img/monster/jewel.png'
 
 const PIXI = typeof window !== `undefined` ? require("pixi.js") : null
-const particles = typeof window !== `undefined` ? require("pixi-particles") : null
 
 export default class Monster extends React.Component {
   
@@ -18,9 +17,10 @@ export default class Monster extends React.Component {
     this.cheesePng = false;
     this.minePng = false;
     this.monsterSvg = false;
-    this.particlePng = false;
+    this.jewelPng = false;
 
     this.baddies = [];
+    this.goodies = [];
   }
   
   /**
@@ -47,7 +47,7 @@ export default class Monster extends React.Component {
     loader.add('cheesePng',cheesePng);
     loader.add('minePng',minePng);
     loader.add('monsterSvg',monsterSvg);
-    loader.add('particlePng',particlePng);
+    loader.add('jewelPng',jewelPng);
     loader.load(this.handleAssetsLoaded);
 
     this.resizeTimeout = null;
@@ -58,7 +58,7 @@ export default class Monster extends React.Component {
     this.monsterSvg = resources.monsterSvg;
     this.cheesePng = resources.cheesePng;
     this.minePng = resources.minePng;
-    this.particlePng = resources.particlePng;
+    this.jewelPng = resources.jewelPng;
 
     this.monster = new PIXI.Sprite.from(this.monsterSvg.texture);
     this.sizeMonster();
@@ -78,7 +78,19 @@ export default class Monster extends React.Component {
       this.baddies[i].death.filters = [new PIXI.filters.BlurFilter()];
       this.baddies[i].death.alpha = 0.5;
       this.app.stage.addChild(this.baddies[i].death);
-  
+    }
+
+    for(let i=0;i<1;i++) {
+      this.goodies[i] = new PIXI.Sprite.from(this.jewelPng.texture)
+      this.app.stage.addChild(this.goodies[i]);
+      this.goodies[i].width = 40;
+      this.goodies[i].height = 40;
+      this.goodies[i].dyingTime = 0;
+
+      this.goodies[i].death = new PIXI.Graphics();
+      this.goodies[i].death.filters = [new PIXI.filters.BlurFilter()];
+      this.goodies[i].death.alpha = 0.5;
+      this.app.stage.addChild(this.goodies[i].death);
     }
 
     this.app.ticker.add(this.animate);
@@ -192,6 +204,25 @@ export default class Monster extends React.Component {
       } else {
         this.baddies[index].dyingTime=0;
         this.baddies[index].death.clear();
+      }
+    })
+
+    this.props.goodies.map((goody,index) => {
+      this.goodies[index].height = 60+5*Math.cos(this.time/20);
+      this.goodies[index].width = 60+5*Math.cos(this.time/20);
+      this.goodies[index].x = goody.x*this.gameWidth-this.goodies[index].width/2
+      this.goodies[index].y = goody.y*this.gameHeight-this.goodies[index].height/2
+      this.goodies[index].alpha = goody.dying ? 0 : 1;
+
+      if(goody.dying) {
+        this.goodies[index].dyingTime+=1;
+        this.goodies[index].death.clear();
+        this.goodies[index].death.lineStyle(10, 0xfd41ff);
+        this.goodies[index].death.drawCircle(this.goodies[index].x, this.goodies[index].y, this.goodies[index].dyingTime*5);
+        this.goodies[index].death.endFill();
+      } else {
+        this.goodies[index].dyingTime=0;
+        this.goodies[index].death.clear();
       }
     })
 

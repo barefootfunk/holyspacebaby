@@ -216,7 +216,13 @@ class Show extends React.Component {
         ),
         foregroundChildren: (
           <React.Fragment>
-            <Monster participants={directorState.participants} baddies={directorState.baddies} difficulty={directorState.difficulty} participantId={directorState.participantId} monster={directorState.monster} />
+            <Monster 
+              participants={directorState.participants}
+              baddies={directorState.baddies}
+              goodies={directorState.goodies}
+              difficulty={directorState.difficulty}
+              participantId={directorState.participantId}
+              monster={directorState.monster} />
             {caption ? 
             (<React.Fragment>
               <div className="layout-top-edge -no-pointer rainbow-text"><p>{caption}</p></div>
