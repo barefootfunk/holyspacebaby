@@ -67,14 +67,14 @@ const FLIGHT_BGS = [
 
 //https://dashboard.eventable.com/
 const DATE_THIS = 'DEC 17';
-const DATE_NEXT = '';
 const CAL_ID_THIS = '5fd13d744bc5e103b18004ac';
-const CAL_ID_NEXT = '';
+const DATE_NEXT = 'JAN 14';
+const CAL_ID_NEXT = '5fda22a3ad9ab100195b35ad';
 const CAL_ID_TEST = '5fd2cc003fe53d1239a3040c';
 
 
-const EP_NUMBER = '13';
-const THEME = 'attention';
+const EP_NUMBER = '14';
+const THEME = 'free will';
 
 const BULLETIN = `Click on Zombies at same time`;
 
@@ -86,53 +86,96 @@ const NOTES = [
 const CONTENT = {
   meditations: [
     {
-      question: `What is something you constantly fixate on in your work, studies, what you do?`,
-      placeholder: `Type a detail`,
+      question: `What is a moment you've shown GREAT self control?`,
+      placeholder: `Type a moment`,
       button: `Answer anonymously!`,
     },
     {
-      question: `What is something you constantly fixate on in others?`,
-      placeholder: `Type a detail`,
+      question: `What is a moment you've shown POOR self control?`,
+      placeholder: `Type a moment`,
       button: `Answer anonymously!`,
     },
     {
-      question: `What is something NEGATIVE you constantly fixate on about yourself?`,
-      placeholder: `Type a detail`,
+      question: `Why did you have that impulse––deep down, what did you need?`,
+      placeholder: `Type a need`,
       button: `Answer anonymously!`,
     },
     {
-      question: `What is something POSITIVE you constantly fixate on about yourself?`,
-      placeholder: `Type a detail`,
+      question: `How else could you satisfy that need in the future?`,
+      placeholder: `Type a way`,
       button: `Answer anonymously!`,
     },
   ],
   gospel: {
-    // passage: ``,
-    passage: `You are a Where's Waldo painting.  A fractal explosion of uncountable elements–good, bad and neutral.  Don't kid yourself that you can make perfect sense of it.`,
+    passage: `To master thyself, wield the cheese–not the monster.`,
     book: `Cowboy Jobe 1:19`,
     sermon: `
-      Story: body
-      Story: trombone
+      Why do we do things we don't wanna do?
+      Story: 
+      binge eating
+      not goin to sleep
+      checking my phone way to much
+      yelling at a loved one
 
-      Eating Disorder Eye Tracking
-      Flat Earth
+      pilot vs. politician
+
+      elephant metaphor (vs. monster)
+
+      what you don't control isnt bad:
+      bodily functions
+      intuition (supercomputer)
+      the best things about life
+
+      But we can't reason with the monster.
+      It only cares about the cheese.
+
+      So we need the monster, but we can't control it.
+
+      To master thyself, wield the cheese–not the monster.
 
       [Music]
-      Where's Waldo
-      Cant see all at once
-      100 people see different things
-      your opinion only a little better
+
+      What is the cheese to your monster?
+      What is it your body needs to feel?
+
+      To feel safe/comfortable?
+      To avoid danger or shame or pain?
+      To be heard?
+      To belong?
+      To escape?
+      To feel joy or delight?
+      To feel loved?
+      To feel respected?
+
+      To master thyself, wield the cheese–not the monster.
 
       [Music]
-      Snap judgements? How many blue hats?
-      Are you a good person?
-      We know we our view of the world is limited
-      But we think we're gods when it comes to self-understanding
+
+      How can you wield it?
+      Sometimes just checkin in is enough to satisfy the craving.
+      Sometimes too cheese-crazy
+      Sometimes you can find other cheeses.
+
+      Afraid to do something?  Use accountability.  Fight fear with fear.
+      Trying to numb pain? Find the root of the pain instead.
+      Trying to feel heard? Communicate, don't punish.
+      And so on.
+
+      The monster is being pulled by all sorts of cheeses.
+      So learn
 
       [Silence]
-      Skeptical
-      Just another voice
-      Free to just be
+
+      You are not flawed.
+      Still culpable, but not flawed.
+      Feeling flawed is usually where investigation stops.
+      Observe the monster closely.
+      EvenfIf you only just learn something, this defeat becomes a MASSIVE win.
+
+      To master thyself, wield the cheese–not the monster.
+
+      wield the cheese. Type it in the chat.
+
    `,
   }
 }
@@ -585,11 +628,11 @@ class Show extends React.Component {
           </React.Fragment>
         ),
       },
-      promptScene(0,'Woof. I am the atomic dog... powered by ancient nuclear fusion tech. But my atoms are escaping!  Will you save me?','Type answer here','Pledge!','atoms.gif',false),
-      promptScene(1,'Thanks.  I will now shrink you down to micro-quantum size.  Tiny chance it will melt you.  If so, any final requests?','Type request','Request!','shrink-ray.gif',false),
+      // promptScene(0,'Woof. I am the atomic dog... powered by ancient nuclear fusion tech. But my atoms are escaping!  Will you save me?','Type answer here','Pledge!','atoms.gif',false),
+      // promptScene(1,'Thanks.  I will now shrink you down to micro-quantum size.  Tiny chance it will melt you.  If so, any final requests?','Type request','Request!','shrink-ray.gif',false),
       
-      monsterScene(0,'You are now small and can only observe a tiny quantum window in front of you.','You are small'),
-      monsterScene(0,false,'Bryant, RELEASE THE ATOMS'),
+      
+      monsterScene(0,false,''),
       
       // promptScene(1,'Thank you.  I will now shrink you down to micro-quantum size.  Tiny chance it will melt you.  If so, any final requests?','Type request','Request!',false,false),
       
