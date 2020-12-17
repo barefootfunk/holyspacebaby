@@ -86,23 +86,28 @@ const NOTES = [
 const CONTENT = {
   meditations: [
     {
-      question: `What is a moment you've shown GREAT self control?`,
+      question: `Name a recent moment you've shown GREAT self control?`,
       placeholder: `Type a moment`,
       button: `Answer anonymously!`,
     },
     {
-      question: `What is a moment you've shown POOR self control?`,
-      placeholder: `Type a moment`,
-      button: `Answer anonymously!`,
-    },
-    {
-      question: `Why did you have that impulse––deep down, what did you need?`,
+      question: `How did it feel in your body in the moment?`,
       placeholder: `Type a need`,
       button: `Answer anonymously!`,
     },
     {
-      question: `How else could you satisfy that need in the future?`,
-      placeholder: `Type a way`,
+      question: `Name a recent moment you've shown POOR self control?`,
+      placeholder: `Type a moment`,
+      button: `Answer anonymously!`,
+    },
+    {
+      question: `How did it feel in your body in the moment?`,
+      placeholder: `Type a need`,
+      button: `Answer anonymously!`,
+    },
+    {
+      question: `Deep down, what do you think you needed?`,
+      placeholder: `Type a need`,
       button: `Answer anonymously!`,
     },
   ],
@@ -110,71 +115,116 @@ const CONTENT = {
     passage: `To master thyself, wield the cheese–not the monster.`,
     book: `Cowboy Jobe 1:19`,
     sermon: `
-      Why do we do things we don't wanna do?
-      Story: 
-      binge eating
-      not goin to sleep
-      checking my phone way to much
-      yelling at a loved one
+    Quarantine
 
-      pilot vs. politician
+    not goin to sleep
+    binge eating
+    yelling at a loved one
+    
+    no pilot 
+    cells, neurons, ideas/systems
+    many parts--some have a voice, some make your heartbeat
+    if we identify, its with the voice
+    more like a politician than pilot
+    out of control:
+    - bodily functions
+    - intuition (supercomputer)
+    - emotions -- the best things about life
+    
+    How do we interface?
+    Elephant metaphor
+    (actually a beehive)
+    
+    frontal cortex vs. limbic system
+    frontal cortex weakly overrides
+    emotional systems have deeper access to control and strong override
+    
+    What makes the elephant more amicable?
+    Sleep, meditation, exercise, healthy eating
+    (negative spiral)
+    
+    But sometimes the elehant wants somethin too much to cares
+    Try reasoning with it, wont listen
+    "Go to bed!"
+    Then what?
+    
+    Monster. Could only guide it with cheese.
+    How can we use that in our worst moments?
+    
+    [Music]
+    
+    What is the cheese your monster is chasing?
+    
+    To feel safe/comfortable?
+    To avoid danger or shame or pain?
+    To be heard?
+    To belong?
+    To escape?
+    To feel joy or delight?
+    To feel loved?
+    To feel respected?
+    to celebrate
+    to be in control?
+    
+    How to discover the cheese?
+    Get curious.  Ask why over and over
+    Stay up late?
+    y? Wanna watch my shows
+    y? Because I need to some time to myself
+    y? So I can feel like I'm in control of my time for a just a moment
+    
+    Eat 10 candy bars
+    y? I deserve this
+    y this? I did so good today, and this is a reward
+    yis that a reward? I guess I learned early to celebrate with food, and I wanna celebrate
+    y? Always pushing, wanna show myself love.
+    
+    Snap at a loved one
+    y? Theys frustrating me
+    y? Not listening, makin the same mistakes over and over
+    y? Im scared and I dont feel heard
+    
+    (contrived, tidy examples)
+    
+    Now the answer is also partially sugar addiction
+    poetic naturalism
+    best thinkin on addiction is to examine from both angles
+    
+    Sometimes just askin these questions is enough to snap out of it
+    
+    monster too crazy and no solutions, escape
+    
+    SOMETIMES replace the cheese
+    
+    [Music]
+    
+    We established talkin wont do good.
+    Can you offer the monster the cheese it wants and guide it?
 
-      elephant metaphor (vs. monster)
+    That monster can be like sniffing hound.
+    It can find the problems better than you, 
+    but needs your help with solutions
 
-      what you don't control isnt bad:
-      bodily functions
-      intuition (supercomputer)
-      the best things about life
+    Better ways to feel in control than sleep dep?
+    Better ways to self-love and celebrate than binge eat?
+    Better ways to feel heard and create safety than yell?
 
-      But we can't reason with the monster.
-      It only cares about the cheese.
+    Each their own sermon--but notice the difference:
+    Do these questions feel more answerable?
 
-      So we need the monster, but we can't control it.
-
-      To master thyself, wield the cheese–not the monster.
-
-      [Music]
-
-      What is the cheese to your monster?
-      What is it your body needs to feel?
-
-      To feel safe/comfortable?
-      To avoid danger or shame or pain?
-      To be heard?
-      To belong?
-      To escape?
-      To feel joy or delight?
-      To feel loved?
-      To feel respected?
-
-      To master thyself, wield the cheese–not the monster.
-
-      [Music]
-
-      How can you wield it?
-      Sometimes just checkin in is enough to satisfy the craving.
-      Sometimes too cheese-crazy
-      Sometimes you can find other cheeses.
-
-      Afraid to do something?  Use accountability.  Fight fear with fear.
-      Trying to numb pain? Find the root of the pain instead.
-      Trying to feel heard? Communicate, don't punish.
-      And so on.
-
-      The monster is being pulled by all sorts of cheeses.
-      So learn
-
-      [Silence]
-
-      You are not flawed.
-      Still culpable, but not flawed.
-      Feeling flawed is usually where investigation stops.
-      Observe the monster closely.
-      EvenfIf you only just learn something, this defeat becomes a MASSIVE win.
-
-      To master thyself, wield the cheese–not the monster.
-
-      wield the cheese. Type it in the chat.
+    Journal
+    Premortem
+    
+    [Silence]
+    
+    You are not flawed.
+    Still culpable, (like anyone with a pet)
+    but you're not flawed and not alone.
+    Feeling flawed is usually where investigation stops.
+    
+    Ask yourself--what cheese is your monster after.
+    Learning = victory
+    To master thyself, wield the cheese, not the monster.
 
    `,
   }
@@ -271,7 +321,8 @@ class Show extends React.Component {
               <div className="layout-top-edge -no-pointer rainbow-text"><p>{caption}</p></div>
             </React.Fragment>) :
             (<React.Fragment>
-              <div className="layout-top-edge -no-pointer rainbow-text"><p>Click to release cheese fragrance and attract monster.</p></div>
+              <div className="layout-top-edge -no-pointer rainbow-text"><p>Click to release cheese fragrance.  Guide our hero to the jewels.</p></div>
+              <div className="layout-bottom-edge -no-pointer rainbow-text"><p>Jewels: {directorState.score}</p></div>
             </React.Fragment>) 
             }
           </React.Fragment>
@@ -367,7 +418,7 @@ class Show extends React.Component {
       ),
     };
 
-    function promptScene(num,question,placeholder,buttonText,gif,bgs) {
+    function promptScene(num,question,placeholder,buttonText,gif,bgs,character) {
       return {
         name: `Vision ${num}`,
         livestream: "tiny",
@@ -375,8 +426,8 @@ class Show extends React.Component {
         teleprompter: `${question}`,
         backgroundChildren: (
           <React.Fragment>
-            <VideoBg key={`calm${num}`} srcs={FLIGHT_BGS} />
-            <div id="atomic-dog"><button/></div>
+            <VideoBg key={`calm${num}`} srcs={bgs ? bgs : FLIGHT_BGS} />
+            {character && <div id={character}><button/></div>}
             {/* <VideoBg key='glub' srcs={['glubgo.gif']} classes="bg-video--portal bg-video--corner"/> */}
           </React.Fragment>
         ),
@@ -433,7 +484,7 @@ class Show extends React.Component {
         foregroundChildren: (
           <React.Fragment>
             {/* {/* <VideoBg key={`calm${num}`} srcs={CALM_BGS} /> */}
-            <VideoBg key={`tugofwar${num}`} srcs={['underwater.mp4']} /> 
+            <VideoBg key={`tugofwar${num}`} srcs={FLIGHT_BGS} /> 
             <TugOfWar 
               newParticipantEvent={newParticipantEvent} 
               tugOfWarId={id} 
@@ -444,7 +495,7 @@ class Show extends React.Component {
             <div className="layout-top">
               <p>{caption}</p>
             </div>
-            <Pomplo directorState={directorState} hideHealthbar={true} />
+            <div id="monster" className="-center"><button/></div>
           </React.Fragment>
         ),
       };
@@ -628,29 +679,25 @@ class Show extends React.Component {
           </React.Fragment>
         ),
       },
-      // promptScene(0,'Woof. I am the atomic dog... powered by ancient nuclear fusion tech. But my atoms are escaping!  Will you save me?','Type answer here','Pledge!','atoms.gif',false),
-      // promptScene(1,'Thanks.  I will now shrink you down to micro-quantum size.  Tiny chance it will melt you.  If so, any final requests?','Type request','Request!','shrink-ray.gif',false),
+      promptScene(0,`BWAHAHAHA. I am Atomic Dog... I will turn all humans into Ravioli! What say you?`,'Type an insult','Resist!','ravioli.webp',false,"atomic-dog"),
+      promptScene(1,'Mock all you like.  I will use my mind control ray to make you eat your delicious friends. What sauce?','Type a sauce','Request!','hungry.webp',false,"atomic-dog"),
+      promptScene(2,'I am CleoCATra, resistance leader against Atomic Dog.  Help my beautiful daughter collect the space jewels. Also name her.','Type a name','Name!','cat.webp',['jewels.webp'],"monster"),
       
-      
+      tugOfWarScene(0,`Sadly, she only responds to the smell of cheese. Vote on which cheese you will use to guide her..`,
+        {
+          caption: 'CHEDDAR',
+          victory: 'How did you not choose Mozzarella? Fools.',
+          image: 'cheddar.jpg',
+        },
+        {
+          caption: 'MOZZARELLA',
+          victory: 'You have selected the superior cheese.',
+          image: 'mozzarella.jpg',}
+      ),
       monsterScene(0,false,''),
-      
-      // promptScene(1,'Thank you.  I will now shrink you down to micro-quantum size.  Tiny chance it will melt you.  If so, any final requests?','Type request','Request!',false,false),
-      
-      // tugOfWarScene(0,'You now have enough atoms to save atomic dog OR power all of earth.',
-      //   {caption},
-      //   {side2}
-      // )
+    
+    
 
-      // promptScene(0,'It’s Glubgo’s birthday! Wish him a happy birthday!','Type birthday greeting','Wish well!',false,false),
-      // chaosScene(0,''),
-      // chaosScene(1,''),
-      // chaosScene(2,''),
-      // chaosScene(3,''),
-      // chaosScene(4,''),
-      // chaosScene(5,'<?This crashed me last time?>'),
-      // chaosScene(6,'<?Everybody click one zombie at the same time to cure them?>'),
-      // chaosScene(7,'<?Click repeatedly to vote?>'),
-      // chaosScene(8,'<?Click cake to frost?>'),
       // starDraw(0),
       {
         name: "Meditation Intro",
@@ -672,7 +719,7 @@ class Show extends React.Component {
       meditationScene(1,CONTENT.meditations[1]),
       meditationScene(2,CONTENT.meditations[2]),
       meditationScene(3,CONTENT.meditations[3]),
-      // meditationScene(4,CONTENT.meditations[4]),
+      meditationScene(4,CONTENT.meditations[4]),
       {
         name: "Sermon",
         babyClass: "hidden",

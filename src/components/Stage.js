@@ -43,9 +43,9 @@ export default class Stage extends React.Component {
         y: .5,
         velX: 0,
         velY: 0,
-        score: 0,
       },
-      difficulty: 0
+      difficulty: 0,
+      score: 0,
     };
   }
   
@@ -144,7 +144,7 @@ export default class Stage extends React.Component {
 
 
   render () {
-    const {scene, connected, activeParticipantCount, messages, responses, rehearsal,difficulty} = this.state;
+    const {scene, connected, activeParticipantCount, messages, responses, rehearsal, difficulty, score} = this.state;
     const {mode} = this.props;
 
     return (
@@ -161,6 +161,7 @@ export default class Stage extends React.Component {
               <div className="small-buttons">
                 <button className={rehearsal?'-on':'-off'} onClick={() => {this.updateDirectorState({rehearsal: !rehearsal})}}>Rehearsing</button><br/>
                 <button onClick={() => {this.updateDirectorState({difficulty: ((difficulty+1) % 5) })}}>Difficulty: {difficulty}</button><br/>
+                <button onClick={() => {this.updateDirectorState({score: 0 })}}>Reset score ({score})</button><br/>
                 {/* <button
                   onClick={() => {this.updateDirectorState({
                     cake: {
@@ -168,9 +169,9 @@ export default class Stage extends React.Component {
                     },
                     coloringBook: {},
                   })}}>Defrost Cake</button><br/> */}
-                <button onClick={() => { this.newParticipantEvent({type: 'groupClickyAdd'}) }}>Atom</button><br/>
-                <button onClick={() => { this.newParticipantEvent({type: 'clearGroupClickies'}) }}>Clear Atoms</button><br/>
-                {/* <button onClick={() => { this.newParticipantEvent({type: 'clearTugOfWars'}) }}>Clear Tug</button> */}
+                {/* <button onClick={() => { this.newParticipantEvent({type: 'groupClickyAdd'}) }}>Atom</button><br/>
+                <button onClick={() => { this.newParticipantEvent({type: 'clearGroupClickies'}) }}>Clear Atoms</button><br/> */}
+                <button onClick={() => { this.newParticipantEvent({type: 'clearTugOfWars'}) }}>Clear Tug</button>
               </div>
             </div>
             <div id="participant-stats">{activeParticipantCount}</div>

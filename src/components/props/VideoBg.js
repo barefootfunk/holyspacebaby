@@ -4,7 +4,7 @@ export class VideoBg extends React.Component {
   constructor(props) {
     super(props);
     this.source = this.props.srcs[Math.floor(Math.random()*this.props.srcs.length)];
-    this.isImage = this.source.includes('.gif');
+    this.isImage = this.source.includes('.gif') || this.source.includes('.webp');
   }
 
   // componentDidMount () {

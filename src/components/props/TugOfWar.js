@@ -1,8 +1,6 @@
 import React from 'react';
 // import zombieImage1 from '../../img/zombie1.gif';
 
-
-
 export default class TugOfWar extends React.Component {
 
   constructor (props) {
@@ -93,6 +91,7 @@ export default class TugOfWar extends React.Component {
                 <span class="caption">{side2Wins ? side2.victory : side2.caption}</span>
                 <span className="percentage">{(percentage2*100).toFixed(2)}%</span>
               </button>}
+              <div className="layout-bottom-edge -no-pointer rainbow-text"><p>Click maniacally to vote.</p></div>
             </React.Fragment>
           {/* )} */}
         </div>

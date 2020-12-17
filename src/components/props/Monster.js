@@ -1,6 +1,6 @@
 import React from 'react';
 import _ from 'lodash';
-import monsterSvg from '../../img/monster/monster.svg'
+import monsterPng from '../../img/monster/monster.png'
 import cheesePng from '../../img/monster/cheese.png'
 import minePng from '../../img/monster/mine.png'
 import jewelPng from '../../img/monster/jewel.png'
@@ -16,11 +16,16 @@ export default class Monster extends React.Component {
     this.time=0;
     this.cheesePng = false;
     this.minePng = false;
-    this.monsterSvg = false;
+    this.monsterPng = false;
     this.jewelPng = false;
 
     this.baddies = [];
     this.goodies = [];
+
+    this.monsterSpriteWidth = 150;
+    this.monsterSpriteHeight = 150;
+    this.monsterSize = 150;
+    this.sizeUnit = 40;
   }
   
   /**
@@ -46,7 +51,7 @@ export default class Monster extends React.Component {
     const loader = new PIXI.Loader();
     loader.add('cheesePng',cheesePng);
     loader.add('minePng',minePng);
-    loader.add('monsterSvg',monsterSvg);
+    loader.add('monsterPng',monsterPng);
     loader.add('jewelPng',jewelPng);
     loader.load(this.handleAssetsLoaded);
 
@@ -55,13 +60,16 @@ export default class Monster extends React.Component {
   }
 
   handleAssetsLoaded = (loader, resources) => {
-    this.monsterSvg = resources.monsterSvg;
+    this.monsterPng = resources.monsterPng;
     this.cheesePng = resources.cheesePng;
     this.minePng = resources.minePng;
     this.jewelPng = resources.jewelPng;
 
-    this.monster = new PIXI.Sprite.from(this.monsterSvg.texture);
-    this.sizeMonster();
+    this.monster = new PIXI.Sprite.from(this.monsterPng.texture);
+    this.monsterSpriteHeight = this.monster.height;
+    this.monsterSpriteWidth = this.monster.width;
+
+    this.sizeThings();
     this.app.stage.addChild(this.monster);
 
     // Get the participant avatars
@@ -96,10 +104,18 @@ export default class Monster extends React.Component {
     this.app.ticker.add(this.animate);
   }
 
-  sizeMonster = () => {
+  sizeThings = () => {
+
+    this.sizeUnit = Math.min(40,this.gameWidth/15);
+    this.monsterSize = this.sizeUnit*3;
+
     this.monster.x = this.props.monster.x*this.gameWidth;
     this.monster.y = this.props.monster.y*this.gameHeight;
-    this.monster.pivot.set(0.5*this.monster.width,  0.5*this.monster.height);
+
+    this.monster.height = this.monsterSize;
+    this.monster.width = this.monsterSize;
+    this.monster.anchor.set(0.5);
+    // this.monster.pivot.set(0,0); //this.monster.width/2,  this.monster.height/2);
   }
 
   // getBaddies = () => {
@@ -139,23 +155,26 @@ export default class Monster extends React.Component {
   }
 
   handleResize = () => {
-    this.doResize();
+    // this.doResize();
     clearTimeout(this.resizeTimeout);
     this.resizeTimeout = setTimeout(this.doResize,300);
   }
 
   doResize = () => {
+    // this.app.stop();
+    // this.app.start();
     this.gameWidth=window.innerWidth;
     this.gameHeight=window.innerHeight;
+    this.sizeThings();
 
 
-    this.app.resize(this.gameWidth, this.gameHeight);
-    this.app.stage.height = this.gameHeight;
-    this.app.stage.width = this.gameWidth;
+    // this.app.resize(this.gameWidth, this.gameHeight);
+    // this.app.stage.height = this.gameHeight;
+    // this.app.stage.width = this.gameWidth;
 
-    if(this.monster) {
-      this.sizeMonster();
-    }
+    // if(this.monster) {
+    //   this.sizeThings();
+    // }
   }
 
   componentDidUpdate() {
@@ -163,37 +182,46 @@ export default class Monster extends React.Component {
   }
   
   animate = () => {
-    this.monster.x += ((this.props.monster.x*this.gameWidth) - this.monster.x) * 0.16;
-    this.monster.y += ((this.props.monster.y*this.gameHeight) - this.monster.y) * 0.16;
+    this.monster.x += ((this.props.monster.x*this.gameWidth) - this.monster.x) * 0.16; //((this.props.monster.x*this.gameWidth - this.monster.width/2) - this.monster.x) * 0.16;
+    this.monster.y += ((this.props.monster.y*this.gameHeight) - this.monster.y) * 0.16; // ((this.props.monster.y*this.gameHeight - this.monster.height/2) - this.monster.y) * 0.16;
     this.monster.rotation += (Math.atan2(this.props.monster.velY,this.props.monster.velX)-this.monster.rotation)*0.1;
 
     const flip = this.monster.rotation > Math.PI/2 || this.monster.rotation < -Math.PI/2  ? -1 : 1;
     // console.log(this.monster.rotation % (Math.PI*2));
-    this.monster.scale.y = flip + 0.2*Math.cos(this.time/10);
+    this.monster.scale.y =  this.monsterSize/this.monsterSpriteHeight * (flip + 0.2*Math.cos(this.time/10));
 
     Object.keys(this.props.participants).map((key,index) => {
       // if(typeof this.avatars[key] === 'undefined') {
-        
-        this.avatars[key].sprite.x += (this.props.participants[key].x*this.gameWidth-(this.props.participants[key].clicking ? 70 : 30) - this.avatars[key].sprite.x)*.2;
-        this.avatars[key].sprite.y += (this.props.participants[key].y*this.gameHeight-(this.props.participants[key].clicking ? 70 : 30) - this.avatars[key].sprite.y)*.2;
-        this.avatars[key].sprite.width += ((40 + (this.props.participants[key].clicking ? 80 : 0)) - this.avatars[key].sprite.width)*0.2;
-        this.avatars[key].sprite.height += ((40 + (this.props.participants[key].clicking ? 80 : 0)) - this.avatars[key].sprite.height)*0.2;
-        // this.avatars[key].sprite = new PIXI.Sprite.from(this.cheesePng.texture);
-      // }
-        this.avatars[key].line.clear();
-        if(this.props.participants[key].clicking){
-          this.avatars[key].line.lineStyle(5, 0xffff00);
-          this.avatars[key].line.moveTo(this.avatars[key].sprite.x+20,this.avatars[key].sprite.y+20);
-          this.avatars[key].line.lineTo(this.monster.x, this.monster.y-20);
-        }
+      const avatarSize = this.sizeUnit;
+
+      this.avatars[key].sprite.x += (this.props.participants[key].x*this.gameWidth-(this.props.participants[key].clicking ? avatarSize*2 : avatarSize) - this.avatars[key].sprite.x)*.2;
+      this.avatars[key].sprite.y += (this.props.participants[key].y*this.gameHeight-(this.props.participants[key].clicking ? avatarSize*2 : avatarSize) - this.avatars[key].sprite.y)*.2;
+      this.avatars[key].sprite.width += ( (avatarSize + (this.props.participants[key].clicking ? avatarSize : 0)) - this.avatars[key].sprite.width)*0.2;
+      this.avatars[key].sprite.height += ( (avatarSize + (this.props.participants[key].clicking ? avatarSize : 0)) - this.avatars[key].sprite.height)*0.2;
+      
+      if (this.props.participants[key].mode !=='performer' && !this.props.participants[key].inactive) {
+        this.avatars[key].sprite.alpha = 0.5;
+      } else {
+        this.avatars[key].sprite.alpha = 0;
+      }
+      // this.avatars[key].sprite = new PIXI.Sprite.from(this.cheesePng.texture);
+    // }
+      this.avatars[key].line.clear();
+      if(this.props.participants[key].clicking){
+        this.avatars[key].line.lineStyle(5, 0xffff00);
+        this.avatars[key].line.moveTo(this.avatars[key].sprite.x+avatarSize,this.avatars[key].sprite.y+avatarSize);
+        this.avatars[key].line.lineTo(this.monster.x, this.monster.y);
+        // this.avatars[key].line.lineTo(this.monster.x + this.monster.width/2, this.monster.y + this.monster.height/2);
+      }
+
     })
 
     this.props.baddies.map((baddy,index) => {
-      this.baddies[index].height = 40+5*Math.cos(this.time/11);
-      this.baddies[index].width = 40+5*Math.cos(this.time/11);
+      this.baddies[index].height = this.sizeUnit* (1+ .2 * Math.cos(this.time/11));
+      this.baddies[index].width = this.sizeUnit* (1+ .2 * Math.cos(this.time/11));
       this.baddies[index].x += (baddy.x*this.gameWidth-this.baddies[index].width/2 - this.baddies[index].x)*0.1;
       this.baddies[index].y += (baddy.y*this.gameHeight-this.baddies[index].height/2 - this.baddies[index].y)*0.1;
-      this.baddies[index].alpha = baddy.dying ? 0.2 : 1;
+      this.baddies[index].alpha = baddy.dying ? 0 : 1;
 
       if(baddy.dying) {
         this.baddies[index].dyingTime+=1;
@@ -208,8 +236,8 @@ export default class Monster extends React.Component {
     })
 
     this.props.goodies.map((goody,index) => {
-      this.goodies[index].height = 60+5*Math.cos(this.time/20);
-      this.goodies[index].width = 60+5*Math.cos(this.time/20);
+      this.goodies[index].height = this.sizeUnit*2*(1+.2*Math.cos(this.time/20));
+      this.goodies[index].width = this.sizeUnit*2*(1+.2*Math.cos(this.time/20));
       this.goodies[index].x = goody.x*this.gameWidth-this.goodies[index].width/2
       this.goodies[index].y = goody.y*this.gameHeight-this.goodies[index].height/2
       this.goodies[index].alpha = goody.dying ? 0 : 1;
@@ -218,7 +246,7 @@ export default class Monster extends React.Component {
         this.goodies[index].dyingTime+=1;
         this.goodies[index].death.clear();
         this.goodies[index].death.lineStyle(10, 0xfd41ff);
-        this.goodies[index].death.drawCircle(this.goodies[index].x, this.goodies[index].y, this.goodies[index].dyingTime*5);
+        this.goodies[index].death.drawCircle(this.goodies[index].x+this.goodies[index].width/2, this.goodies[index].y+this.goodies[index].height/2, this.goodies[index].dyingTime*5);
         this.goodies[index].death.endFill();
       } else {
         this.goodies[index].dyingTime=0;
