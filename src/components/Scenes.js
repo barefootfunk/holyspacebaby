@@ -516,7 +516,7 @@ class Show extends React.Component {
             <div className="layout-center -no-pointer">
               <p>Cowboy Elijah will appear here in the flames at the time of the ceremony to reincarnate you.</p>
             </div>
-            <Share />
+            {/* <Share /> */}
           </React.Fragment>
         ),
       },
@@ -534,7 +534,7 @@ class Show extends React.Component {
             <div className="layout-top -no-pointer">
               <p style={{ maxWidth: '10em' }}>Mic check! Be sure livestream is UNMUTED and PLAYING.</p>
             </div>
-            <Share />
+            {/* <Share /> */}
           </React.Fragment>
         ),
       },
@@ -667,8 +667,8 @@ class Show extends React.Component {
         foregroundChildren: (
           <React.Fragment>
             <VideoBg key='campfire' srcs={['campfire.mp4']}/>
-            <CTA calEventId={CAL_ID_NEXT} nextCeremonyDate={DATE_NEXT}></CTA>
-            <div className="layout-center"><Share /></div>
+            {/* <CTA calEventId={CAL_ID_NEXT} nextCeremonyDate={DATE_NEXT}></CTA> */}
+            {/* <div className="layout-center"><Share /></div> */}
             <TipJar/>
           </React.Fragment>
         ),
