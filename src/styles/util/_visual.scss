@@ -35,3 +35,9 @@
   user-select: none;
   pointer-events: none !important;
 }
+
+@mixin semantic-only-list {
+  margin: 0;
+  padding-left: 0;
+  list-style: none;
+}

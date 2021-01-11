@@ -1,7 +1,6 @@
 
 import React from 'react';
 import MailchimpSubscribe from "react-mailchimp-subscribe";
-import HolySpaceBabySvg from "../../svg/holy-space-baby.inline.svg"
 
 // Amplitude
 import {initAmplitude, sendAmplitudeData} from '../utilities/amplitude';
@@ -57,20 +56,7 @@ const CustomForm = ({ status, message, onValidated, descriptionText }) => {
 const CTA = (props) => {
   return (
     <div id="cta">
-      <div id="decorative-baby">
-        <HolySpaceBabySvg />
-      </div>
-      <div className="layout-top">
-        {typeof props.children !== 'undefined' && props.children}
-      </div>
-      <div className={`layout-bottom row ${typeof props.chaos !== 'undefined' ? 'chaos-cta':''}`}>
-        <div className="add-to-cal text-box">
-        <a href={`https://add.eventable.com/events/5f8edeb953314b00158b2ff5/${props.calEventId}/`} 
-          onClick={() => {
-            sendAmplitudeData('add-to-calendar', {}); 
-          }}
-          target="_blank">Add {props.nextCeremonyDate} ceremony to Calendar</a>
-        </div>
+      <div>
         <div className="mailing-list">
           <MailchimpSubscribe
             url={MAILCHIMP_URL}
@@ -90,11 +76,6 @@ const CTA = (props) => {
           />
         </div>
       </div>
-      
-      {/* <div id="weekly-promise">
-        New visions, music and more weekly.
-      </div> */}
-
     </div>
   )
 }

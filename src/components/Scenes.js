@@ -2,7 +2,6 @@ import React from 'react';
 
 // Utils
 import slugify from 'slugify';
-import Script from 'react-load-script';
 
 // Chat
 import Chat from "./Chat"
@@ -112,120 +111,40 @@ const CONTENT = {
     },
   ],
   gospel: {
-    passage: `To master thyself, wield the cheese–not the monster.`,
+    passage: `Makin a big amazing thing is easy, all you need is a bunch of rad little things`,
     book: `Cowboy Jobe 1:19`,
     sermon: `
-    Quarantine
+      What sticks with us from an amazing story?
+      What do we miss about our pre-pandemic life?
+      What do we miss about a person?
 
-    not goin to sleep
-    binge eating
-    yelling at a loved one
-    
-    no pilot 
-    cells, neurons, ideas/systems
-    many parts--some have a voice, some make your heartbeat
-    if we identify, its with the voice
-    more like a politician than pilot
-    out of control:
-    - bodily functions
-    - intuition (supercomputer)
-    - emotions -- the best things about life
-    
-    How do we interface?
-    Elephant metaphor
-    (actually a beehive)
-    
-    frontal cortex vs. limbic system
-    frontal cortex weakly overrides
-    emotional systems have deeper access to control and strong override
-    
-    What makes the elephant more amicable?
-    Sleep, meditation, exercise, healthy eating
-    (negative spiral)
-    
-    But sometimes the elehant wants somethin too much to cares
-    Try reasoning with it, wont listen
-    "Go to bed!"
-    Then what?
-    
-    Monster. Could only guide it with cheese.
-    How can we use that in our worst moments?
-    
-    [Music]
-    
-    What is the cheese your monster is chasing?
-    
-    To feel safe/comfortable?
-    To avoid danger or shame or pain?
-    To be heard?
-    To belong?
-    To escape?
-    To feel joy or delight?
-    To feel loved?
-    To feel respected?
-    to celebrate
-    to be in control?
-    
-    How to discover the cheese?
-    Get curious.  Ask why over and over
-    Stay up late?
-    y? Wanna watch my shows
-    y? Because I need to some time to myself
-    y? So I can feel like I'm in control of my time for a just a moment
-    
-    Eat 10 candy bars
-    y? I deserve this
-    y this? I did so good today, and this is a reward
-    yis that a reward? I guess I learned early to celebrate with food, and I wanna celebrate
-    y? Always pushing, wanna show myself love.
-    
-    Snap at a loved one
-    y? Theys frustrating me
-    y? Not listening, makin the same mistakes over and over
-    y? Im scared and I dont feel heard
-    
-    (contrived, tidy examples)
-    
-    Now the answer is also partially sugar addiction
-    poetic naturalism
-    best thinkin on addiction is to examine from both angles
-    
-    Sometimes just askin these questions is enough to snap out of it
-    
-    monster too crazy and no solutions, escape
-    
-    SOMETIMES replace the cheese
-    
-    [Music]
-    
-    We established talkin wont do good.
-    Can you offer the monster the cheese it wants and guide it?
+      Not the big things, but the tiny details.
 
-    That monster can be like sniffing hound.
-    It can find the problems better than you, 
-    but needs your help with solutions
+      We build trust with the little things - Brene Marbles
 
-    Better ways to feel in control than sleep dep?
-    Better ways to self-love and celebrate than binge eat?
-    Better ways to feel heard and create safety than yell?
+      Emotionanal Bids predict strong relationships
 
-    Each their own sermon--but notice the difference:
-    Do these questions feel more answerable?
+      Little things give character, 
+      they are the cuts made by the knife carvin us out
 
-    Journal
-    Premortem
-    
-    [Silence]
-    
-    You are not flawed.
-    Still culpable, (like anyone with a pet)
-    but you're not flawed and not alone.
-    Feeling flawed is usually where investigation stops.
-    
-    Ask yourself--what cheese is your monster after.
-    Learning = victory
-    To master thyself, wield the cheese, not the monster.
+      Little things are soaked in truth
+      They are explosive nuggets of emotion
 
+      Pareto?
+
+      We value little things
+        Little things build trust, connection -- more than big
+        Trust is about consistency
+        They contain truths like "I am always here for you" or "the world is safe"
+
+      We should cherish our memories of little things
+
+      Dont step on little things
+      
+      Create little things
+
+
+      INVESTIGATE: EMOTIONAL BIDS
    `,
   }
 }
@@ -586,7 +505,7 @@ class Show extends React.Component {
       //     </React.Fragment>
       //   ),
       // },
-      homepage,
+      // homepage,
       {
         name: 'Pre live',
         livestream: "hidden",
@@ -595,7 +514,7 @@ class Show extends React.Component {
           <React.Fragment>
             <VideoBg key='campfire' srcs={['campfire.mp4']}/>
             <div className="layout-center -no-pointer">
-              <p>Cowboy Elijah will appear in the flames here just before 7p CST today to reincarnate you.</p>
+              <p>Cowboy Elijah will appear here in the flames at the time of the ceremony to reincarnate you.</p>
             </div>
             <Share />
           </React.Fragment>

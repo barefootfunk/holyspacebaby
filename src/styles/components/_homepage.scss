@@ -1,0 +1,59 @@
+.homepage {
+
+  h1 {
+    font-size: 3em;
+  }
+  h2 {
+    font-size: 2.5em;
+  }
+  h3 {
+    font-size: 2.5em;
+  }
+  .homepage__content-block {
+    @include font-display;
+    @include text-box;
+    display: block;
+
+    width: 80vw;
+
+    max-width: 20em;
+    margin: 2em auto;
+    // max-width: 700px;
+    text-align: center;
+    @include glow(white);
+
+    &--tickets {
+      h2 {
+        margin-bottom: 0;
+      }
+
+      p {
+        margin: 1em auto;
+      }
+
+
+
+      .availability {
+        display: block;
+        color: lime;
+        font-size: 2em;
+        margin-bottom: -0.3em;
+      }
+
+      .button {
+        color: lime;
+        border-color: lime;
+      }
+
+      #ticket-listings {
+        ul {
+          @include semantic-only-list;
+        }
+        .ticket-listings__showtime {
+          background: rgba(white,0.1);
+        }
+      }
+    }
+  }
+
+}
