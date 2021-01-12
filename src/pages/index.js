@@ -47,8 +47,6 @@ class App extends React.Component {
               month: 'short',
               weekday: 'long',
               day: '2-digit',
-              hour: 'numeric',
-              timeZoneName: 'short', 
             }).format(startDate);
             const timeString = new Intl.DateTimeFormat('en', { 
               hour: 'numeric',
@@ -66,9 +64,8 @@ class App extends React.Component {
                   ${timeString}<br>
                   Free to all, RSVP required
                 </p>
-                <p><span class="availability">${avail} of ${total}</span> spots remaining</p>
-                <button class="button" id="eventbrite-checkout-${eventbriteId}">Reserve your spot</button>
-                
+                <p class="ticket-listings__showtime__availability"><span>${avail} of ${total}</span> spots remaining</p>
+                <button class="button ${avail ? '' : 'button--disabled'}" id="eventbrite-checkout-${eventbriteId}">${avail ? 'Reserve your spot' : 'TOTZ FULL UP'}</button>
               </li>
             `); 
 
