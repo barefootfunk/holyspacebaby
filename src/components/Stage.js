@@ -104,7 +104,7 @@ export default class Stage extends React.Component {
 
     // HolySpaceBaby specific events
     this.socket.on('updateParticipantState', (newState) => {
-      // console.log('SOCKET: updateParticipantState',newState);
+      console.log('SOCKET: updateParticipantState',newState);
       this.setState(newState);
     });
 

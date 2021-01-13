@@ -99,8 +99,8 @@ class App extends React.Component {
           <p>The world's first interactive electric trombone livestream adventure.</p>
         </div>
         <div className="homepage__content-block homepage__content-block--tickets">
-          <h2>Next Ceremony</h2>
-          <div id="ticket-listings" />
+          <h2>Ceremonies will resume soon...</h2>
+          {/* <div id="ticket-listings" /> */}
         </div>
         <div id="decorative-baby">
           <HolySpaceBabySvg />
