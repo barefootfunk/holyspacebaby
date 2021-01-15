@@ -1,6 +1,7 @@
 import React from 'react';
 import {Helmet} from "react-helmet";
 import VideoBg from "../components/props/VideoBg";
+import MailingList from "../components/props/MailingList";
 import $ from 'jquery';
 import HolySpaceBabySvg from "../svg/holy-space-baby.inline.svg"
 
@@ -98,9 +99,18 @@ class App extends React.Component {
           <h1>HolySpaceBaby</h1>
           <p>The world's first interactive electric trombone livestream adventure.</p>
         </div>
-        <div className="homepage__content-block homepage__content-block--tickets">
-          <h2>Ceremonies will resume soon...</h2>
-          {/* <div id="ticket-listings" /> */}
+        {/* <div className="homepage__content-block homepage__content-block--tickets">
+          <h2>Ceremonies</h2>
+          <div id="ticket-listings" />
+        </div> */}        
+        <div className="homepage__content-block homepage__content-block--description">
+          <h2>Ceremonies resume soon!</h2>
+          <p>Cowboy Elijah is quarantining at an alpaca farm with shaky internet.  He had planned to continue ceremonies during this stay. But, after days of testing, the connection just isn't good enough to safely reincarnate others.  Safety first.</p>
+        </div>        
+        <div className="homepage__content-block homepage__content-block--description">
+          <h2>Get word when we return!</h2>
+          <MailingList/>
+          <p>Also, hear about Cowboy Elijah's blog...</p>
         </div>
         <div id="decorative-baby">
           <HolySpaceBabySvg />
