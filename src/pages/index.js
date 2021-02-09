@@ -10,7 +10,8 @@ import '../styles/App.scss';
 
 class App extends React.Component {
 
-  // componentDidMount() {
+  componentDidMount() {
+    window.location.href = 'https://cowboyelijah.com';
   //   const eventbriteApiToken="CF3QVTIL3QGFLOPRFJKB"
 
   //   const ceremonies = [
@@ -84,17 +85,18 @@ class App extends React.Component {
 
   //   // renderTicketListings();
 
-  // }
+  }
   render () {
 
     return (
       <div id="app" className="homepage">
         <Helmet>
           <meta charSet="utf-8" />
-          <title>HolySpaceBaby</title>
+          <title>Redirecting...</title>
           <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
         </Helmet>
-        <VideoBg key='campfire' srcs={['campfire.mp4']}/>
+        <h1>Redirecting to <a href="https://cowboyelijah.com">cowboyelijah.com</a></h1>
+        {/* <VideoBg key='campfire' srcs={['campfire.mp4']}/>
         <div className="homepage__content-block homepage__content-block--description">
           <h1>HolySpaceBaby</h1>
           <p>The world's first interactive electric trombone livestream adventure.</p>
@@ -103,7 +105,7 @@ class App extends React.Component {
           <h2>Ceremonies</h2>
           <div id="ticket-listings" />
         </div> */}        
-        <div className="homepage__content-block homepage__content-block--description">
+        {/* <div className="homepage__content-block homepage__content-block--description">
           <h2>Ceremonies resume soon!</h2>
           <p>Cowboy Elijah is quarantining at an alpaca farm with shaky internet.  He had planned to continue ceremonies during this stay. But, after days of testing, the connection just isn't good enough to safely reincarnate others.  Safety first.</p>
         </div>        
@@ -114,7 +116,7 @@ class App extends React.Component {
         </div>
         <div id="decorative-baby">
           <HolySpaceBabySvg />
-        </div>
+        </div> */}
       </div>
     );
   }
